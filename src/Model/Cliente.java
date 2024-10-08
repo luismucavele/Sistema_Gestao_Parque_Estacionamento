@@ -1,108 +1,66 @@
 package Model;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class Cliente extends Pessoa {
-    private static int idCounter = 1;
-    protected int idCliente;
-    protected String matricula;
-    protected String corCarro;
-    protected double valorPorHora;
-    protected String tipoPagamento;
-    protected boolean estacionado;
-    protected LocalDateTime dataHoraEntrada;
-    protected LocalDateTime dataHoraSaida;
-    protected int espacoEstacionado;
+public abstract class Cliente extends Pessoa {
+    protected static int idCounter = 1; // Contador de IDs
+    protected int idCliente; // ID único do cliente
+    protected ArrayList<Veiculo> veiculos; // Lista de veículos do cliente
 
-    public Cliente(String nome, String contacto, String residencia, String matricula, String corCarro, double valorPorHora, String tipoPagamento) {
-        super(nome, contacto, residencia);
-        this.idCliente = idCounter++;
-        this.matricula = matricula;
-        this.corCarro = corCarro;
-        this.valorPorHora = valorPorHora;
-        this.tipoPagamento = tipoPagamento;
-        this.estacionado = true;
-        this.dataHoraEntrada = LocalDateTime.now();
+    public Cliente(String nome, String documento, String telefone, String email) {
+        super(nome, documento, telefone, email); // Chama o construtor da classe base
+        this.idCliente = idCounter++; // Atribui ID único ao cliente
+        this.veiculos = new ArrayList<>(); // Inicializa a lista de veículos
     }
 
-    // Getters e setters
+    public abstract double calcularDesconto(double valor); // Método abstrato para cálculo de desconto
+
+    public void adicionarVeiculo(Veiculo veiculo) {
+        this.veiculos.add(veiculo); // Adiciona um veículo ao cliente
+    }
+
+    public ArrayList<Veiculo> getVeiculos() {
+        return veiculos; // Retorna a lista de veículos
+    }
+
+    // Getters e Setters
     public int getIdCliente() {
-        return idCliente;
+        return idCliente; // Retorna o ID do cliente
     }
 
-    public String getMatricula() {
-        return matricula;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente; // Define o ID do cliente
+    }
+    
+    public String getNome() {
+        return nome; // Retorna o nome do cliente
     }
 
-    public String getCorCarro() {
-        return corCarro;
+    public void setNome(String nome) {
+        this.nome = nome; // Define o nome do cliente
     }
 
-    public double getValorPorHora() {
-        return valorPorHora;
+    public String getDocumento() {
+        return documento; // Retorna o documento do cliente
     }
 
-    public void setValorPorHora(double valorPorHora) {
-        this.valorPorHora = valorPorHora;
+    public void setDocumento(String documento) {
+        this.documento = documento; // Define o documento do cliente
     }
 
-    public LocalDateTime getDataHoraEntrada() {
-        return dataHoraEntrada;
+    public String getTelefone() {
+        return telefone; // Retorna o telefone do cliente
     }
 
-    public LocalDateTime getDataHoraSaida() {
-        return dataHoraSaida;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone; // Define o telefone do cliente
     }
 
-    public boolean isEstacionado() {
-        return estacionado;
+    public String getEmail() {
+        return email; // Retorna o email do cliente
     }
 
-    public void setEstacionado(boolean estacionado) {
-        this.estacionado = estacionado;
-    }
-
-    public int getEspacoEstacionado() {
-        return espacoEstacionado;
-    }
-
-    public void setEspacoEstacionado(int espacoEstacionado) {
-        this.espacoEstacionado = espacoEstacionado;
-    }
-
-    public void registrarSaida() {
-        if (estacionado) {
-            this.dataHoraSaida = LocalDateTime.now();
-            this.estacionado = false;
-        } else {
-            System.out.println("O veículo já foi removido.");
-        }
-    }
-
-    // Método para calcular o valor total a ser pago (clientes temporários)
-    public double calcularValorTotal() {
-        if (dataHoraSaida == null) {
-            dataHoraSaida = LocalDateTime.now();
-        }
-
-        Duration duracao = Duration.between(dataHoraEntrada, dataHoraSaida);
-        long horas = duracao.toHours();
-        long minutos = duracao.toMinutesPart();
-
-        if (minutos > 0) {
-            horas++;
-        }
-
-        return horas * valorPorHora;
-    }
-
-    // Método para exibir detalhes
-    @Override
-    public String exibirDetalhes() {
-        return String.format(
-            "ID Cliente: %d\nNome: %s\nContacto: %s\nResidência: %s\nMatrícula: %s\nCor do Carro: %s\nValor por Hora: %.2f\nTipo de Pagamento: %s\nEstacionado: %s\nHora de Entrada: %s\n",
-            idCliente, getNome(), getContacto(), getResidencia(), matricula, corCarro, valorPorHora, tipoPagamento, (estacionado ? "Sim" : "Não"), dataHoraEntrada.toString()
-        );
+    public void setEmail(String email) {
+        this.email = email; // Define o email do cliente
     }
 }
