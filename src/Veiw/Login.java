@@ -41,8 +41,6 @@ public class Login extends javax.swing.JFrame {
         usernamefunc = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         textPasswordfunc = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         Entrarfunc = new javax.swing.JButton();
         chkShowPassword = new javax.swing.JCheckBox();
@@ -70,7 +68,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/3108285.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 161, -1, 334));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 507));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 507));
 
         jPanel2.setBackground(new java.awt.Color(0, 188, 212));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,13 +84,13 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 10, 27, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_user_20px.png"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 30, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_user_20px_1.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 20, -1));
 
         usernamefunc.setBackground(new java.awt.Color(0, 188, 212));
         usernamefunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         usernamefunc.setForeground(new java.awt.Color(0, 0, 0));
-        usernamefunc.setBorder(null);
+        usernamefunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         usernamefunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernamefuncActionPerformed(evt);
@@ -100,33 +98,28 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(usernamefunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 180, 30));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_lock_20px.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_lock_20px_1.png"))); // NOI18N
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, 30));
 
         textPasswordfunc.setBackground(new java.awt.Color(0, 188, 212));
         textPasswordfunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         textPasswordfunc.setForeground(new java.awt.Color(0, 0, 0));
-        textPasswordfunc.setBorder(null);
+        textPasswordfunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         textPasswordfunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPasswordfuncActionPerformed(evt);
             }
         });
         jPanel2.add(textPasswordfunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, 30));
-
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, 13));
-
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 180, 10));
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Entrarfunc.setBackground(new java.awt.Color(0, 0, 0));
+        Entrarfunc.setBackground(new java.awt.Color(0, 188, 212));
         Entrarfunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        Entrarfunc.setForeground(new java.awt.Color(255, 255, 255));
+        Entrarfunc.setForeground(new java.awt.Color(0, 0, 0));
         Entrarfunc.setText("Entrar");
-        Entrarfunc.setBorder(null);
-        jPanel2.add(Entrarfunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 114, 33));
+        Entrarfunc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Entrarfunc.setBorderPainted(false);
+        jPanel2.add(Entrarfunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 383, 114, 30));
 
         chkShowPassword.setBackground(new java.awt.Color(0, 0, 0));
         chkShowPassword.setText("Mostrar senha");
@@ -139,8 +132,8 @@ public class Login extends javax.swing.JFrame {
 
         lblmensagem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblmensagem.setForeground(new java.awt.Color(204, 0, 0));
-        lblmensagem.setText("L");
-        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 20, -1));
+        lblmensagem.setText("Mensagem");
+        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 80, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,7 +143,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 446, 507));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 0, 440, 507));
 
         setSize(new java.awt.Dimension(845, 507));
         setLocationRelativeTo(null);
@@ -238,8 +231,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblmensagem;
     private javax.swing.JPasswordField textPasswordfunc;
     private javax.swing.JTextField usernamefunc;
