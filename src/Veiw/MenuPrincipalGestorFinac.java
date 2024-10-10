@@ -158,8 +158,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jLabel72 = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -1188,16 +1186,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel71.setForeground(new java.awt.Color(0, 0, 0));
         jLabel71.setText("Gestor Finaceiro:");
 
-        jButton8.setBackground(new java.awt.Color(255, 153, 51));
-        jButton8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_name_tag_30px.png"))); // NOI18N
-        jButton8.setText("Funcionario");
-        jButton8.setBorder(null);
-
-        jLabel72.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel72.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel72.setText("Trocar conta:");
-
         jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/localizacao.png"))); // NOI18N
 
         jLabel73.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -1240,14 +1228,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addComponent(jLabel71)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel24)))
-                        .addGap(729, 729, 729)
-                        .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P6Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel72)
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel16))
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(833, 833, 833)
+                        .addComponent(jLabel16))
                     .addGroup(P6Layout.createSequentialGroup()
                         .addGap(515, 515, 515)
                         .addComponent(jLabel73))
@@ -1264,14 +1246,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             .addGroup(P6Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P6Layout.createSequentialGroup()
-                        .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P6Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel72))
-                            .addComponent(jLabel16))
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16)
                     .addGroup(P6Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1282,7 +1257,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel71)
                                     .addComponent(jLabel24))))))
-                .addGap(9, 9, 9)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1433,7 +1408,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1522,7 +1496,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel8;

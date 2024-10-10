@@ -241,8 +241,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jLabel72 = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -2229,16 +2227,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel71.setForeground(new java.awt.Color(0, 0, 0));
         jLabel71.setText("Adiminstrador:");
 
-        jButton8.setBackground(new java.awt.Color(255, 153, 51));
-        jButton8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_name_tag_30px.png"))); // NOI18N
-        jButton8.setText("Funcionario");
-        jButton8.setBorder(null);
-
-        jLabel72.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel72.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel72.setText("Trocar conta:");
-
         jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/localizacao.png"))); // NOI18N
 
         jLabel73.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -2274,16 +2262,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel70)
                     .addComponent(jLabel71))
-                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P8Layout.createSequentialGroup()
-                        .addGap(756, 756, 756)
-                        .addComponent(jLabel72)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel113))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
-                        .addGap(729, 729, 729)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel113)
+                .addContainerGap(447, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
                 .addContainerGap(329, Short.MAX_VALUE)
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2298,25 +2279,18 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         P8Layout.setVerticalGroup(
             P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P8Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel113)
                     .addGroup(P8Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel72)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P8Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel113)
+                        .addGap(9, 9, 9)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(P8Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(P8Layout.createSequentialGroup()
-                                        .addComponent(jLabel70)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel71))
-                                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(9, 9, 9)
+                                .addComponent(jLabel70)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel71))
+                            .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(32, 32, 32)
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2490,7 +2464,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2598,7 +2571,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
