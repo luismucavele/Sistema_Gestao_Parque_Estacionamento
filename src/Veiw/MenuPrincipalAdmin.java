@@ -256,7 +256,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setBackground(new java.awt.Color(23, 27, 36));
 
         Home.setBackground(new java.awt.Color(255, 255, 255));
         Home.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N

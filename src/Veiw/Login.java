@@ -70,7 +70,7 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 507));
 
-        jPanel2.setBackground(new java.awt.Color(0, 188, 212));
+        jPanel2.setBackground(new java.awt.Color(23, 27, 36));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Marcelo.png"))); // NOI18N
@@ -84,13 +84,13 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 10, 27, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_user_20px_1.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_user_20px_2.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 20, -1));
 
-        usernamefunc.setBackground(new java.awt.Color(0, 188, 212));
+        usernamefunc.setBackground(new java.awt.Color(23, 27, 36));
         usernamefunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         usernamefunc.setForeground(new java.awt.Color(0, 0, 0));
-        usernamefunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        usernamefunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         usernamefunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernamefuncActionPerformed(evt);
@@ -98,13 +98,13 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(usernamefunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 180, 30));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_lock_20px_1.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_lock_20px_2.png"))); // NOI18N
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, 30));
 
-        textPasswordfunc.setBackground(new java.awt.Color(0, 188, 212));
+        textPasswordfunc.setBackground(new java.awt.Color(23, 27, 36));
         textPasswordfunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         textPasswordfunc.setForeground(new java.awt.Color(0, 0, 0));
-        textPasswordfunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        textPasswordfunc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         textPasswordfunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPasswordfuncActionPerformed(evt);
@@ -113,15 +113,16 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(textPasswordfunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, 30));
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Entrarfunc.setBackground(new java.awt.Color(0, 188, 212));
+        Entrarfunc.setBackground(new java.awt.Color(23, 27, 36));
         Entrarfunc.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        Entrarfunc.setForeground(new java.awt.Color(0, 0, 0));
+        Entrarfunc.setForeground(new java.awt.Color(255, 255, 255));
         Entrarfunc.setText("Entrar");
         Entrarfunc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Entrarfunc.setBorderPainted(false);
         jPanel2.add(Entrarfunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 383, 114, 30));
 
         chkShowPassword.setBackground(new java.awt.Color(0, 0, 0));
+        chkShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         chkShowPassword.setText("Mostrar senha");
         chkShowPassword.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -135,7 +136,7 @@ public class Login extends javax.swing.JFrame {
         lblmensagem.setText("Mensagem");
         jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 80, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
