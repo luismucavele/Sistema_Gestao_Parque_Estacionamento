@@ -1,6 +1,7 @@
 package Model;
 
 public abstract class Pessoa {
+    private int IdPessoa;
     protected String nome;       // Nome da pessoa
     protected String documento;  // Documento da pessoa
     protected String telefone;    // Telefone da pessoa
@@ -15,6 +16,16 @@ public abstract class Pessoa {
     }
 
     // Getters e Setters
+    
+    public int getIdPessoa() {
+        return IdPessoa; 
+    }
+
+    public void setIdPessoa(int IdPessoa) {
+        this.IdPessoa = IdPessoa;
+    }
+    
+
     public String getNome() {
         return nome; // Retorna o nome da pessoa
     }

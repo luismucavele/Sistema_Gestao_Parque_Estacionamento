@@ -1,107 +1,132 @@
 package Model.ModelDAO;
-import Model.*;
+
+import Model.Cliente;
+import model.DBConnect;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
-    public void create(Cliente clienteVeiculo) throws SQLException {
-        String sql = "INSERT INTO ClienteVeiculo (nome, residencia, contacto, matricula,"
-                + " corCarro, valorPorHora, tipoPagamento, estacionado, dataHoraEntrada, espacoEstacionado) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, clienteVeiculo.getNome());
-            stmt.setString(2, clienteVeiculo.getResidencia());
-            stmt.setString(3, clienteVeiculo.getContacto());
-            stmt.setString(4, clienteVeiculo.getMatricula());
-            stmt.setString(5, clienteVeiculo.getCorCarro());
-            stmt.setDouble(6, clienteVeiculo.getValorPorHora());
-            stmt.setString(7, clienteVeiculo.getTipoPagamento());
-            stmt.setBoolean(8, clienteVeiculo.isEstacionado());
-            stmt.setObject(9, clienteVeiculo.getDataHoraEntrada());
-            stmt.setInt(10, clienteVeiculo.getEspacoEstacionado());
+
+    // Inserir cliente (ativo por padrão)
+    public void inserirCliente(int idPessoa, boolean status) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection(); // Obtém conexão
+            String sql = "INSERT INTO Cliente (idPessoa, status, ativo) VALUES (?, ?, TRUE)"; // Cliente ativo por padrão
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idPessoa);
+            stmt.setBoolean(2, status); // Status é booleano
             stmt.executeUpdate();
+            System.out.println("Cliente inserido com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao inserir cliente: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public Cliente read(int idCliente) throws SQLException {
-        String sql = "SELECT * FROM ClienteVeiculo WHERE idCliente = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    // Buscar cliente por ID (somente clientes ativos)
+    public Cliente buscarCliente(int idCliente) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Cliente cliente = null;
+        try {
+            conn = DBConnect.getConnection(); // Obtém conexão
+            String sql = "SELECT * FROM Cliente WHERE idCliente = ? AND ativo = TRUE"; // Somente clientes ativos
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idCliente);
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
+
             if (rs.next()) {
-                return new Cliente(
-                    rs.getString("nome"),
-                    rs.getString("residencia"),
-                    rs.getString("contacto"),
-                    rs.getString("matricula"),
-                    rs.getString("corCarro"),
-                    rs.getDouble("valorPorHora"),
-                    rs.getString("tipoPagamento"),
-                    rs.getBoolean("estacionado")
-                );
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setIdPessoa(rs.getInt("idPessoa"));
+                cliente.setStatus(rs.getBoolean("status")); // Status como boolean
             }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar cliente: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            DBConnect.closeConnection(conn);
         }
-        return null;
+        return cliente;
     }
-/**
-  metodo de atualizar os clientes consoante a banco de dados
- * @param clienteVeiculo
- * @throws SQLException 
- */
-    public void update(Cliente clienteVeiculo) throws SQLException {
-        String sql = "UPDATE ClienteVeiculo SET nome = ?, residencia = ?, contacto = ?, matricula = ?, corCarro = ?, valorPorHora = ?, tipoPagamento = ?, estacionado = ?, dataHoraEntrada = ?, espacoEstacionado = ? WHERE idCliente = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, clienteVeiculo.getNome());
-            stmt.setString(2, clienteVeiculo.getResidencia());
-            stmt.setString(3, clienteVeiculo.getContacto());
-            stmt.setString(4, clienteVeiculo.getMatricula());
-            stmt.setString(5, clienteVeiculo.getCorCarro());
-            stmt.setDouble(6, clienteVeiculo.getValorPorHora());
-            stmt.setString(7, clienteVeiculo.getTipoPagamento());
-            stmt.setBoolean(8, clienteVeiculo.isEstacionado());
-            stmt.setObject(9, clienteVeiculo.getDataHoraEntrada());
-            stmt.setInt(10, clienteVeiculo.getEspacoEstacionado());
-            stmt.setInt(11, clienteVeiculo.getIdCliente());
+
+    // Atualizar cliente
+    public void atualizarCliente(int idCliente, boolean status) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection(); // Obtém conexão
+            String sql = "UPDATE Cliente SET status = ? WHERE idCliente = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setBoolean(1, status); // Status booleano
+            stmt.setInt(2, idCliente);
             stmt.executeUpdate();
+            System.out.println("Cliente atualizado com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar cliente: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public void delete(int idCliente) throws SQLException {
-        String sql = "DELETE FROM ClienteVeiculo WHERE idCliente = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    // Exclusão lógica (marca o cliente como inativo)
+    public void excluirClienteLogicamente(int idCliente) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection(); // Obtém conexão
+            String sql = "UPDATE Cliente SET ativo = FALSE WHERE idCliente = ?"; // Marcar cliente como inativo
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idCliente);
             stmt.executeUpdate();
+            System.out.println("Cliente marcado como inativo com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao marcar cliente como inativo: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public List<Cliente> searchByMatricula(String matricula) throws SQLException {
-        String sql = "SELECT * FROM ClienteVeiculo WHERE matricula LIKE ?";
-        List<Cliente> clienteVeiculos = new ArrayList<>();
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, "%" + matricula + "%");
-            ResultSet rs = stmt.executeQuery();
+    // Listar todos os clientes ativos
+    public List<Cliente> listarClientes() {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            conn = DBConnect.getConnection(); // Obtém conexão
+            String sql = "SELECT * FROM Cliente WHERE ativo = TRUE"; // Somente clientes ativos
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+
             while (rs.next()) {
-                clienteVeiculos.add(new Cliente(
-                    rs.getString("nome"),
-                    rs.getString("residencia"),
-                    rs.getString("contacto"),
-                    rs.getString("matricula"),
-                    rs.getString("corCarro"),
-                    rs.getDouble("valorPorHora"),
-                    rs.getString("tipoPagamento"),
-                    rs.getBoolean("estacionado")
-                ));
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setIdPessoa(rs.getInt("idPessoa"));
+                cliente.setStatus(rs.getBoolean("status")); // Status como boolean
+                clientes.add(cliente);
             }
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar clientes: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
-        return clienteVeiculos;
+        return clientes;
     }
-    
-    // Métodos para busca por outros critérios podem ser adicionados de maneira similar
 }

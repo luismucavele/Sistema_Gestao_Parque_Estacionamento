@@ -1,98 +1,197 @@
 package Model.ModelDAO;
-import Model.*;
+
+import Model.Funcionario;  // Assumindo que há uma classe Funcionario no pacote Model
+import model.DBConnect;     // Para usar a classe DBConnect
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDAO {
-    public void create(Funcionario funcionario) throws SQLException {
-        String sql = "INSERT INTO Funcionario (nome, usuario, senha, numeroBI, NUIT, Email, departamento, tipo, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getUsuario());
-            stmt.setString(3, funcionario.getSenha());
-            stmt.setString(4, funcionario.getNumeroBI());
-            stmt.setString(5, funcionario.getNUIT());
-            stmt.setString(6, funcionario.getEmail());
-            stmt.setString(7, funcionario.getDepartamento());
-            stmt.setString(8, funcionario.getTipo());
-            stmt.setBoolean(9, funcionario.isAtivo());
+
+    // Inserir funcionário
+    public void inserirFuncionario(int idPessoa, String cargo, double salario, String usuario, String senha, boolean ativo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection();  // Obtém conexão
+            String sql = "INSERT INTO Funcionario (idPessoa, cargo, salario, usuario, senha, ativo) VALUES (?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idPessoa);
+            stmt.setString(2, cargo);
+            stmt.setDouble(3, salario);
+            stmt.setString(4, usuario);
+            stmt.setString(5, senha);
+            stmt.setBoolean(6, ativo);
             stmt.executeUpdate();
+            System.out.println("Funcionário inserido com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao inserir funcionário: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public Funcionario read(int idFuncionario) throws SQLException {
+    // Buscar funcionário por ID
+    public Funcionario buscarFuncionario(int idFuncionario) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    Funcionario funcionario = null;
+    try {
+        conn = DBConnect.getConnection();  // Obtém conexão
         String sql = "SELECT * FROM Funcionario WHERE idFuncionario = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, idFuncionario);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Funcionario(
-                    rs.getString("nome"),
-                    rs.getString("usuario"),
-                    rs.getString("senha"),
-                    rs.getString("numeroBI"),
-                    rs.getString("NUIT"),
-                    rs.getString("Email"),
-                    rs.getString("departamento"),
-                    rs.getString("tipo")
-                );
-            }
-        }
-        return null;
-    }
+        stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idFuncionario);
+        rs = stmt.executeQuery();
 
-    public void update(Funcionario funcionario) throws SQLException {
-        String sql = "UPDATE Funcionario SET nome = ?, usuario = ?, senha = ?, numeroBI = ?, NUIT = ?, Email = ?, departamento = ?, tipo = ?, ativo = ? WHERE idFuncionario = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getUsuario());
-            stmt.setString(3, funcionario.getSenha());
-            stmt.setString(4, funcionario.getNumeroBI());
-            stmt.setString(5, funcionario.getNUIT());
-            stmt.setString(6, funcionario.getEmail());
-            stmt.setString(7, funcionario.getDepartamento());
-            stmt.setString(8, funcionario.getTipo());
-            stmt.setBoolean(9, funcionario.isAtivo());
-            stmt.setInt(10, funcionario.getId());
+        if (rs.next()) {
+            funcionario = new Funcionario(
+                rs.getInt("idFuncionario"),
+                rs.getString("nome"),        // Assumindo que 'nome' está na tabela
+                rs.getString("documento"),   // Assumindo que 'documento' está na tabela
+                rs.getString("telefone"),    // Assumindo que 'telefone' está na tabela
+                rs.getString("email"),       // Assumindo que 'email' está na tabela
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("usuario"),
+                rs.getString("senha"),
+                rs.getBoolean("ativo")
+            );
+        }
+    } catch (SQLException e) {
+        System.err.println("Erro ao buscar funcionário: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+        } catch (SQLException e) {
+            System.err.println("Erro ao fechar recursos: " + e.getMessage());
+        }
+        DBConnect.closeConnection(conn);  // Fecha a conexão
+    }
+    return funcionario;
+}
+    // Atualizar funcionário
+    public void atualizarFuncionario(int idFuncionario, String cargo, double salario, String usuario, String senha, boolean ativo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection();  // Obtém conexão
+            String sql = "UPDATE Funcionario SET cargo = ?, salario = ?, usuario = ?, senha = ?, ativo = ? WHERE idFuncionario = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cargo);
+            stmt.setDouble(2, salario);
+            stmt.setString(3, usuario);
+            stmt.setString(4, senha);
+            stmt.setBoolean(5, ativo);
+            stmt.setInt(6, idFuncionario);
             stmt.executeUpdate();
+            System.out.println("Funcionário atualizado com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar funcionário: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public void delete(int idFuncionario) throws SQLException {
-        String sql = "DELETE FROM Funcionario WHERE idFuncionario = ?";
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    // Deletar funcionário
+    public void deletarFuncionario(int idFuncionario) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection();  // Obtém conexão
+            String sql = "DELETE FROM Funcionario WHERE idFuncionario = ?";
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idFuncionario);
             stmt.executeUpdate();
+            System.out.println("Funcionário deletado com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao deletar funcionário: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
 
-    public List<Funcionario> searchByName(String nome) throws SQLException {
-        String sql = "SELECT * FROM Funcionario WHERE nome LIKE ?";
+    // Listar todos os funcionários
+    public List<Funcionario> listarFuncionarios() {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
         List<Funcionario> funcionarios = new ArrayList<>();
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, "%" + nome + "%");
-            ResultSet rs = stmt.executeQuery();
+        try {
+            conn = DBConnect.getConnection();  // Obtém conexão
+            String sql = "SELECT * FROM Funcionario";
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+
             while (rs.next()) {
-                funcionarios.add(new Funcionario(
-                    rs.getString("nome"),
+                Funcionario funcionario = new Funcionario(
+                    rs.getInt("idFuncionario"),
+                    rs.getString("nome"),        // Assumindo que 'nome' está na tabela
+                    rs.getString("documento"),   // Assumindo que 'documento' está na tabela
+                    rs.getString("telefone"),    // Assumindo que 'telefone' está na tabela
+                    rs.getString("email"),       // Assumindo que 'email' está na tabela
+                    rs.getString("cargo"),
+                    rs.getDouble("salario"),
                     rs.getString("usuario"),
                     rs.getString("senha"),
-                    rs.getString("numeroBI"),
-                    rs.getString("NUIT"),
-                    rs.getString("Email"),
-                    rs.getString("departamento"),
-                    rs.getString("tipo")
-                ));
+                    rs.getBoolean("ativo")
+                );
+                funcionarios.add(funcionario);
             }
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar funcionários: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
         return funcionarios;
     }
-    
-    // Métodos para busca por outros critérios podem ser adicionados de maneira similar
+
+    // Buscar funcionários por cargo
+    public List<Funcionario> buscarFuncionariosPorCargo(String cargo) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    List<Funcionario> funcionarios = new ArrayList<>();
+    try {
+        conn = DBConnect.getConnection();  // Obtém conexão
+        String sql = "SELECT * FROM Funcionario WHERE cargo = ?";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, cargo);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Funcionario funcionario = new Funcionario(
+                rs.getInt("idFuncionario"),
+                rs.getString("nome"),        // Assumindo que 'nome' está na tabela
+                rs.getString("documento"),   // Assumindo que 'documento' está na tabela
+                rs.getString("telefone"),    // Assumindo que 'telefone' está na tabela
+                rs.getString("email"),       // Assumindo que 'email' está na tabela
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("usuario"),
+                rs.getString("senha"),
+                rs.getBoolean("ativo")
+            );
+            funcionarios.add(funcionario);
+        }
+    } catch (SQLException e) {
+        System.err.println("Erro ao buscar funcionários por cargo: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+        } catch (SQLException e) {
+            System.err.println("Erro ao fechar recursos: " + e.getMessage());
+        }
+        DBConnect.closeConnection(conn);  // Fecha a conexão
+    }
+    return funcionarios;
+    }
 }
