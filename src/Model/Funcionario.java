@@ -7,10 +7,14 @@ public class Funcionario extends Pessoa {
     private String usuario;
     private String senha;
     private boolean ativo;
+    private String residencia;
+    private String sexo;
+    
+    
     
 
     // Construtor completo
-    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email, String cargo, double salario, String usuario, String senha, boolean ativo) {
+    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email, String cargo, double salario, String usuario, String senha, boolean ativo, String residencia, String sexo) {
         super(nome, documento, telefone, email);
         this.idFuncionario = idFuncionario;
         this.cargo = cargo;
@@ -18,9 +22,28 @@ public class Funcionario extends Pessoa {
         this.usuario = usuario;
         this.senha = senha;
         this.ativo = ativo;
+        this.residencia = residencia;
+        this.sexo = sexo;
+        
+    }
+    
+    public String getResidencia() {
+        return residencia;
+    }
+
+    public void setResidencia(String residencia) {
+        this.residencia = residencia;
+    }
+
+    public String getSexo() {
+        return sexo;
     }
 
     // Getters e Setters
+    public void setSexo(String sexo) {    
+        this.sexo = sexo;
+    }
+
     public int getIdFuncionario() {
         return idFuncionario;
     }
@@ -94,6 +117,9 @@ public class Funcionario extends Pessoa {
                 ", cargo='" + cargo + '\'' +
                 ", salario=" + salario +
                 ", ativo=" + ativo +
+                ", residencia" + residencia +
+                ", sexo=" + sexo +
+                
                 '}';
     }
 }

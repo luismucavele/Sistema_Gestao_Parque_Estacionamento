@@ -57,7 +57,9 @@ public class FuncionarioDAO {
                         rs.getDouble("salario"),
                         rs.getString("usuario"),
                         rs.getString("senha"),
-                        rs.getBoolean("ativo")
+                        rs.getBoolean("ativo"),
+                        rs.getString("residencia"),
+                        rs.getString("sexo")
                 );
             }
 
@@ -103,7 +105,9 @@ public class FuncionarioDAO {
                         rs.getDouble("salario"),
                         rs.getString("usuario"),
                         rs.getString("senha"),
-                        rs.getBoolean("ativo")
+                        rs.getBoolean("ativo"),
+                        rs.getString("residencia"),
+                        rs.getString("sexo")
                 );
             }
         } catch (SQLException e) {
@@ -188,7 +192,9 @@ public class FuncionarioDAO {
                         rs.getDouble("salario"),
                         rs.getString("usuario"),
                         rs.getString("senha"),
-                        rs.getBoolean("ativo")
+                        rs.getBoolean("ativo"),
+                        rs.getString("residencia"),
+                        rs.getString("sexo")
                 );
                 funcionarios.add(funcionario);
             }
@@ -234,7 +240,9 @@ public class FuncionarioDAO {
                         rs.getDouble("salario"),
                         rs.getString("usuario"),
                         rs.getString("senha"),
-                        rs.getBoolean("ativo")
+                        rs.getBoolean("ativo"),
+                        rs.getString("residencia"),
+                        rs.getString("sexo")
                 );
                 funcionarios.add(funcionario);
             }

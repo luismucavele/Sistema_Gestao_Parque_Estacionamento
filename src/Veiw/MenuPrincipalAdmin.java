@@ -133,38 +133,38 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        idadmin = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         nomeadmin = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         nomeusuarioadmin = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
-        telefonefuncinarioadmin = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
-        senhaadmin = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
         jLabel52 = new javax.swing.JLabel();
-        biadmin = new javax.swing.JTextField();
+        txtNumerBI = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
         nuitadmin = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
-        emailadmin = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
-        salarioadmin = new javax.swing.JSpinner();
+        txtSalario = new javax.swing.JSpinner();
         jLabel56 = new javax.swing.JLabel();
-        tipofuncionarioadmin = new javax.swing.JComboBox<>();
+        txtTipoUsuario = new javax.swing.JComboBox<>();
         jLabel57 = new javax.swing.JLabel();
-        residenciaadmin = new javax.swing.JTextField();
+        txtResidencia = new javax.swing.JTextField();
         jLabel58 = new javax.swing.JLabel();
-        cadastraradmin = new javax.swing.JButton();
-        atualizaradmin = new javax.swing.JButton();
-        apagaradmin = new javax.swing.JButton();
-        pesquisaradmin = new javax.swing.JButton();
-        jTextField16 = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnDemitir = new javax.swing.JButton();
+        btnPesquisa = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        editaradmin = new javax.swing.JButton();
-        sexoadmin = new javax.swing.JComboBox<>();
+        btnEditar = new javax.swing.JButton();
+        txtSexo = new javax.swing.JComboBox<>();
         jLabel109 = new javax.swing.JLabel();
         P5 = new javax.swing.JPanel();
         jLabel75 = new javax.swing.JLabel();
@@ -1259,10 +1259,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel56.setForeground(new java.awt.Color(0, 0, 0));
         jLabel56.setText("Tipo de Funcionario:");
 
-        tipofuncionarioadmin.setBackground(new java.awt.Color(255, 255, 255));
-        tipofuncionarioadmin.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        tipofuncionarioadmin.setForeground(new java.awt.Color(0, 0, 0));
-        tipofuncionarioadmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recepcionista", "Guarda", "Administrador", "Gestor Finaceiro" }));
+        txtTipoUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtTipoUsuario.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtTipoUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recepcionista", "Guarda", "Administrador", "Gestor Finaceiro" }));
 
         jLabel57.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
@@ -1272,33 +1272,33 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel58.setForeground(new java.awt.Color(0, 0, 0));
         jLabel58.setText("Sexo:");
 
-        cadastraradmin.setBackground(new java.awt.Color(102, 255, 102));
-        cadastraradmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        cadastraradmin.setForeground(new java.awt.Color(0, 0, 0));
-        cadastraradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_save_20px.png"))); // NOI18N
-        cadastraradmin.setText("Cadastrar");
+        btnCadastrar.setBackground(new java.awt.Color(102, 255, 102));
+        btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_save_20px.png"))); // NOI18N
+        btnCadastrar.setText("Cadastrar");
 
-        atualizaradmin.setBackground(new java.awt.Color(51, 51, 51));
-        atualizaradmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        atualizaradmin.setForeground(new java.awt.Color(255, 255, 255));
-        atualizaradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_update_20px.png"))); // NOI18N
-        atualizaradmin.setText("Atualizar");
-        atualizaradmin.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(51, 51, 51));
+        btnActualizar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_update_20px.png"))); // NOI18N
+        btnActualizar.setText("Atualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizaradminActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
-        apagaradmin.setBackground(new java.awt.Color(255, 51, 51));
-        apagaradmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        apagaradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_trash_20px.png"))); // NOI18N
-        apagaradmin.setText("Demitir");
+        btnDemitir.setBackground(new java.awt.Color(255, 51, 51));
+        btnDemitir.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnDemitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_trash_20px.png"))); // NOI18N
+        btnDemitir.setText("Demitir");
 
-        pesquisaradmin.setBackground(new java.awt.Color(51, 51, 51));
-        pesquisaradmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        pesquisaradmin.setForeground(new java.awt.Color(255, 255, 255));
-        pesquisaradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_search_20px.png"))); // NOI18N
-        pesquisaradmin.setText("Pesquisar");
+        btnPesquisa.setBackground(new java.awt.Color(51, 51, 51));
+        btnPesquisa.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnPesquisa.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_search_20px.png"))); // NOI18N
+        btnPesquisa.setText("Pesquisar");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1317,16 +1317,16 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        editaradmin.setBackground(new java.awt.Color(0, 102, 255));
-        editaradmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        editaradmin.setForeground(new java.awt.Color(255, 255, 255));
-        editaradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_edit_20px.png"))); // NOI18N
-        editaradmin.setText("Editar");
+        btnEditar.setBackground(new java.awt.Color(0, 102, 255));
+        btnEditar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_edit_20px.png"))); // NOI18N
+        btnEditar.setText("Editar");
 
-        sexoadmin.setBackground(new java.awt.Color(255, 255, 255));
-        sexoadmin.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        sexoadmin.setForeground(new java.awt.Color(0, 0, 0));
-        sexoadmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        txtSexo.setBackground(new java.awt.Color(255, 255, 255));
+        txtSexo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtSexo.setForeground(new java.awt.Color(0, 0, 0));
+        txtSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel109.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1362,11 +1362,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel55))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(idadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149)
-                        .addComponent(senhaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)
-                        .addComponent(salarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel48)
@@ -1378,9 +1378,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(nomeadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149)
-                        .addComponent(biadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNumerBI, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)
-                        .addComponent(residenciaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel49)
@@ -1394,7 +1394,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(149, 149, 149)
                         .addComponent(nuitadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)
-                        .addComponent(sexoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel50)
@@ -1404,25 +1404,25 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel56))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(telefonefuncinarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149)
-                        .addComponent(emailadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)
-                        .addComponent(tipofuncionarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(470, 470, 470)
-                        .addComponent(cadastraradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(editaradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(atualizaradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(apagaradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnDemitir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(297, 297, 297)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pesquisaradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1451,12 +1451,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel55))
                 .addGap(2, 2, 2)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(senhaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel48)
@@ -1464,12 +1464,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel57))
                 .addGap(3, 3, 3)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(biadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumerBI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(residenciaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel49)
@@ -1483,7 +1483,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(nuitadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sexoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel50)
@@ -1491,21 +1491,21 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel56))
                 .addGap(4, 4, 4)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefonefuncinarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(emailadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tipofuncionarioadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastraradmin)
-                    .addComponent(editaradmin)
-                    .addComponent(atualizaradmin)
-                    .addComponent(apagaradmin))
+                    .addComponent(btnCadastrar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnDemitir))
                 .addGap(29, 29, 29)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pesquisaradmin))
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisa))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2360,9 +2360,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pesquisarpagadminActionPerformed
 
-    private void atualizaradminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizaradminActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_atualizaradminActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jLabel107MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel107MouseClicked
         this.setState(MenuPrincipalAdmin.ICONIFIED);
@@ -2451,17 +2451,15 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Paineis;
     private javax.swing.JLabel Parquear;
     private javax.swing.JLabel RelatorioFinaceiro;
-    private javax.swing.JButton apagaradmin;
-    private javax.swing.JButton atualizaradmin;
-    private javax.swing.JTextField biadmin;
-    private javax.swing.JButton cadastraradmin;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnDemitir;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnPesquisa;
     private javax.swing.JTextField coradmin;
     private javax.swing.JTextField descricaoadmin;
-    private javax.swing.JButton editaradmin;
-    private javax.swing.JTextField emailadmin;
     private javax.swing.JLabel funcionários;
     private javax.swing.JRadioButton grandeadmin;
-    private javax.swing.JTextField idadmin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2628,7 +2626,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton medioadmin;
@@ -2639,20 +2636,23 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField nuitadmin;
     private javax.swing.JButton parquearadmin;
     private javax.swing.JRadioButton pequenoadmin;
-    private javax.swing.JButton pesquisaradmin;
     private javax.swing.JButton pesquisarpagadmin;
     private javax.swing.JTextField placaadmin;
     private javax.swing.JTextField placapagament;
-    private javax.swing.JTextField residenciaadmin;
     private javax.swing.JLabel sair;
-    private javax.swing.JSpinner salarioadmin;
-    private javax.swing.JTextField senhaadmin;
-    private javax.swing.JComboBox<String> sexoadmin;
-    private javax.swing.JTextField telefonefuncinarioadmin;
     private javax.swing.JTextField telefoneparquearadmin;
     private javax.swing.JComboBox<String> tipoclienteadmin;
     private javax.swing.JComboBox<String> tipoclientepagament;
-    private javax.swing.JComboBox<String> tipofuncionarioadmin;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNumerBI;
+    private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtResidencia;
+    private javax.swing.JSpinner txtSalario;
+    private javax.swing.JTextField txtSenha;
+    private javax.swing.JComboBox<String> txtSexo;
+    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JComboBox<String> txtTipoUsuario;
     private javax.swing.JSpinner valoradmin;
     // End of variables declaration//GEN-END:variables
 }

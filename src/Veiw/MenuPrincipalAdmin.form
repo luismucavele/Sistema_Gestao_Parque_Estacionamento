@@ -1920,11 +1920,11 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="idadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtId" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                                  <Component id="senhaadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtSenha" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
-                                  <Component id="salarioadmin" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <Component id="txtSalario" min="-2" pref="230" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
@@ -1938,9 +1938,9 @@
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                                   <Component id="nomeadmin" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                                  <Component id="biadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtNumerBI" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
-                                  <Component id="residenciaadmin" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <Component id="txtResidencia" min="-2" pref="230" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
@@ -1956,7 +1956,7 @@
                                   <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
                                   <Component id="nuitadmin" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
-                                  <Component id="sexoadmin" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <Component id="txtSexo" min="-2" pref="230" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
@@ -1968,27 +1968,27 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="telefonefuncinarioadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtTelefone" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                                  <Component id="emailadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtEmail" min="-2" pref="235" max="-2" attributes="0"/>
                                   <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
-                                  <Component id="tipofuncionarioadmin" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txtTipoUsuario" min="-2" pref="235" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="470" pref="470" max="-2" attributes="0"/>
-                                  <Component id="cadastraradmin" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="btnCadastrar" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="editaradmin" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="btnEditar" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="atualizaradmin" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="btnActualizar" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="apagaradmin" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="btnDemitir" min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                                  <Component id="jTextField16" min="-2" pref="351" max="-2" attributes="0"/>
+                                  <Component id="txtPesquisa" min="-2" pref="351" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="pesquisaradmin" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="btnPesquisa" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
@@ -2027,12 +2027,12 @@
                           </Group>
                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="senhaadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtSenha" min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="idadmin" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="salarioadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtId" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtSalario" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2044,12 +2044,12 @@
                           </Group>
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="biadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtNumerBI" min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="nomeadmin" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="residenciaadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtResidencia" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2069,7 +2069,7 @@
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Component id="nuitadmin" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="sexoadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtSexo" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -2079,24 +2079,24 @@
                           </Group>
                           <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="telefonefuncinarioadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTelefone" min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                  <Component id="emailadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtEmail" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="tipofuncionarioadmin" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTipoUsuario" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cadastraradmin" min="-2" max="-2" attributes="0"/>
-                              <Component id="editaradmin" min="-2" max="-2" attributes="0"/>
-                              <Component id="atualizaradmin" min="-2" max="-2" attributes="0"/>
-                              <Component id="apagaradmin" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnDemitir" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField16" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="pesquisaradmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPesquisa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="147" max="-2" attributes="0"/>
@@ -2145,7 +2145,7 @@
                     <Property name="text" type="java.lang.String" value="ID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="idadmin">
+                <Component class="javax.swing.JTextField" name="txtId">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel47">
                   <Properties>
@@ -2195,7 +2195,7 @@
                     <Property name="text" type="java.lang.String" value="Telefone:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="telefonefuncinarioadmin">
+                <Component class="javax.swing.JTextField" name="txtTelefone">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel51">
                   <Properties>
@@ -2208,7 +2208,7 @@
                     <Property name="text" type="java.lang.String" value="Senha:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="senhaadmin">
+                <Component class="javax.swing.JTextField" name="txtSenha">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel52">
                   <Properties>
@@ -2221,7 +2221,7 @@
                     <Property name="text" type="java.lang.String" value="Numero BI:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="biadmin">
+                <Component class="javax.swing.JTextField" name="txtNumerBI">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel53">
                   <Properties>
@@ -2247,7 +2247,7 @@
                     <Property name="text" type="java.lang.String" value="Email:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="emailadmin">
+                <Component class="javax.swing.JTextField" name="txtEmail">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel55">
                   <Properties>
@@ -2260,7 +2260,7 @@
                     <Property name="text" type="java.lang.String" value="Salario"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="salarioadmin">
+                <Component class="javax.swing.JSpinner" name="txtSalario">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel56">
                   <Properties>
@@ -2273,7 +2273,7 @@
                     <Property name="text" type="java.lang.String" value="Tipo de Funcionario:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="tipofuncionarioadmin">
+                <Component class="javax.swing.JComboBox" name="txtTipoUsuario">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2308,7 +2308,7 @@
                     <Property name="text" type="java.lang.String" value="Residencia:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="residenciaadmin">
+                <Component class="javax.swing.JTextField" name="txtResidencia">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel58">
                   <Properties>
@@ -2321,7 +2321,7 @@
                     <Property name="text" type="java.lang.String" value="Sexo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="cadastraradmin">
+                <Component class="javax.swing.JButton" name="btnCadastrar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="ff" red="66" type="rgb"/>
@@ -2338,7 +2338,7 @@
                     <Property name="text" type="java.lang.String" value="Cadastrar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="atualizaradmin">
+                <Component class="javax.swing.JButton" name="btnActualizar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -2355,10 +2355,10 @@
                     <Property name="text" type="java.lang.String" value="Atualizar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizaradminActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="apagaradmin">
+                <Component class="javax.swing.JButton" name="btnDemitir">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -2372,7 +2372,7 @@
                     <Property name="text" type="java.lang.String" value="Demitir"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="pesquisaradmin">
+                <Component class="javax.swing.JButton" name="btnPesquisa">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -2389,7 +2389,7 @@
                     <Property name="text" type="java.lang.String" value="Pesquisar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField16">
+                <Component class="javax.swing.JTextField" name="txtPesquisa">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                   <AuxValues>
@@ -2481,7 +2481,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="editaradmin">
+                <Component class="javax.swing.JButton" name="btnEditar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -2498,7 +2498,7 @@
                     <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="sexoadmin">
+                <Component class="javax.swing.JComboBox" name="txtSexo">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>

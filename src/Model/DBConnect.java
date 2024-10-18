@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnect {
-    private static final String URL = "jdbc:mysql://localhost:3306/estacionamento_db";
+    private static final String URL = "jdbc:mysql://localhost:3306/sistema_estacionamento";
     private static final String USER = "root";
     private static final String PASSWORD = "senha";
 
