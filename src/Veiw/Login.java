@@ -6,22 +6,27 @@ package Veiw;
 
 import Model.Funcionario;
 import Model.ModelDAO.FuncionarioDAO;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-
+import javax.swing.BorderFactory;
+import javax.swing.Timer;
 
 /**
  *
  * @author mucav
  */
 public class Login extends javax.swing.JFrame {
-       
+
+    private Timer timer;
 
     /**
      * Creates new form LoginFunc
      */
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -141,8 +146,7 @@ public class Login extends javax.swing.JFrame {
 
         lblmensagem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblmensagem.setForeground(new java.awt.Color(204, 0, 0));
-        lblmensagem.setText("L");
-        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 20, -1));
+        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 250, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,36 +177,64 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-         
+
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentAdded
 
     private void chkShowPasswordItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkShowPasswordItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-        // Quando o checkbox é marcado, a senha é mostrada
-        txtPassword.setEchoChar((char) 0);
-    } else {
-        // Quando o checkbox é desmarcado, a senha é ocultada
-        txtPassword.setEchoChar('*'); // ou outro caractere de sua escolha
-    }
+            // Quando o checkbox é marcado, a senha é mostrada
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            // Quando o checkbox é desmarcado, a senha é ocultada
+            txtPassword.setEchoChar('*'); // ou outro caractere de sua escolha
+        }
     }//GEN-LAST:event_chkShowPasswordItemStateChanged
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-         
+//        EmailValidator emailValidator = new EmailValidator();
+//                String email = txtusername.getText();
+//                boolean isValid = emailValidator.isEmailValid(email);
+//                
+//                if (isValid) {
+//                    txtUser.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+//                    txtPassword.requestFocus();
+//                } else {
+//                    txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
+//                    //emailValidator.showError("O e-mail não é válido.");
+//                    txtPassword.requestFocus();
+//                }
+
 
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
+        autenticarUsuario();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void chkShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkShowPasswordActionPerformed
-    private void autenticarUsuario() {
-    String usuario = txtUser.getText();
-    String senha = new String(txtPassword.getPassword());
+   private void autenticarUsuario() {
+    //String usuario = txtUser.getText();
+    //String senha = new String(txtPassword.getPassword());
+    String usuario = txtUser.getText().trim();
+        String senha = new String(txtPassword.getPassword()).trim();
+
+        // Validação: Verifica se os campos estão vazios
+        if (usuario.isEmpty()) {
+            lblmensagem.setText("O campo 'Usuário' está vazio.");
+            iniciarTimerParaLimparMensagem();
+            return;
+        }
+
+        if (senha.isEmpty()) {
+            lblmensagem.setText("O campo 'Senha' está vazio.");
+            iniciarTimerParaLimparMensagem();
+            return;
+        }
 
     FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
@@ -231,8 +263,26 @@ public class Login extends javax.swing.JFrame {
     } else {
     lblmensagem.setText("Login bem-sucedido!");
     }
-}    
-     /**
+}  
+    
+    
+    
+    private void iniciarTimerParaLimparMensagem() {
+        if (timer != null) {
+            timer.stop(); // Para qualquer timer anterior
+        }
+        
+        timer = new Timer(5000, new ActionListener() { // 20000 milissegundos = 20 segundos
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblmensagem.setText(""); // Limpa a mensagem de erro
+            }
+        });
+        timer.setRepeats(false); // Não repete, executa apenas uma vez
+        timer.start(); // Inicia o timer
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {

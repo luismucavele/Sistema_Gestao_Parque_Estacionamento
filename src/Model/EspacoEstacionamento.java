@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class EspacoEstacionamento implements Serializable {
+
     private String identificador;
     private double valorPorHora;
     private boolean isVip;

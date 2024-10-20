@@ -5,28 +5,49 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnect {
-    private static final String URL = "jdbc:mysql://localhost:3306/sistema_estacionamento";
-    private static final String USER = "root";
-    private static final String PASSWORD = "senha";
+    private static Connection connection;
 
-    // Método para obter a conexão com o banco de dados
-    public static Connection getConnection() throws SQLException {
-        Connection conn = null;
+    static {
         try {
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexão estabelecida com sucesso.");
+            // Configurar a conexão com o banco de dados
+            Class.forName("com.mysql.cj.jdbc.Driver"); // Ou o driver correto para o seu banco
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_de_p_estacionamento", "root", "");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Erro ao carregar o driver do banco de dados: " + e.getMessage());
+            throw new RuntimeException("Erro ao carregar o driver do banco de dados", e);
         } catch (SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-            throw e; // Lança novamente a exceção para que seja tratada pela aplicação
+            throw new RuntimeException("Erro ao conectar ao banco de dados", e);
         }
-        return conn;
     }
 
-    // Método para fechar a conexão com o banco de dados
+    public static Connection getConnection() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_de_p_estacionamento", "root", "");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+            throw new RuntimeException("Erro ao conectar ao banco de dados", e);
+        }
+        return connection;
+    }
+
     public static void closeConnection(Connection conn) {
         if (conn != null) {
             try {
                 conn.close();
+                System.out.println("Conexão fechada com sucesso.");
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar conexão: " + e.getMessage());
+            }
+        }
+    }
+
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
                 System.out.println("Conexão fechada com sucesso.");
             } catch (SQLException e) {
                 System.err.println("Erro ao fechar a conexão: " + e.getMessage());

@@ -3,6 +3,7 @@ package Model;
 import java.time.LocalDateTime;
 
 public class Pagamento {
+
     private int idPagamento;
     private Cliente cliente;
     private double valorTotal;
@@ -83,12 +84,12 @@ public class Pagamento {
 
     @Override
     public String toString() {
-        return "Pagamento{" +
-                "idPagamento=" + idPagamento +
-                ", valorTotal=" + valorTotal +
-                ", metodoPagamento='" + metodoPagamento + '\'' +
-                ", dataHora=" + dataHora +
-                ", status='" + status + '\'' +
-                '}';
+        return "Pagamento{"
+                + "idPagamento=" + idPagamento
+                + ", valorTotal=" + valorTotal
+                + ", metodoPagamento='" + metodoPagamento + '\''
+                + ", dataHora=" + dataHora
+                + ", status='" + status + '\''
+                + '}';
     }
 }

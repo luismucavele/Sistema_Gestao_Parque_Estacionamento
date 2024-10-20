@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Cliente extends Pessoa {
+
     private int idCliente;
     private boolean status;
     private ArrayList<Veiculo> veiculos;
@@ -123,13 +124,13 @@ public class Cliente extends Pessoa {
     // Método toString ajustado
     @Override
     public String toString() {
-        return "Cliente{" +
-                "idCliente=" + idCliente +
-                ", nome='" + nome + '\'' +
-                ", documento='" + documento + '\'' +
-                ", status=" + (status ? "Ativo" : "Inativo") +
-                ", totalVeiculos=" + veiculos.size() +
-                ", totalPagamentos=" + pagamentos.size() +
-                '}';
+        return "Cliente{"
+                + "idCliente=" + idCliente
+                + ", nome='" + nome + '\''
+                + ", documento='" + documento + '\''
+                + ", status=" + (status ? "Ativo" : "Inativo")
+                + ", totalVeiculos=" + veiculos.size()
+                + ", totalPagamentos=" + pagamentos.size()
+                + '}';
     }
 }

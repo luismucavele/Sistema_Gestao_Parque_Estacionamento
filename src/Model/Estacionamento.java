@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estacionamento {
+
     private List<Cliente> clientesEstacionados; // Lista de carros atualmente estacionados
     private List<Cliente> historicoClientes;    // Histórico de todos os carros que já passaram pelo estacionamento
 

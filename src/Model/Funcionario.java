@@ -1,6 +1,7 @@
 package Model;
 
 public class Funcionario extends Pessoa {
+
     private int idFuncionario;
     private String cargo;
     private double salario;
@@ -9,12 +10,11 @@ public class Funcionario extends Pessoa {
     private boolean ativo;
     private String residencia;
     private String sexo;
-    
-    
-    
 
     // Construtor completo
-    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email, String cargo, double salario, String usuario, String senha, boolean ativo, String residencia, String sexo) {
+    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email,
+            String cargo, double salario, String usuario, String senha, boolean ativo,
+            String residencia, String sexo) {
         super(nome, documento, telefone, email);
         this.idFuncionario = idFuncionario;
         this.cargo = cargo;
@@ -24,26 +24,9 @@ public class Funcionario extends Pessoa {
         this.ativo = ativo;
         this.residencia = residencia;
         this.sexo = sexo;
-        
-    }
-    
-    public String getResidencia() {
-        return residencia;
-    }
-
-    public void setResidencia(String residencia) {
-        this.residencia = residencia;
-    }
-
-    public String getSexo() {
-        return sexo;
     }
 
     // Getters e Setters
-    public void setSexo(String sexo) {    
-        this.sexo = sexo;
-    }
-
     public int getIdFuncionario() {
         return idFuncionario;
     }
@@ -92,6 +75,22 @@ public class Funcionario extends Pessoa {
         this.ativo = ativo;
     }
 
+    public String getResidencia() {
+        return residencia;
+    }
+
+    public void setResidencia(String residencia) {
+        this.residencia = residencia;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
     // Métodos adicionais
     public void atualizarSenha(String novaSenha) {
         this.senha = novaSenha;
@@ -111,15 +110,14 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "idFuncionario=" + idFuncionario +
-                ", nome='" + nome + '\'' +
-                ", cargo='" + cargo + '\'' +
-                ", salario=" + salario +
-                ", ativo=" + ativo +
-                ", residencia" + residencia +
-                ", sexo=" + sexo +
-                
-                '}';
+        return "Funcionario{"
+                + "idFuncionario=" + idFuncionario
+                + ", nome='" + getNome() + '\''
+                + ", cargo='" + cargo + '\''
+                + ", salario=" + salario
+                + ", ativo=" + ativo
+                + ", residencia='" + residencia + '\''
+                + ", sexo='" + sexo + '\''
+                + '}';
     }
 }

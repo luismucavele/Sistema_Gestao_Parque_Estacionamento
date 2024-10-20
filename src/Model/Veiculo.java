@@ -1,6 +1,7 @@
 package Model;
 
 public class Veiculo {
+
     private String placa;
     private String modelo;
     private String marca;
@@ -87,14 +88,14 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" +
-                "placa='" + placa + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", ano=" + ano +
-                ", cor='" + cor + '\'' +
-                ", tipoVeiculo='" + tipoVeiculo + '\'' +
-                ", proprietario=" + proprietario +
-                '}';
+        return "Veiculo{"
+                + "placa='" + placa + '\''
+                + ", modelo='" + modelo + '\''
+                + ", marca='" + marca + '\''
+                + ", ano=" + ano
+                + ", cor='" + cor + '\''
+                + ", tipoVeiculo='" + tipoVeiculo + '\''
+                + ", proprietario=" + proprietario
+                + '}';
     }
 }

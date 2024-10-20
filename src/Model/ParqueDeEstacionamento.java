@@ -1,9 +1,9 @@
-
 package Model;
 
 import java.util.ArrayList;
 
 public class ParqueDeEstacionamento {
+
     private int idParque;
     private String nome;
     private String localizacao;
@@ -82,12 +82,12 @@ public class ParqueDeEstacionamento {
 
     @Override
     public String toString() {
-        return "ParqueDeEstacionamento{" +
-                "idParque=" + idParque +
-                ", nome='" + nome + '\'' +
-                ", localizacao='" + localizacao + '\'' +
-                ", capacidadeTotal=" + capacidadeTotal +
-                ", vagasDisponiveis=" + vagasDisponiveis +
-                '}';
+        return "ParqueDeEstacionamento{"
+                + "idParque=" + idParque
+                + ", nome='" + nome + '\''
+                + ", localizacao='" + localizacao + '\''
+                + ", capacidadeTotal=" + capacidadeTotal
+                + ", vagasDisponiveis=" + vagasDisponiveis
+                + '}';
     }
 }

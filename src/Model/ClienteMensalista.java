@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 
 public class ClienteMensalista extends Cliente {
+
     private LocalDate prazoSaida;
     private double taxaMensal;
     private LocalDate dataRegistro;

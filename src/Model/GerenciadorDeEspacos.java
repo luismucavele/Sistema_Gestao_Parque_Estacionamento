@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorDeEspacos {
+
     private List<EspacoEstacionamento> espacos;
     private int totalEspacos;
     private int totalVip;
@@ -17,17 +18,17 @@ public class GerenciadorDeEspacos {
 
         // Criar os espaços de estacionamento normais
         for (int i = 0; i < totalEspacos; i++) {
-            espacos.add(new EspacoEstacionamento("Espaco-" + (i + 1), 10.0, false)); 
+            espacos.add(new EspacoEstacionamento("Espaco-" + (i + 1), 10.0, false));
         }
 
         // Criar espaços VIP
         for (int i = 0; i < totalVip; i++) {
-            espacos.add(new EspacoEstacionamento("VIP-" + (i + 1), 20.0, true)); 
+            espacos.add(new EspacoEstacionamento("VIP-" + (i + 1), 20.0, true));
         }
 
         // Criar espaços reservados para deficientes
         for (int i = 0; i < totalReservadoDeficientes; i++) {
-            espacos.add(new EspacoEstacionamento("Deficiente-" + (i + 1), 10.0, false)); 
+            espacos.add(new EspacoEstacionamento("Deficiente-" + (i + 1), 10.0, false));
         }
     }
 
@@ -80,6 +81,6 @@ public class GerenciadorDeEspacos {
                 return espaco;
             }
         }
-        return null; 
+        return null;
     }
 }

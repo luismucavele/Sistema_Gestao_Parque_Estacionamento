@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.ModelDAO.FuncionarioDAO;
-import Veiw.LoginAdmin;
+import Veiw.Login;
 import Model.Funcionario;
 
 import java.awt.event.ActionEvent;
@@ -14,10 +14,10 @@ public class LoginController {
     private FuncionarioDAO funcionarioDAO;
 
     public LoginController(LoginController telaLogin, FuncionarioDAO funcionarioDAO) {
-        this.telaLogin = telaLogin;
+        this.Login = telaLogin;
         this.funcionarioDAO = funcionarioDAO;
 
-        this.telaLogin.adicionarListenerLogin(new ActionListener() {
+        this.Login.adicionarListenerLogin(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 realizarLogin();
@@ -40,8 +40,8 @@ public class LoginController {
     }
 
     private void realizarLogin() {
-        String usuario = telaLogin.getUsuario();
-        String senha = telaLogin.getSenha();
+        String usuario = Login.gettxtUser();
+        String senha = telaLogin.gettxtPasseword();
 
         try {
             List<Funcionario> funcionarios = funcionarioDAO.carregarFuncionarios();

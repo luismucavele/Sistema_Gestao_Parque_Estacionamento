@@ -4,7 +4,6 @@ import model.DBConnect;  // Usando a classe DBConnect para conexão
 import java.sql.*;
 
 public class VeiculoDAO {
-
     // Inserir um novo veículo
     public void inserirVeiculo(String placa, String modelo, String marca, int ano, String cor, String tipoVeiculo, int idCliente) {
         Connection conn = null;
@@ -26,7 +25,7 @@ public class VeiculoDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao inserir veículo: " + e.getMessage());
         } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+            DBConnect.closeConnection(conn);  // Fecha a conexão com o argumento conn
         }
     }
 
@@ -67,7 +66,7 @@ public class VeiculoDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao atualizar veículo: " + e.getMessage());
         } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+            DBConnect.closeConnection(conn);  // Fecha a conexão com o argumento conn
         }
     }
 
@@ -85,7 +84,7 @@ public class VeiculoDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao desativar veículo: " + e.getMessage());
         } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+            DBConnect.closeConnection(conn);  // Fecha a conexão com o argumento conn
         }
     }
 

@@ -1,10 +1,9 @@
-
 package Model;
-
 
 import java.time.LocalDateTime;
 
 public class Vaga {
+
     private String identificador;
     private double valorPorHora;
     private boolean isVip;
@@ -90,13 +89,13 @@ public class Vaga {
 
     @Override
     public String toString() {
-        return "Vaga{" +
-                "identificador='" + identificador + '\'' +
-                ", valorPorHora=" + valorPorHora +
-                ", isVip=" + isVip +
-                ", ocupado=" + ocupado +
-                ", cliente=" + cliente +
-                ", horaEntrada=" + horaEntrada +
-                '}';
+        return "Vaga{"
+                + "identificador='" + identificador + '\''
+                + ", valorPorHora=" + valorPorHora
+                + ", isVip=" + isVip
+                + ", ocupado=" + ocupado
+                + ", cliente=" + cliente
+                + ", horaEntrada=" + horaEntrada
+                + '}';
     }
 }
