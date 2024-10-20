@@ -5,8 +5,13 @@
         <group>
             <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/ModelDAO/FuncionarioDAO.java</file>
             <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/ModelDAO/ClienteVagaDAO.java</file>
-            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/DBConnect.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Controller/Validacao.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/ModelDAO/EspacoEstacionamentoDAO.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/Funcionario.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Veiw/Login.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/ModelDAO/PagamentoDAO.java</file>
             <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Veiw/MenuPrincipalAdmin.java</file>
+            <file>file:/D:/UEM/2°%20ANO/2%20Semestre/POO/Sistema_Gestao_Parque_Estacionamento/src/Model/ModelDAO/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>

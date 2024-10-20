@@ -4,8 +4,9 @@
  */
 package Veiw;
 
+import Mode.ModelDAO.FuncionarioDAO;
 import Model.Funcionario;
-import Model.ModelDAO.FuncionarioDAO;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -2350,7 +2351,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
     private void registrarFuncionario() {
-        //String idFuncionario = txtId.getText(); // Se o ID não for necessário, não precisa ser preenchido pelo usuário.
         String nome = txtNome.getText();
         String nomeuser = txtNomeuser.getText();
         String telefone = txtTelefone.getText();
@@ -2360,55 +2360,26 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String residencia = txtResidencia.getText();
         String cargo = txtTipoUsuario.getSelectedItem().toString();
-
-        // Aqui garantimos que pegamos o valor do JSpinner como um double
         double salario = ((Number) txtSalario.getValue()).doubleValue();
         boolean ativo = status.isSelected();
 
-        // Validação básica dos campos
         if (nome.isEmpty() || cargo.isEmpty() || nomeuser.isEmpty() || senha.isEmpty()) {
             messagentxt.setText("Por favor, preencha todos os campos obrigatórios.");
             return;
         }
 
         try {
-            // Gerar um novo ID automaticamente
-         int idFuncionario = gerarId(); 
-
-            // Cria uma instância de FuncionarioDAO e insere os dados
+            // Cria uma instância de FuncionarioDAO e insere os dados (sem gerar ID manualmente)
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-           funcionarioDAO.inserirFuncionario(idFuncionario, cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
-
-
-            // Exibe mensagem de sucesso
+            funcionarioDAO.inserirFuncionario(cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
             messagentxt.setText("Funcionário registrado com sucesso");
-
-            // Limpar os campos após registro
             Limparcampus();
-
         } catch (NumberFormatException ex) {
             messagentxt.setText("Salário deve ser um número válido.");
         } catch (Exception ex) {
             messagentxt.setText("Erro ao registrar funcionário: " + ex.getMessage());
         }
     }
-
-private int gerarId() {
-    int id = 1; // ID inicial
-
-    // Verifica se a lista de funcionários é nula ou vazia
-    if (funcionarios != null && !funcionarios.isEmpty()) {
-        // Itera sobre os funcionários para encontrar o maior ID e incrementar
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getIdFuncionario() >= id) {
-                id = funcionario.getIdFuncionario() + 1;
-            }
-        }
-    }
-
-    return id; // Retorna o próximo ID disponível
-}
-
 
     private void listarFuncionarios() {
 
