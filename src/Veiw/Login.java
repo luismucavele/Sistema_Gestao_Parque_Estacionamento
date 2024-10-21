@@ -4,8 +4,9 @@
  */
 package Veiw;
 
+import Mode.ModelDAO.FuncionarioDAO;
 import Model.Funcionario;
-import Model.ModelDAO.FuncionarioDAO;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

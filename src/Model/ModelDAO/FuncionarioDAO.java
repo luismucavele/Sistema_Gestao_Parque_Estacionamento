@@ -1,4 +1,4 @@
-package Model.ModelDAO;
+package Mode.ModelDAO;
 
 import Model.Funcionario;  // Assumindo que há uma classe Funcionario no pacote Model
 import model.DBConnect;     // Para usar a classe DBConnect
