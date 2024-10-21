@@ -1,9 +1,5 @@
 package Model;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import java.time.LocalDate;
 
 public class ClienteMensalista extends Cliente {
@@ -12,8 +8,9 @@ public class ClienteMensalista extends Cliente {
     private double taxaMensal;
     private LocalDate dataRegistro;
 
+    // Construtor
     public ClienteMensalista(int idCliente, String nome, String documento, String telefone, String email, LocalDate prazoSaida, double taxaMensal, LocalDate dataRegistro) {
-        super(idCliente, nome, documento, telefone, email);
+        super(idCliente, true, nome, documento, telefone, email); // status sempre inicia como ativo
         this.prazoSaida = prazoSaida;
         this.taxaMensal = taxaMensal;
         this.dataRegistro = dataRegistro;
@@ -42,5 +39,18 @@ public class ClienteMensalista extends Cliente {
 
     public void setDataRegistro(LocalDate dataRegistro) {
         this.dataRegistro = dataRegistro;
+    }
+
+    @Override
+    public String toString() {
+        return "ClienteMensalista{" +
+                "prazoSaida=" + prazoSaida +
+                ", taxaMensal=" + taxaMensal +
+                ", dataRegistro=" + dataRegistro +
+                ", idCliente=" + getIdCliente() +
+                ", nome='" + getNome() + '\'' +
+                ", documento='" + getDocumento() + '\'' +
+                ", status=" + (isStatus() ? "Ativo" : "Inativo") +
+                '}';
     }
 }

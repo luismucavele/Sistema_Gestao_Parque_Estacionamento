@@ -145,8 +145,8 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(chkShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
 
         lblmensagem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblmensagem.setForeground(new java.awt.Color(204, 0, 0));
-        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 250, -1));
+        lblmensagem.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 250, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,18 +193,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_chkShowPasswordItemStateChanged
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-//        EmailValidator emailValidator = new EmailValidator();
-//                String email = txtusername.getText();
-//                boolean isValid = emailValidator.isEmailValid(email);
-//                
-//                if (isValid) {
-//                    txtUser.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-//                    txtPassword.requestFocus();
-//                } else {
-//                    txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
-//                    //emailValidator.showError("O e-mail não é válido.");
-//                    txtPassword.requestFocus();
-//                }
 
 
     }//GEN-LAST:event_txtUserActionPerformed
@@ -217,10 +205,10 @@ public class Login extends javax.swing.JFrame {
     private void chkShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkShowPasswordActionPerformed
-   private void autenticarUsuario() {
-    //String usuario = txtUser.getText();
-    //String senha = new String(txtPassword.getPassword());
-    String usuario = txtUser.getText().trim();
+    private void autenticarUsuario() {
+        //String usuario = txtUser.getText();
+        //String senha = new String(txtPassword.getPassword());
+        String usuario = txtUser.getText().trim();
         String senha = new String(txtPassword.getPassword()).trim();
 
         // Validação: Verifica se os campos estão vazios
@@ -236,42 +224,40 @@ public class Login extends javax.swing.JFrame {
             return;
         }
 
-    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
 
-    if (funcionario != null && funcionario.isAtivo()) {
-       lblmensagem.setText("Login bem-sucedido!");
+        if (funcionario != null && funcionario.isAtivo()) {
+            lblmensagem.setText("Login bem-sucedido!");
 
-        // Verifica o tipo de usuário
-        switch (funcionario.getCargo()) {
-            case "admin":
-                new MenuPrincipalAdmin().setVisible(true);  // Abre a tela do administrador
-                break;
-            case "gestor":
-                new MenuPrincipalFuncio().setVisible(true);  // Abre a tela do gestor
-                break;
-            case "usuario":
-                new MenuPrincipalGestorFinac().setVisible(true);  // Abre a tela do usuário comum
-                break;
-            default:
-               lblmensagem.setText("Login bem-sucedido!");
-                break;
+            // Verifica o tipo de usuário
+            switch (funcionario.getCargo()) {
+                case "admin":
+                    new MenuPrincipalAdmin().setVisible(true);  // Abre a tela do administrador
+                    break;
+                case "gestor":
+                    new MenuPrincipalFuncio().setVisible(true);  // Abre a tela do gestor
+                    break;
+                case "usuario":
+                    new MenuPrincipalGestorFinac().setVisible(true);  // Abre a tela do usuário comum
+                    break;
+                default:
+                    lblmensagem.setText("Login bem-sucedido!");
+                    break;
+            }
+
+            this.dispose(); // Fecha a tela de login
+
+        } else {
+            lblmensagem.setText("Login bem-sucedido!");
         }
-
-        this.dispose(); // Fecha a tela de login
-
-    } else {
-    lblmensagem.setText("Login bem-sucedido!");
     }
-}  
-    
-    
-    
+
     private void iniciarTimerParaLimparMensagem() {
         if (timer != null) {
             timer.stop(); // Para qualquer timer anterior
         }
-        
+
         timer = new Timer(5000, new ActionListener() { // 20000 milissegundos = 20 segundos
             @Override
             public void actionPerformed(ActionEvent e) {

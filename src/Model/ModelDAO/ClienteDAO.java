@@ -9,15 +9,18 @@ import java.util.List;
 public class ClienteDAO {
 
     // Inserir cliente (ativo por padrão)
-    public void inserirCliente(int idPessoa, boolean status) {
+    public void inserirCliente(Cliente cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
             conn = DBConnect.getConnection(); // Obtém conexão
-            String sql = "INSERT INTO Cliente (idPessoa, status, ativo) VALUES (?, ?, TRUE)"; // Cliente ativo por padrão
+            String sql = "INSERT INTO Cliente (idCliente, nome, documento, telefone, email, status) VALUES (?, ?, ?, ?, ?, TRUE)"; // Cliente ativo por padrão
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, idPessoa);
-            stmt.setBoolean(2, status); // Status é booleano
+            stmt.setInt(1, cliente.getIdCliente()); // O ID pode ser um campo autoincrementado ou fornecido externamente
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getDocumento());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getEmail());
             stmt.executeUpdate();
             System.out.println("Cliente inserido com sucesso.");
         } catch (SQLException e) {
@@ -35,45 +38,49 @@ public class ClienteDAO {
         Cliente cliente = null;
         try {
             conn = DBConnect.getConnection(); // Obtém conexão
-            String sql = "SELECT * FROM Cliente WHERE idCliente = ? AND ativo = TRUE"; // Somente clientes ativos
+            String sql = "SELECT * FROM Cliente WHERE idCliente = ? AND status = TRUE"; // Somente clientes ativos
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idCliente);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setIdPessoa(rs.getInt("idPessoa"));
-                cliente.setStatus(rs.getBoolean("status")); // Status como boolean
+                cliente = new Cliente(
+                    rs.getInt("idCliente"),
+                    true, // Status ativo por padrão, já que estamos buscando apenas clientes ativos
+                    rs.getString("nome"),
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("email")
+                );
             }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar cliente: " + e.getMessage());
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
             } catch (SQLException e) {
                 System.err.println("Erro ao fechar recursos: " + e.getMessage());
             }
-            DBConnect.closeConnection(conn);
+            DBConnect.closeConnection(conn); // Fecha a conexão
         }
         return cliente;
     }
 
     // Atualizar cliente
-    public void atualizarCliente(int idCliente, boolean status) {
+    public void atualizarCliente(Cliente cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
             conn = DBConnect.getConnection(); // Obtém conexão
-            String sql = "UPDATE Cliente SET status = ? WHERE idCliente = ?";
+            String sql = "UPDATE Cliente SET nome = ?, documento = ?, telefone = ?, email = ?, status = ? WHERE idCliente = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, status); // Status booleano
-            stmt.setInt(2, idCliente);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getDocumento());
+            stmt.setString(3, cliente.getTelefone());
+            stmt.setString(4, cliente.getEmail());
+            stmt.setBoolean(5, cliente.isStatus());
+            stmt.setInt(6, cliente.getIdCliente());
             stmt.executeUpdate();
             System.out.println("Cliente atualizado com sucesso.");
         } catch (SQLException e) {
@@ -89,7 +96,7 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
         try {
             conn = DBConnect.getConnection(); // Obtém conexão
-            String sql = "UPDATE Cliente SET ativo = FALSE WHERE idCliente = ?"; // Marcar cliente como inativo
+            String sql = "UPDATE Cliente SET status = FALSE WHERE idCliente = ?"; // Marcar cliente como inativo
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idCliente);
             stmt.executeUpdate();
@@ -109,27 +116,27 @@ public class ClienteDAO {
         List<Cliente> clientes = new ArrayList<>();
         try {
             conn = DBConnect.getConnection(); // Obtém conexão
-            String sql = "SELECT * FROM Cliente WHERE ativo = TRUE"; // Somente clientes ativos
+            String sql = "SELECT * FROM Cliente WHERE status = TRUE"; // Somente clientes ativos
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setIdPessoa(rs.getInt("idPessoa"));
-                cliente.setStatus(rs.getBoolean("status")); // Status como boolean
+                Cliente cliente = new Cliente(
+                    rs.getInt("idCliente"),
+                    true, // Status ativo por padrão
+                    rs.getString("nome"),
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("email")
+                );
                 clientes.add(cliente);
             }
         } catch (SQLException e) {
             System.err.println("Erro ao listar clientes: " + e.getMessage());
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
             } catch (SQLException e) {
                 System.err.println("Erro ao fechar recursos: " + e.getMessage());
             }
