@@ -16,6 +16,9 @@ public abstract class Pessoa {
         this.email = email;
     }
 
+    public Pessoa() {
+    }
+    
     // Getters e Setters
     public int getIdPessoa() {
         return IdPessoa;

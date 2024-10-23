@@ -1,6 +1,7 @@
 package Controller;
 
-import Model.ModelDAO.FuncionarioDAO;
+import Mode.ModelDAO.FuncionarioDAO;
+
 import Veiw.Login;
 import Model.Funcionario;
 

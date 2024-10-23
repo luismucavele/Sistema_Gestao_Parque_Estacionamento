@@ -144,6 +144,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel66 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel108 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -1070,6 +1071,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 51, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Disparquear");
+
         javax.swing.GroupLayout P3Layout = new javax.swing.GroupLayout(P3);
         P3.setLayout(P3Layout);
         P3Layout.setHorizontalGroup(
@@ -1097,8 +1102,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                     .addComponent(jLabel38)
                                     .addGroup(P3Layout.createSequentialGroup()
                                         .addComponent(tipoclienteadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(165, 165, 165)
-                                        .addComponent(parquearadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(129, 129, 129)
+                                        .addComponent(parquearadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(P3Layout.createSequentialGroup()
                                 .addComponent(descricaoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(72, 72, 72)
@@ -1128,7 +1135,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel39)
                                 .addGap(27, 27, 27)
                                 .addComponent(valoradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(84, 84, 84))
+                        .addGap(42, 42, 42))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())
@@ -1211,8 +1218,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(placaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoclienteadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(parquearadmin))
+                    .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tipoclienteadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(parquearadmin)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37)
                 .addComponent(jLabel66)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1364,6 +1373,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         btnPesquisa.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_search_20px.png"))); // NOI18N
         btnPesquisa.setText("Pesquisar");
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
         P4.add(btnPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 428, 140, -1));
         P4.add(txtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 429, 351, 30));
 
@@ -2278,7 +2292,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_pesquisarpagadminActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        atualizarFuncionario();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jLabel107MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel107MouseClicked
@@ -2331,9 +2345,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDemitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitirActionPerformed
-        // TODO add your handling code here:
+        
         excluirFuncionario();
     }//GEN-LAST:event_btnDemitirActionPerformed
+
+    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
+       buscarFuncionario();
+    }//GEN-LAST:event_btnPesquisaActionPerformed
     private void Limparcampus() {
         txtId.setText("");
         txtNome.setText("");
@@ -2371,7 +2389,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     try {
         // Cria uma instância de FuncionarioDAO e insere os dados (sem gerar ID manualmente)
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        funcionarioDAO.inserirFuncionario(cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
+        funcionarioDAO.inserirFuncionario(nome,cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
         messagentxt.setText("Funcionário registrado com sucesso");
         Limparcampus();
     } catch (NumberFormatException ex) {
@@ -2546,6 +2564,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox3;

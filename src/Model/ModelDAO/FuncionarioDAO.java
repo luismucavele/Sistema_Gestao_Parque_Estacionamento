@@ -9,78 +9,74 @@ import java.util.List;
 public class FuncionarioDAO {
 
     // Inserir funcionário
-    public void inserirFuncionario(String cargo, double salario, String usuario, String senha, boolean ativo, String documento, String telefone, String sexo, String email, String bairro) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "INSERT INTO Funcionario (cargo, salario, usuario, senha, ativo, documento, telefone, sexo, email, Residencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cargo);
-            stmt.setDouble(2, salario);
-            stmt.setString(3, usuario);
-            stmt.setString(4, senha);
-            stmt.setBoolean(5, ativo);
-            stmt.setString(6, documento);
-            stmt.setString(7, telefone);
-            stmt.setString(8, sexo);
-            stmt.setString(9, email);
-            stmt.setString(10, bairro);
-            stmt.executeUpdate();
-            System.out.println("Funcionário inserido com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao inserir funcionário: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
+   public void inserirFuncionario(String nome, String cargo, double salario, String usuario, String senha, boolean ativo, String documento, String telefone, String sexo, String email, String Bairro) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    try {
+        conn = DBConnect.getConnection();  // Obtém a conexão
+        String sql = "INSERT INTO Funcionario (nome, cargo, salario, usuario, senha, ativo, documento, telefone, sexo, email, Bairro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, nome);  // Adiciona o nome aqui
+        stmt.setString(2, cargo);
+        stmt.setDouble(3, salario);
+        stmt.setString(4, usuario.trim());
+        stmt.setString(5, senha.trim());
+        stmt.setBoolean(6, ativo);
+        stmt.setString(7, documento);
+        stmt.setString(8, telefone);
+        stmt.setString(9, sexo);
+        stmt.setString(10, email);
+        stmt.setString(11, Bairro);
+        stmt.executeUpdate();
+        System.out.println("Funcionário inserido com sucesso.");
+    } catch (SQLException e) {
+        System.err.println("Erro ao inserir funcionário: " + e.getMessage());
+    } finally {
+        DBConnect.closeConnection(conn);  // Fecha a conexão
     }
+}
+
 
     // Método para autenticar um funcionário com base no usuário e senha
-    public Funcionario autenticarFuncionario(String usuario, String senha) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Funcionario funcionario = null;
-        try {
-            conn = DBConnect.getConnection(); // Conecta ao banco
-            String sql = "SELECT * FROM Funcionario WHERE usuario = ? AND senha = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            stmt.setString(2, senha);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao autenticar funcionário: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn); // Fecha a conexão
+   public Funcionario autenticarFuncionario(String usuario, String senha) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    Funcionario funcionario = null;
+
+    try {
+        conn = DBConnect.getConnection();
+        String sql = "SELECT * FROM Funcionario WHERE usuario = ? AND senha = ?";
+        stmt = conn.prepareStatement(sql);
+        stmt.setString(1, usuario.trim());
+        stmt.setString(2, senha.trim());
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            funcionario = new Funcionario(); // Utilize o construtor sem argumentos
+            funcionario.setIdFuncionario(rs.getInt("idFuncionario"));
+            funcionario.setNome(rs.getString("nome"));
+            funcionario.setCargo(rs.getString("cargo"));
+            funcionario.setSalario(rs.getDouble("salario"));
+            funcionario.setUsuario(rs.getString("usuario"));
+            funcionario.setSenha(rs.getString("senha"));
+            funcionario.setAtivo(rs.getBoolean("ativo"));
+            funcionario.setDocumento(rs.getString("documento"));
+            funcionario.setTelefone(rs.getString("telefone"));
+            funcionario.setSexo(rs.getString("Sexo"));
+            funcionario.setEmail(rs.getString("email"));
+            funcionario.setResidencia(rs.getString("residencia"));
         }
-        return funcionario;
+    } catch (SQLException e) {
+        System.err.println("Erro ao autenticar funcionário: " + e.getMessage());
+    } finally {
+        DBConnect.closeConnection(conn);
     }
+    
+    return funcionario;
+}
+
+
 
     // Buscar funcionário por ID
     public Funcionario buscarFuncionario(int idFuncionario) {

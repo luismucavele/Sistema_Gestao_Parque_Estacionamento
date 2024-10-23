@@ -207,67 +207,66 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chkShowPasswordActionPerformed
     private void autenticarUsuario() {
-        //String usuario = txtUser.getText();
-        //String senha = new String(txtPassword.getPassword());
-        String usuario = txtUser.getText().trim();
-        String senha = new String(txtPassword.getPassword()).trim();
+        
+    String usuario = txtUser.getText().trim();
+    String senha = new String(txtPassword.getPassword()).trim();
 
-        // Validação: Verifica se os campos estão vazios
-        if (usuario.isEmpty()) {
-            lblmensagem.setText("O campo 'Usuário' está vazio.");
-            iniciarTimerParaLimparMensagem();
-            return;
-        }
-
-        if (senha.isEmpty()) {
-            lblmensagem.setText("O campo 'Senha' está vazio.");
-            iniciarTimerParaLimparMensagem();
-            return;
-        }
-
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
-
-        if (funcionario != null && funcionario.isAtivo()) {
-            lblmensagem.setText("Login bem-sucedido!");
-
-            // Verifica o tipo de usuário
-            switch (funcionario.getCargo()) {
-                case "admin":
-                    new MenuPrincipalAdmin().setVisible(true);  // Abre a tela do administrador
-                    break;
-                case "gestor":
-                    new MenuPrincipalFuncio().setVisible(true);  // Abre a tela do gestor
-                    break;
-                case "usuario":
-                    new MenuPrincipalGestorFinac().setVisible(true);  // Abre a tela do usuário comum
-                    break;
-                default:
-                    lblmensagem.setText("Login bem-sucedido!");
-                    break;
-            }
-
-            this.dispose(); // Fecha a tela de login
-
-        } else {
-            lblmensagem.setText("Login bem-sucedido!");
-        }
+    
+    if (usuario.isEmpty()) {
+        lblmensagem.setText("O campo 'Usuário' está vazio.");
+        iniciarTimerParaLimparMensagem();
+        return;
+    }
+    
+    if (senha.isEmpty()) {
+        lblmensagem.setText("O campo 'Senha' está vazio.");
+        iniciarTimerParaLimparMensagem();
+        return;
     }
 
-    private void iniciarTimerParaLimparMensagem() {
-        if (timer != null) {
-            timer.stop(); // Para qualquer timer anterior
-        }
+    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
 
-        timer = new Timer(5000, new ActionListener() { // 20000 milissegundos = 20 segundos
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lblmensagem.setText(""); // Limpa a mensagem de erro
-            }
-        });
-        timer.setRepeats(false); // Não repete, executa apenas uma vez
-        timer.start(); // Inicia o timer
+    if (funcionario != null && funcionario.isAtivo()) {
+        lblmensagem.setText("Login bem-sucedido!");
+        switch (funcionario.getCargo().toLowerCase()) {
+            case "administrador":
+                new MenuPrincipalAdmin().setVisible(true);
+                break;
+            case "gestor financeiro":
+                new MenuPrincipalGestorFinac().setVisible(true);
+                break;
+            case "recepcionista":
+                new MenuPrincipalFuncio().setVisible(true);
+                break;
+            default:
+                lblmensagem.setText("Cargo desconhecido!");
+                return;
+        }
+        
+        this.dispose(); // Fecha a tela de login
+        
+    } else {
+        lblmensagem.setText("Usuário ou senha incorretos!");
+        iniciarTimerParaLimparMensagem();
     }
+}
+
+private void iniciarTimerParaLimparMensagem() {
+    if (timer != null) {
+        timer.stop(); // Para qualquer timer anterior
+    }
+    timer = new Timer(5000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            lblmensagem.setText(""); // Limpa a mensagem de erro
+        }
+    });
+    timer.setRepeats(false); // Não repete, executa apenas uma vez
+    timer.start(); // Inicia o timer
+}
+
+
 
     /**
      * @param args the command line arguments

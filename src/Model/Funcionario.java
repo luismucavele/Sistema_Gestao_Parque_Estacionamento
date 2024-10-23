@@ -1,7 +1,6 @@
 package Model;
 
 public class Funcionario extends Pessoa {
-
     private int idFuncionario;
     private String cargo;
     private double salario;
@@ -12,9 +11,7 @@ public class Funcionario extends Pessoa {
     private String sexo;
 
     // Construtor completo
-    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email,
-            String cargo, double salario, String usuario, String senha, boolean ativo,
-            String residencia, String sexo) {
+    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email, String cargo, double salario, String usuario, String senha, boolean ativo, String residencia, String sexo) {
         super(nome, documento, telefone, email);
         this.idFuncionario = idFuncionario;
         this.cargo = cargo;
@@ -24,6 +21,11 @@ public class Funcionario extends Pessoa {
         this.ativo = ativo;
         this.residencia = residencia;
         this.sexo = sexo;
+    }
+
+    // Construtor sem argumentos
+     public Funcionario() {
+        super();
     }
 
     // Getters e Setters
@@ -110,14 +112,14 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Funcionario{"
-                + "idFuncionario=" + idFuncionario
-                + ", nome='" + getNome() + '\''
-                + ", cargo='" + cargo + '\''
-                + ", salario=" + salario
-                + ", ativo=" + ativo
-                + ", residencia='" + residencia + '\''
-                + ", sexo='" + sexo + '\''
-                + '}';
+        return "Funcionario{" +
+                "idFuncionario=" + idFuncionario +
+                ", nome='" + getNome() + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", salario=" + salario +
+                ", ativo=" + ativo +
+                ", residencia='" + residencia + '\'' +
+                ", sexo='" + sexo + '\'' +
+                '}';
     }
 }
