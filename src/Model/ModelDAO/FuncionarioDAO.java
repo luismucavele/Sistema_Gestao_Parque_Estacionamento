@@ -39,42 +39,50 @@ public class FuncionarioDAO {
 
     // Método para autenticar um funcionário com base no usuário e senha
    public Funcionario autenticarFuncionario(String usuario, String senha) {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-    Funcionario funcionario = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Funcionario funcionario = null;
 
-    try {
-        conn = DBConnect.getConnection();
-        String sql = "SELECT * FROM Funcionario WHERE usuario = ? AND senha = ?";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, usuario.trim());
-        stmt.setString(2, senha.trim());
-        rs = stmt.executeQuery();
+        try {
+            conn = DBConnect.getConnection();
+            String sql = "SELECT * FROM Funcionario WHERE usuario = ? AND senha = ?";
+            stmt = conn.prepareStatement(sql);
+            
+            // Usa trim() para evitar espaços indesejados no início/fim das strings
+            stmt.setString(1, usuario.trim());
+            stmt.setString(2, senha.trim());
+            
+            rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            funcionario = new Funcionario(); // Utilize o construtor sem argumentos
-            funcionario.setIdFuncionario(rs.getInt("idFuncionario"));
-            funcionario.setNome(rs.getString("nome"));
-            funcionario.setCargo(rs.getString("cargo"));
-            funcionario.setSalario(rs.getDouble("salario"));
-            funcionario.setUsuario(rs.getString("usuario"));
-            funcionario.setSenha(rs.getString("senha"));
-            funcionario.setAtivo(rs.getBoolean("ativo"));
-            funcionario.setDocumento(rs.getString("documento"));
-            funcionario.setTelefone(rs.getString("telefone"));
-            funcionario.setSexo(rs.getString("Sexo"));
-            funcionario.setEmail(rs.getString("email"));
-            funcionario.setResidencia(rs.getString("residencia"));
+            // Se houver um resultado, significa que o usuário e a senha coincidem
+            if (rs.next()) {
+                funcionario = new Funcionario(); 
+                funcionario.setIdFuncionario(rs.getInt("idFuncionario"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setCargo(rs.getString("cargo"));
+                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setUsuario(rs.getString("usuario"));
+                funcionario.setSenha(rs.getString("senha"));
+                funcionario.setAtivo(rs.getBoolean("ativo"));
+                funcionario.setDocumento(rs.getString("documento"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                funcionario.setSexo(rs.getString("sexo"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setResidencia(rs.getString("residencia"));
+            } else {
+                // Caso nenhum funcionário tenha sido encontrado com essas credenciais
+                System.out.println("Usuário ou senha inválidos.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao autenticar funcionário: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn); // Fecha a conexão
         }
-    } catch (SQLException e) {
-        System.err.println("Erro ao autenticar funcionário: " + e.getMessage());
-    } finally {
-        DBConnect.closeConnection(conn);
+
+        // Retorna o objeto funcionário se houver correspondência, ou null se falhar
+        return funcionario;
     }
-    
-    return funcionario;
-}
 
 
 

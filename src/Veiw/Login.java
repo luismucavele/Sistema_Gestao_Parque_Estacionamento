@@ -206,29 +206,36 @@ public class Login extends javax.swing.JFrame {
     private void chkShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkShowPasswordActionPerformed
-    private void autenticarUsuario() {
-        
+    
+    
+    
+   private void autenticarUsuario() {
+    // Obtém os valores dos campos de texto
     String usuario = txtUser.getText().trim();
     String senha = new String(txtPassword.getPassword()).trim();
 
-    
+    // Valida se os campos não estão vazios
     if (usuario.isEmpty()) {
         lblmensagem.setText("O campo 'Usuário' está vazio.");
         iniciarTimerParaLimparMensagem();
         return;
     }
-    
+
     if (senha.isEmpty()) {
         lblmensagem.setText("O campo 'Senha' está vazio.");
         iniciarTimerParaLimparMensagem();
         return;
     }
 
+    // Cria uma instância do DAO e tenta autenticar o funcionário
     FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
 
+    // Se a autenticação foi bem-sucedida e o funcionário está ativo
     if (funcionario != null && funcionario.isAtivo()) {
         lblmensagem.setText("Login bem-sucedido!");
+
+        // Verifica o cargo do funcionário e abre o menu correspondente
         switch (funcionario.getCargo().toLowerCase()) {
             case "administrador":
                 new MenuPrincipalAdmin().setVisible(true);
@@ -243,10 +250,11 @@ public class Login extends javax.swing.JFrame {
                 lblmensagem.setText("Cargo desconhecido!");
                 return;
         }
-        
-        this.dispose(); // Fecha a tela de login
-        
+
+        // Fecha a tela de login
+        this.dispose();
     } else {
+        // Se a autenticação falhar, exibe uma mensagem de erro
         lblmensagem.setText("Usuário ou senha incorretos!");
         iniciarTimerParaLimparMensagem();
     }
