@@ -44,7 +44,18 @@ public class ClienteVagaDAO {
         }
         return rs;
     }
-
+    //buscar cliente estacionados
+    public ResultSet buscarClientesEstacionados() throws SQLException {
+    Connection conn = DBConnect.getConnection();
+    String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, v.matricula, v.cor, v.tipoPagamento, v.valorPorHora " +
+                 "FROM Cliente c " +
+                 "JOIN ClienteVaga cv ON c.idCliente = cv.idCliente " +
+                 "JOIN Veiculo v ON v.idCliente = c.idCliente " +
+                 "WHERE cv.horaSaida IS NULL";  // Apenas clientes que ainda estão estacionados (sem hora de saída)
+    
+    PreparedStatement stmt = conn.prepareStatement(sql);
+    return stmt.executeQuery();
+}
     // Atualizar os dados de um cliente na vaga
     public void atualizarClienteVaga(int idCliente, String identificadorVaga, Timestamp horaEntrada, Timestamp horaSaida) {
         Connection conn = null;
