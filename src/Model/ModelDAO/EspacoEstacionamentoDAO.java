@@ -1,7 +1,9 @@
 package Model.ModelDAO;
 
-import Model.*;
+import Model.EspacoEstacionamento;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import model.DBConnect;
 
 public class EspacoEstacionamentoDAO {
@@ -52,5 +54,38 @@ public class EspacoEstacionamentoDAO {
             stmt.setString(1, identificador);
             stmt.executeUpdate();
         }
+    }
+
+    // Método para listar espaços disponíveis
+    public List<EspacoEstacionamento> listarEspacosDisponiveis() throws SQLException {
+        String sql = "SELECT * FROM EspacoEstacionamento WHERE ocupado = false";
+        List<EspacoEstacionamento> espacosDisponiveis = new ArrayList<>();
+        
+        try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                EspacoEstacionamento espaco = new EspacoEstacionamento(
+                        rs.getString("identificador"),
+                        rs.getDouble("valorPorHora"),
+                        rs.getBoolean("isVip")
+                );
+                espacosDisponiveis.add(espaco);
+            }
+        }
+        
+        return espacosDisponiveis;
+    }
+
+    // Método para contar espaços disponíveis
+    public int contarEspacosDisponiveis() throws SQLException {
+        String sql = "SELECT COUNT(*) AS total FROM EspacoEstacionamento WHERE ocupado = false";
+        int totalEspacos = 0;
+
+        try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                totalEspacos = rs.getInt("total");
+            }
+        }
+
+        return totalEspacos;
     }
 }

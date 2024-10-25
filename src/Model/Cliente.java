@@ -1,13 +1,14 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente extends Pessoa {
 
     private int idCliente;
     private boolean status;
-    private ArrayList<Veiculo> veiculos;
-    private ArrayList<Pagamento> pagamentos;
+    private List<Veiculo> veiculos;
+    private List<Pagamento> pagamentos;
 
     // Construtor
     public Cliente(int idCliente, boolean status, String nome, String documento, String telefone, String email) {
@@ -16,7 +17,7 @@ public class Cliente extends Pessoa {
         this.status = status;
         this.veiculos = new ArrayList<>();
         this.pagamentos = new ArrayList<>();
-    }
+        }
 
     // Getters e Setters
     public boolean isStatus() {
@@ -35,11 +36,11 @@ public class Cliente extends Pessoa {
         this.idCliente = idCliente;
     }
 
-    public ArrayList<Veiculo> getVeiculos() {
+    public List<Veiculo> getVeiculos() {
         return veiculos;
     }
 
-    public ArrayList<Pagamento> getPagamentos() {
+    public List<Pagamento> getPagamentos() {
         return pagamentos;
     }
 
@@ -86,7 +87,9 @@ public class Cliente extends Pessoa {
         this.status = false;
         System.out.println("Cliente desativado: " + getNome());
     }
-
+        public boolean isAtivo() {
+                return status;
+        }
     @Override
     public String toString() {
         return "Cliente{" +

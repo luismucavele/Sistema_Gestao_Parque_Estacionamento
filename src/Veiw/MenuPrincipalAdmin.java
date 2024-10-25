@@ -6,19 +6,19 @@ package Veiw;
 
 import Mode.ModelDAO.FuncionarioDAO;
 import Model.Cliente;
+import Model.ClienteVeiculo;
 import Model.EspacoEstacionamento;
 import Model.Estacionamento;
 import Model.Funcionario;
 import Model.ModelDAO.ClienteVagaDAO;
 import Model.ModelDAO.EspacoEstacionamentoDAO;
+import Model.ModelDAO.FuncionarioDAO;
 import Model.ModelDAO.VeiculoDAO;
 import Model.Veiculo;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PrinterException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.security.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -211,7 +211,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         pesquisarpagadmin = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        bill = new javax.swing.JTextArea();
+        jTextArea2 = new javax.swing.JTextArea();
         jLabel81 = new javax.swing.JLabel();
         placapagament = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
@@ -224,11 +224,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jLabel106 = new javax.swing.JLabel();
-        txttrocopagemento = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         cbxTipopagamento = new javax.swing.JComboBox<>();
-        txtvalorpagar = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         cbxPorte1 = new javax.swing.JComboBox<>();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
@@ -1480,10 +1480,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        bill.setColumns(20);
-        bill.setRows(5);
-        bill.setText(" ");
-        jScrollPane5.setViewportView(bill);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jTextArea2.setText(" ");
+        jScrollPane5.setViewportView(jTextArea2);
 
         jLabel81.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(0, 0, 0));
@@ -1532,11 +1532,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_print_20px.png"))); // NOI18N
         jButton11.setText("Imprimir");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
 
         jLabel106.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 0, 0));
@@ -1598,12 +1593,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(P5Layout.createSequentialGroup()
-                                            .addComponent(txtvalorpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(cbxTipopagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(P5Layout.createSequentialGroup()
-                                            .addComponent(txttrocopagemento, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(0, 9, Short.MAX_VALUE))))
                                 .addGroup(P5Layout.createSequentialGroup()
                                     .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1624,8 +1619,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(400, 400, 400)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(P5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel75)
@@ -1636,10 +1634,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel110)
                 .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(264, 264, 264))
         );
         P5Layout.setVerticalGroup(
             P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1657,7 +1651,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(P5Layout.createSequentialGroup()
@@ -1668,7 +1662,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(1, 1, 1)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(7, 7, 7)
                         .addComponent(jButton11))
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -1698,20 +1692,21 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel84)
-                            .addComponent(cbxPorte1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxPorte1))
                         .addGap(27, 27, 27)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel42)
                             .addComponent(cbxTipopagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton10)
                             .addComponent(jLabel88)
-                            .addComponent(txtvalorpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel106)
-                            .addComponent(txttrocopagemento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))))
         );
 
         Paineis.addTab("tab4", P5);
@@ -2363,10 +2358,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxTipopagamentoActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        bill_print();
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     //Validacao de campos 
     private boolean validarCampos() {
         String nome = txtnomepropetarioa.getText().trim();
@@ -2537,33 +2528,40 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
     //Metodo criar cliente
     private ClienteVeiculo criarCliente() {
-        // Criação do cliente
-        int idCliente = gerarIdClienteUnico();
-        String nome = nomeTextField.getText();
-        String documento = documentoTextField.getText();  // Considerando que você tenha um campo de documento
-        String telefone = telefoneTextField.getText();
-        // Considerando que você tenha um campo de email
-        boolean status = true;  // Por padrão, o cliente é ativo
+    // Leitura dos dados do cliente
+    Cliente cliente = criarClienteDoFormulario();
 
-        // Criando o cliente
-        Cliente cliente = new Cliente(idCliente, status, nome, documento, telefone);
+    // Leitura dos dados do veículo associado ao cliente
+    Veiculo veiculo = criarVeiculoDoFormulario(cliente);
 
-        // Criação do veículo associado ao cliente
-        String placa = txtplaca.getText();
-        String modelo = txtdescricaoa.getText();
-        String marca = txtmarca.getText();
-        String cor = txtcor.getText();
-        String tipoVeiculo = (String) cbxPorte.getSelectedItem();
+    // Criando o ClienteVeiculo a partir do cliente e veículo
+    return new ClienteVeiculo(cliente, veiculo);
+}
 
-        // Associando o veículo ao cliente
-        Veiculo veiculo = new Veiculo(placa, modelo, marca, cor, tipoVeiculo, cliente);
-        cliente.adicionarVeiculo(veiculo);
+// Método auxiliar para criar o cliente
+private Cliente criarClienteDoFormulario() {
+    int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
+    String nome = nomeTextField.getText(); // Obtém o nome do campo de texto
+    String documento = documentoTextField.getText(); // Obtém o documento do campo de texto
+    String telefone = telefoneTextField.getText(); // Obtém o telefone do campo de texto
+    boolean status = true; // Por padrão, o cliente é ativo
 
-        // Criando o ClienteVeiculo a partir do cliente e veículo
-        ClienteVeiculo clienteVeiculo = new ClienteVeiculo(cliente, veiculo);
+    return new Cliente(idCliente, status,0 nome, documento, telefone); // Retorna o cliente criado
+}
 
-        return clienteVeiculo;
-    }
+// Método auxiliar para criar o veículo associado ao cliente
+private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
+    String placa = txtplaca.getText(); // Obtém a placa do campo de texto
+    String modelo = txtmodelo.getText(); // Obtém o modelo do campo de texto
+    String marca = txtmarca.getText();
+    String ano = txtModelo.getText();// Obtém a marca do campo de texto
+    String cor = txtcor.getText(); // Obtém a cor do campo de texto
+    String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
+
+    // Cria e retorna o veículo associado ao cliente
+    return new Veiculo(placa, modelo, marca, ano, cor, tipoVeiculo, cliente);
+}
+
 
 // Método para gerar ID único (exemplo simples)
     private int gerarIdClienteUnico() {
@@ -2572,31 +2570,36 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
     //Metodo atualizar tabela 
-    private void atualizarTabela() {
-        tabelaParquear.setRowCount(0);  // Limpa a tabela antes de adicionar novos dados
+  private void atualizarTabela() {
+    // Obtém o modelo da tabela como DefaultTableModel
+    DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear.getModel();
+    
+    // Limpa todas as linhas existentes do modelo da tabela
+    tableModel.setRowCount(0);
 
-        try {
-            // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
-            ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-            ResultSet rs = clienteVagaDAO.buscarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
+    // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
+    try {
+        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+        List<ClienteVaga> clientesEstacionados = clienteVagaDAO.buscarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
 
-            while (rs.next()) {
-                int idCliente = rs.getInt("idCliente");
-                String nome = rs.getString("nome");
-                String residencia = rs.getString("residencia");
-                String contacto = rs.getString("contacto");
-                String matricula = rs.getString("matricula");
-                String corCarro = rs.getString("cor");
-                String tipoPagamento = rs.getString("tipoPagamento");
-                double valorPorHora = rs.getDouble("valorPorHora");
-
-                // Adiciona os dados à tabela
-                tabelaParquear.addRow(new Object[]{idCliente, nome, residencia, contacto, matricula, corCarro, tipoPagamento, valorPorHora});
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        // Adiciona os dados à tabela
+        for (ClienteVaga clienteVaga : clientesEstacionados) {
+            tableModel.addRow(new Object[]{
+                clienteVaga.getCliente().getIdCliente(),
+                clienteVaga.getCliente().getNome(),
+                clienteVaga.getCliente().getResidencia(),
+                clienteVaga.getCliente().getContacto(),
+                clienteVaga.getVeiculo().getPlaca(),
+                clienteVaga.getVeiculo().getCor(),
+                clienteVaga.getTipoPagamento(),
+                clienteVaga.getValorPorHora()
+            });
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
+}
+
 
     //atualizar espacos reservantes
     private void atualizarEspacosRestantes() {
@@ -2671,12 +2674,37 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             funcionarioDAO.inserirFuncionario(nome, cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
             messagentxt.setText("Funcionário registrado com sucesso");
             Limparcampus();
+            atualizarTabelaF();
         } catch (NumberFormatException ex) {
             messagentxt.setText("Salário deve ser um número válido.");
         } catch (Exception ex) {
             messagentxt.setText("Erro ao registrar funcionário: " + ex.getMessage());
         }
     }
+private void atualizarTabelaF() {
+    // Obtém o modelo da tabela como DefaultTableModel
+    DefaultTableModel tableModel = (DefaultTableModel) tbFuncionario.getModel();
+    
+    // Limpa todas as linhas existentes do modelo da tabela
+    tableModel.setRowCount(0);
+
+    // Adiciona apenas funcionários ativos à tabela
+    for (Funcionario funcionario : funcionarios) {
+        if (funcionario.isAtivo()) { // Apenas adiciona funcionários ativos
+            tableModel.addRow(new Object[]{
+                funcionario.getIdFuncionario(),
+                funcionario.getNome(),
+                funcionario.getUsuario(),
+                funcionario.getSenha(),
+                funcionario.getDocumento(),
+                funcionario.getNUIT(),
+                funcionario.getCargo(),
+                funcionario.getDepartamento(),
+                funcionario.getTipo()
+            });
+        }
+    }
+}
 
     private void listarFuncionarios() {
 
@@ -2727,6 +2755,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, "Funcionário atualizado com sucesso!");
             Limparcampus();
             listarFuncionarios();
+            atualizarTabelaF();
         } catch (Exception ex) {
             messagentxt.setText("Erro ao atualizar funcionário:");
             // JOptionPane.showMessageDialog(this, "Erro ao atualizar funcionário: " + ex.getMessage());
@@ -2741,6 +2770,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             // JOptionPane.showMessageDialog(this, "Funcionário excluído com sucesso!");
             Limparcampus();
             listarFuncionarios();
+            atualizarTabelaF();
         } catch (Exception ex) {
             messagentxt.setText("Erro ao excluir funcionário");
             //JOptionPane.showMessageDialog(this, "Erro ao excluir funcionário: " + ex.getMessage());
@@ -2776,43 +2806,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 //        txtTipoUsuario.setText(funcionario.getCargo());
 //        txtSalario.setText(String.valueOf(funcionario.getSalario()));
         status.setSelected(funcionario.isAtivo());
-    }
-    //Fatura
-
-    public void bill_print() {
-
-        try {
-            bill.setText("                         PARK MARELO \n");
-            bill.setText(bill.getText() + "\tEstacionamento Central \n");
-            bill.setText(bill.getText() + "\tRua Principal, Cidade de Maputo, \n");
-            bill.setText(bill.getText() + "\t+258 841188232 \n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-            bill.setText(bill.getText() + "Detalhes do Cliente\n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-
-            // Dados principais do cliente (Placa, Proprietário, etc.)
-            bill.setText(bill.getText() + "Placa do Veículo: \t" + placapagament.getText() + "\n");
-            bill.setText(bill.getText() + "Nome do Proprietário: \t" + nomepagament.getText() + "\n");
-            bill.setText(bill.getText() + "Tipo de Cliente: \t" + tipoclientepagament.getSelectedItem().toString() + "\n");
-            bill.setText(bill.getText() + "Porte do Veículo: \t" + cbxPorte1.getSelectedItem().toString() + "\n");
-            bill.setText(bill.getText() + "Tipo de Pagamento: \t" + cbxTipopagamento.getSelectedItem().toString() + "\n");
-
-            // Linha de separação
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-            bill.setText(bill.getText() + "Valor Total :\t" + txtvalorpagar.getText() + "\n");  // Valor total
-            //bill.setText(bill.getText() + "Dinheiro Recebido :\t" + Cash.getText() + "\n");  // Dinheiro recebido
-            bill.setText(bill.getText() + "Troco :\t" + txttrocopagemento.getText() + "\n");  // Troco
-            bill.setText(bill.getText() + "====================================\n");
-            bill.setText(bill.getText() + "Obrigado por usar nosso estacionamento!\n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-            bill.setText(bill.getText() + "Software por Parking Solutions \n");
-
-            bill.print();
-
-        } catch (PrinterException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     /**
@@ -2851,7 +2844,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         });
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Descricao;
     private javax.swing.JButton Disparquear;
@@ -2868,7 +2860,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Paineis;
     private javax.swing.JLabel Parquear;
     private javax.swing.JLabel RelatorioFinaceiro;
-    private javax.swing.JTextArea bill;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnDemitir;
@@ -3036,9 +3027,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lbEspacoRestante;
     private javax.swing.JLabel messagemTLparquear;
     private javax.swing.JLabel messagentxt;
@@ -3069,7 +3063,5 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtnomepropetarioa;
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefoneparquear;
-    private javax.swing.JTextField txttrocopagemento;
-    private javax.swing.JTextField txtvalorpagar;
     // End of variables declaration//GEN-END:variables
 }

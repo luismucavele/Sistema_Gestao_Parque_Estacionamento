@@ -1,110 +1,171 @@
-package model.dao;
+package Model.ModelDAO;
 
-import model.ClienteVeiculo;
-import model.DBConnect;
-
+import Model.Cliente;
+import Model.ClienteVeiculo;
+import Model.Veiculo;
+import model.DBConnect; 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteVeiculoDAO {
 
-    // Inserir novo cliente e veículo
-    public void inserirClienteVeiculo(ClienteVeiculo cliente) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();
-            String sql = "INSERT INTO ClienteVeiculo (nome, residencia, contacto, matricula, corCarro, tipoPagamento, valorPorHora) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getResidencia());
-            stmt.setString(3, cliente.getContacto());
-            stmt.setString(4, cliente.getMatricula());
-            stmt.setString(5, cliente.getCorCarro());
-            stmt.setString(6, cliente.getTipoPagamento());
-            stmt.setDouble(7, cliente.getValorPorHora());
-            stmt.executeUpdate();
-            System.out.println("Cliente e veículo inseridos com sucesso.");
+    // Método para inserir um novo ClienteVeiculo no banco de dados
+    public void inserirClienteVeiculo(ClienteVeiculo clienteVeiculo) {
+        String sqlCliente = "INSERT INTO Cliente (id, nome, documento, telefone, email, ativo) VALUES (?, ?, ?, ?, ?, ?)";
+        String sqlVeiculo = "INSERT INTO Veiculo (placa, modelo, marca, cor, tipo, idCliente) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmtCliente = conn.prepareStatement(sqlCliente);
+             PreparedStatement stmtVeiculo = conn.prepareStatement(sqlVeiculo)) {
+             
+            // Inserir Cliente
+            stmtCliente.setInt(1, clienteVeiculo.getCliente().getIdCliente());
+            stmtCliente.setString(2, clienteVeiculo.getCliente().getNome());
+            stmtCliente.setString(3, clienteVeiculo.getCliente().getDocumento());
+            stmtCliente.setString(4, clienteVeiculo.getCliente().getTelefone());
+            stmtCliente.setString(5, clienteVeiculo.getCliente().getEmail());
+            stmtCliente.setBoolean(6, clienteVeiculo.getCliente().isAtivo());
+            stmtCliente.executeUpdate();
+
+            // Inserir Veículo
+            stmtVeiculo.setString(1, clienteVeiculo.getVeiculo().getPlaca());
+            stmtVeiculo.setString(2, clienteVeiculo.getVeiculo().getModelo());
+            stmtVeiculo.setString(3, clienteVeiculo.getVeiculo().getMarca());
+            stmtVeiculo.setString(4, clienteVeiculo.getVeiculo().getCor());
+            stmtVeiculo.setString(5, clienteVeiculo.getVeiculo().getTipoVeiculo());
+            stmtVeiculo.setInt(6, clienteVeiculo.getCliente().getIdCliente()); // Assumindo que o idCliente é gerado na inserção do cliente
+            stmtVeiculo.executeUpdate();
+
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir cliente e veículo: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);
+            System.err.println("Erro ao inserir ClienteVeiculo: " + e.getMessage());
         }
     }
+    
+    // Método para listar todos os ClienteVeiculo
+    public List<ClienteVeiculo> listarClienteVeiculos() {
+        List<ClienteVeiculo> clienteVeiculos = new ArrayList<>();
+        String sql = "SELECT * FROM Cliente c INNER JOIN Veiculo v ON c.id = v.idCliente"; // Supondo que as tabelas estejam relacionadas por idCliente
 
-    // Listar todos os clientes
-    public List<ClienteVeiculo> listarClientes() {
-        List<ClienteVeiculo> clientes = new ArrayList<>();
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = DBConnect.getConnection();
-            String sql = "SELECT * FROM ClienteVeiculo";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
+        try (Connection conn = DBConnect.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+             
             while (rs.next()) {
-                ClienteVeiculo cliente = new ClienteVeiculo(
-                    rs.getInt("idCliente"),
+                // Criação dos objetos Cliente e Veiculo
+                Cliente cliente = new Cliente(
+                    rs.getInt("id"),
+                    rs.getBoolean("ativo"),
                     rs.getString("nome"),
-                    rs.getString("residencia"),
-                    rs.getString("contacto"),
-                    rs.getString("matricula"),
-                    rs.getString("corCarro"),
-                    rs.getString("tipoPagamento"),
-                    rs.getDouble("valorPorHora")
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("email")
                 );
-                clientes.add(cliente);
+
+                Veiculo veiculo = new Veiculo(
+                    rs.getString("placa"),
+                    rs.getString("modelo"),
+                    rs.getString("marca"),
+                    rs.getInt("ano"),
+                    rs.getString("cor"),
+                    rs.getString("tipo"),
+                    cliente
+                );
+
+                // Adiciona ClienteVeiculo à lista
+                clienteVeiculos.add(new ClienteVeiculo(cliente, veiculo));
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao listar clientes: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);
+            System.err.println("Erro ao listar ClienteVeiculos: " + e.getMessage());
         }
-        return clientes;
+
+        return clienteVeiculos;
     }
 
-    // Atualizar dados de um cliente
-    public void atualizarClienteVeiculo(ClienteVeiculo cliente) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();
-            String sql = "UPDATE ClienteVeiculo SET nome = ?, residencia = ?, contacto = ?, matricula = ?, corCarro = ?, tipoPagamento = ?, valorPorHora = ? WHERE idCliente = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getResidencia());
-            stmt.setString(3, cliente.getContacto());
-            stmt.setString(4, cliente.getMatricula());
-            stmt.setString(5, cliente.getCorCarro());
-            stmt.setString(6, cliente.getTipoPagamento());
-            stmt.setDouble(7, cliente.getValorPorHora());
-            stmt.setInt(8, cliente.getIdCliente());
-            stmt.executeUpdate();
-            System.out.println("Cliente atualizado com sucesso.");
+    // Método para buscar um ClienteVeiculo por ID do Cliente
+    public ClienteVeiculo buscarClienteVeiculo(int idCliente) {
+        ClienteVeiculo clienteVeiculo = null;
+        String sql = "SELECT * FROM Cliente c INNER JOIN Veiculo v ON c.id = v.idCliente WHERE c.id = ?";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
+            stmt.setInt(1, idCliente);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Cliente cliente = new Cliente(
+                    rs.getInt("id"),
+                    rs.getBoolean("ativo"),
+                    rs.getString("nome"),
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("email")
+                );
+
+                Veiculo veiculo = new Veiculo(
+                    rs.getString("placa"),
+                    rs.getString("modelo"),
+                    rs.getString("marca"),
+                         rs.getInt("ano"),
+                    rs.getString("cor"),
+                    rs.getString("tipo"),
+                    cliente
+                );
+
+                clienteVeiculo = new ClienteVeiculo(cliente, veiculo);
+            }
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar cliente: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);
+            System.err.println("Erro ao buscar ClienteVeiculo: " + e.getMessage());
+        }
+
+        return clienteVeiculo;
+    }
+
+    // Método para atualizar um ClienteVeiculo
+    public void atualizarClienteVeiculo(ClienteVeiculo clienteVeiculo) {
+        String sqlCliente = "UPDATE Cliente SET nome = ?, documento = ?, telefone = ?, email = ?, ativo = ? WHERE id = ?";
+        String sqlVeiculo = "UPDATE Veiculo SET modelo = ?, marca = ?, cor = ?, tipo = ? WHERE placa = ? AND idCliente = ?";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmtCliente = conn.prepareStatement(sqlCliente);
+             PreparedStatement stmtVeiculo = conn.prepareStatement(sqlVeiculo)) {
+             
+            // Atualizar Cliente
+            stmtCliente.setString(1, clienteVeiculo.getCliente().getNome());
+            stmtCliente.setString(2, clienteVeiculo.getCliente().getDocumento());
+            stmtCliente.setString(3, clienteVeiculo.getCliente().getTelefone());
+            stmtCliente.setString(4, clienteVeiculo.getCliente().getEmail());
+            stmtCliente.setBoolean(5, clienteVeiculo.getCliente().isAtivo());
+            stmtCliente.setInt(6, clienteVeiculo.getCliente().getIdCliente());
+            stmtCliente.executeUpdate();
+
+            // Atualizar Veículo
+            stmtVeiculo.setString(1, clienteVeiculo.getVeiculo().getModelo());
+            stmtVeiculo.setString(2, clienteVeiculo.getVeiculo().getMarca());
+            stmtVeiculo.setString(3, clienteVeiculo.getVeiculo().getCor());
+            stmtVeiculo.setString(4, clienteVeiculo.getVeiculo().getTipoVeiculo());
+            stmtVeiculo.setString(5, clienteVeiculo.getVeiculo().getPlaca());
+            stmtVeiculo.setInt(6, clienteVeiculo.getCliente().getIdCliente());
+            stmtVeiculo.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar ClienteVeiculo: " + e.getMessage());
         }
     }
 
-    // Deletar cliente
-    public void deletarCliente(int idCliente) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();
-            String sql = "DELETE FROM ClienteVeiculo WHERE idCliente = ?";
-            stmt = conn.prepareStatement(sql);
+    // Método para deletar um ClienteVeiculo (lógico)
+    public void deletarClienteVeiculo(int idCliente) {
+        String sql = "UPDATE Cliente SET ativo = false WHERE id = ?"; // Desativa o cliente
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
             stmt.setInt(1, idCliente);
             stmt.executeUpdate();
-            System.out.println("Cliente deletado com sucesso.");
+
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar cliente: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);
+            System.err.println("Erro ao deletar ClienteVeiculo: " + e.getMessage());
         }
     }
 }

@@ -1,5 +1,7 @@
 package Model.ModelDAO;
 
+import Model.EspacoEstacionamento;
+import Model.Vaga;
 import model.DBConnect;  // Usando a classe DBConnect para conexão
 import java.sql.*;
 
@@ -34,6 +36,48 @@ public class VagaDAO {
             System.err.println("Erro ao inserir vaga: " + e.getMessage());
         } finally {
             DBConnect.closeConnection(conn);  // Fecha a conexão
+        }
+    }
+    public static Vaga getVagaPorIdentificador(String identificador) {
+        Vaga vaga = null;
+        String sql = "SELECT * FROM vagas WHERE id = ?";  // Altere conforme o nome da sua tabela
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, identificador);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                vaga = new Vaga(
+                    rs.getString("id"),
+                    rs.getDouble("valor_por_hora"),
+                    rs.getBoolean("is_vip"),
+                    rs.getBoolean("ocupado"),
+                    null, // Iniciar como null e definir depois
+                    null // Hora de entrada inicialmente nula
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao obter vaga: " + e.getMessage());
+        }
+
+        return vaga;
+    }
+
+    // Método para atualizar a vaga no banco de dados
+    public static void atualizarVaga(Vaga vaga) {
+        String sql = "UPDATE vagas SET ocupado = ?, cliente_id = ?, hora_entrada = ? WHERE id = ?";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setBoolean(1, vaga.isOcupado());
+            stmt.setInt(2, vaga.getCliente() != null ? vaga.getCliente().getIdCliente() : null);
+            stmt.setTimestamp(3, vaga.getHoraEntrada() != null ? Timestamp.valueOf(vaga.getHoraEntrada()) : null);
+            stmt.setString(4, vaga.getIdentificador());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar vaga: " + e.getMessage());
         }
     }
 

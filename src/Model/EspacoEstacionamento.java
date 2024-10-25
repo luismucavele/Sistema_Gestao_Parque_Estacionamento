@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class EspacoEstacionamento implements Serializable {
+public class EspacoEstacionamento {
 
     private String identificador;
     private double valorPorHora;

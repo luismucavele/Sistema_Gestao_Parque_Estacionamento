@@ -1,111 +1,73 @@
-package model;
+package Model;
 
-import java.time.LocalDateTime;
+import Model.Cliente;
+import Model.Veiculo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteVeiculo {
-    private int idCliente;
-    private String nome;
-    private String residencia;
-    private String contacto;
-    private String matricula;  // Placa do veículo
-    private String corCarro;
-    private String tipoPagamento; // Tipo de pagamento (mensal, temporário, etc.)
-    private double valorPorHora; // Valor por hora do estacionamento
-    private LocalDateTime dataHoraEntrada;
-    private boolean estacionado;
+    private  Cliente cliente;
+    private Veiculo veiculo;
 
     // Construtor
-    public ClienteVeiculo(int idCliente, String nome, String residencia, String contacto, String matricula, 
-                          String corCarro, String tipoPagamento, double valorPorHora) {
-        this.idCliente = idCliente;
-        this.nome = nome;
-        this.residencia = residencia;
-        this.contacto = contacto;
-        this.matricula = matricula;
-        this.corCarro = corCarro;
-        this.tipoPagamento = tipoPagamento;
-        this.valorPorHora = valorPorHora;
-        this.estacionado = false; // Por padrão, o cliente não está estacionado
+    public ClienteVeiculo(Cliente cliente, Veiculo veiculo) {
+        this.cliente = cliente;
+        this.veiculo = veiculo;
     }
 
-    // Getters e Setters
-    public int getIdCliente() {
-        return idCliente;
+    // Métodos Getter e Setter para cliente
+    public Cliente  getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public String getNome() {
-        return nome;
+    // Métodos Getter e Setter para veiculo
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public String getResidencia() {
-        return residencia;
+    // Método para retornar informações completas do cliente e do veículo
+    public String getInformacoes() {
+        return "Cliente: " + cliente.getNome() + 
+               ", Veículo: " + veiculo.getPlaca() + 
+               " (" + veiculo.getModelo() + ", " + veiculo.getMarca() + ")";
     }
 
-    public void setResidencia(String residencia) {
-        this.residencia = residencia;
+    // Método para verificar se o veículo pertence ao cliente
+    public boolean pertenceAoCliente(Veiculo veiculo) {
+        return this.veiculo.equals(veiculo);
     }
 
-    public String getContacto() {
-        return contacto;
+    // Método para exibir detalhes do cliente e veículo
+    public void exibirDetalhes() {
+        System.out.println("Detalhes do Cliente e Veículo:");
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Documento: " + cliente.getDocumento());
+        System.out.println("Telefone: " + cliente.getTelefone());
+        System.out.println("Veículo: " + veiculo.getPlaca());
+        System.out.println("Modelo: " + veiculo.getModelo());
+        System.out.println("Marca: " + veiculo.getMarca());
+        System.out.println("Cor: " + veiculo.getCor());
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    // Método para verificar se o cliente está ativo
+    public boolean isClienteAtivo() {
+        return cliente.isStatus();
     }
 
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getCorCarro() {
-        return corCarro;
-    }
-
-    public void setCorCarro(String corCarro) {
-        this.corCarro = corCarro;
-    }
-
-    public String getTipoPagamento() {
-        return tipoPagamento;
-    }
-
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
-    }
-
-    public double getValorPorHora() {
-        return valorPorHora;
-    }
-
-    public void setValorPorHora(double valorPorHora) {
-        this.valorPorHora = valorPorHora;
-    }
-
-    public LocalDateTime getDataHoraEntrada() {
-        return dataHoraEntrada;
-    }
-
-    public void setDataHoraEntrada(LocalDateTime dataHoraEntrada) {
-        this.dataHoraEntrada = dataHoraEntrada;
-    }
-
-    public boolean isEstacionado() {
-        return estacionado;
-    }
-
-    public void setEstacionado(boolean estacionado) {
-        this.estacionado = estacionado;
+    // Método toString para facilitar a exibição das informações
+    @Override
+    public String toString() {
+        return "ClienteVeiculo{" +
+               "cliente=" + cliente +
+               ", veiculo=" + veiculo +
+               '}';
     }
 }
