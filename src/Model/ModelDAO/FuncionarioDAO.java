@@ -36,6 +36,39 @@ public class FuncionarioDAO {
     }
 }
 
+   //Listar funcionario
+   public List<Funcionario> carregarFuncionarios() {
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String sql = "SELECT * FROM funcionarios"; // Substitua pelo seu nome de tabela
+
+        try (PreparedStatement stmt = DBConnect.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                // Certifique-se de que os nomes das colunas correspondem aos da sua tabela
+                int idFuncionario = rs.getInt("idFuncionario");
+                String nome = rs.getString("nome");
+                String documento = rs.getString("documento");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String cargo = rs.getString("cargo");
+                double salario = rs.getDouble("salario");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                boolean ativo = rs.getBoolean("ativo");
+                String residencia = rs.getString("residencia");
+                String sexo = rs.getString("sexo");
+
+                // Criar um novo objeto Funcionario com os dados do banco de dados
+                Funcionario funcionario = new Funcionario(idFuncionario, nome, documento, telefone, email, cargo, salario, usuario, senha, ativo, residencia, sexo);
+                funcionarios.add(funcionario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Trate a exceção conforme necessário
+        }
+
+        return funcionarios;
+    }
 
     // Método para autenticar um funcionário com base no usuário e senha
    public Funcionario autenticarFuncionario(String usuario, String senha) {

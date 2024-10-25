@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnect {
@@ -31,6 +32,11 @@ public class DBConnect {
             throw new RuntimeException("Erro ao conectar ao banco de dados", e);
         }
         return connection;
+    }
+
+    
+    public static PreparedStatement prepareStatement(String sql) throws SQLException {
+        return getConnection().prepareStatement(sql);
     }
 
     public static void closeConnection(Connection conn) {
