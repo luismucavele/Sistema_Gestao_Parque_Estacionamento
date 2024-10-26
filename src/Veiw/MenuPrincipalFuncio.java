@@ -1516,7 +1516,11 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
     }//GEN-LAST:event_pesquisarpagadminActionPerformed
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-        System.exit(0);
+        this.dispose();
+    
+    // Cria e exibe a tela de login novamente
+    Login login = new Login();
+    login.setVisible(true);
     }//GEN-LAST:event_sairMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked

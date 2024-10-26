@@ -148,14 +148,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         cbtipocliente = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        spinnervalor = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
-        pequeno = new javax.swing.JRadioButton();
-        medio = new javax.swing.JRadioButton();
-        grande = new javax.swing.JRadioButton();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
         btnparquearadmin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaParquear = new javax.swing.JTable();
@@ -165,8 +158,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         Disparquear = new javax.swing.JButton();
         messagemTLparquear = new javax.swing.JLabel();
         lbEspacoRestante = new javax.swing.JLabel();
-        ComboBoxvagas = new javax.swing.JComboBox<>();
+        cbxvagas = new javax.swing.JComboBox<>();
         ComboBoxTipopagamento = new javax.swing.JComboBox<>();
+        jLabel60 = new javax.swing.JLabel();
+        txtMarca = new javax.swing.JTextField();
+        txtvalor = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        cbxporte = new javax.swing.JComboBox<>();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -224,12 +223,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel83 = new javax.swing.JLabel();
         tipoclientepagament = new javax.swing.JComboBox<>();
         jLabel84 = new javax.swing.JLabel();
-        jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
         jLabel88 = new javax.swing.JLabel();
         jSpinner3 = new javax.swing.JSpinner();
         jButton10 = new javax.swing.JButton();
@@ -238,6 +231,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel106 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
+        cbxporte1 = new javax.swing.JComboBox<>();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
@@ -987,7 +981,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         jLabel34.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Descrição do Veículo:");
+        jLabel34.setText("Modelo do Veículo:");
         P3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 184, 154, -1));
 
         txtdescricaoa.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -1039,55 +1033,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(0, 0, 0));
         jLabel39.setText("Valor:");
-        P3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, -1, -1));
-
-        spinnervalor.setBorder(null);
-        P3.add(spinnervalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 130, 30));
+        P3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, -1, -1));
 
         jLabel40.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("Porte:");
-        P3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, -1, -1));
-
-        pequeno.setBackground(new java.awt.Color(18, 30, 49));
-        pequeno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pequenoActionPerformed(evt);
-            }
-        });
-        P3.add(pequeno, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, -1, -1));
-
-        medio.setBackground(new java.awt.Color(18, 30, 49));
-        P3.add(medio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
-
-        grande.setBackground(new java.awt.Color(18, 30, 49));
-        grande.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grandeActionPerformed(evt);
-            }
-        });
-        P3.add(grande, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 260, -1, -1));
-
-        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_20px.png"))); // NOI18N
-        P3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
-
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_shuttle_20px.png"))); // NOI18N
-        P3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 260, -1, -1));
-
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_truck_20px.png"))); // NOI18N
-        P3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 260, -1, -1));
+        P3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
 
         btnparquearadmin.setBackground(new java.awt.Color(102, 255, 102));
         btnparquearadmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnparquearadmin.setForeground(new java.awt.Color(0, 0, 0));
-        btnparquearadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_parcking_ticket_20px_1.png"))); // NOI18N
+        btnparquearadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_parcking_ticket_24px.png"))); // NOI18N
         btnparquearadmin.setText("PARQUEAR");
         btnparquearadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnparquearadminActionPerformed(evt);
             }
         });
-        P3.add(btnparquearadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 295, 197, -1));
+        P3.add(btnparquearadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 160, -1));
 
         tabelaParquear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         tabelaParquear.setModel(new javax.swing.table.DefaultTableModel(
@@ -1135,14 +1098,16 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         P3.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(1101, 12, -1, -1));
 
         Disparquear.setBackground(new java.awt.Color(51, 51, 255));
+        Disparquear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         Disparquear.setForeground(new java.awt.Color(255, 255, 255));
+        Disparquear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_tollbooth_24px.png"))); // NOI18N
         Disparquear.setText("Disparquear");
         Disparquear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DisparquearActionPerformed(evt);
             }
         });
-        P3.add(Disparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 295, 147, 30));
+        P3.add(Disparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 360, 147, 30));
 
         messagemTLparquear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         messagemTLparquear.setForeground(new java.awt.Color(0, 0, 0));
@@ -1151,13 +1116,33 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         lbEspacoRestante.setText("jLabel60");
         P3.add(lbEspacoRestante, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
 
-        ComboBoxvagas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        P3.add(ComboBoxvagas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 150, 30));
+        cbxvagas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        P3.add(cbxvagas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 150, 30));
 
         ComboBoxTipopagamento.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         ComboBoxTipopagamento.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxTipopagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numerario", "Cartão", "Transferencia" }));
-        P3.add(ComboBoxTipopagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 124, 300, 30));
+        P3.add(ComboBoxTipopagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 340, 30));
+
+        jLabel60.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel60.setText("Marca");
+        P3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
+        P3.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 340, 30));
+        P3.add(txtvalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 160, 30));
+
+        jLabel42.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel42.setText("Tipo de pagamento");
+        P3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
+
+        jLabel61.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel61.setText("Vaga");
+        P3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 230, -1, -1));
+
+        cbxporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+        P3.add(cbxporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, 300, 30));
 
         Paineis.addTab("tab2", P3);
 
@@ -1324,7 +1309,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Usuario", "Telefone", "Senha", "Numero BI", "Email", "Salario", "Residencia", "Sexo", "Tipo de funcionario", "Status"
+                "idFuncionario", "nome", "documento", "telefone", "email", "cargo", "salario", "usuario", "senha", "ativo", "residencia", "sexo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1437,18 +1422,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel84.setForeground(new java.awt.Color(0, 0, 0));
         jLabel84.setText("Porte:");
 
-        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_20px.png"))); // NOI18N
-
-        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_shuttle_20px.png"))); // NOI18N
-
-        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_truck_20px.png"))); // NOI18N
-
-        jRadioButton4.setBackground(new java.awt.Color(18, 30, 49));
-
-        jRadioButton5.setBackground(new java.awt.Color(18, 30, 49));
-
-        jRadioButton6.setBackground(new java.awt.Color(18, 30, 49));
-
         jLabel88.setBackground(new java.awt.Color(0, 0, 0));
         jLabel88.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel88.setForeground(new java.awt.Color(0, 0, 0));
@@ -1488,6 +1461,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        cbxporte1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+
         javax.swing.GroupLayout P5Layout = new javax.swing.GroupLayout(P5);
         P5.setLayout(P5Layout);
         P5Layout.setHorizontalGroup(
@@ -1496,7 +1471,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel84)
+                                .addGap(86, 86, 86)
+                                .addComponent(cbxporte1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(P5Layout.createSequentialGroup()
                                 .addComponent(jLabel80)
                                 .addGap(18, 18, 18)
@@ -1516,21 +1496,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel83)
                                 .addGap(44, 44, 44)
                                 .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel84)
-                                .addGap(86, 86, 86)
-                                .addComponent(jLabel85)
-                                .addGap(10, 10, 10)
-                                .addComponent(jRadioButton4)
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel86)
-                                .addGap(10, 10, 10)
-                                .addComponent(jRadioButton5)
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel87)
-                                .addGap(10, 10, 10)
-                                .addComponent(jRadioButton6))
                             .addGroup(P5Layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addComponent(jLabel88)
@@ -1612,16 +1577,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel83))
                             .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(33, 33, 33)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel84)
-                            .addComponent(jLabel85)
-                            .addComponent(jRadioButton4)
-                            .addComponent(jLabel86)
-                            .addComponent(jRadioButton5)
-                            .addComponent(jLabel87)
-                            .addComponent(jRadioButton6))
-                        .addGap(39, 39, 39)
+                            .addComponent(cbxporte1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel88)
                             .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2188,7 +2148,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ParquearMouseClicked
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-        System.exit(0);
+         this.dispose();
+    
+    // Cria e exibe a tela de login novamente
+    Login login = new Login();
+    login.setVisible(true);
     }//GEN-LAST:event_sairMouseClicked
 
     private void funcionáriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionáriosMouseClicked
@@ -2215,17 +2179,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescricaoaActionPerformed
 
-    private void grandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grandeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_grandeActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void pesquisarpagadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarpagadminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pesquisarpagadminActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         atualizarFuncionario();
@@ -2242,10 +2198,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private void jLabel109MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel109MouseClicked
         this.setState(MenuPrincipalAdmin.ICONIFIED);
     }//GEN-LAST:event_jLabel109MouseClicked
-
-    private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
-        this.setState(MenuPrincipalAdmin.ICONIFIED);
-    }//GEN-LAST:event_jLabel110MouseClicked
 
     private void jLabel113MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel113MouseClicked
         this.setState(MenuPrincipalAdmin.ICONIFIED);
@@ -2293,17 +2245,21 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnparquearadminActionPerformed
 
-    private void pequenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pequenoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pequenoActionPerformed
-
     private void DisparquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisparquearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DisparquearActionPerformed
 
+    private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
+        this.setState(MenuPrincipalAdmin.ICONIFIED);
+    }//GEN-LAST:event_jLabel110MouseClicked
+
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void pesquisarpagadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarpagadminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesquisarpagadminActionPerformed
 
     //Validacao de campos 
     private boolean validarCampos() {
@@ -2502,14 +2458,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 // Método auxiliar para criar o veículo associado ao cliente
 private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
         String placa = txtplaca.getText(); // Obtém a placa do campo de texto
-        String modelo = txtmodelo.getText(); // Obtém o modelo do campo de texto
-        String marca = txtmarca.getText();
-        String ano = txtModelo.getText();// Obtém a marca do campo de texto
+        String modelo = txtdescricaoa.getText(); // Obtém o modelo do campo de texto
+        String marca = txtMarca.getText();
         String cor = txtcor.getText(); // Obtém a cor do campo de texto
-        String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
+        String tipoVeiculo = (String) cbxporte.getSelectedItem(); // Obtém o tipo de veículo da combobox
 
         // Cria e retorna o veículo associado ao cliente
-        return new Veiculo(placa, modelo, marca, ano, cor, tipoVeiculo, cliente);
+        return new Veiculo(placa, modelo, marca, cor, tipoVeiculo);
     }
 
 // Método para gerar ID único (exemplo simples)
@@ -2565,7 +2520,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
         return count;
     }
 
-    //Metodo atualizar sepacos disponiveis
+    //Metodo atualizar espacos disponiveis
     private void atualizarEspacosDisponiveis() {
         cbxPorte.removeAllItems();
         try {
@@ -2729,20 +2684,21 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     }
 
     private void buscarFuncionario() {
-        try {
-            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText()));
-            if (funcionario != null) {
-                preencherCampos(funcionario);
-            } else {
-                messagentxt.setText("Funcionário não encontrado");
-                //JOptionPane.showMessageDialog(this, "Funcionário não encontrado.");
-            }
-        } catch (Exception ex) {
-            messagentxt.setText("Erro ao buscar funcionário");
-            //JOptionPane.showMessageDialog(this, "Erro ao buscar funcionário: " + ex.getMessage());
+    try {
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText().trim()));
+        if (funcionario != null) {
+            preencherCampos(funcionario);
+        } else {
+            messagentxt.setText("Funcionário não encontrado");
         }
+    } catch (NumberFormatException ex) {
+        messagentxt.setText("ID inválido");
+    } catch (Exception ex) {
+        messagentxt.setText("Erro ao buscar funcionário");
     }
+}
+
 
     private void preencherCampos(Funcionario funcionario) {
         txtId.setText(String.valueOf(funcionario.getIdFuncionario()));
@@ -2797,7 +2753,6 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxTipopagamento;
-    private javax.swing.JComboBox<String> ComboBoxvagas;
     private javax.swing.JLabel Descricao;
     private javax.swing.JButton Disparquear;
     private javax.swing.JLabel Home;
@@ -2820,8 +2775,10 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnparquearadmin;
     private javax.swing.JComboBox<String> cbtipocliente;
+    private javax.swing.JComboBox<String> cbxporte;
+    private javax.swing.JComboBox<String> cbxporte1;
+    private javax.swing.JComboBox<String> cbxvagas;
     private javax.swing.JLabel funcionários;
-    private javax.swing.JRadioButton grande;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2903,9 +2860,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
@@ -2924,6 +2879,8 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
@@ -2946,9 +2903,6 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
@@ -2970,9 +2924,6 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2989,21 +2940,19 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbEspacoRestante;
-    private javax.swing.JRadioButton medio;
     private javax.swing.JLabel messagemTLparquear;
     private javax.swing.JLabel messagentxt;
     private javax.swing.JTextField nomepagament;
-    private javax.swing.JRadioButton pequeno;
     private javax.swing.JButton pesquisarpagadmin;
     private javax.swing.JTextField placapagament;
     private javax.swing.JLabel sair;
-    private javax.swing.JSpinner spinnervalor;
     private javax.swing.JCheckBox status;
     private javax.swing.JTable tabelaParquear;
     private javax.swing.JTable tbFuncionario;
     private javax.swing.JComboBox<String> tipoclientepagament;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeuser;
     private javax.swing.JTextField txtNuit;
@@ -3020,5 +2969,6 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JTextField txtnomepropetarioa;
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefoneparquear;
+    private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
 }
