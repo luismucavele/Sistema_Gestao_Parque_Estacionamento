@@ -5,6 +5,7 @@ import Model.ClienteVeiculo;
 import Model.Veiculo;
 import model.DBConnect; 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,8 +73,11 @@ public class ClienteVeiculoDAO {
                     cliente
                 );
 
+                // Definir o horário de entrada
+                LocalDateTime horaEntrada = LocalDateTime.now();
+
                 // Adiciona ClienteVeiculo à lista
-                clienteVeiculos.add(new ClienteVeiculo(cliente, veiculo));
+                clienteVeiculos.add(new ClienteVeiculo(cliente, veiculo, horaEntrada));
             }
         } catch (SQLException e) {
             System.err.println("Erro ao listar ClienteVeiculos: " + e.getMessage());
@@ -107,13 +111,16 @@ public class ClienteVeiculoDAO {
                     rs.getString("placa"),
                     rs.getString("modelo"),
                     rs.getString("marca"),
-                         rs.getInt("ano"),
+                    rs.getInt("ano"),
                     rs.getString("cor"),
                     rs.getString("tipo"),
                     cliente
                 );
 
-                clienteVeiculo = new ClienteVeiculo(cliente, veiculo);
+                // Definir o horário de entrada
+                LocalDateTime horaEntrada = LocalDateTime.now();
+
+                clienteVeiculo = new ClienteVeiculo(cliente, veiculo, horaEntrada);
             }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar ClienteVeiculo: " + e.getMessage());

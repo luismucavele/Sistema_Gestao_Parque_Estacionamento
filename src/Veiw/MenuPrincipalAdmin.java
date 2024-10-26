@@ -4,9 +4,9 @@
  */
 package Veiw;
 
-import Mode.ModelDAO.FuncionarioDAO;
 import Model.Cliente;
-import Model.ClienteVeiculo;
+import Model.ClienteVaga;
+import Model.ModelDAO.FuncionarioDAO;
 import Model.EspacoEstacionamento;
 import Model.Estacionamento;
 import Model.Funcionario;
@@ -14,7 +14,6 @@ import Model.ModelDAO.ClienteVagaDAO;
 import Model.ModelDAO.EspacoEstacionamentoDAO;
 import Model.ModelDAO.FuncionarioDAO;
 import Model.ModelDAO.VeiculoDAO;
-import Model.Veiculo;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -29,8 +28,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
-import model.ClienteVeiculo;
-import model.dao.ClienteVeiculoDAO;
+import Model.ClienteVeiculo;
+import Model.ModelDAO.ClienteVeiculoDAO;
+import Model.Vaga;
+import Model.Veiculo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -134,14 +136,26 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        txtnomepropetarioa = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
+        txtdescricaoa = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
+        txtplaca = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
+        txtcor = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
+        txttelefoneparquear = new javax.swing.JTextField();
         cbtipocliente = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        spinnervalor = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
+        pequeno = new javax.swing.JRadioButton();
+        medio = new javax.swing.JRadioButton();
+        grande = new javax.swing.JRadioButton();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
         btnparquearadmin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaParquear = new javax.swing.JTable();
@@ -151,17 +165,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         Disparquear = new javax.swing.JButton();
         messagemTLparquear = new javax.swing.JLabel();
         lbEspacoRestante = new javax.swing.JLabel();
-        cbxvagas = new javax.swing.JComboBox<>();
-        txtmarca = new javax.swing.JTextField();
-        jLabel60 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel68 = new javax.swing.JLabel();
-        txtnomepropetarioa = new javax.swing.JTextField();
-        txtdescricaoa = new javax.swing.JTextField();
-        txtplaca = new javax.swing.JTextField();
-        txtcor = new javax.swing.JTextField();
-        txttelefoneparquear = new javax.swing.JTextField();
-        cbxPorte = new javax.swing.JComboBox<>();
+        ComboBoxvagas = new javax.swing.JComboBox<>();
+        ComboBoxTipopagamento = new javax.swing.JComboBox<>();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -219,17 +224,20 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel83 = new javax.swing.JLabel();
         tipoclientepagament = new javax.swing.JComboBox<>();
         jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
         jLabel88 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
         jButton10 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jLabel106 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        cbxTipopagamento = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
-        cbxPorte1 = new javax.swing.JComboBox<>();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
@@ -953,98 +961,170 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         Paineis.addTab("tab1", P2);
 
         P3.setBackground(new java.awt.Color(236, 240, 241));
+        P3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
+        P3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 24, -1, 41));
 
         jLabel31.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("Controle de estacionamento");
+        P3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 24, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Administrador:");
+        P3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 49, -1, -1));
 
         jLabel33.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Nome do Propetario:");
+        P3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 100, 151, -1));
+
+        txtnomepropetarioa.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtnomepropetarioa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P3.add(txtnomepropetarioa, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 128, 258, 30));
 
         jLabel34.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Modelo do Veículo:");
+        jLabel34.setText("Descrição do Veículo:");
+        P3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 184, 154, -1));
+
+        txtdescricaoa.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtdescricaoa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtdescricaoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdescricaoaActionPerformed(evt);
+            }
+        });
+        P3.add(txtdescricaoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 212, 258, 30));
 
         jLabel35.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText(" Placa:");
+        P3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 261, -1, -1));
+
+        txtplaca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P3.add(txtplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 295, 258, 30));
 
         jLabel36.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Cor:");
+        P3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 100, 41, -1));
+
+        txtcor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        txtcor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P3.add(txtcor, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 128, 264, 30));
 
         jLabel37.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setText("Telefone:");
+        P3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 184, -1, -1));
+
+        txttelefoneparquear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P3.add(txttelefoneparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 213, 264, 30));
 
         cbtipocliente.setBackground(new java.awt.Color(255, 255, 255));
         cbtipocliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cbtipocliente.setForeground(new java.awt.Color(0, 0, 0));
         cbtipocliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
+        P3.add(cbtipocliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 295, 264, 30));
 
         jLabel38.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Tipo de Cliente:");
+        P3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 261, -1, -1));
 
         jLabel39.setBackground(new java.awt.Color(0, 0, 0));
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(0, 0, 0));
         jLabel39.setText("Valor:");
+        P3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, -1, -1));
+
+        spinnervalor.setBorder(null);
+        P3.add(spinnervalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 130, 30));
 
         jLabel40.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("Porte:");
+        P3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, -1, -1));
+
+        pequeno.setBackground(new java.awt.Color(18, 30, 49));
+        pequeno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pequenoActionPerformed(evt);
+            }
+        });
+        P3.add(pequeno, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, -1, -1));
+
+        medio.setBackground(new java.awt.Color(18, 30, 49));
+        P3.add(medio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
+
+        grande.setBackground(new java.awt.Color(18, 30, 49));
+        grande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grandeActionPerformed(evt);
+            }
+        });
+        P3.add(grande, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 260, -1, -1));
+
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_20px.png"))); // NOI18N
+        P3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_shuttle_20px.png"))); // NOI18N
+        P3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 260, -1, -1));
+
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_truck_20px.png"))); // NOI18N
+        P3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 260, -1, -1));
 
         btnparquearadmin.setBackground(new java.awt.Color(102, 255, 102));
         btnparquearadmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnparquearadmin.setForeground(new java.awt.Color(0, 0, 0));
-        btnparquearadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_parcking_ticket_24px.png"))); // NOI18N
+        btnparquearadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_parcking_ticket_20px_1.png"))); // NOI18N
         btnparquearadmin.setText("PARQUEAR");
         btnparquearadmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnparquearadminActionPerformed(evt);
             }
         });
+        P3.add(btnparquearadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 295, 197, -1));
 
         tabelaParquear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         tabelaParquear.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Modelo", "Placa", "Cor", "Marca", "Telefone", "Tipo de cliente", "Valor", "Data entrada", "Porte"
+                "Nome", "Descricao", "Placa", "Cor", "Telefone", "Tipo de cliente", "Valor", "Data entrada", "Porte"
             }
         ));
         jScrollPane1.setViewportView(tabelaParquear);
 
+        P3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 401, 1102, 245));
+
         jLabel66.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(0, 0, 0));
         jLabel66.setText("Espaços Restantes:");
+        P3.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 355, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Parquear");
+        P3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 70, -1, -1));
 
         jLabel108.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel108.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1052,187 +1132,32 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 jLabel108MouseClicked(evt);
             }
         });
+        P3.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(1101, 12, -1, -1));
 
         Disparquear.setBackground(new java.awt.Color(51, 51, 255));
-        Disparquear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        Disparquear.setForeground(new java.awt.Color(0, 0, 0));
-        Disparquear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_theft_24px.png"))); // NOI18N
+        Disparquear.setForeground(new java.awt.Color(255, 255, 255));
         Disparquear.setText("Disparquear");
         Disparquear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DisparquearActionPerformed(evt);
             }
         });
+        P3.add(Disparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 295, 147, 30));
 
-        messagemTLparquear.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        messagemTLparquear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         messagemTLparquear.setForeground(new java.awt.Color(0, 0, 0));
+        P3.add(messagemTLparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 24, 640, 19));
 
-        cbxvagas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lbEspacoRestante.setText("jLabel60");
+        P3.add(lbEspacoRestante, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
 
-        jLabel60.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel60.setText("Marca");
+        ComboBoxvagas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        P3.add(ComboBoxvagas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 150, 30));
 
-        jLabel68.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel68.setText("Vagas Disponives");
-
-        cbxPorte.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        cbxPorte.setForeground(new java.awt.Color(255, 255, 255));
-        cbxPorte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesado", "Ligeiro" }));
-
-        javax.swing.GroupLayout P3Layout = new javax.swing.GroupLayout(P3);
-        P3.setLayout(P3Layout);
-        P3Layout.setHorizontalGroup(
-            P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P3Layout.createSequentialGroup()
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel30)
-                        .addGap(18, 18, 18)
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel32))
-                        .addGap(83, 83, 83)
-                        .addComponent(messagemTLparquear, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel108))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(536, 536, 536)
-                        .addComponent(jLabel2))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(338, 338, 338)
-                        .addComponent(jLabel38))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabel37)
-                        .addGap(327, 327, 327)
-                        .addComponent(jLabel39)
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel68))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addComponent(txtnomepropetarioa, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(txtcor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(120, 120, 120)
-                                .addComponent(cbtipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addComponent(txtdescricaoa, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(txttelefoneparquear, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(120, 120, 120)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbxvagas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel66)
-                                .addGap(1, 1, 1)
-                                .addComponent(lbEspacoRestante, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel35))
-                                .addGap(80, 80, 80)
-                                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel60)
-                                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(110, 110, 110)
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel40)
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addComponent(btnparquearadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(Disparquear, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addComponent(cbxPorte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(7, 7, 7)))))
-                .addGap(34, 34, 34))
-        );
-        P3Layout.setVerticalGroup(
-            P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel108)
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(P3Layout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel32))
-                            .addComponent(messagemTLparquear, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(5, 5, 5)
-                .addComponent(jLabel2)
-                .addGap(6, 6, 6)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel36)
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel38)))
-                .addGap(4, 4, 4)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtnomepropetarioa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbtipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel37)
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel39)
-                            .addComponent(jLabel68))))
-                .addGap(4, 4, 4)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtdescricaoa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttelefoneparquear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxvagas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel60))
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel40)))
-                .addGap(3, 3, 3)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbxPorte, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(txtplaca)
-                    .addComponent(txtmarca, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(20, 20, 20)
-                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(P3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel66))
-                    .addComponent(lbEspacoRestante, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnparquearadmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Disparquear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        ComboBoxTipopagamento.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        ComboBoxTipopagamento.setForeground(new java.awt.Color(255, 255, 255));
+        ComboBoxTipopagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numerario", "Cartão", "Transferencia" }));
+        P3.add(ComboBoxTipopagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 124, 300, 30));
 
         Paineis.addTab("tab2", P3);
 
@@ -1442,7 +1367,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         status.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         status.setText("Status");
-        P4.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 410, -1, -1));
+        P4.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 330, -1, -1));
 
         messagentxt.setText("jLabel60");
         P4.add(messagentxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 650, -1));
@@ -1512,10 +1437,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel84.setForeground(new java.awt.Color(0, 0, 0));
         jLabel84.setText("Porte:");
 
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_20px.png"))); // NOI18N
+
+        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_shuttle_20px.png"))); // NOI18N
+
+        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_truck_20px.png"))); // NOI18N
+
+        jRadioButton4.setBackground(new java.awt.Color(18, 30, 49));
+
+        jRadioButton5.setBackground(new java.awt.Color(18, 30, 49));
+
+        jRadioButton6.setBackground(new java.awt.Color(18, 30, 49));
+
         jLabel88.setBackground(new java.awt.Color(0, 0, 0));
         jLabel88.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel88.setForeground(new java.awt.Color(0, 0, 0));
         jLabel88.setText("Valor:");
+
+        jSpinner3.setBorder(null);
 
         jButton10.setBackground(new java.awt.Color(51, 51, 51));
         jButton10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1532,6 +1471,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_print_20px.png"))); // NOI18N
         jButton11.setText("Imprimir");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jLabel106.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 0, 0));
@@ -1544,84 +1488,75 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel42.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel42.setText("Tipo de Pagamento");
-
-        cbxTipopagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxTipopagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxTipopagamentoActionPerformed(evt);
-            }
-        });
-
-        cbxPorte1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        cbxPorte1.setForeground(new java.awt.Color(255, 255, 255));
-        cbxPorte1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesado", "Ligeiro" }));
-
         javax.swing.GroupLayout P5Layout = new javax.swing.GroupLayout(P5);
         P5.setLayout(P5Layout);
         P5Layout.setHorizontalGroup(
             P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P5Layout.createSequentialGroup()
-                        .addComponent(jLabel80)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addGap(37, 37, 37)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P5Layout.createSequentialGroup()
+                                .addComponent(jLabel80)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
                                 .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
                                 .addComponent(jLabel82)
                                 .addGap(58, 58, 58)
                                 .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(P5Layout.createSequentialGroup()
-                                    .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel42)
-                                        .addGroup(P5Layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel106)
-                                                .addComponent(jLabel88))))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(P5Layout.createSequentialGroup()
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(cbxTipopagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(P5Layout.createSequentialGroup()
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 9, Short.MAX_VALUE))))
-                                .addGroup(P5Layout.createSequentialGroup()
-                                    .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel83)
-                                        .addComponent(jLabel84))
-                                    .addGap(44, 44, 44)
-                                    .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tipoclientepagament, 0, 260, Short.MAX_VALUE)
-                                        .addComponent(cbxPorte1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                .addGap(30, 30, 30)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel83)
+                                .addGap(44, 44, 44)
+                                .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel84)
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel85)
+                                .addGap(10, 10, 10)
+                                .addComponent(jRadioButton4)
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel86)
+                                .addGap(10, 10, 10)
+                                .addComponent(jRadioButton5)
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel87)
+                                .addGap(10, 10, 10)
+                                .addComponent(jRadioButton6))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel88)
+                                .addGap(87, 87, 87)
+                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel106)
+                                .addGap(84, 84, 84)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(jLabel79))
+                            .addComponent(pesquisarpagadmin))
+                        .addGap(28, 28, 28)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel79))
-                    .addComponent(pesquisarpagadmin))
-                .addGap(70, 70, 70)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(400, 400, 400)
+                        .addGap(830, 830, 830)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(P5Layout.createSequentialGroup()
@@ -1651,19 +1586,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel79)
-                                .addGap(36, 36, 36)
-                                .addComponent(pesquisarpagadmin))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(1, 1, 1)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton11))
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1689,24 +1612,36 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel83))
                             .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(40, 40, 40)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel84)
-                            .addComponent(cbxPorte1))
-                        .addGap(27, 27, 27)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel42)
-                            .addComponent(cbxTipopagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton10)
+                            .addComponent(jLabel85)
+                            .addComponent(jRadioButton4)
+                            .addComponent(jLabel86)
+                            .addComponent(jRadioButton5)
+                            .addComponent(jLabel87)
+                            .addComponent(jRadioButton6))
+                        .addGap(39, 39, 39)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel88)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel106)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))))
+                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton10))
+                        .addGap(40, 40, 40)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel106))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addComponent(jLabel79)
+                        .addGap(36, 36, 36)
+                        .addComponent(pesquisarpagadmin))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
+                .addComponent(jButton11))
         );
 
         Paineis.addTab("tab4", P5);
@@ -2276,6 +2211,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         Paineis.setSelectedComponent(P8);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void txtdescricaoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescricaoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescricaoaActionPerformed
+
+    private void grandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grandeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_grandeActionPerformed
+
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -2350,13 +2293,17 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnparquearadminActionPerformed
 
+    private void pequenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pequenoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pequenoActionPerformed
+
     private void DisparquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisparquearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DisparquearActionPerformed
 
-    private void cbxTipopagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipopagamentoActionPerformed
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxTipopagamentoActionPerformed
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     //Validacao de campos 
     private boolean validarCampos() {
@@ -2419,18 +2366,18 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validarCampos()) {
-                    Cliente cliente = criarCliente();  // Crie o cliente a partir dos dados dos campos de texto
+                    ClienteVeiculo clientes = criarCliente();  // Crie o cliente a partir dos dados dos campos de texto
 
                     // Obtenha o espaço de estacionamento selecionado
                     String espacoSelecionado = (String) cbxvagas.getSelectedItem();
 
                     if (espacoSelecionado != null) {
                         // Busca o espaço de estacionamento por seu identificador
-                        EspacoEstacionamento espaco = estacionamento.getEspacoPorIdentificador(espacoSelecionado);
+                        EspacoEstacionamento espaco = Vaga.getEspacoPorIdentificador(espacoSelecionado);
 
-                        if (espaco != null && espaco.ocupar(cliente)) {
-                            cliente.setEstacionado(true);
-                            cliente.setDataHoraEntrada(LocalDateTime.now());
+                        if (espaco != null && espaco.ocupar(clientes)) {
+                            clientes.setEstacionado(true);
+                            clientes.setHoraEntradaEntrada(LocalDateTime.now());
 
                             // Salvar o veículo no banco de dados (inserir detalhes do cliente no sistema)
                             VeiculoDAO veiculoDAO = new VeiculoDAO();
@@ -2449,7 +2396,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             clienteVagaDAO.inserirClienteVaga(
                                     cliente.getIdCliente(),
                                     espacoSelecionado,
-                                    Timestamp.valueOf(cliente.getDataHoraEntrada()),
+                                    Timestamp.valueOf(cliente.getHoraEntradaEntrada()),
                                     null
                             );
 
@@ -2493,7 +2440,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         if (cliente != null) {
                             LocalDateTime saida = LocalDateTime.now();  // Hora atual de saída
                             double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
-                            Duration duracao = Duration.between(cliente.getDataHoraEntrada(), saida);
+                            Duration duracao = Duration.between(cliente.getHoraEntradaEntrada(), saida);
                             long horas = duracao.toHours();
                             long minutos = duracao.toMinutes() % 60;
                             String tempoEstacionado = horas + " horas e " + minutos + " minutos";
@@ -2506,7 +2453,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
                                 // Atualiza a saída no banco de dados
                                 ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                                clienteVagaDAO.atualizarClienteVaga(cliente.getIdCliente(), espacoCliente, Timestamp.valueOf(cliente.getDataHoraEntrada()), Timestamp.valueOf(saida));
+                                clienteVagaDAO.atualizarClienteVaga(cliente.getIdCliente(), espacoCliente, Timestamp.valueOf(cliente.getHoraEntradaEntrada()), Timestamp.valueOf(saida));
 
                                 // Atualiza a tabela e os espaços disponíveis
                                 atualizarTabela();
@@ -2528,40 +2475,42 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
     //Metodo criar cliente
     private ClienteVeiculo criarCliente() {
-    // Leitura dos dados do cliente
-    Cliente cliente = criarClienteDoFormulario();
+        // Leitura dos dados do cliente
+        Cliente cliente = criarClienteDoFormulario();
 
-    // Leitura dos dados do veículo associado ao cliente
-    Veiculo veiculo = criarVeiculoDoFormulario(cliente);
+        // Leitura dos dados do veículo associado ao cliente
+        Veiculo veiculo = criarVeiculoDoFormulario(cliente);
 
-    // Criando o ClienteVeiculo a partir do cliente e veículo
-    return new ClienteVeiculo(cliente, veiculo);
-}
+        // Criando o ClienteVeiculo a partir do cliente e veículo
+        return new ClienteVeiculo(cliente, veiculo);
+    }
 
 // Método auxiliar para criar o cliente
-private Cliente criarClienteDoFormulario() {
-    int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
-    String nome = nomeTextField.getText(); // Obtém o nome do campo de texto
-    String documento = documentoTextField.getText(); // Obtém o documento do campo de texto
-    String telefone = telefoneTextField.getText(); // Obtém o telefone do campo de texto
-    boolean status = true; // Por padrão, o cliente é ativo
+    private Cliente criarClienteDoFormulario() {
+        int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
+        String nome = nomeTextField.getText(); // Obtém o nome do campo de texto
+        String documento = documentoTextField.getText(); // Obtém o documento do campo de texto
+        String telefone = telefoneTextField.getText(); // Obtém o telefone do campo de texto
+        boolean status = true; // Por padrão, o cliente é ativo
 
-    return new Cliente(idCliente, status,0 nome, documento, telefone); // Retorna o cliente criado
+        return new Cliente(idCliente, status, 0 nome, documento, telefone
+    
+
+    ); // Retorna o cliente criado
 }
 
 // Método auxiliar para criar o veículo associado ao cliente
 private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
-    String placa = txtplaca.getText(); // Obtém a placa do campo de texto
-    String modelo = txtmodelo.getText(); // Obtém o modelo do campo de texto
-    String marca = txtmarca.getText();
-    String ano = txtModelo.getText();// Obtém a marca do campo de texto
-    String cor = txtcor.getText(); // Obtém a cor do campo de texto
-    String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
+        String placa = txtplaca.getText(); // Obtém a placa do campo de texto
+        String modelo = txtmodelo.getText(); // Obtém o modelo do campo de texto
+        String marca = txtmarca.getText();
+        String ano = txtModelo.getText();// Obtém a marca do campo de texto
+        String cor = txtcor.getText(); // Obtém a cor do campo de texto
+        String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
 
-    // Cria e retorna o veículo associado ao cliente
-    return new Veiculo(placa, modelo, marca, ano, cor, tipoVeiculo, cliente);
-}
-
+        // Cria e retorna o veículo associado ao cliente
+        return new Veiculo(placa, modelo, marca, ano, cor, tipoVeiculo, cliente);
+    }
 
 // Método para gerar ID único (exemplo simples)
     private int gerarIdClienteUnico() {
@@ -2570,36 +2519,35 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     }
 
     //Metodo atualizar tabela 
-  private void atualizarTabela() {
-    // Obtém o modelo da tabela como DefaultTableModel
-    DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear.getModel();
-    
-    // Limpa todas as linhas existentes do modelo da tabela
-    tableModel.setRowCount(0);
+    private void atualizarTabela() {
+        // Obtém o modelo da tabela como DefaultTableModel
+        DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear.getModel();
 
-    // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
-    try {
-        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-        List<ClienteVaga> clientesEstacionados = clienteVagaDAO.buscarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
+        // Limpa todas as linhas existentes do modelo da tabela
+        tableModel.setRowCount(0);
 
-        // Adiciona os dados à tabela
-        for (ClienteVaga clienteVaga : clientesEstacionados) {
-            tableModel.addRow(new Object[]{
-                clienteVaga.getCliente().getIdCliente(),
-                clienteVaga.getCliente().getNome(),
-                clienteVaga.getCliente().getResidencia(),
-                clienteVaga.getCliente().getContacto(),
-                clienteVaga.getVeiculo().getPlaca(),
-                clienteVaga.getVeiculo().getCor(),
-                clienteVaga.getTipoPagamento(),
-                clienteVaga.getValorPorHora()
-            });
+        // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
+        try {
+            ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.buscarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
+
+            // Adiciona os dados à tabela
+            for (ClienteVaga clienteVaga : clientesEstacionados) {
+                tableModel.addRow(new Object[]{
+                    clienteVaga.getCliente().getIdCliente(),
+                    clienteVaga.getCliente().getNome(),
+                    clienteVaga.getCliente().getResidencia(),
+                    clienteVaga.getCliente().getContacto(),
+                    clienteVaga.getVeiculo().getPlaca(),
+                    clienteVaga.getVeiculo().getCor(),
+                    clienteVaga.getTipoPagamento(),
+                    clienteVaga.getValorPorHora()
+                });
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
-}
-
 
     //atualizar espacos reservantes
     private void atualizarEspacosRestantes() {
@@ -2681,30 +2629,33 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
             messagentxt.setText("Erro ao registrar funcionário: " + ex.getMessage());
         }
     }
-private void atualizarTabelaF() {
-    // Obtém o modelo da tabela como DefaultTableModel
-    DefaultTableModel tableModel = (DefaultTableModel) tbFuncionario.getModel();
-    
-    // Limpa todas as linhas existentes do modelo da tabela
-    tableModel.setRowCount(0);
 
-    // Adiciona apenas funcionários ativos à tabela
-    for (Funcionario funcionario : funcionarios) {
-        if (funcionario.isAtivo()) { // Apenas adiciona funcionários ativos
-            tableModel.addRow(new Object[]{
-                funcionario.getIdFuncionario(),
-                funcionario.getNome(),
-                funcionario.getUsuario(),
-                funcionario.getSenha(),
-                funcionario.getDocumento(),
-                funcionario.getNUIT(),
-                funcionario.getCargo(),
-                funcionario.getDepartamento(),
-                funcionario.getTipo()
-            });
+    private void atualizarTabelaF() {
+        // Obtém o modelo da tabela como DefaultTableModel
+        DefaultTableModel tableModel = (DefaultTableModel) tbFuncionario.getModel();
+
+        // Limpa todas as linhas existentes do modelo da tabela
+        tableModel.setRowCount(0);
+
+        // Adiciona apenas funcionários ativos à tabela
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.isAtivo()) { // Apenas adiciona funcionários ativos
+                tableModel.addRow(new Object[]{
+                    funcionario.getIdFuncionario(),
+                    funcionario.getCargo(),
+                    funcionario.getSalario(),
+                    funcionario.getUsuario(),
+                    funcionario.getSenha(),
+                    funcionario.getDocumento(),
+                    funcionario.getTelefone(),
+                    funcionario.getSexo(),
+                    funcionario.getEmail(),
+                    funcionario.getResidencia(),
+                    funcionario.getNome(),});
+                    
+            }
         }
     }
-}
 
     private void listarFuncionarios() {
 
@@ -2845,6 +2796,8 @@ private void atualizarTabelaF() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxTipopagamento;
+    private javax.swing.JComboBox<String> ComboBoxvagas;
     private javax.swing.JLabel Descricao;
     private javax.swing.JButton Disparquear;
     private javax.swing.JLabel Home;
@@ -2867,11 +2820,8 @@ private void atualizarTabelaF() {
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnparquearadmin;
     private javax.swing.JComboBox<String> cbtipocliente;
-    private javax.swing.JComboBox<String> cbxPorte;
-    private javax.swing.JComboBox<String> cbxPorte1;
-    private javax.swing.JComboBox<String> cbxTipopagamento;
-    private javax.swing.JComboBox<String> cbxvagas;
     private javax.swing.JLabel funcionários;
+    private javax.swing.JRadioButton grande;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2953,7 +2903,9 @@ private void atualizarTabelaF() {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
@@ -2972,14 +2924,12 @@ private void atualizarTabelaF() {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
@@ -2996,6 +2946,9 @@ private void atualizarTabelaF() {
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
@@ -3017,6 +2970,9 @@ private void atualizarTabelaF() {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3024,6 +2980,7 @@ private void atualizarTabelaF() {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
@@ -3031,15 +2988,16 @@ private void atualizarTabelaF() {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lbEspacoRestante;
+    private javax.swing.JRadioButton medio;
     private javax.swing.JLabel messagemTLparquear;
     private javax.swing.JLabel messagentxt;
     private javax.swing.JTextField nomepagament;
+    private javax.swing.JRadioButton pequeno;
     private javax.swing.JButton pesquisarpagadmin;
     private javax.swing.JTextField placapagament;
     private javax.swing.JLabel sair;
+    private javax.swing.JSpinner spinnervalor;
     private javax.swing.JCheckBox status;
     private javax.swing.JTable tabelaParquear;
     private javax.swing.JTable tbFuncionario;
@@ -3059,7 +3017,6 @@ private void atualizarTabelaF() {
     private javax.swing.JComboBox<String> txtTipoUsuario;
     private javax.swing.JTextField txtcor;
     private javax.swing.JTextField txtdescricaoa;
-    private javax.swing.JTextField txtmarca;
     private javax.swing.JTextField txtnomepropetarioa;
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefoneparquear;

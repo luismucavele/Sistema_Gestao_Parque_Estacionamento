@@ -2,17 +2,37 @@ package Model;
 
 import Model.Cliente;
 import Model.Veiculo;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteVeiculo {
     private  Cliente cliente;
     private Veiculo veiculo;
+    private LocalDateTime horaEntradaEntrada;
+    private boolean estacionado;
 
-    // Construtor
-    public ClienteVeiculo(Cliente cliente, Veiculo veiculo) {
+    public ClienteVeiculo(Cliente cliente, Veiculo veiculo, LocalDateTime horaEntradaEntrada) {
+        if (cliente == null || veiculo == null) {
+            throw new IllegalArgumentException("Cliente e veículo não podem ser nulos");
+        }
+        if (horaEntradaEntrada.isAfter(LocalDateTime.now())) {
+            throw new IllegalArgumentException("Hora de entrada não pode ser no futuro");
+        }
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.horaEntradaEntrada = horaEntradaEntrada;
+        this.estacionado = estacionado; // Assuming that the vehicle is parked when creating the object
+    }
+
+    
+        public LocalDateTime getHoraEntradaEntrada() {
+        return horaEntradaEntrada;
+    }
+
+    public void setHoraEntradaEntrada(LocalDateTime horaEntradaEntrada) {
+        this.horaEntradaEntrada = horaEntradaEntrada;
     }
 
     // Métodos Getter e Setter para cliente
@@ -32,12 +52,29 @@ public class ClienteVeiculo {
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
+    public boolean isEstacionado() {
+        return estacionado;
+    }
+
+    public void setEstacionado(boolean estacionado) {
+        this.estacionado = estacionado;
+    }
 
     // Método para retornar informações completas do cliente e do veículo
     public String getInformacoes() {
         return "Cliente: " + cliente.getNome() + 
                ", Veículo: " + veiculo.getPlaca() + 
                " (" + veiculo.getModelo() + ", " + veiculo.getMarca() + ")";
+    }
+     public boolean isClienteAtivo() {
+        return cliente.isStatus();
+    }
+
+    public long calcularDuracaoEstacionamento() {
+        // Assumindo que o veículo está estacionado
+        LocalDateTime agora = LocalDateTime.now();
+        Duration duracao = Duration.between(horaEntradaEntrada, agora);
+        return duracao.toMinutes(); // Retorna a duração em minutos
     }
 
     // Método para verificar se o veículo pertence ao cliente
@@ -55,11 +92,6 @@ public class ClienteVeiculo {
         System.out.println("Modelo: " + veiculo.getModelo());
         System.out.println("Marca: " + veiculo.getMarca());
         System.out.println("Cor: " + veiculo.getCor());
-    }
-
-    // Método para verificar se o cliente está ativo
-    public boolean isClienteAtivo() {
-        return cliente.isStatus();
     }
 
     // Método toString para facilitar a exibição das informações

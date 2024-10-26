@@ -4,7 +4,7 @@
  */
 package Veiw;
 
-import Mode.ModelDAO.FuncionarioDAO;
+import Model.ModelDAO.FuncionarioDAO;
 import Model.Funcionario;
 
 import java.awt.Color;
@@ -213,7 +213,11 @@ public class Login extends javax.swing.JFrame {
     // Obtém os valores dos campos de texto
     String usuario = txtUser.getText().trim();
     String senha = new String(txtPassword.getPassword()).trim();
-
+    
+    // Cria uma instância do DAO e tenta autenticar o funcionário
+    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
+    
     // Valida se os campos não estão vazios
     if (usuario.isEmpty()) {
         lblmensagem.setText("O campo 'Usuário' está vazio.");
@@ -226,11 +230,8 @@ public class Login extends javax.swing.JFrame {
         iniciarTimerParaLimparMensagem();
         return;
     }
-
-    // Cria uma instância do DAO e tenta autenticar o funcionário
-    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
-
+   
+ 
     // Se a autenticação foi bem-sucedida e o funcionário está ativo
     if (funcionario != null && funcionario.isAtivo()) {
         lblmensagem.setText("Login bem-sucedido!");
