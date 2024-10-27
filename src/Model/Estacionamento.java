@@ -1,18 +1,34 @@
 package Model;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estacionamento {
 
-    private List<Cliente> clientesEstacionados; // Lista de carros atualmente estacionados
-    private List<Cliente> historicoClientes;    // Histórico de todos os carros que já passaram pelo estacionamento
+    private List<Cliente> clientesEstacionados; // Lista de clientes atualmente estacionados
+    private List<Cliente> historicoClientes;    // Histórico de todos os clientes que já passaram pelo estacionamento
+    private List<Vaga> vagas;                   // Lista de vagas disponíveis no estacionamento
 
     public Estacionamento() {
         this.clientesEstacionados = new ArrayList<>();
         this.historicoClientes = new ArrayList<>();
+        this.vagas = new ArrayList<>();
+
+        // Adiciona algumas vagas para exemplo
+        vagas.add(new Vaga("A1", 5.0, false, false, null, null));
+        vagas.add(new Vaga("B2", 7.0, true, false, null, null));
+        // Adicione mais vagas conforme necessário
+    }
+
+    // Método para buscar uma vaga pelo identificador
+    public Vaga getEspacoPorIdentificador(String identificador) {
+        for (Vaga vaga : vagas) {
+            if (vaga.getIdentificador().equals(identificador)) {
+                return vaga;
+            }
+        }
+        return null; // Retorna null se nenhuma vaga com o identificador for encontrada
     }
 
     // Método para registrar entrada de um cliente
@@ -53,5 +69,10 @@ public class Estacionamento {
     // Método para listar clientes no histórico (que já saíram)
     public List<Cliente> getHistoricoClientes() {
         return historicoClientes;
+    }
+
+    // Método para listar todas as vagas do estacionamento
+    public List<Vaga> getVagas() {
+        return vagas;
     }
 }
