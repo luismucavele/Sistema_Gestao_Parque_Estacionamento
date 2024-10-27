@@ -6,7 +6,7 @@ package Veiw;
 
 import Model.Cliente;
 import Model.ClienteVaga;
-import Model.ModelDAO.FuncionarioDAO;
+
 import Model.EspacoEstacionamento;
 import Model.Estacionamento;
 import Model.Funcionario;
@@ -14,6 +14,8 @@ import Model.ModelDAO.ClienteVagaDAO;
 import Model.ModelDAO.EspacoEstacionamentoDAO;
 import Model.ModelDAO.FuncionarioDAO;
 import Model.ModelDAO.VeiculoDAO;
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -32,6 +34,8 @@ import Model.ClienteVeiculo;
 import Model.ModelDAO.ClienteVeiculoDAO;
 import Model.Vaga;
 import Model.Veiculo;
+import java.lang.System.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -53,6 +57,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         this.funcionarios = new ArrayList<>();
         tbFuncionarioModel = (DefaultTableModel) tbFuncionario.getModel();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,7 +170,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         txtvalor = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        cbxporte = new javax.swing.JComboBox<>();
+        cbxPorte = new javax.swing.JComboBox<>();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -206,32 +211,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel109 = new javax.swing.JLabel();
         status = new javax.swing.JCheckBox();
         messagentxt = new javax.swing.JLabel();
-        P5 = new javax.swing.JPanel();
-        jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jLabel80 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        pesquisarpagadmin = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel81 = new javax.swing.JLabel();
-        placapagament = new javax.swing.JTextField();
-        jLabel82 = new javax.swing.JLabel();
-        nomepagament = new javax.swing.JTextField();
-        jLabel83 = new javax.swing.JLabel();
-        tipoclientepagament = new javax.swing.JComboBox<>();
-        jLabel84 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jButton10 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jLabel106 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel110 = new javax.swing.JLabel();
-        cbxporte1 = new javax.swing.JComboBox<>();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
@@ -281,6 +260,34 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel113 = new javax.swing.JLabel();
+        P5 = new javax.swing.JPanel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        pesquisarpagadmin = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        bill = new javax.swing.JTextArea();
+        jLabel81 = new javax.swing.JLabel();
+        placapagament = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        nomepagament = new javax.swing.JTextField();
+        jLabel83 = new javax.swing.JLabel();
+        tipoclientepagament = new javax.swing.JComboBox<>();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jLabel106 = new javax.swing.JLabel();
+        troco = new javax.swing.JTextField();
+        jLabel110 = new javax.swing.JLabel();
+        cbxporte = new javax.swing.JComboBox<>();
+        cbxTipopagamento1 = new javax.swing.JComboBox<>();
+        jLabel41 = new javax.swing.JLabel();
+        valorpagar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1141,8 +1148,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel61.setText("Vaga");
         P3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 230, -1, -1));
 
-        cbxporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
-        P3.add(cbxporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, 300, 30));
+        cbxPorte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+        P3.add(cbxPorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, 300, 30));
 
         Paineis.addTab("tab2", P3);
 
@@ -1358,253 +1365,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         P4.add(messagentxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 650, -1));
 
         Paineis.addTab("tab3", P4);
-
-        P5.setBackground(new java.awt.Color(236, 240, 241));
-
-        jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
-
-        jLabel76.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel76.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel76.setText("Controle de estacionamento");
-
-        jLabel77.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel77.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel77.setText("Administrador:");
-
-        jLabel79.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel79.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel79.setText("Pagamento");
-
-        jLabel80.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel80.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel80.setText("Placa:");
-
-        pesquisarpagadmin.setBackground(new java.awt.Color(51, 51, 51));
-        pesquisarpagadmin.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        pesquisarpagadmin.setForeground(new java.awt.Color(255, 255, 255));
-        pesquisarpagadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_search_20px.png"))); // NOI18N
-        pesquisarpagadmin.setText("Pesquisar");
-        pesquisarpagadmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisarpagadminActionPerformed(evt);
-            }
-        });
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText(" ");
-        jScrollPane5.setViewportView(jTextArea2);
-
-        jLabel81.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel81.setText("Nome do Propetario:");
-
-        placapagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        placapagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel82.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel82.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel82.setText("Tipo e Placa:");
-
-        nomepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        nomepagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel83.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel83.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel83.setText("Tipo de Cliente:");
-
-        tipoclientepagament.setBackground(new java.awt.Color(255, 255, 255));
-        tipoclientepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        tipoclientepagament.setForeground(new java.awt.Color(0, 0, 0));
-        tipoclientepagament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
-
-        jLabel84.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel84.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel84.setText("Porte:");
-
-        jLabel88.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel88.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel88.setText("Valor:");
-
-        jSpinner3.setBorder(null);
-
-        jButton10.setBackground(new java.awt.Color(51, 51, 51));
-        jButton10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_stack_of_money_20px.png"))); // NOI18N
-        jButton10.setText("Pagar");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Fatura");
-
-        jButton11.setBackground(new java.awt.Color(0, 255, 0));
-        jButton11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_print_20px.png"))); // NOI18N
-        jButton11.setText("Imprimir");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        jLabel106.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel106.setText("Troco:");
-
-        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
-        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel110MouseClicked(evt);
-            }
-        });
-
-        cbxporte1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
-
-        javax.swing.GroupLayout P5Layout = new javax.swing.GroupLayout(P5);
-        P5.setLayout(P5Layout);
-        P5Layout.setHorizontalGroup(
-            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel84)
-                                .addGap(86, 86, 86)
-                                .addComponent(cbxporte1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel80)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel82)
-                                .addGap(58, 58, 58)
-                                .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel83)
-                                .addGap(44, 44, 44)
-                                .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel88)
-                                .addGap(87, 87, 87)
-                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel106)
-                                .addGap(84, 84, 84)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel79))
-                            .addComponent(pesquisarpagadmin))
-                        .addGap(28, 28, 28)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(190, 190, 190)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(830, 830, 830)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel75)
-                .addGap(6, 6, 6)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel76)
-                    .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel110)
-                .addGap(34, 34, 34))
-        );
-        P5Layout.setVerticalGroup(
-            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel76)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel77))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel80))
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel81))
-                            .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel82))
-                            .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel83))
-                            .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel84)
-                            .addComponent(cbxporte1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel88)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10))
-                        .addGap(40, 40, 40)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel106))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addComponent(jLabel79)
-                        .addGap(36, 36, 36)
-                        .addComponent(pesquisarpagadmin))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(1, 1, 1)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addComponent(jButton11))
-        );
-
-        Paineis.addTab("tab4", P5);
 
         P6.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -2131,6 +1891,274 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         Paineis.addTab("tab8", P8);
 
+        P5.setBackground(new java.awt.Color(236, 240, 241));
+
+        jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
+
+        jLabel76.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel76.setText("Controle de estacionamento");
+
+        jLabel77.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel77.setText("Administrador:");
+
+        jLabel79.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel79.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel79.setText("Pagamento");
+
+        jLabel80.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel80.setText("Placa:");
+
+        pesquisarpagadmin.setBackground(new java.awt.Color(51, 51, 51));
+        pesquisarpagadmin.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        pesquisarpagadmin.setForeground(new java.awt.Color(255, 255, 255));
+        pesquisarpagadmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_search_20px.png"))); // NOI18N
+        pesquisarpagadmin.setText("Pesquisar");
+        pesquisarpagadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarpagadminActionPerformed(evt);
+            }
+        });
+
+        bill.setColumns(20);
+        bill.setRows(5);
+        bill.setText(" ");
+        jScrollPane5.setViewportView(bill);
+
+        jLabel81.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel81.setText("Nome do Propetario:");
+
+        placapagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        placapagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel82.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel82.setText("Tipo e Placa:");
+
+        nomepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        nomepagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel83.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel83.setText("Tipo de Cliente:");
+
+        tipoclientepagament.setBackground(new java.awt.Color(255, 255, 255));
+        tipoclientepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        tipoclientepagament.setForeground(new java.awt.Color(0, 0, 0));
+        tipoclientepagament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
+
+        jLabel84.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel84.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel84.setText("Porte:");
+
+        jLabel88.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel88.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel88.setText("Valor:");
+
+        jButton10.setBackground(new java.awt.Color(51, 51, 51));
+        jButton10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_stack_of_money_20px.png"))); // NOI18N
+        jButton10.setText("Pagar");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Fatura");
+
+        jButton11.setBackground(new java.awt.Color(0, 255, 0));
+        jButton11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(0, 0, 0));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_print_20px.png"))); // NOI18N
+        jButton11.setText("Imprimir");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jLabel106.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel106.setText("Troco:");
+
+        jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
+        jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel110MouseClicked(evt);
+            }
+        });
+
+        cbxporte.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        cbxporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+
+        cbxTipopagamento1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        cbxTipopagamento1.setForeground(new java.awt.Color(255, 255, 255));
+        cbxTipopagamento1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numerario", "Cartão", "Transferencia" }));
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Tipo de Pagamento");
+
+        javax.swing.GroupLayout P5Layout = new javax.swing.GroupLayout(P5);
+        P5.setLayout(P5Layout);
+        P5Layout.setHorizontalGroup(
+            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P5Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addComponent(jLabel80)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addComponent(jLabel82)
+                                .addGap(58, 58, 58)
+                                .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(P5Layout.createSequentialGroup()
+                                    .addComponent(jLabel83)
+                                    .addGap(44, 44, 44)
+                                    .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(P5Layout.createSequentialGroup()
+                                        .addComponent(jLabel41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
+                                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel84)
+                                            .addComponent(jLabel88))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
+                                                    .addComponent(valorpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel106)))))
+                .addGap(35, 35, 35)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel79))
+                    .addComponent(pesquisarpagadmin))
+                .addGap(28, 28, 28)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(P5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel75)
+                .addGap(6, 6, 6)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel76)
+                    .addComponent(jLabel77))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel110)
+                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(224, 224, 224))
+        );
+        P5Layout.setVerticalGroup(
+            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P5Layout.createSequentialGroup()
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel76)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel77))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
+                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel80))
+                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel81))
+                            .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel82))
+                            .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel83))
+                            .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41))
+                        .addGap(18, 18, 18)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel84))
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(valorpagar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel88)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel106)))
+                        .addGap(91, 91, 91))
+                    .addGroup(P5Layout.createSequentialGroup()
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addComponent(jLabel79)
+                                .addGap(36, 36, 36)
+                                .addComponent(pesquisarpagadmin))
+                            .addGroup(P5Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(1, 1, 1)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(jButton11)
+                        .addContainerGap())))
+        );
+
+        Paineis.addTab("tab4", P5);
+
         jPanel1.add(Paineis, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, -30, 1170, 680));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, -1));
@@ -2148,11 +2176,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ParquearMouseClicked
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-         this.dispose();
-    
-    // Cria e exibe a tela de login novamente
-    Login login = new Login();
-    login.setVisible(true);
+        this.dispose();
+
+        // Cria e exibe a tela de login novamente
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_sairMouseClicked
 
     private void funcionáriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionáriosMouseClicked
@@ -2254,7 +2282,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel110MouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        bill_print();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void pesquisarpagadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarpagadminActionPerformed
@@ -2322,37 +2350,34 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validarCampos()) {
-                    ClienteVeiculo clientes = criarCliente();  // Crie o cliente a partir dos dados dos campos de texto
-
-                    // Obtenha o espaço de estacionamento selecionado
+                    ClienteVeiculo clienteVeiculo = criarCliente();  // Crie o cliente a partir dos dados dos campos de texto
                     String espacoSelecionado = (String) cbxvagas.getSelectedItem();
 
                     if (espacoSelecionado != null) {
-                        // Busca o espaço de estacionamento por seu identificador
                         EspacoEstacionamento espaco = Vaga.getEspacoPorIdentificador(espacoSelecionado);
 
-                        if (espaco != null && espaco.ocupar(clientes)) {
-                            clientes.setEstacionado(true);
-                            clientes.setHoraEntradaEntrada(LocalDateTime.now());
+                        if (espaco != null && espaco.ocupar(clienteVeiculo)) {
+                            clienteVeiculo.setEstacionado(true);
+                            clienteVeiculo.setHoraEntradaEntrada(LocalDateTime.now());
 
-                            // Salvar o veículo no banco de dados (inserir detalhes do cliente no sistema)
+                            // Salvar o veículo no banco de dados
                             VeiculoDAO veiculoDAO = new VeiculoDAO();
                             veiculoDAO.inserirVeiculo(
-                                    cliente.getMatricula(),
-                                    cliente.getContacto(),
-                                    cliente.getModeloCarro(),
-                                    cliente.getCorCarro(),
-                                    cliente.getResidencia(),
+                                    clienteVeiculo.getVeiculo().getPlaca(),
+                                    clienteVeiculo.getCliente().getTelefone(),
+                                    clienteVeiculo.getVeiculo().getModelo(),
+                                    clienteVeiculo.getVeiculo().getCor(),
+                                    clienteVeiculo.getCliente().getResidencia(),
                                     espaco.getValorPorHora(),
-                                    cliente.getIdCliente()
+                                    clienteVeiculo.getCliente().getIdCliente()
                             );
 
                             // Salvar o cliente e a vaga no banco de dados
                             ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
                             clienteVagaDAO.inserirClienteVaga(
-                                    cliente.getIdCliente(),
+                                    clienteVeiculo.getCliente().getIdCliente(),
                                     espacoSelecionado,
-                                    Timestamp.valueOf(cliente.getHoraEntradaEntrada()),
+                                    Timestamp.valueOf(clienteVeiculo.getHoraEntradaEntrada()),
                                     null
                             );
 
@@ -2362,15 +2387,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
                             // Exibir mensagem de sucesso
                             messagemTLparquear.setText("Cliente estacionado com sucesso!");
-
                             // Limpar campos
                             Limparcampus();
                         } else {
-                            // Caso o espaço selecionado já esteja ocupado
                             messagemTLparquear.setText("O espaço selecionado já está ocupado.");
                         }
                     } else {
-                        // Caso não existam espaços disponíveis
                         messagemTLparquear.setText("Todos os espaços estão ocupados.");
                     }
                 }
@@ -2444,24 +2466,22 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 // Método auxiliar para criar o cliente
     private Cliente criarClienteDoFormulario() {
         int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
-        String nome = nomeTextField.getText(); // Obtém o nome do campo de texto
+        String nome = txtnomepropetarioa.getText(); // Obtém o nome do campo de texto
         String documento = documentoTextField.getText(); // Obtém o documento do campo de texto
-        String telefone = telefoneTextField.getText(); // Obtém o telefone do campo de texto
+        String telefone = txttelefoneparquear.getText(); // Obtém o telefone do campo de texto
         boolean status = true; // Por padrão, o cliente é ativo
 
-        return new Cliente(idCliente, status, 0 nome, documento, telefone
-    
+        return new Cliente(idCliente, status, nome, documento, telefone); // Retorna o cliente criado
 
-    ); // Retorna o cliente criado
-}
+    }
 
 // Método auxiliar para criar o veículo associado ao cliente
-private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
+    private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
         String placa = txtplaca.getText(); // Obtém a placa do campo de texto
         String modelo = txtdescricaoa.getText(); // Obtém o modelo do campo de texto
         String marca = txtMarca.getText();
         String cor = txtcor.getText(); // Obtém a cor do campo de texto
-        String tipoVeiculo = (String) cbxporte.getSelectedItem(); // Obtém o tipo de veículo da combobox
+        String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
 
         // Cria e retorna o veículo associado ao cliente
         return new Veiculo(placa, modelo, marca, cor, tipoVeiculo);
@@ -2531,7 +2551,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
                 cbxvagas.addItem(espaco);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            messagemTLparquear.setText(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
     //
@@ -2607,7 +2627,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
                     funcionario.getEmail(),
                     funcionario.getResidencia(),
                     funcionario.getNome(),});
-                    
+
             }
         }
     }
@@ -2684,21 +2704,20 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     }
 
     private void buscarFuncionario() {
-    try {
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText().trim()));
-        if (funcionario != null) {
-            preencherCampos(funcionario);
-        } else {
-            messagentxt.setText("Funcionário não encontrado");
+        try {
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText().trim()));
+            if (funcionario != null) {
+                preencherCampos(funcionario);
+            } else {
+                messagentxt.setText("Funcionário não encontrado");
+            }
+        } catch (NumberFormatException ex) {
+            messagentxt.setText("ID inválido");
+        } catch (Exception ex) {
+            messagentxt.setText("Erro ao buscar funcionário");
         }
-    } catch (NumberFormatException ex) {
-        messagentxt.setText("ID inválido");
-    } catch (Exception ex) {
-        messagentxt.setText("Erro ao buscar funcionário");
     }
-}
-
 
     private void preencherCampos(Funcionario funcionario) {
         txtId.setText(String.valueOf(funcionario.getIdFuncionario()));
@@ -2714,6 +2733,52 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
 //        txtSalario.setText(String.valueOf(funcionario.getSalario()));
         status.setSelected(funcionario.isAtivo());
     }
+
+  
+
+
+
+    // Instância do Logger para registrar erros
+  
+
+    public void bill_print() {
+        try {
+            bill.setText("                        PARK MARELO \n");
+            bill.setText(bill.getText() + "\tEstacionamento Central \n");
+            bill.setText(bill.getText() + "\tRua Principal, Cidade de Maputo, \n");
+            bill.setText(bill.getText() + "\t+258 841188232 ou 841441886 \n");
+            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "Detalhes do Cliente\n");
+            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+
+            // Dados principais do cliente (Placa, Proprietário, etc.)
+            bill.setText(bill.getText() + "Placa do Veículo: \t" + placapagament.getText() + "\n");
+            bill.setText(bill.getText() + "Nome do Proprietário: \t" + nomepagament.getText() + "\n");
+            bill.setText(bill.getText() + "Tipo de Cliente: \t" + tipoclientepagament.getSelectedItem().toString() + "\n");
+            bill.setText(bill.getText() + "Porte do Veículo: \t" + cbxporte.getSelectedItem().toString() + "\n");
+            bill.setText(bill.getText() + "Tipo de Pagamento: \t" + cbxTipopagamento1.getSelectedItem().toString() + "\n");
+
+            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "Valor Total :\t" + valorpagar.getText() + "\n");  // Valor total
+            bill.setText(bill.getText() + "Troco :\t" + troco.getText() + "\n");  // Troco
+            bill.setText(bill.getText() + "====================================\n");
+            bill.setText(bill.getText() + "Obrigado por usar nosso estacionamento!\n");
+            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "Software por Parking Solutions \n");
+
+            // Método que imprime a fatura
+            bill.print();
+
+       
+        } catch (PrinterException ex) {
+// esse erro nao influencia em nada no codico
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
 
     /**
      * @param args the command line arguments
@@ -2768,6 +2833,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JTabbedPane Paineis;
     private javax.swing.JLabel Parquear;
     private javax.swing.JLabel RelatorioFinaceiro;
+    private javax.swing.JTextArea bill;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnDemitir;
@@ -2775,8 +2841,9 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnparquearadmin;
     private javax.swing.JComboBox<String> cbtipocliente;
+    private javax.swing.JComboBox<String> cbxPorte;
+    private javax.swing.JComboBox<String> cbxTipopagamento1;
     private javax.swing.JComboBox<String> cbxporte;
-    private javax.swing.JComboBox<String> cbxporte1;
     private javax.swing.JComboBox<String> cbxvagas;
     private javax.swing.JLabel funcionários;
     private javax.swing.JButton jButton1;
@@ -2860,6 +2927,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -2931,12 +2999,9 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbEspacoRestante;
@@ -2950,6 +3015,7 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JTable tabelaParquear;
     private javax.swing.JTable tbFuncionario;
     private javax.swing.JComboBox<String> tipoclientepagament;
+    private javax.swing.JTextField troco;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMarca;
@@ -2970,5 +3036,6 @@ private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefoneparquear;
     private javax.swing.JTextField txtvalor;
+    private javax.swing.JTextField valorpagar;
     // End of variables declaration//GEN-END:variables
 }
