@@ -21,5 +21,36 @@ public class ClienteVaga {
         this.valorPorHora = valorPorHora;
     }
 
-    // Getters e setters, se necessário
+    // Getters para cada atributo
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getResidencia() {
+        return residencia;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public String getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public double getValorPorHora() {
+        return valorPorHora;
+    }
 }

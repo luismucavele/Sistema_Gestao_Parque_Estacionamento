@@ -4,6 +4,8 @@
  */
 package Veiw;
 
+import java.sql.SQLException;
+
 import Model.Cliente;
 import Model.ClienteVaga;
 import Model.EspacoEstacionamento;
@@ -55,7 +57,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         this.funcionarios = new ArrayList<>();
         tbFuncionarioModel = (DefaultTableModel) tbFuncionario.getModel();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1112,7 +1113,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 DisparquearActionPerformed(evt);
             }
         });
-        P3.add(Disparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 360, 147, 30));
+        P3.add(Disparquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 360, 147, -1));
 
         messagemTLparquear.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         messagemTLparquear.setForeground(new java.awt.Color(0, 0, 0));
@@ -2342,7 +2343,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         // Validação de formato da placa (opcional)
         if (!placa.matches("[A-Z]{3}-\\d{3}-[A-Z]{2}")) { // Exemplo: formato da placa deve ser XX0000
-            messagemTLparquear.setText(" Formato inválido. A placa deve estar no formato exemplo ABC-123-MZ.");
+            messagemTLparquear.setText(" Formato inválido. A placa deve estar no formato exemplo: ABC-123-MZ.");
             return false;
         }
 
@@ -2463,13 +2464,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         // Leitura dos dados do veículo associado ao cliente
         Veiculo veiculo = criarVeiculoDoFormulario(cliente);
-        
+
         // Obtendo a data e hora atuais
         LocalDateTime dataHora = LocalDateTime.now();
 
-
         // Criando o ClienteVeiculo a partir do cliente e veículo
-        return new ClienteVeiculo(cliente, veiculo,dataHora);
+        return new ClienteVeiculo(cliente, veiculo, dataHora);
     }
 
 // Método auxiliar para criar o cliente
@@ -2518,14 +2518,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             // Adiciona os dados à tabela
             for (ClienteVaga clienteVaga : clientesEstacionados) {
                 tableModel.addRow(new Object[]{
-                    clienteVaga.getCliente().getIdCliente(),
-                    clienteVaga.getCliente().getNome(),
-                    clienteVaga.getCliente().getResidencia(),
-                    clienteVaga.getCliente().getContacto(),
-                    clienteVaga.getVeiculo().getPlaca(),
-                    clienteVaga.getVeiculo().getCor(),
-                    clienteVaga.getTipoPagamento(),
-                    clienteVaga.getValorPorHora()
+                    clienteVaga.getIdCliente(), // Id do cliente
+                    clienteVaga.getNome(), // Nome
+                    clienteVaga.getResidencia(), // Residência
+                    clienteVaga.getContacto(), // Contato
+                    clienteVaga.getMatricula(), // Placa (ou Matricula, conforme seu campo)
+                    clienteVaga.getCor(), // Cor do veículo
+                    clienteVaga.getTipoPagamento(), // Tipo de pagamento
+                    clienteVaga.getValorPorHora() // Valor por hora
                 });
             }
         } catch (SQLException e) {
@@ -2743,13 +2743,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         status.setSelected(funcionario.isAtivo());
     }
 
-  
-
-
-
     // Instância do Logger para registrar erros
-  
-
     public void bill_print() {
         try {
             bill.setText("                        PARK MARELO \n");
@@ -2779,15 +2773,11 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             // Método que imprime a fatura
             bill.print();
 
-       
         } catch (PrinterException ex) {
 // esse erro nao influencia em nada no codico
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
-
 
     /**
      * @param args the command line arguments
