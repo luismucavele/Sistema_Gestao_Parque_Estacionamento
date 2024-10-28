@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class VeiculoDAO {
     // Inserir um novo veículo
+    
     public void inserirVeiculo(String placa, String modelo, String marca, int ano, String cor, String tipoVeiculo, int idCliente) {
         Connection conn = null;
         PreparedStatement stmt = null;

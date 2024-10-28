@@ -12,8 +12,6 @@ public class ClienteVeiculo {
     private Veiculo veiculo;
     private LocalDateTime horaEntradaEntrada;
     private boolean estacionado;
-    
-    
 
     public ClienteVeiculo(Cliente cliente, Veiculo veiculo, LocalDateTime horaEntradaEntrada) {
         if (cliente == null || veiculo == null) {

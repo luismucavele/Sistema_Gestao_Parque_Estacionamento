@@ -1,56 +1,75 @@
 package Model;
 
+import java.time.LocalDateTime;
+
 public class ClienteVaga {
-    private int idCliente;
-    private String nome;
-    private String residencia;
-    private String contacto;
-    private String matricula;
-    private String cor;
-    private String tipoPagamento;
-    private double valorPorHora;
+    // Composição: Cliente, Veiculo e Vaga
+    private Cliente cliente;
+    private Veiculo veiculo;
+    private Vaga vaga;
 
-    public ClienteVaga(int idCliente, String nome, String residencia, String contacto, String matricula, String cor, String tipoPagamento, double valorPorHora) {
-        this.idCliente = idCliente;
-        this.nome = nome;
-        this.residencia = residencia;
-        this.contacto = contacto;
-        this.matricula = matricula;
-        this.cor = cor;
-        this.tipoPagamento = tipoPagamento;
-        this.valorPorHora = valorPorHora;
+    // Atributos específicos de ClienteVaga
+    private LocalDateTime horaEntrada;
+    private LocalDateTime horaSaida;
+
+    // Construtor
+    public ClienteVaga(Cliente cliente, Veiculo veiculo, Vaga vaga, LocalDateTime horaEntrada, LocalDateTime horaSaida) {
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.vaga = vaga;
+        this.horaEntrada = horaEntrada;
+        this.horaSaida = horaSaida;
     }
 
-    // Getters para cada atributo
-    public int getIdCliente() {
-        return idCliente;
+    // Getters e Setters para Cliente, Veiculo e Vaga (com composição)
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public String getNome() {
-        return nome;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public String getResidencia() {
-        return residencia;
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    public String getContacto() {
-        return contacto;
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public Vaga getVaga() {
+        return vaga;
     }
 
-    public String getCor() {
-        return cor;
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
     }
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
+    // Getters e Setters para horaEntrada e horaSaida
+    public LocalDateTime getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public double getValorPorHora() {
-        return valorPorHora;
+    public void setHoraEntrada(LocalDateTime horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
+
+    public LocalDateTime getHoraSaida() {
+        return horaSaida;
+    }
+
+    public void setHoraSaida(LocalDateTime horaSaida) {
+        this.horaSaida = horaSaida;
+    }
+
+    // Método para calcular o total a pagar com base no valor por hora da vaga
+    public double calcularTotal() {
+        if (horaEntrada != null && horaSaida != null && vaga != null) {
+            long diffMillis = java.time.Duration.between(horaEntrada, horaSaida).toMillis();
+            double diffHoras = diffMillis / (1000.0 * 60 * 60);
+            return diffHoras * vaga.getValorPorHora();
+        }
+        return 0.0;
     }
 }

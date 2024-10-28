@@ -1,57 +1,78 @@
 package Model.ModelDAO;
 
 import Model.ClienteVaga;
-import model.DBConnect;  // Usando a classe DBConnect para conexão
+import Model.Cliente;
+import Model.Veiculo;
+import Model.Vaga;
+import model.DBConnect;  // Usando a classe de conexão
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteVagaDAO {
-    
-    // Buscar clientes estacionados
-    public List<ClienteVaga> buscarClientesEstacionados() {
+
+    // Método para buscar todos os clientes atualmente estacionados (sem hora de saída)
+    public List<ClienteVaga> listarClientesEstacionados() {
         List<ClienteVaga> clientesEstacionados = new ArrayList<>();
-        String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, v.matricula, v.cor, v.tipoPagamento, v.valorPorHora " +
+        String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
+                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "cv.horaEntrada, cv.horaSaida " +
                      "FROM Cliente c " +
                      "JOIN ClienteVaga cv ON c.idCliente = cv.idCliente " +
-                     "JOIN Veiculo v ON v.idCliente = c.idCliente " +
-                     "WHERE cv.horaSaida IS NULL";  // Apenas clientes que ainda estão estacionados (sem hora de saída)
+                     "JOIN Veiculo v ON v.matricula = cv.matricula " +
+                     "JOIN Vaga vg ON vg.identificadorVaga = cv.identificadorVaga " +
+                     "WHERE cv.horaSaida IS NULL";  // Somente clientes ainda estacionados
 
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                int idCliente = rs.getInt("idCliente");
-                String nome = rs.getString("nome");
-                String residencia = rs.getString("residencia");
-                String contacto = rs.getString("contacto");
-                String matricula = rs.getString("matricula");
-                String cor = rs.getString("cor");
-                String tipoPagamento = rs.getString("tipoPagamento");
-                double valorPorHora = rs.getDouble("valorPorHora");
+                // Criação dos objetos Cliente, Veiculo e Vaga com os dados do ResultSet
+                Cliente cliente = new Cliente(
+                    rs.getInt("idCliente"),
+                    rs.getString("nome"),
+                    rs.getString("residencia"),
+                    rs.getString("contacto")
+                );
+                
+                Veiculo veiculo = new Veiculo(
+                    rs.getString("matricula"),
+                    rs.getString("cor"),
+                    rs.getString("modelo")
+                );
+                
+                Vaga vaga = new Vaga(
+                    rs.getDouble("valorPorHora"),
+                    rs.getString("tipoPagamento")
+                );
 
-                ClienteVaga clienteVaga = new ClienteVaga(idCliente, nome, residencia, contacto, matricula, cor, tipoPagamento, valorPorHora);
+                // Instância de ClienteVaga com os objetos criados
+                Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
+                Timestamp horaSaida = rs.getTimestamp("horaSaida");
+                ClienteVaga clienteVaga = new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
+                
                 clientesEstacionados.add(clienteVaga);
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar clientes estacionados: " + e.getMessage());
+            System.err.println("Erro ao listar clientes estacionados: " + e.getMessage());
         }
-
-        return clientesEstacionados;  // Retorna a lista de clientes estacionados
+        
+        return clientesEstacionados;
     }
 
-    // Inserir um novo registro de cliente e vaga
-    public void inserirClienteVaga(int idCliente, String identificadorVaga, Timestamp horaEntrada) {
-        String sql = "INSERT INTO ClienteVaga (idCliente, identificadorVaga, horaEntrada, ativo) VALUES (?, ?, ?, ?)";
-        
+    // Método para inserir um novo registro de ClienteVaga
+    public void inserirClienteVaga(int idCliente, String identificadorVaga, String matricula, Timestamp horaEntrada) {
+        String sql = "INSERT INTO ClienteVaga (idCliente, identificadorVaga, matricula, horaEntrada, ativo) VALUES (?, ?, ?, ?, ?)";
+
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, idCliente);
             stmt.setString(2, identificadorVaga);
-            stmt.setTimestamp(3, horaEntrada);
-            stmt.setBoolean(4, true);  // Registro ativo por padrão
+            stmt.setString(3, matricula);
+            stmt.setTimestamp(4, horaEntrada);
+            stmt.setBoolean(5, true);  // Definindo como ativo
             stmt.executeUpdate();
             System.out.println("ClienteVaga inserido com sucesso.");
         } catch (SQLException e) {
@@ -59,24 +80,55 @@ public class ClienteVagaDAO {
         }
     }
 
-    // Buscar cliente e vaga por ID e identificador da vaga
-    public ResultSet buscarClienteVaga(int idCliente, String identificadorVaga) {
-        String sql = "SELECT * FROM ClienteVaga WHERE idCliente = ? AND identificadorVaga = ? AND ativo = true";  // Apenas registros ativos
+    // Método para buscar ClienteVaga por ID do cliente e identificador da vaga
+    public ClienteVaga buscarClienteVagaPorId(int idCliente, String identificadorVaga) {
+        String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
+                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "cv.horaEntrada, cv.horaSaida " +
+                     "FROM ClienteVaga cv " +
+                     "JOIN Cliente c ON c.idCliente = cv.idCliente " +
+                     "JOIN Veiculo v ON v.matricula = cv.matricula " +
+                     "JOIN Vaga vg ON vg.identificadorVaga = cv.identificadorVaga " +
+                     "WHERE cv.idCliente = ? AND cv.identificadorVaga = ? AND cv.ativo = true";
+        
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        try {
-            Connection conn = DBConnect.getConnection();  // Obtém a conexão
-            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idCliente);
             stmt.setString(2, identificadorVaga);
-            return stmt.executeQuery();
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Cliente cliente = new Cliente(
+                        rs.getInt("idCliente"),
+                        rs.getString("nome"),
+                        rs.getString("residencia"),
+                        rs.getString("contacto")
+                    );
+                    Veiculo veiculo = new Veiculo(
+                        rs.getString("matricula"),
+                        rs.getString("cor"),
+                        rs.getString("modelo")
+                    );
+                    Vaga vaga = new Vaga(
+                        rs.getDouble("valorPorHora"),
+                        rs.getString("tipoPagamento")
+                    );
+                    Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
+                    Timestamp horaSaida = rs.getTimestamp("horaSaida");
+
+                    return new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
+                }
+            }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar ClienteVaga: " + e.getMessage());
-            return null;
         }
+        return null;
     }
-    // Atualizar os dados de um cliente na vaga
+
+    // Método para atualizar um registro de ClienteVaga
     public void atualizarClienteVaga(int idCliente, String identificadorVaga, Timestamp horaEntrada, Timestamp horaSaida) {
-        String sql = "UPDATE ClienteVaga SET horaEntrada = ?, horaSaida = ? WHERE idCliente = ? AND identificadorVaga = ? AND ativo = true";  // Atualiza apenas registros ativos
+        String sql = "UPDATE ClienteVaga SET horaEntrada = ?, horaSaida = ? WHERE idCliente = ? AND identificadorVaga = ? AND ativo = true";
         
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -92,9 +144,9 @@ public class ClienteVagaDAO {
         }
     }
 
-    // Delete lógico de um cliente em uma vaga (desativa o registro)
+    // Método para desativar (exclusão lógica) um registro de ClienteVaga
     public void deletarClienteVaga(int idCliente, String identificadorVaga) {
-        String sql = "UPDATE ClienteVaga SET ativo = false WHERE idCliente = ? AND identificadorVaga = ?";  // Desativa o registro
+        String sql = "UPDATE ClienteVaga SET ativo = false WHERE idCliente = ? AND identificadorVaga = ?";
         
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -108,17 +160,48 @@ public class ClienteVagaDAO {
         }
     }
 
-    // Listar todos os clientes e vagas ativas
-    public ResultSet listarClientesVagasAtivos() {
-        String sql = "SELECT * FROM ClienteVaga WHERE ativo = true";  // Apenas registros ativos
-        
-        try {
-            Connection conn = DBConnect.getConnection();  // Obtém a conexão
-            Statement stmt = conn.createStatement();
-            return stmt.executeQuery(sql);
+    // Método para listar todos os ClienteVaga ativos
+    public List<ClienteVaga> listarClientesVagasAtivos() {
+        List<ClienteVaga> clientesVagasAtivos = new ArrayList<>();
+        String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
+                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "cv.horaEntrada, cv.horaSaida " +
+                     "FROM ClienteVaga cv " +
+                     "JOIN Cliente c ON c.idCliente = cv.idCliente " +
+                     "JOIN Veiculo v ON v.matricula = cv.matricula " +
+                     "JOIN Vaga vg ON vg.identificadorVaga = cv.identificadorVaga " +
+                     "WHERE cv.ativo = true";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente(
+                    rs.getInt("idCliente"),
+                    rs.getString("nome"),
+                    rs.getString("residencia"),
+                    rs.getString("contacto")
+                );
+                Veiculo veiculo = new Veiculo(
+                    rs.getString("matricula"),
+                    rs.getString("cor"),
+                    rs.getString("modelo")
+                );
+                Vaga vaga = new Vaga(
+                    rs.getDouble("valorPorHora"),
+                    rs.getString("tipoPagamento")
+                );
+                Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
+                Timestamp horaSaida = rs.getTimestamp("horaSaida");
+
+                ClienteVaga clienteVaga = new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
+                clientesVagasAtivos.add(clienteVaga);
+            }
         } catch (SQLException e) {
             System.err.println("Erro ao listar ClienteVaga ativos: " + e.getMessage());
-            return null;
         }
+        
+        return clientesVagasAtivos;
     }
 }

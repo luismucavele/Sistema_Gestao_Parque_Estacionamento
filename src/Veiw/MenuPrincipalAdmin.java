@@ -35,6 +35,7 @@ import Model.ModelDAO.ClienteVeiculoDAO;
 import Model.Vaga;
 import Model.Veiculo;
 import java.lang.System.Logger;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
@@ -165,11 +166,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         cbxvagas = new javax.swing.JComboBox<>();
         ComboBoxTipopagamento = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
-        txtMarca = new javax.swing.JTextField();
+        txtmarca = new javax.swing.JTextField();
         txtvalor = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         cbxPorte = new javax.swing.JComboBox<>();
+        txtResid = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -1028,12 +1031,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         cbtipocliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cbtipocliente.setForeground(new java.awt.Color(0, 0, 0));
         cbtipocliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
-        P3.add(cbtipocliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 295, 264, 30));
+        P3.add(cbtipocliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, 150, 30));
 
         jLabel38.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Tipo de Cliente:");
-        P3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 261, -1, -1));
+        P3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, -1, -1));
 
         jLabel39.setBackground(new java.awt.Color(0, 0, 0));
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1044,7 +1047,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel40.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("Porte:");
-        P3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
+        P3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, -1, -1));
 
         btnparquearadmin.setBackground(new java.awt.Color(102, 255, 102));
         btnparquearadmin.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1134,8 +1137,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel60.setForeground(new java.awt.Color(0, 0, 0));
         jLabel60.setText("Marca");
         P3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
-        P3.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 340, 30));
-        P3.add(txtvalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 160, 30));
+        P3.add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 340, 30));
+        P3.add(txtvalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 150, 30));
 
         jLabel42.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(0, 0, 0));
@@ -1148,7 +1151,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         P3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 230, -1, -1));
 
         cbxPorte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
-        P3.add(cbxPorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, 300, 30));
+        P3.add(cbxPorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 150, 30));
+        P3.add(txtResid, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 260, 30));
+
+        jLabel43.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("Residencia");
+        P3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
 
         Paineis.addTab("tab2", P3);
 
@@ -2276,7 +2285,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnparquearadminActionPerformed
 
     private void DisparquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisparquearActionPerformed
-        // TODO add your handling code here:
+       sairDoEstacionamento();
     }//GEN-LAST:event_DisparquearActionPerformed
 
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
@@ -2302,7 +2311,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         String placa = txtplaca.getText().trim();
         String cor = txtcor.getText().trim();
         String telefone = txttelefoneparquear.getText().trim();
-        String tipoCliente = (String) cbtipocliente.getSelectedItem();
+        String tipoCliente =  txtResid.getText();
 
         // Verificar se todos os campos obrigatórios estão preenchidos
         if (nome.isEmpty()) {
@@ -2342,8 +2351,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         }
 
         // Validação de formato da placa (opcional)
-        if (!placa.matches("[A-Z]{3}-\\d{3}-[A-Z]{2}")) { // Exemplo: formato da placa deve ser XX0000
-            messagemTLparquear.setText(" Formato inválido. A placa deve estar no formato exemplo: ABC-123-MZ.");
+        if (!placa.matches("[A-Z]{2}\\d{4}")) { // Exemplo: formato da placa deve ser XX0000
+            messagemTLparquear.setText(" Formato inválido. A placa deve estar no formato XX0000.");
             return false;
         }
 
@@ -2356,34 +2365,48 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (validarCampos()) {
-                    ClienteVeiculo clienteVeiculo = criarCliente();  // Crie o cliente a partir dos dados dos campos de texto
+                    ClienteVeiculo clienteVeiculo = criarCliente();  // Cria o cliente a partir dos dados dos campos de texto
+
+                    // Obtenha o espaço de estacionamento selecionado
                     String espacoSelecionado = (String) cbxvagas.getSelectedItem();
 
                     if (espacoSelecionado != null) {
-                        EspacoEstacionamento espaco = Vaga.getEspacoPorIdentificador(espacoSelecionado);
+                        // Busca o espaço de estacionamento por seu identificador
 
-                        if (espaco != null && espaco.ocupar(clienteVeiculo)) {
+                        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
+                        EspacoEstacionamento espaco;
+                        try {
+                            espaco = espacoDAO.read(espacoSelecionado);
+                        } catch (SQLException ex) {
+                            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        if (espaco != null && espaco.ocupar(clienteVeiculo.getCliente())) {
                             clienteVeiculo.setEstacionado(true);
                             clienteVeiculo.setHoraEntradaEntrada(LocalDateTime.now());
 
+                            // Salvar o veículo no banco de dados (inserir detalhes do cliente no sistema)
                             // Salvar o veículo no banco de dados
                             VeiculoDAO veiculoDAO = new VeiculoDAO();
                             veiculoDAO.inserirVeiculo(
                                     clienteVeiculo.getVeiculo().getPlaca(),
-                                    clienteVeiculo.getCliente().getTelefone(),
                                     clienteVeiculo.getVeiculo().getModelo(),
+                                    clienteVeiculo.getVeiculo().getMarca(),
+                                    clienteVeiculo.getVeiculo().getAno(), // Passe o ano como um inteiro
                                     clienteVeiculo.getVeiculo().getCor(),
-                                    clienteVeiculo.getCliente().getResidencia(),
-                                    espaco.getValorPorHora(),
+                                    clienteVeiculo.getVeiculo().getTipoVeiculo(),
                                     clienteVeiculo.getCliente().getIdCliente()
                             );
 
                             // Salvar o cliente e a vaga no banco de dados
                             ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                            String horaEntradaFormatada = clienteVeiculo.getHoraEntradaEntrada().format(formatter);
+
                             clienteVagaDAO.inserirClienteVaga(
                                     clienteVeiculo.getCliente().getIdCliente(),
                                     espacoSelecionado,
-                                    Timestamp.valueOf(clienteVeiculo.getHoraEntradaEntrada()),
+                                    horaEntradaFormatada,
                                     null
                             );
 
@@ -2393,6 +2416,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
                             // Exibir mensagem de sucesso
                             messagemTLparquear.setText("Cliente estacionado com sucesso!");
+
                             // Limpar campos
                             Limparcampus();
                         } else {
@@ -2406,7 +2430,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         });
     }
 
-    //Metodo de sair de estacionamento
+// Método de sair do estacionamento
     public void sairDoEstacionamento() {
         Disparquear.addActionListener(new ActionListener() {
             @Override
@@ -2414,7 +2438,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
                 if (selectedRow >= 0) {
                     int clienteId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Obtém o ID do cliente da tabela
-                    String espacoCliente = obterEspacoCliente(clienteId);  // Obtém o espaço do cliente estacionado
+                    Estacionamento estacionamento = new Estacionamento();
+                    String espacoCliente = estacionamento.obterEspacoCliente(clienteId);  // Obtém o espaço do cliente estacionado
 
                     if (espacoCliente != null) {
                         // Busca o espaço de estacionamento
@@ -2423,22 +2448,25 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
                         if (cliente != null) {
                             LocalDateTime saida = LocalDateTime.now();  // Hora atual de saída
-                            double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
-                            Duration duracao = Duration.between(cliente.getHoraEntradaEntrada(), saida);
+                            Duration duracao = Duration.between(cliente.getHoraEntrada(), saida);
                             long horas = duracao.toHours();
                             long minutos = duracao.toMinutes() % 60;
                             String tempoEstacionado = horas + " horas e " + minutos + " minutos";
+
+                            double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
 
                             // Confirmação do pagamento
                             int confirm = JOptionPane.showConfirmDialog(null, "Tempo estacionado: " + tempoEstacionado + ". Valor a pagar: " + totalAPagar + " MZN. Deseja continuar?", "Pagamento", JOptionPane.YES_NO_OPTION);
 
                             if (confirm == JOptionPane.YES_OPTION) {
                                 espaco.desocupar();  // Libera o espaço
+                                cliente.registrarSaida();  // Atualiza a hora de saída do cliente
 
                                 // Atualiza a saída no banco de dados
                                 ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                                clienteVagaDAO.atualizarClienteVaga(cliente.getIdCliente(), espacoCliente, Timestamp.valueOf(cliente.getHoraEntradaEntrada()), Timestamp.valueOf(saida));
-
+                                clienteVagaDAO.atualizarClienteVaga(cliente.getIdCliente(),
+                                        Timestamp.valueOf(cliente.getHoraEntrada().toString()), // Converte LocalDateTime para Timestamp
+                                        Timestamp.valueOf(saida.toString()));
                                 // Atualiza a tabela e os espaços disponíveis
                                 atualizarTabela();
                                 atualizarEspacosDisponiveis();
@@ -2476,11 +2504,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private Cliente criarClienteDoFormulario() {
         int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
         String nome = txtnomepropetarioa.getText(); // Obtém o nome do campo de texto
-        String documento = documentoTextField.getText(); // Obtém o documento do campo de texto
+        String documento = txtResid.getText(); // Obtém o documento do campo de texto
         String telefone = txttelefoneparquear.getText(); // Obtém o telefone do campo de texto
+        String email = txtEmail.getText(); // Obtém o email do campo de texto, se houver
         boolean status = true; // Por padrão, o cliente é ativo
 
-        return new Cliente(idCliente, status, nome, documento, telefone, email); // Retorna o cliente criado
+        // Retorna o cliente criado
+        return new Cliente(idCliente, status, nome, documento, telefone, email);
 
     }
 
@@ -2488,12 +2518,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
         String placa = txtplaca.getText(); // Obtém a placa do campo de texto
         String modelo = txtdescricaoa.getText(); // Obtém o modelo do campo de texto
-        String marca = txtMarca.getText();
+        String marca = txtmarca.getText(); // Obtém a marca do campo de texto
         String cor = txtcor.getText(); // Obtém a cor do campo de texto
         String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
 
         // Cria e retorna o veículo associado ao cliente
-        return new Veiculo(placa, modelo, marca, cor, tipoVeiculo);
+        return new Veiculo(placa, modelo, marca, 0, cor, tipoVeiculo, cliente);
     }
 
 // Método para gerar ID único (exemplo simples)
@@ -2513,22 +2543,22 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
         try {
             ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.buscarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
+            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.listarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
 
             // Adiciona os dados à tabela
             for (ClienteVaga clienteVaga : clientesEstacionados) {
                 tableModel.addRow(new Object[]{
-                    clienteVaga.getIdCliente(), // Id do cliente
-                    clienteVaga.getNome(), // Nome
-                    clienteVaga.getResidencia(), // Residência
-                    clienteVaga.getContacto(), // Contato
-                    clienteVaga.getMatricula(), // Placa (ou Matricula, conforme seu campo)
-                    clienteVaga.getCor(), // Cor do veículo
-                    clienteVaga.getTipoPagamento(), // Tipo de pagamento
-                    clienteVaga.getValorPorHora() // Valor por hora
+                    clienteVaga.getCliente().getIdCliente(),
+                    clienteVaga.getCliente().getNome(),
+                    clienteVaga.getCliente().getDocumento(),
+                    clienteVaga.getCliente().getTelefone(),
+                    clienteVaga.getVeiculo().getPlaca(),
+                    clienteVaga.getVeiculo().getCor(),
+                    clienteVaga.getHoraEntrada(),
+                    clienteVaga.getVaga().getValorPorHora()
                 });
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -2543,24 +2573,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         try {
             EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
             count = espacoDAO.contarEspacosDisponiveis();  // Método que conta diretamente no banco de dados
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao contar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         return count;
     }
 
-    //Metodo atualizar espacos disponiveis
+    //Metodo atualizar sepacos disponiveis
     private void atualizarEspacosDisponiveis() {
-        cbxPorte.removeAllItems();
+        cbxvagas.removeAllItems();
         try {
             EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
-            List<String> espacosDisponiveis = espacoDAO.listarEspacosDisponiveis(); // Método que lista os espaços disponíveis do banco de dados
+            List<EspacoEstacionamento> espacosDisponiveis = espacoDAO.listarEspacosDisponiveis(); // Método que lista os espaços disponíveis do banco de dados
 
-            for (String espaco : espacosDisponiveis) {
-                cbxvagas.addItem(espaco);
+            for (EspacoEstacionamento espaco : espacosDisponiveis) {
+                cbxvagas.addItem(espaco.getIdentificador()); // Adiciona apenas o identificador dos espaços disponíveis
             }
-        } catch (SQLException e) {
-            messagemTLparquear.setText(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
     //
@@ -2715,16 +2745,16 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private void buscarFuncionario() {
         try {
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText().trim()));
+            Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText()));
             if (funcionario != null) {
                 preencherCampos(funcionario);
             } else {
                 messagentxt.setText("Funcionário não encontrado");
+                //JOptionPane.showMessageDialog(this, "Funcionário não encontrado.");
             }
-        } catch (NumberFormatException ex) {
-            messagentxt.setText("ID inválido");
         } catch (Exception ex) {
             messagentxt.setText("Erro ao buscar funcionário");
+            //JOptionPane.showMessageDialog(this, "Erro ao buscar funcionário: " + ex.getMessage());
         }
     }
 
@@ -2743,7 +2773,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         status.setSelected(funcionario.isAtivo());
     }
 
-    // Instância do Logger para registrar erros
     public void bill_print() {
         try {
             bill.setText("                        PARK MARELO \n");
@@ -2928,6 +2957,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
@@ -3017,12 +3047,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField troco;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeuser;
     private javax.swing.JTextField txtNuit;
     private javax.swing.JTextField txtNumerBI;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtResid;
     private javax.swing.JTextField txtResidencia;
     private javax.swing.JSpinner txtSalario;
     private javax.swing.JTextField txtSenha;
@@ -3031,6 +3061,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtTipoUsuario;
     private javax.swing.JTextField txtcor;
     private javax.swing.JTextField txtdescricaoa;
+    private javax.swing.JTextField txtmarca;
     private javax.swing.JTextField txtnomepropetarioa;
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefoneparquear;

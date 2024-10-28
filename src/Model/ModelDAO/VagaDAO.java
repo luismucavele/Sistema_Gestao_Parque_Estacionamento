@@ -8,6 +8,7 @@ import java.sql.*;
 public class VagaDAO {
 
     // Inserir uma nova vaga
+    
     public void inserirVaga(String identificador, double valorPorHora, boolean isVip, boolean ocupado, Integer idCliente, Timestamp horaEntrada) {
         Connection conn = null;
         PreparedStatement stmt = null;
