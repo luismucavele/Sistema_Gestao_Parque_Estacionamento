@@ -6,6 +6,7 @@ import Model.Veiculo;
 import Model.Vaga;
 import model.DBConnect;  // Usando a classe de conexão
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,8 @@ public class ClienteVagaDAO {
     public List<ClienteVaga> listarClientesEstacionados() {
         List<ClienteVaga> clientesEstacionados = new ArrayList<>();
         String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
-                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "v.matricula, v.cor, v.modelo, v.ano, v.marca, v.tipoVeiculo, " +
+                     "vg.valorPorHora, vg.tipoPagamento, " +
                      "cv.horaEntrada, cv.horaSaida " +
                      "FROM Cliente c " +
                      "JOIN ClienteVaga cv ON c.idCliente = cv.idCliente " +
@@ -38,8 +40,12 @@ public class ClienteVagaDAO {
                 
                 Veiculo veiculo = new Veiculo(
                     rs.getString("matricula"),
+                    rs.getString("modelo"),
+                    rs.getString("marca"),
+                    rs.getInt("ano"),
                     rs.getString("cor"),
-                    rs.getString("modelo")
+                    rs.getString("tipoVeiculo"),
+                    cliente  // Proprietário
                 );
                 
                 Vaga vaga = new Vaga(
@@ -48,8 +54,8 @@ public class ClienteVagaDAO {
                 );
 
                 // Instância de ClienteVaga com os objetos criados
-                Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
-                Timestamp horaSaida = rs.getTimestamp("horaSaida");
+                LocalDateTime horaEntrada = rs.getObject("horaEntrada", LocalDateTime.class);
+                LocalDateTime horaSaida = rs.getObject("horaSaida", LocalDateTime.class);
                 ClienteVaga clienteVaga = new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
                 
                 clientesEstacionados.add(clienteVaga);
@@ -62,7 +68,7 @@ public class ClienteVagaDAO {
     }
 
     // Método para inserir um novo registro de ClienteVaga
-    public void inserirClienteVaga(int idCliente, String identificadorVaga, String matricula, Timestamp horaEntrada) {
+    public void inserirClienteVaga(int idCliente, String identificadorVaga, String matricula, LocalDateTime horaEntrada) {
         String sql = "INSERT INTO ClienteVaga (idCliente, identificadorVaga, matricula, horaEntrada, ativo) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnect.getConnection();
@@ -71,7 +77,7 @@ public class ClienteVagaDAO {
             stmt.setInt(1, idCliente);
             stmt.setString(2, identificadorVaga);
             stmt.setString(3, matricula);
-            stmt.setTimestamp(4, horaEntrada);
+            stmt.setObject(4, horaEntrada);  // Inserindo LocalDateTime no banco
             stmt.setBoolean(5, true);  // Definindo como ativo
             stmt.executeUpdate();
             System.out.println("ClienteVaga inserido com sucesso.");
@@ -83,7 +89,8 @@ public class ClienteVagaDAO {
     // Método para buscar ClienteVaga por ID do cliente e identificador da vaga
     public ClienteVaga buscarClienteVagaPorId(int idCliente, String identificadorVaga) {
         String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
-                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "v.matricula, v.cor, v.modelo, v.ano, v.marca, v.tipoVeiculo, " +
+                     "vg.valorPorHora, vg.tipoPagamento, " +
                      "cv.horaEntrada, cv.horaSaida " +
                      "FROM ClienteVaga cv " +
                      "JOIN Cliente c ON c.idCliente = cv.idCliente " +
@@ -107,15 +114,19 @@ public class ClienteVagaDAO {
                     );
                     Veiculo veiculo = new Veiculo(
                         rs.getString("matricula"),
+                        rs.getString("modelo"),
+                        rs.getString("marca"),
+                        rs.getInt("ano"),
                         rs.getString("cor"),
-                        rs.getString("modelo")
+                        rs.getString("tipoVeiculo"),
+                        cliente  // Proprietário
                     );
                     Vaga vaga = new Vaga(
                         rs.getDouble("valorPorHora"),
                         rs.getString("tipoPagamento")
                     );
-                    Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
-                    Timestamp horaSaida = rs.getTimestamp("horaSaida");
+                    LocalDateTime horaEntrada = rs.getObject("horaEntrada", LocalDateTime.class);
+                    LocalDateTime horaSaida = rs.getObject("horaSaida", LocalDateTime.class);
 
                     return new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
                 }
@@ -127,14 +138,14 @@ public class ClienteVagaDAO {
     }
 
     // Método para atualizar um registro de ClienteVaga
-    public void atualizarClienteVaga(int idCliente, String identificadorVaga, Timestamp horaEntrada, Timestamp horaSaida) {
+    public void atualizarClienteVaga(int idCliente, String identificadorVaga, LocalDateTime horaEntrada, LocalDateTime horaSaida) {
         String sql = "UPDATE ClienteVaga SET horaEntrada = ?, horaSaida = ? WHERE idCliente = ? AND identificadorVaga = ? AND ativo = true";
         
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setTimestamp(1, horaEntrada);
-            stmt.setTimestamp(2, horaSaida);
+            stmt.setObject(1, horaEntrada);  // Atualizando com LocalDateTime
+            stmt.setObject(2, horaSaida);
             stmt.setInt(3, idCliente);
             stmt.setString(4, identificadorVaga);
             stmt.executeUpdate();
@@ -164,7 +175,8 @@ public class ClienteVagaDAO {
     public List<ClienteVaga> listarClientesVagasAtivos() {
         List<ClienteVaga> clientesVagasAtivos = new ArrayList<>();
         String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, " +
-                     "v.matricula, v.cor, v.modelo, vg.valorPorHora, vg.tipoPagamento, " +
+                     "v.matricula, v.cor, v.modelo, v.ano, v.marca, v.tipoVeiculo, " +
+                     "vg.valorPorHora, vg.tipoPagamento, " +
                      "cv.horaEntrada, cv.horaSaida " +
                      "FROM ClienteVaga cv " +
                      "JOIN Cliente c ON c.idCliente = cv.idCliente " +
@@ -185,15 +197,19 @@ public class ClienteVagaDAO {
                 );
                 Veiculo veiculo = new Veiculo(
                     rs.getString("matricula"),
+                    rs.getString("modelo"),
+                    rs.getString("marca"),
+                    rs.getInt("ano"),
                     rs.getString("cor"),
-                    rs.getString("modelo")
+                    rs.getString("tipoVeiculo"),
+                    cliente  // Proprietário
                 );
                 Vaga vaga = new Vaga(
                     rs.getDouble("valorPorHora"),
                     rs.getString("tipoPagamento")
                 );
-                Timestamp horaEntrada = rs.getTimestamp("horaEntrada");
-                Timestamp horaSaida = rs.getTimestamp("horaSaida");
+                LocalDateTime horaEntrada = rs.getObject("horaEntrada", LocalDateTime.class);
+                LocalDateTime horaSaida = rs.getObject("horaSaida", LocalDateTime.class);
 
                 ClienteVaga clienteVaga = new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
                 clientesVagasAtivos.add(clienteVaga);
