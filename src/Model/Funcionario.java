@@ -6,19 +6,19 @@ public class Funcionario extends Pessoa {
     private double salario;
     private String usuario;
     private String senha;
-    private boolean ativo;
+    private boolean status;
     private String residencia;
     private String sexo;
 
     // Construtor completo
-    public Funcionario(int idFuncionario, String nome, String documento, String telefone, String email, String cargo, double salario, String usuario, String senha, boolean ativo, String residencia, String sexo) {
+    public Funcionario(int idFuncionario, String nome, String cargo, double salario,String usuario, String senha, String documento, String telefone, String sexo, String email, String residencia, boolean status) {
         super(nome, documento, telefone, email);
         this.idFuncionario = idFuncionario;
         this.cargo = cargo;
         this.salario = salario;
         this.usuario = usuario;
         this.senha = senha;
-        this.ativo = ativo;
+        this.status = status;
         this.residencia = residencia;
         this.sexo = sexo;
     }
@@ -70,11 +70,11 @@ public class Funcionario extends Pessoa {
     }
 
     public boolean isAtivo() {
-        return ativo;
+        return status;
     }
 
     public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+        this.status = ativo;
     }
 
     public String getResidencia() {
@@ -99,16 +99,30 @@ public class Funcionario extends Pessoa {
     }
 
     public void desativarFuncionario() {
-        this.ativo = false;
+        this.status = false;
     }
 
     public void ativarFuncionario() {
-        this.ativo = true;
+        this.status = true;
     }
 
     public void aumentarSalario(double porcentagem) {
         this.salario += this.salario * porcentagem / 100;
     }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+    
+    public boolean getStatus() {
+        return status;
+    }
+    
+    
 
     @Override
     public String toString() {
@@ -117,7 +131,7 @@ public class Funcionario extends Pessoa {
                 ", nome='" + getNome() + '\'' +
                 ", cargo='" + cargo + '\'' +
                 ", salario=" + salario +
-                ", ativo=" + ativo +
+                ", ativo=" + status +
                 ", residencia='" + residencia + '\'' +
                 ", sexo='" + sexo + '\'' +
                 '}';

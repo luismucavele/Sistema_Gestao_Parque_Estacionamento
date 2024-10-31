@@ -16,7 +16,8 @@ import Model.ModelDAO.EspacoEstacionamentoDAO;
 import Model.ModelDAO.FuncionarioDAO;
 import Model.ModelDAO.VeiculoDAO;
 import java.awt.print.PrinterException;
-import java.util.logging.Level;;
+import java.util.logging.Level;
+;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.Timestamp;
@@ -56,8 +57,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     public MenuPrincipalAdmin() {
         initComponents();
         this.funcionarios = new ArrayList<>();
-//        tbFuncionarioModel = (DefaultTableModel) tbFuncionario.getModel();
-               listarFuncionarios();
+        tbFuncionarioModel = (DefaultTableModel) tblistar.getModel();
+        listarFuncionarios();
+
     }
 
     /**
@@ -80,6 +82,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         sair = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
         Paineis = new javax.swing.JTabbedPane();
         P1 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
@@ -179,8 +182,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -192,8 +193,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
         jLabel52 = new javax.swing.JLabel();
         txtNumerBI = new javax.swing.JTextField();
-        jLabel53 = new javax.swing.JLabel();
-        txtNuit = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
@@ -208,13 +207,12 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         btnDemitir = new javax.swing.JButton();
         btnPesquisa = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbFuncionario = new javax.swing.JTable();
-        btnEditar = new javax.swing.JButton();
         txtSexo = new javax.swing.JComboBox<>();
         jLabel109 = new javax.swing.JLabel();
         status = new javax.swing.JCheckBox();
         messagentxt = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblistar = new javax.swing.JTable();
         P5 = new javax.swing.JPanel();
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
@@ -243,6 +241,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         cbxTipopagamento1 = new javax.swing.JComboBox<>();
         jLabel41 = new javax.swing.JLabel();
         valorpagar = new javax.swing.JTextField();
+        jLabel166 = new javax.swing.JLabel();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
@@ -338,6 +337,23 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
+        P10 = new javax.swing.JPanel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jLabel161 = new javax.swing.JLabel();
+        jLabel162 = new javax.swing.JLabel();
+        jLabel160 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel163 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel165 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel164 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -436,7 +452,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         sair.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         sair.setForeground(new java.awt.Color(255, 255, 255));
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_exit_30px.png"))); // NOI18N
-        sair.setText("Sair");
+        sair.setText("Terminar sessão");
         sair.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -448,6 +464,18 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel118.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel118MouseClicked(evt);
+            }
+        });
+
+        jLabel85.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel85.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel85.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_carpark_30px.png"))); // NOI18N
+        jLabel85.setText("Gerenciar Espaços");
+        jLabel85.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jLabel85.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel85MouseClicked(evt);
             }
         });
 
@@ -464,34 +492,36 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RelatorioFinaceiro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Pagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(funcionários, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(Descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(funcionários, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Descricao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel85, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel118)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addComponent(jLabel118)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Parquear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(funcionários, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Pagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(RelatorioFinaceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1357,107 +1387,65 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         Paineis.addTab("tab2", P3);
 
         P4.setBackground(new java.awt.Color(236, 240, 241));
-        P4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
-        P4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 41));
 
         jLabel44.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
         jLabel44.setText("Controle de estacionamento");
-        P4.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jLabel45.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("Administrador:");
-        P4.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
-
-        jLabel46.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel46.setText("ID:");
-        P4.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 119, -1, -1));
-
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-        P4.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 139, 235, 30));
 
         jLabel47.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(0, 0, 0));
         jLabel47.setText("Cadastrar Funcionario");
-        P4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 67, -1, -1));
 
         jLabel48.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setText("Nome:");
-        P4.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 179, -1, -1));
-        P4.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 199, 235, 30));
 
         jLabel49.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setText("Nome do Usuario:");
-        P4.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 239, -1, -1));
-        P4.add(txtNomeuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 259, 235, 30));
 
         jLabel50.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(0, 0, 0));
         jLabel50.setText("Telefone:");
-        P4.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 309, -1, -1));
-        P4.add(txtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 329, 235, 30));
 
         jLabel51.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(0, 0, 0));
         jLabel51.setText("Senha:");
-        P4.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 119, -1, -1));
-        P4.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 137, 235, 30));
 
         jLabel52.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(0, 0, 0));
         jLabel52.setText("Numero BI:");
-        P4.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 179, -1, -1));
-        P4.add(txtNumerBI, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 198, 235, 30));
-
-        jLabel53.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel53.setText("Nuit:");
-        P4.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 239, -1, -1));
-        P4.add(txtNuit, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 261, 235, 30));
 
         jLabel54.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(0, 0, 0));
         jLabel54.setText("Email:");
-        P4.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 309, -1, -1));
-        P4.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 330, 235, 30));
 
         jLabel55.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(0, 0, 0));
         jLabel55.setText("Salario");
-        P4.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 119, -1, -1));
-        P4.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 139, 230, 30));
 
         jLabel56.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(0, 0, 0));
         jLabel56.setText("Tipo de Funcionario:");
-        P4.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 309, -1, -1));
 
         txtTipoUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtTipoUsuario.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtTipoUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recepcionista", "Guarda", "Administrador", "gestor financeiro" }));
-        P4.add(txtTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 329, 235, 30));
 
         jLabel57.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
         jLabel57.setText("Residencia:");
-        P4.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 179, -1, -1));
-        P4.add(txtResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 199, 230, 30));
 
         jLabel58.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(0, 0, 0));
         jLabel58.setText("Sexo:");
-        P4.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, -1, -1));
 
         btnCadastrar.setBackground(new java.awt.Color(102, 255, 102));
         btnCadastrar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1469,7 +1457,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 btnCadastrarActionPerformed(evt);
             }
         });
-        P4.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 369, 140, -1));
 
         btnActualizar.setBackground(new java.awt.Color(51, 51, 51));
         btnActualizar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1481,7 +1468,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        P4.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 369, 140, -1));
 
         btnDemitir.setBackground(new java.awt.Color(255, 51, 51));
         btnDemitir.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1492,7 +1478,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 btnDemitirActionPerformed(evt);
             }
         });
-        P4.add(btnDemitir, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 369, 130, -1));
 
         btnPesquisa.setBackground(new java.awt.Color(51, 51, 51));
         btnPesquisa.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1504,47 +1489,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 btnPesquisaActionPerformed(evt);
             }
         });
-        P4.add(btnPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 428, 140, -1));
-        P4.add(txtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 429, 351, 30));
-
-        tbFuncionario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "idFuncionario", "nome", "documento", "telefone", "email", "cargo", "salario", "usuario", "senha", "ativo", "residencia", "sexo"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tbFuncionario);
-
-        P4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 469, 1100, 147));
-
-        btnEditar.setBackground(new java.awt.Color(0, 102, 255));
-        btnEditar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_edit_20px.png"))); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-        P4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 369, 140, -1));
 
         txtSexo.setBackground(new java.awt.Color(255, 255, 255));
         txtSexo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -1555,7 +1499,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 txtSexoActionPerformed(evt);
             }
         });
-        P4.add(txtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 259, 230, 30));
 
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel109.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1563,34 +1506,238 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 jLabel109MouseClicked(evt);
             }
         });
-        P4.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(1099, 10, -1, -1));
 
         status.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         status.setText("Status");
-        P4.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 330, -1, -1));
-        P4.add(messagentxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 650, 20));
+
+        messagentxt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        messagentxt.setForeground(new java.awt.Color(255, 0, 0));
+
+        tblistar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "nome", "Cargo", "salario", "usuario", "documento", "telefone", "sexo", "email", "bairro", "status"
+            }
+        ));
+        tblistar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblistarMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tblistar);
+
+        javax.swing.GroupLayout P4Layout = new javax.swing.GroupLayout(P4);
+        P4.setLayout(P4Layout);
+        P4Layout.setHorizontalGroup(
+            P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P4Layout.createSequentialGroup()
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(512, 512, 512)
+                        .addComponent(jLabel47))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P4Layout.createSequentialGroup()
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel48)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(149, 149, 149)
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel51))
+                                .addGap(121, 121, 121)
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel55)
+                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(P4Layout.createSequentialGroup()
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNomeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel49))
+                                .addGap(149, 149, 149)
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(P4Layout.createSequentialGroup()
+                                        .addComponent(jLabel52)
+                                        .addGap(294, 294, 294)
+                                        .addComponent(jLabel57))
+                                    .addGroup(P4Layout.createSequentialGroup()
+                                        .addComponent(txtNumerBI, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(121, 121, 121)
+                                        .addComponent(txtResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(P4Layout.createSequentialGroup()
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(P4Layout.createSequentialGroup()
+                                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel50)
+                                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(P4Layout.createSequentialGroup()
+                                                .addGap(155, 155, 155)
+                                                .addComponent(jLabel54))
+                                            .addGroup(P4Layout.createSequentialGroup()
+                                                .addGap(149, 149, 149)
+                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(P4Layout.createSequentialGroup()
+                                        .addGap(121, 121, 121)
+                                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel58)
+                                            .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(P4Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(status))))))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(459, 459, 459)
+                        .addComponent(jLabel56))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel45))
+                        .addGap(91, 91, 91)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P4Layout.createSequentialGroup()
+                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDemitir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P4Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(messagentxt, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(243, 243, 243)
+                                .addComponent(jLabel109)))))
+                .addGap(36, 36, 36))
+        );
+        P4Layout.setVerticalGroup(
+            P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel109)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel44)
+                            .addComponent(messagentxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel45)))
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel47)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel51)
+                            .addComponent(jLabel48))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(10, 10, 10)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel57)
+                    .addComponent(jLabel49))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNumerBI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7))
+                    .addComponent(txtResidencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel50))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel58)
+                        .addGap(3, 3, 3)
+                        .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addComponent(jLabel56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(status))
+                .addGap(19, 19, 19)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnCadastrar)
+                    .addComponent(btnDemitir))
+                .addGap(29, 29, 29)
+                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisa))
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         Paineis.addTab("tab3", P4);
 
         P5.setBackground(new java.awt.Color(236, 240, 241));
+        P5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
+        P5.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 25, -1, 41));
 
         jLabel76.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel76.setForeground(new java.awt.Color(0, 0, 0));
         jLabel76.setText("Controle de estacionamento");
+        P5.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 25, -1, -1));
 
         jLabel77.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel77.setForeground(new java.awt.Color(0, 0, 0));
         jLabel77.setText("Administrador:");
+        P5.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 50, -1, -1));
 
         jLabel79.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel79.setForeground(new java.awt.Color(0, 0, 0));
         jLabel79.setText("Pagamento");
+        P5.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 80, -1, -1));
 
         jLabel80.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel80.setForeground(new java.awt.Color(0, 0, 0));
         jLabel80.setText("Placa:");
+        P5.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 153, -1, -1));
+        P5.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 340, 29));
 
         pesquisarpagadmin.setBackground(new java.awt.Color(51, 51, 51));
         pesquisarpagadmin.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -1602,53 +1749,66 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 pesquisarpagadminActionPerformed(evt);
             }
         });
+        P5.add(pesquisarpagadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 140, -1, -1));
 
         bill.setColumns(20);
         bill.setRows(5);
         bill.setText(" ");
         jScrollPane5.setViewportView(bill);
 
+        P5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 100, 410, 493));
+
         jLabel81.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(0, 0, 0));
         jLabel81.setText("Nome do Propetario:");
+        P5.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 120, -1));
 
         placapagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         placapagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P5.add(placapagament, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 258, 30));
 
         jLabel82.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel82.setForeground(new java.awt.Color(0, 0, 0));
         jLabel82.setText("Tipo e Placa:");
+        P5.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         nomepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         nomepagament.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P5.add(nomepagament, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 258, 30));
 
         jLabel83.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel83.setForeground(new java.awt.Color(0, 0, 0));
         jLabel83.setText("Tipo de Cliente:");
+        P5.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         tipoclientepagament.setBackground(new java.awt.Color(255, 255, 255));
         tipoclientepagament.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         tipoclientepagament.setForeground(new java.awt.Color(0, 0, 0));
         tipoclientepagament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
+        P5.add(tipoclientepagament, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 260, 30));
 
         jLabel84.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel84.setForeground(new java.awt.Color(0, 0, 0));
         jLabel84.setText("Porte:");
+        P5.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 440, -1, -1));
 
         jLabel88.setBackground(new java.awt.Color(0, 0, 0));
         jLabel88.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel88.setForeground(new java.awt.Color(0, 0, 0));
         jLabel88.setText("Valor:");
+        P5.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 490, -1, -1));
 
         jButton10.setBackground(new java.awt.Color(51, 51, 51));
         jButton10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_stack_of_money_20px.png"))); // NOI18N
         jButton10.setText("Pagar");
+        P5.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 474, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Fatura");
+        P5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(865, 80, 50, -1));
 
         jButton11.setBackground(new java.awt.Color(0, 255, 0));
         jButton11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1660,10 +1820,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
+        P5.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(831, 612, 110, -1));
 
         jLabel106.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 0, 0));
         jLabel106.setText("Troco:");
+        P5.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 546, -1, -1));
+        P5.add(troco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 532, 70, 30));
 
         jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1671,172 +1834,25 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 jLabel110MouseClicked(evt);
             }
         });
+        P5.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(1101, 12, -1, 20));
 
         cbxporte.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         cbxporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+        P5.add(cbxporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 426, 260, 30));
 
         cbxTipopagamento1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         cbxTipopagamento1.setForeground(new java.awt.Color(255, 255, 255));
         cbxTipopagamento1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numerario", "Cartão", "Transferencia" }));
+        P5.add(cbxTipopagamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 378, 260, 30));
 
         jLabel41.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("Tipo de Pagamento");
+        P5.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 392, -1, -1));
+        P5.add(valorpagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 474, 86, 30));
 
-        javax.swing.GroupLayout P5Layout = new javax.swing.GroupLayout(P5);
-        P5.setLayout(P5Layout);
-        P5Layout.setHorizontalGroup(
-            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addComponent(jLabel80)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel82)
-                                .addGap(58, 58, 58)
-                                .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(P5Layout.createSequentialGroup()
-                                    .addComponent(jLabel83)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(P5Layout.createSequentialGroup()
-                                        .addComponent(jLabel41)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
-                                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel84)
-                                            .addComponent(jLabel88))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
-                                                    .addComponent(valorpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel106)))))
-                .addGap(35, 35, 35)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel79))
-                    .addComponent(pesquisarpagadmin))
-                .addGap(28, 28, 28)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel75)
-                .addGap(6, 6, 6)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel76)
-                    .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel110)
-                .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(224, 224, 224))
-        );
-        P5Layout.setVerticalGroup(
-            P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P5Layout.createSequentialGroup()
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel76)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel77))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel80))
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel81))
-                            .addComponent(nomepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel82))
-                            .addComponent(placapagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel83))
-                            .addComponent(tipoclientepagament, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41))
-                        .addGap(18, 18, 18)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel84))
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(valorpagar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel88)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel106)))
-                        .addGap(91, 91, 91))
-                    .addGroup(P5Layout.createSequentialGroup()
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel79)
-                                .addGap(36, 36, 36)
-                                .addComponent(pesquisarpagadmin))
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(1, 1, 1)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(jButton11)
-                        .addContainerGap())))
-        );
+        jLabel166.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Plain credit card-cuate.png"))); // NOI18N
+        P5.add(jLabel166, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, -1, -1));
 
         Paineis.addTab("tab4", P5);
 
@@ -2749,6 +2765,181 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         Paineis.addTab("tab2", P9);
 
+        P10.setBackground(new java.awt.Color(236, 240, 241));
+
+        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
+
+        jLabel87.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel87.setText("Controle de estacionamento");
+
+        jLabel91.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel91.setText("Adiminstrador:");
+
+        jLabel161.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel161.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel161.setText("Gerenciamento de Espaços");
+
+        jLabel162.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
+        jLabel162.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel162MouseClicked(evt);
+            }
+        });
+
+        jLabel160.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel160.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel160.setText("ID da Vaga :");
+
+        jLabel163.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel163.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel163.setText("Tipo de Vaga:");
+
+        jLabel165.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Parking-amico.png"))); // NOI18N
+
+        jLabel164.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel164.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel164.setText("Status da Vaga:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID da Vaga", "Tipo de Vaga", "Status da Vaga"
+            }
+        ));
+        jScrollPane8.setViewportView(jTable1);
+
+        jButton3.setBackground(new java.awt.Color(255, 153, 51));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_update_20px.png"))); // NOI18N
+        jButton3.setText("Atualizar");
+
+        jButton4.setBackground(new java.awt.Color(51, 255, 51));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_save_20px_1.png"))); // NOI18N
+        jButton4.setText("Salvar");
+
+        javax.swing.GroupLayout P10Layout = new javax.swing.GroupLayout(P10);
+        P10.setLayout(P10Layout);
+        P10Layout.setHorizontalGroup(
+            P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P10Layout.createSequentialGroup()
+                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel87)
+                            .addComponent(jLabel91))
+                        .addGap(835, 835, 835)
+                        .addComponent(jLabel162))
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(464, 464, 464)
+                        .addComponent(jLabel161))
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P10Layout.createSequentialGroup()
+                                .addComponent(jLabel160)
+                                .addGap(22, 22, 22)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(P10Layout.createSequentialGroup()
+                                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(P10Layout.createSequentialGroup()
+                                        .addComponent(jLabel163)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(P10Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(P10Layout.createSequentialGroup()
+                                                .addComponent(jLabel164)
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jCheckBox1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(14, 14, 14)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel165)
+                                .addGap(52, 52, 52)))))
+                .addGap(32, 32, 32))
+        );
+        P10Layout.setVerticalGroup(
+            P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P10Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel87)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel91))
+                    .addComponent(jLabel162))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel161)
+                .addGap(36, 36, 36)
+                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel160))
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P10Layout.createSequentialGroup()
+                        .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P10Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel163))
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P10Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel164)
+                                    .addComponent(jCheckBox1)))
+                            .addGroup(P10Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(P10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton4))))
+                        .addGap(9, 9, 9)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        Paineis.addTab("tab8", P10);
+
         jPanel1.add(Paineis, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, -30, 1170, 680));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, -1));
@@ -2837,15 +3028,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         registrarFuncionario();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // Supondo que txtID seja seu campo de texto para o ID
-        txtId.setEditable(false);
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnDemitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemitirActionPerformed
 
         excluirFuncionario();
@@ -2860,7 +3042,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnparquearadminActionPerformed
 
     private void DisparquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisparquearActionPerformed
-       sairDoEstacionamento();
+        sairDoEstacionamento();
     }//GEN-LAST:event_DisparquearActionPerformed
 
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
@@ -2880,7 +3062,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSexoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                Paineis.setSelectedComponent(P9);
+        Paineis.setSelectedComponent(P9);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -2908,14 +3090,26 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdescricaoaActionPerformed
 
+    private void jLabel85MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel85MouseClicked
+        Paineis.setSelectedComponent(P10);
+    }//GEN-LAST:event_jLabel85MouseClicked
+
+    private void jLabel162MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel162MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel162MouseClicked
+
+    private void tblistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblistarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblistarMouseClicked
+
     //Validacao de campos 
     private boolean validarCampos() {
-        String nome = jTextField8.getText().trim();
-        String descricao = jTextField8.getText().trim();
+        String nome = txtnomepropetarioa.getText().trim();
+        String descricao = txtdescricaoa.getText().trim();
         String placa = txtplaca.getText().trim();
         String cor = txtcor.getText().trim();
         String telefone = txttelefoneparquear.getText().trim();
-        String tipoCliente =  txtResid.getText();
+        String tipoCliente = txtResid.getText();
 
         // Verificar se todos os campos obrigatórios estão preenchidos
         if (nome.isEmpty()) {
@@ -2965,131 +3159,133 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
     //Todos metodos de cliente
     public void estacionarCliente() {
-    btnparquearadmin.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (validarCampos()) {
-                ClienteVeiculo clienteVeiculo = criarCliente();  // Cria o cliente a partir dos dados dos campos de texto
+        btnparquearadmin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (validarCampos()) {
+                    ClienteVeiculo clienteVeiculo = criarCliente();  // Cria o cliente a partir dos dados dos campos de texto
 
-                // Obtenha o espaço de estacionamento selecionado
-                String espacoSelecionado = (String) cbxvagas.getSelectedItem();
+                    // Obtenha o espaço de estacionamento selecionado
+                    String espacoSelecionado = (String) cbxvagas.getSelectedItem();
 
-                if (espacoSelecionado != null) {
-                    // Busca o espaço de estacionamento por seu identificador
-                    EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
-                    EspacoEstacionamento espaco = null; // Inicializa espaco como null
-                    try {
-                        espaco = espacoDAO.read(espacoSelecionado);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    if (espacoSelecionado != null) {
+                        // Busca o espaço de estacionamento por seu identificador
+                        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
+                        EspacoEstacionamento espaco = null; // Inicializa espaco como null
+                        try {
+                            espaco = espacoDAO.read(espacoSelecionado);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
-                    if (espaco != null && espaco.ocupar(clienteVeiculo.getCliente())) {
-                        clienteVeiculo.setEstacionado(true);
-                        clienteVeiculo.setHoraEntradaEntrada(LocalDateTime.now());
+                        if (espaco != null && espaco.ocupar(clienteVeiculo.getCliente())) {
+                            clienteVeiculo.setEstacionado(true);
+                            clienteVeiculo.setHoraEntradaEntrada(LocalDateTime.now());
 
-                        // Salvar o veículo no banco de dados
-                        VeiculoDAO veiculoDAO = new VeiculoDAO();
-                        veiculoDAO.inserirVeiculo(
-                            clienteVeiculo.getVeiculo().getPlaca(),
-                            clienteVeiculo.getVeiculo().getModelo(),
-                            clienteVeiculo.getVeiculo().getMarca(),
-                            clienteVeiculo.getVeiculo().getAno(),          // Passe o ano como um inteiro
-                            clienteVeiculo.getVeiculo().getCor(),
-                            clienteVeiculo.getVeiculo().getTipoVeiculo(),
-                            clienteVeiculo.getCliente().getIdCliente()
-                        );
+                            // Salvar o veículo no banco de dados
+                            VeiculoDAO veiculoDAO = new VeiculoDAO();
+                            veiculoDAO.inserirVeiculo(
+                                    clienteVeiculo.getVeiculo().getPlaca(),
+                                    clienteVeiculo.getVeiculo().getModelo(),
+                                    clienteVeiculo.getVeiculo().getMarca(),
+                                    clienteVeiculo.getVeiculo().getAno(), // Passe o ano como um inteiro
+                                    clienteVeiculo.getVeiculo().getCor(),
+                                    clienteVeiculo.getVeiculo().getTipoVeiculo(),
+                                    clienteVeiculo.getCliente().getIdCliente()
+                            );
 
-                        // Salvar o cliente e a vaga no banco de dados
-                        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        String horaEntradaFormatada = clienteVeiculo.getHoraEntradaEntrada().format(formatter);
+                            // Salvar o cliente e a vaga no banco de dados
+                            ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                            String horaEntradaFormatada = clienteVeiculo.getHoraEntradaEntrada().format(formatter);
 
-                        clienteVagaDAO.inserirClienteVaga(
-                            clienteVeiculo.getCliente().getIdCliente(),
-                            espacoSelecionado,
-                            horaEntradaFormatada,
-                            null
-                        );
+                            clienteVagaDAO.inserirClienteVaga(
+                                    clienteVeiculo.getCliente().getIdCliente(),
+                                    espacoSelecionado,
+                                    horaEntradaFormatada,
+                                    null
+                            );
 
-                        // Atualizar a tabela de clientes estacionados e espaços disponíveis
-                        atualizarTabela();
-                        atualizarEspacosDisponiveis();
+                            // Atualizar a tabela de clientes estacionados e espaços disponíveis
+                            atualizarTabela();
+                            atualizarEspacosDisponiveis();
 
-                        // Exibir mensagem de sucesso
-                        messagemTLparquear.setText("Cliente estacionado com sucesso!");
+                            // Exibir mensagem de sucesso
+                            messagemTLparquear.setForeground(Color.GREEN);
+                            messagemTLparquear.setText("Cliente estacionado com sucesso!");
 
-                        // Limpar campos
-                        Limparcampus();
+                            // Limpar campos
+                            Limparcampus();
+                        } else {
+                            messagemTLparquear.setText("O espaço selecionado já está ocupado.");
+                        }
                     } else {
-                        messagemTLparquear.setText("O espaço selecionado já está ocupado.");
+                        messagemTLparquear.setText("Todos os espaços estão ocupados.");
                     }
-                } else {
-                    messagemTLparquear.setText("Todos os espaços estão ocupados.");
                 }
             }
-        }
-    });
-}
+        });
+    }
 
 // Método de sair do estacionamento
-public void sairDoEstacionamento() {
-   Disparquear.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
-        if (selectedRow >= 0) {
-            int clienteId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Obtém o ID do cliente da tabela
-            Estacionamento estacionamento = new Estacionamento();
-            String espacoCliente = estacionamento.obterEspacoCliente(clienteId);  // Obtém o espaço do cliente estacionado
+    public void sairDoEstacionamento() {
+        Disparquear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
+                if (selectedRow >= 0) {
+                    int clienteId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Obtém o ID do cliente da tabela
+                    Estacionamento estacionamento = new Estacionamento();
+                    String espacoCliente = estacionamento.obterEspacoCliente(clienteId);  // Obtém o espaço do cliente estacionado
 
-            if (espacoCliente != null) {
-                // Busca o espaço de estacionamento
-                EspacoEstacionamento espaco = estacionamento.getEspacoPorIdentificador(espacoCliente);
-                Cliente cliente = espaco.getCliente();
+                    if (espacoCliente != null) {
+                        // Busca o espaço de estacionamento
+                        EspacoEstacionamento espaco = estacionamento.getEspacoPorIdentificador(espacoCliente);
+                        Cliente cliente = espaco.getCliente();
 
-                if (cliente != null) {
-                    LocalDateTime saida = LocalDateTime.now();  // Hora atual de saída
-                    Duration duracao = Duration.between(cliente.getHoraEntrada(), saida);
-                    long horas = duracao.toHours();
-                    long minutos = duracao.toMinutes() % 60;
-                    String tempoEstacionado = horas + " horas e " + minutos + " minutos";
+                        if (cliente != null) {
+                            LocalDateTime saida = LocalDateTime.now();  // Hora atual de saída
+                            Duration duracao = Duration.between(cliente.getHoraEntrada(), saida);
+                            long horas = duracao.toHours();
+                            long minutos = duracao.toMinutes() % 60;
+                            String tempoEstacionado = horas + " horas e " + minutos + " minutos";
 
-                    double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
+                            double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
 
-                    // Confirmação do pagamento
-                    int confirm = JOptionPane.showConfirmDialog(null, "Tempo estacionado: " + tempoEstacionado + ". Valor a pagar: " + totalAPagar + " MZN. Deseja continuar?", "Pagamento", JOptionPane.YES_NO_OPTION);
+                            // Confirmação do pagamento
+                            int confirm = JOptionPane.showConfirmDialog(null, "Tempo estacionado: " + tempoEstacionado + ". Valor a pagar: " + totalAPagar + " MZN. Deseja continuar?", "Pagamento", JOptionPane.YES_NO_OPTION);
 
-                    if (confirm == JOptionPane.YES_OPTION) {
-                        espaco.desocupar();  // Libera o espaço
-                        cliente.registrarSaida();  // Atualiza a hora de saída do cliente
+                            if (confirm == JOptionPane.YES_OPTION) {
+                                espaco.desocupar();  // Libera o espaço
+                                cliente.registrarSaida();  // Atualiza a hora de saída do cliente
 
-                        // Atualiza a saída no banco de dados
-                        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                        clienteVagaDAO.atualizarClienteVaga(
-                            cliente.getIdCliente(), 
-                            espaco.getIdentificador(), 
-                            cliente.getHoraEntrada(),  // Usa LocalDateTime para a hora de entrada
-                            saida  // Usa LocalDateTime para a hora de saída
-                        );
+                                // Atualiza a saída no banco de dados
+                                ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+                                clienteVagaDAO.atualizarClienteVaga(
+                                        cliente.getIdCliente(),
+                                        espaco.getIdentificador(),
+                                        cliente.getHoraEntrada(), // Usa LocalDateTime para a hora de entrada
+                                        saida // Usa LocalDateTime para a hora de saída
+                                );
 
-                        // Atualiza a tabela e os espaços disponíveis
-                        atualizarTabela();
-                        atualizarEspacosDisponiveis();
-                        messagemTLparquear.setText("Cliente saiu do estacionamento com sucesso!");
+                                // Atualiza a tabela e os espaços disponíveis
+                                atualizarTabela();
+                                atualizarEspacosDisponiveis();
+                                 messagemTLparquear.setForeground(Color.GREEN);
+                                messagemTLparquear.setText("Cliente saiu do estacionamento com sucesso!");
+                            }
+                        } else {
+                            messagemTLparquear.setText("O cliente selecionado não está estacionado.");
+                        }
+                    } else {
+                        messagemTLparquear.setText("O cliente selecionado não está estacionado.");
                     }
                 } else {
-                    messagemTLparquear.setText("O cliente selecionado não está estacionado.");
+                    messagemTLparquear.setText("Por favor, selecione um cliente para remover do estacionamento.");
                 }
-            } else {
-                messagemTLparquear.setText("O cliente selecionado não está estacionado.");
             }
-        } else {
-            messagemTLparquear.setText("Por favor, selecione um cliente para remover do estacionamento.");
-        }
+        });
     }
-});
-}
 
     //Metodo criar cliente
     private ClienteVeiculo criarCliente() {
@@ -3109,7 +3305,7 @@ public void sairDoEstacionamento() {
 // Método auxiliar para criar o cliente
     private Cliente criarClienteDoFormulario() {
         int idCliente = gerarIdClienteUnico(); // Gera um ID único para o cliente
-        String nome = jTextField8.getText(); // Obtém o nome do campo de texto
+        String nome = txtnomepropetarioa.getText(); // Obtém o nome do campo de texto
         String documento = txtResid.getText(); // Obtém o documento do campo de texto
         String telefone = txttelefoneparquear.getText(); // Obtém o telefone do campo de texto
         String email = txtEmail.getText(); // Obtém o email do campo de texto, se houver
@@ -3123,7 +3319,7 @@ public void sairDoEstacionamento() {
 // Método auxiliar para criar o veículo associado ao cliente
     private Veiculo criarVeiculoDoFormulario(Cliente cliente) {
         String placa = txtplaca.getText(); // Obtém a placa do campo de texto
-        String modelo = jTextField8.getText(); // Obtém o modelo do campo de texto
+        String modelo = txtdescricaoa.getText(); // Obtém o modelo do campo de texto
         String marca = txtmarca.getText(); // Obtém a marca do campo de texto
         String cor = txtcor.getText(); // Obtém a cor do campo de texto
         String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
@@ -3203,13 +3399,11 @@ public void sairDoEstacionamento() {
 
     //Todos metodos de Funcionario
     private void Limparcampus() {
-        txtId.setText("");
         txtNome.setText("");
         txtNomeuser.setText("");
         txtTelefone.setText("");
         txtSenha.setText("");
         txtNumerBI.setText("");
-        txtNuit.setText("");
         txtEmail.setText("");
         txtResidencia.setText("");
 //        txtSalario.setText("");
@@ -3220,39 +3414,81 @@ public void sairDoEstacionamento() {
 
     private void registrarFuncionario() {
         String nome = txtNome.getText();
+        String cargo = txtTipoUsuario.getSelectedItem().toString();
+        double salario = ((Number) txtSalario.getValue()).doubleValue();
         String nomeuser = txtNomeuser.getText();
-        String telefone = txtTelefone.getText();
         String senha = txtSenha.getText(); // Use getPassword() se for um campo de senha
         String numerBI = txtNumerBI.getText();
+        String telefone = txtTelefone.getText();
         String sexo = txtSexo.getSelectedItem().toString();
         String email = txtEmail.getText();
         String residencia = txtResidencia.getText();
-        String cargo = txtTipoUsuario.getSelectedItem().toString();
-        double salario = ((Number) txtSalario.getValue()).doubleValue();
-        boolean ativo = status.isSelected();
 
-        if (nome.isEmpty() || cargo.isEmpty() || nomeuser.isEmpty() || senha.isEmpty()) {
-            messagentxt.setText("Por favor, preencha todos os campos obrigatórios.");
-            return;
-        }
+       // Validações dos campos obrigatórios
+    if (nome.isEmpty() || cargo.isEmpty() || nomeuser.isEmpty() || senha.isEmpty()) {
+        messagentxt.setText("Por favor, preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    // Validação de texto para campos que devem ter apenas letras
+    if (!nome.matches("[a-zA-ZÀ-ÿ ]+")) { // Aceita letras com acentos e espaços
+        messagentxt.setText("Nome deve conter apenas letras.");
+        return;
+    }
+       // Validação do número de telefone (exatamente 9 dígitos)
+    if (!telefone.matches("\\d{9}")) {
+        messagentxt.setText("Número de telefone deve ter exatamente 9 dígitos.");
+        return;
+    }
+     // Validação do número de BI (12 dígitos seguidos por uma letra maiúscula)
+    if (!numerBI.matches("\\d{12}[A-Z]")) {
+        messagentxt.setText("Número de BI deve conter 12 dígitos seguidos de uma letra maiúscula.");
+        return;
+    }
+      // Validação do formato do email (deve conter @gmail.com)
+    if (!email.endsWith("@gmail.com")) {
+        messagentxt.setText("O e-mail deve ser do tipo @gmail.com.");
+        return;
+    }
+    
+    // Validação do salário (não pode ser negativo)
+    if (salario < 0) {
+        messagentxt.setText("Salário não pode ser um valor negativo.");
+        return;
+    }
+    
+    // Validação de texto para campos que devem ter apenas letras
+    if (!residencia.matches("[a-zA-ZÀ-ÿ ]+")) { // Aceita letras com acentos e espaços
+        messagentxt.setText("A residencia deve conter apenas letras.");
+        return;
+    }
+    
+    if (!cargo.matches("[a-zA-ZÀ-ÿ ]+")) {
+        messagentxt.setText("Cargo deve conter apenas letras.");
+        return;
+    }
+  
+    
 
         try {
             // Cria uma instância de FuncionarioDAO e insere os dados (sem gerar ID manualmente)
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            funcionarioDAO.inserirFuncionario(nome, cargo, salario, nomeuser, senha, ativo, numerBI, telefone, sexo, email, residencia);
+            funcionarioDAO.inserirFuncionario(nome, cargo, salario, nomeuser, senha, numerBI, telefone, sexo, email, residencia);
+            messagentxt.setForeground(Color.GREEN);
             messagentxt.setText("Funcionário registrado com sucesso");
             Limparcampus();
-            atualizarTabelaF();
+            listarFuncionarios();
         } catch (NumberFormatException ex) {
             messagentxt.setText("Salário deve ser um número válido.");
         } catch (Exception ex) {
+             messagentxt.setForeground(Color.RED);
             messagentxt.setText("Erro ao registrar funcionário: " + ex.getMessage());
         }
     }
 
     private void atualizarTabelaF() {
         // Obtém o modelo da tabela como DefaultTableModel
-        DefaultTableModel tableModel = (DefaultTableModel) tbFuncionario.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) tblistar.getModel();
 
         // Limpa todas as linhas existentes do modelo da tabela
         tableModel.setRowCount(0);
@@ -3262,120 +3498,144 @@ public void sairDoEstacionamento() {
             if (funcionario.isAtivo()) { // Apenas adiciona funcionários ativos
                 tableModel.addRow(new Object[]{
                     funcionario.getIdFuncionario(),
+                    funcionario.getNome(),
                     funcionario.getCargo(),
                     funcionario.getSalario(),
                     funcionario.getUsuario(),
-                    funcionario.getSenha(),
                     funcionario.getDocumento(),
                     funcionario.getTelefone(),
                     funcionario.getSexo(),
                     funcionario.getEmail(),
                     funcionario.getResidencia(),
-                    funcionario.getNome(),});
+                    funcionario.getStatus(),});
 
             }
         }
     }
 
     private void listarFuncionarios() {
-
         try {
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             List<Funcionario> funcionarios = funcionarioDAO.listarFuncionarios();
 
             // Limpa as linhas atuais da tabela antes de adicionar novas
-            tbFuncionarioModel.setRowCount(0);
+            DefaultTableModel tableModelo = (DefaultTableModel) tblistar.getModel();
+            tableModelo.setRowCount(0);
 
             // Itera pela lista de funcionários e adiciona as linhas no modelo da tabela
             for (Funcionario f : funcionarios) {
-                tbFuncionarioModel.addRow(new Object[]{
-                    f.getIdFuncionario(), // Coluna ID
-                    f.getNome(), // Coluna Nome
-                    f.getUsuario(), // Coluna Cargo
-                    f.getSalario(), // Coluna Salário
-                    f.getUsuario(),
-                    f.getTelefone(),
-                    f.getSenha(),
-                    f.getDocumento(),
-                    f.getEmail(),
-                    f.getSalario(),
-                    f.getResidencia(),
-                    f.getSexo(),
+
+                tableModelo.addRow(new Object[]{
+                    f.getIdFuncionario(),
+                    f.getNome(),
                     f.getCargo(),
-                    f.isAtivo() // Coluna Ativo (boolean)
+                    f.getSalario(),
+                    f.getUsuario(),
+                    f.getDocumento(),
+                    f.getTelefone(),
+                    f.getSexo(),
+                    f.getEmail(),
+                    f.getResidencia(),
+                    f.isAtivo()
                 });
             }
         } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(this, "Erro ao listar funcionários: " + ex.getMessage());
-            messagentxt.setText("Erro ao listar funcionários: ");
+            messagentxt.setText("Erro ao listar funcionários: " + ex.getMessage());
         }
     }
 
     private void atualizarFuncionario() {
-        try {
-            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            funcionarioDAO.atualizarFuncionario(
-                    Integer.parseInt(txtId.getText()),
-                    txtTipoUsuario.getSelectedItem().toString(),
-                    Double.parseDouble(txtSalario.toString()),
-                    txtNomeuser.getText(),
-                    new String(txtSenha.getText()),
-                    status.isSelected()
-            );
-            messagentxt.setText("Funcionário atualizado com sucesso");
-//            JOptionPane.showMessageDialog(this, "Funcionário atualizado com sucesso!");
-            Limparcampus();
-            listarFuncionarios();
-            atualizarTabelaF();
-        } catch (Exception ex) {
-            messagentxt.setText("Erro ao atualizar funcionário:");
-            // JOptionPane.showMessageDialog(this, "Erro ao atualizar funcionário: " + ex.getMessage());
-        }
+    try {
+        // Cria o objeto Funcionario com todos os dados preenchidos no formulário
+        Funcionario funcionario = new Funcionario(
+            Integer.parseInt(txtPesquisa.getText().trim()), // ID do funcionário
+            txtNome.getText().trim(),
+            txtTipoUsuario.getSelectedItem().toString(),
+            Double.parseDouble(txtSalario.getValue().toString()), // Certifique-se de usar txtSalario.getValue() para o spinner
+            txtNomeuser.getText().trim(),
+            txtSenha.getText(),
+            txtNumerBI.getText().trim(),
+            txtTelefone.getText().trim(),
+            txtSexo.getSelectedItem().toString(),  // Supondo que comboSexo é um JComboBox para "sexo"
+            txtEmail.getText().trim(),
+            txtResidencia.getText().trim(),
+            status.isSelected()
+        );
+
+        // Instancia o DAO e chama o método de atualização passando o objeto Funcionario
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionarioDAO.atualizarFuncionario(funcionario);
+
+        // Exibe a mensagem de sucesso e atualiza a interface
+        messagentxt.setForeground(Color.GREEN);
+        messagentxt.setText("Funcionário atualizado com sucesso");
+        Limparcampus();          // Limpa os campos
+        listarFuncionarios();     // Atualiza a lista de funcionários
+        //atualizarTabelaF();       // Atualiza a tabela
+
+    } catch (NumberFormatException e) {
+        messagentxt.setText("Nenhuma alteração encontrada");
+    } catch (Exception ex) {
+        messagentxt.setText("Erro ao atualizar funcionário: " + ex.getMessage());
     }
+}
+
 
     private void excluirFuncionario() {
         try {
+            String textoPesquisa = txtPesquisa.getText().trim();
+
+            // Verifica se o campo está vazio ou contém caracteres não numéricos
+            if (textoPesquisa.isEmpty() || !textoPesquisa.matches("\\d+")) {
+                messagentxt.setText("Por favor, insira um ID válido.");
+                return;
+            }
+
+            int idFuncionario = Integer.parseInt(textoPesquisa); // Agora sabemos que é seguro converter
+
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            funcionarioDAO.apagarLogicoFuncionario(Integer.parseInt(txtId.getText()));
+            funcionarioDAO.apagarLogicoFuncionario(idFuncionario);
+            messagentxt.setForeground(Color.GREEN);
             messagentxt.setText("Funcionário excluído com sucesso");
-            // JOptionPane.showMessageDialog(this, "Funcionário excluído com sucesso!");
             Limparcampus();
             listarFuncionarios();
-            atualizarTabelaF();
+
         } catch (Exception ex) {
-            messagentxt.setText("Erro ao excluir funcionário");
-            //JOptionPane.showMessageDialog(this, "Erro ao excluir funcionário: " + ex.getMessage());
+            messagentxt.setText("Erro ao excluir funcionário: " + ex.getMessage());
         }
     }
 
     private void buscarFuncionario() {
         try {
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-            Funcionario funcionario = funcionarioDAO.buscarFuncionario(Integer.parseInt(txtId.getText()));
+            int idFuncionario = Integer.parseInt(txtPesquisa.getText().trim()); // Trimming to avoid errors
+            Funcionario funcionario = funcionarioDAO.buscarFuncionario(idFuncionario);
+
             if (funcionario != null) {
                 preencherCampos(funcionario);
             } else {
+                 messagentxt.setForeground(Color.RED);
                 messagentxt.setText("Funcionário não encontrado");
-                //JOptionPane.showMessageDialog(this, "Funcionário não encontrado.");
             }
+        } catch (NumberFormatException e) {
+            messagentxt.setText("ID inválido, por favor insira um número.");
         } catch (Exception ex) {
-            messagentxt.setText("Erro ao buscar funcionário");
-            //JOptionPane.showMessageDialog(this, "Erro ao buscar funcionário: " + ex.getMessage());
+            messagentxt.setText("Erro ao buscar funcionário: " + ex.getMessage());
         }
     }
 
     private void preencherCampos(Funcionario funcionario) {
-        txtId.setText(String.valueOf(funcionario.getIdFuncionario()));
+        txtPesquisa.setText(String.valueOf(funcionario.getIdFuncionario())); // Mantenha o ID visível
         txtNome.setText(funcionario.getNome());
         txtNomeuser.setText(funcionario.getUsuario());
         txtTelefone.setText(funcionario.getTelefone());
         txtSenha.setText(funcionario.getSenha());
         txtNumerBI.setText(funcionario.getDocumento());
-        txtNuit.setText(funcionario.getResidencia());
         txtEmail.setText(funcionario.getEmail());
         txtResidencia.setText(funcionario.getResidencia());
-//        txtTipoUsuario.setText(funcionario.getCargo());
-//        txtSalario.setText(String.valueOf(funcionario.getSalario()));
+        // Se você não está usando o tipo de usuário e salário, você pode remover ou descomentar
+        // txtTipoUsuario.setText(funcionario.getCargo());
+        // txtSalario.setText(String.valueOf(funcionario.getSalario()));
         status.setSelected(funcionario.isAtivo());
     }
 
@@ -3458,6 +3718,7 @@ public void sairDoEstacionamento() {
     private javax.swing.JButton Disparquear1;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel P1;
+    private javax.swing.JPanel P10;
     private javax.swing.JPanel P2;
     private javax.swing.JPanel P3;
     private javax.swing.JPanel P4;
@@ -3474,7 +3735,6 @@ public void sairDoEstacionamento() {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnDemitir;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnPesquisa;
     private javax.swing.JButton btnparquearadmin;
     private javax.swing.JButton btnparquearadmin1;
@@ -3490,8 +3750,11 @@ public void sairDoEstacionamento() {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3561,6 +3824,13 @@ public void sairDoEstacionamento() {
     private javax.swing.JLabel jLabel158;
     private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel160;
+    private javax.swing.JLabel jLabel161;
+    private javax.swing.JLabel jLabel162;
+    private javax.swing.JLabel jLabel163;
+    private javax.swing.JLabel jLabel164;
+    private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -3593,7 +3863,6 @@ public void sairDoEstacionamento() {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -3601,7 +3870,6 @@ public void sairDoEstacionamento() {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
@@ -3636,10 +3904,14 @@ public void sairDoEstacionamento() {
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
@@ -3658,13 +3930,15 @@ public void sairDoEstacionamento() {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
@@ -3676,6 +3950,8 @@ public void sairDoEstacionamento() {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbEspacoRestante;
     private javax.swing.JLabel messagemTLparquear;
     private javax.swing.JLabel messagemTLparquear1;
@@ -3687,14 +3963,12 @@ public void sairDoEstacionamento() {
     private javax.swing.JCheckBox status;
     private javax.swing.JTable tabelaParquear;
     private javax.swing.JTable tabelaParquear1;
-    private javax.swing.JTable tbFuncionario;
+    private javax.swing.JTable tblistar;
     private javax.swing.JComboBox<String> tipoclientepagament;
     private javax.swing.JTextField troco;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeuser;
-    private javax.swing.JTextField txtNuit;
     private javax.swing.JTextField txtNumerBI;
     private javax.swing.JTextField txtPesquisa;
     private javax.swing.JTextField txtResid;

@@ -1,7 +1,7 @@
 package Model.ModelDAO;
 
-import Model.Funcionario;  // Assumindo que há uma classe Funcionario no pacote Model
-import model.DBConnect;     // Para usar a classe DBConnect
+import Model.Funcionario;  // Classe Funcionario no pacote Model
+import model.DBConnect;     // Classe de conexão com o banco de dados
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,36 +9,35 @@ import java.util.List;
 public class FuncionarioDAO {
 
     // Inserir funcionário
-   public void inserirFuncionario(String nome, String cargo, double salario, String usuario, String senha, boolean ativo, String documento, String telefone, String sexo, String email, String Bairro) {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    try {
-        conn = DBConnect.getConnection();  // Obtém a conexão
-        String sql = "INSERT INTO Funcionario (nome, cargo, salario, usuario, senha, ativo, documento, telefone, sexo, email, Bairro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        stmt = conn.prepareStatement(sql);
-        stmt.setString(1, nome);  // Adiciona o nome aqui
-        stmt.setString(2, cargo);
-        stmt.setDouble(3, salario);
-        stmt.setString(4, usuario.trim());
-        stmt.setString(5, senha.trim());
-        stmt.setBoolean(6, ativo);
-        stmt.setString(7, documento);
-        stmt.setString(8, telefone);
-        stmt.setString(9, sexo);
-        stmt.setString(10, email);
-        stmt.setString(11, Bairro);
-        stmt.executeUpdate();
-        System.out.println("Funcionário inserido com sucesso.");
-    } catch (SQLException e) {
-        System.err.println("Erro ao inserir funcionário: " + e.getMessage());
-    } finally {
-        DBConnect.closeConnection(conn);  // Fecha a conexão
+    public void inserirFuncionario(String nome, String cargo, double salario, String usuario, String senha, String documento, String telefone, String sexo, String email, String bairro) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnect.getConnection();
+            String sql = "INSERT INTO funcionarios (nome, cargo, salario, usuario, senha, documento, telefone, sexo, email, bairro, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, cargo);
+            stmt.setDouble(3, salario);
+            stmt.setString(4, usuario.trim());
+            stmt.setString(5, senha.trim());
+            stmt.setString(6, documento);
+            stmt.setString(7, telefone);
+            stmt.setString(8, sexo);
+            stmt.setString(9, email);
+            stmt.setString(10, bairro);
+            stmt.setBoolean(11, true); // status ativo por padrão
+            stmt.executeUpdate();
+            System.out.println("Funcionário inserido com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao inserir funcionário: " + e.getMessage());
+        } finally {
+            DBConnect.closeConnection(conn);
+        }
     }
-}
 
-
-    // Método para autenticar um funcionário com base no usuário e senha
-   public Funcionario autenticarFuncionario(String usuario, String senha) {
+    // Autenticar funcionário
+    public Funcionario autenticarFuncionario(String usuario, String senha) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -46,347 +45,196 @@ public class FuncionarioDAO {
 
         try {
             conn = DBConnect.getConnection();
-            String sql = "SELECT * FROM Funcionario WHERE usuario = ? AND senha = ?";
+            String sql = "SELECT * FROM funcionarios WHERE usuario = ? AND senha = ?";
             stmt = conn.prepareStatement(sql);
-            
-            // Usa trim() para evitar espaços indesejados no início/fim das strings
             stmt.setString(1, usuario.trim());
             stmt.setString(2, senha.trim());
-            
             rs = stmt.executeQuery();
 
-            // Se houver um resultado, significa que o usuário e a senha coincidem
             if (rs.next()) {
-                funcionario = new Funcionario(); 
-                funcionario.setIdFuncionario(rs.getInt("idFuncionario"));
-                funcionario.setNome(rs.getString("nome"));
-                funcionario.setCargo(rs.getString("cargo"));
-                funcionario.setSalario(rs.getDouble("salario"));
-                funcionario.setUsuario(rs.getString("usuario"));
-                funcionario.setSenha(rs.getString("senha"));
-                funcionario.setAtivo(rs.getBoolean("ativo"));
-                funcionario.setDocumento(rs.getString("documento"));
-                funcionario.setTelefone(rs.getString("telefone"));
-                funcionario.setSexo(rs.getString("sexo"));
-                funcionario.setEmail(rs.getString("email"));
-                funcionario.setResidencia(rs.getString("residencia"));
+                funcionario = new Funcionario(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cargo"),
+                    rs.getDouble("salario"),
+                    rs.getString("usuario"),
+                    rs.getString("senha"),
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("sexo"),
+                    rs.getString("email"),
+                    rs.getString("bairro"),
+                    rs.getBoolean("status")
+                );
             } else {
-                // Caso nenhum funcionário tenha sido encontrado com essas credenciais
                 System.out.println("Usuário ou senha inválidos.");
             }
         } catch (SQLException e) {
             System.err.println("Erro ao autenticar funcionário: " + e.getMessage());
         } finally {
-            DBConnect.closeConnection(conn); // Fecha a conexão
+            DBConnect.closeConnection(conn);
         }
-
-        // Retorna o objeto funcionário se houver correspondência, ou null se falhar
         return funcionario;
     }
 
-public List<Funcionario> carregarFuncionarios() {
+    // Carregar lista de funcionários
+    public List<Funcionario> carregarFuncionarios() {
         List<Funcionario> funcionarios = new ArrayList<>();
-        String sql = "SELECT * FROM funcionarios"; // Substitua pelo seu nome de tabela
+        String sql = "SELECT * FROM funcionarios";
 
-        try (PreparedStatement stmt = DBConnect.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
+        try (PreparedStatement stmt = DBConnect.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                // Certifique-se de que os nomes das colunas correspondem aos da sua tabela
-                int idFuncionario = rs.getInt("idFuncionario");
-                String nome = rs.getString("nome");
-                String documento = rs.getString("documento");
-                String telefone = rs.getString("telefone");
-                String email = rs.getString("email");
-                String cargo = rs.getString("cargo");
-                double salario = rs.getDouble("salario");
-                String usuario = rs.getString("usuario");
-                String senha = rs.getString("senha");
-                boolean ativo = rs.getBoolean("ativo");
-                String residencia = rs.getString("residencia");
-                String sexo = rs.getString("sexo");
-
-                // Criar um novo objeto Funcionario com os dados do banco de dados
-                Funcionario funcionario = new Funcionario(idFuncionario, nome, documento, telefone, email, cargo, salario, usuario, senha, ativo, residencia, sexo);
+                Funcionario funcionario = new Funcionario(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cargo"),
+                    rs.getDouble("salario"),
+                    rs.getString("usuario"),
+                    rs.getString("senha"),
+                    rs.getString("documento"),
+                    rs.getString("telefone"),
+                    rs.getString("sexo"),
+                    rs.getString("email"),
+                    rs.getString("bairro"),
+                    rs.getBoolean("status")
+                );
                 funcionarios.add(funcionario);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Trate a exceção conforme necessário
+            System.err.println("Erro ao carregar funcionários: " + e.getMessage());
         }
 
         return funcionarios;
     }
+
     // Buscar funcionário por ID
-    public Funcionario buscarFuncionario(int idFuncionario) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Funcionario funcionario = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "SELECT * FROM Funcionario WHERE idFuncionario = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, idFuncionario);
-            rs = stmt.executeQuery();
+   public Funcionario buscarFuncionario(int idFuncionario) {
+    Funcionario funcionario = null;
+    try (Connection conn = DBConnect.getConnection();
+         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM funcionarios WHERE id = ?")) { // Alterar aqui para o nome correto
+         
+        stmt.setInt(1, idFuncionario);
+        ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
-                funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao buscar funcionário: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+        if (rs.next()) {
+            funcionario = new Funcionario(
+                rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("usuario"),
+                rs.getString("senha"),
+                rs.getString("documento"),
+                rs.getString("telefone"),
+                rs.getString("sexo"),
+                rs.getString("email"),
+                rs.getString("bairro"),
+                rs.getBoolean("status")
+            );
         }
-        return funcionario;
+    } catch (SQLException e) {
+        System.err.println("Erro ao buscar funcionário: " + e.getMessage());
+    } 
+
+    return funcionario;
+}
+
+
+
+   // Atualizar funcionário
+public void atualizarFuncionario(Funcionario funcionario) {
+    if (funcionario == null) {
+        System.err.println("O funcionário fornecido é nulo.");
+        return;
     }
 
-    // Atualizar funcionário
-    public void atualizarFuncionario(int idFuncionario, String cargo, double salario, String usuario, String senha, boolean ativo) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "UPDATE Funcionario SET cargo = ?, salario = ?, usuario = ?, senha = ?, ativo = ? WHERE idFuncionario = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cargo);
-            stmt.setDouble(2, salario);
-            stmt.setString(3, usuario);
-            stmt.setString(4, senha);
-            stmt.setBoolean(5, ativo);
-            stmt.setInt(6, idFuncionario);
-            stmt.executeUpdate();
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try {
+        conn = DBConnect.getConnection();
+        String sql = "UPDATE funcionarios SET nome = ?, cargo = ?, salario = ?, usuario = ?, senha = ?, documento = ?, telefone = ?, sexo = ?, email = ?, bairro = ?, status = ? WHERE id = ?";
+        stmt = conn.prepareStatement(sql);
+
+        stmt.setString(1, funcionario.getNome());
+        stmt.setString(2, funcionario.getCargo());
+        stmt.setDouble(3, funcionario.getSalario());
+        stmt.setString(4, funcionario.getUsuario());
+        stmt.setString(5, funcionario.getSenha());
+        stmt.setString(6, funcionario.getDocumento());
+        stmt.setString(7, funcionario.getTelefone());
+        stmt.setString(8, funcionario.getSexo());
+        stmt.setString(9, funcionario.getEmail());
+        stmt.setString(10, funcionario.getResidencia());
+        stmt.setBoolean(11, funcionario.isAtivo());
+        stmt.setInt(12, funcionario.getIdFuncionario());
+
+        int rowsUpdated = stmt.executeUpdate();
+        if (rowsUpdated > 0) {
             System.out.println("Funcionário atualizado com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao atualizar funcionário: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+        } else {
+            System.out.println("Nenhum funcionário foi encontrado com o ID especificado.");
         }
-    }
-
-    // Deletar funcionário
-    public void apagarLogicoFuncionario(int idFuncionario) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
+    } catch (SQLException e) {
+        System.err.println("Erro ao atualizar funcionário: " + e.getMessage());
+    } finally {
         try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "UPDATE Funcionario SET ativo = FALSE WHERE idFuncionario = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, idFuncionario);
-            stmt.executeUpdate();
-            System.out.println("Funcionário marcado como inativo com sucesso.");
+            if (stmt != null) stmt.close();
+            if (conn != null) DBConnect.closeConnection(conn);
         } catch (SQLException e) {
-            System.err.println("Erro ao marcar funcionário como inativo: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+            System.err.println("Erro ao fechar recursos: " + e.getMessage());
         }
     }
+}
+
+
+    // Desativar funcionário (remoção lógica)
+public void apagarLogicoFuncionario(int id) throws SQLException {
+    String sql = "UPDATE Funcionarios SET status = false WHERE id = ?";
+    Connection conn = null;
+
+    try {
+        conn = DBConnect.getConnection();
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    } finally {
+        if (conn != null) {
+            DBConnect.closeConnection(conn);
+        }
+    }
+}
+
 
     // Listar todos os funcionários
     public List<Funcionario> listarFuncionarios() {
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        List<Funcionario> funcionarios = new ArrayList<>();
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "SELECT * FROM Funcionario";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
+    List<Funcionario> funcionarios = new ArrayList<>();
+    String sql = "SELECT * FROM funcionarios WHERE status = true"; // Apenas funcionários ativos
 
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-                funcionarios.add(funcionario);
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao listar funcionários: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn);  // Fecha a conexão
+    try (Connection conn = DBConnect.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+        while (rs.next()) {
+            Funcionario funcionario = new Funcionario(
+                rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("usuario"),
+                rs.getString("senha"),
+                rs.getString("documento"),
+                rs.getString("telefone"),
+                rs.getString("sexo"),
+                rs.getString("email"),
+                rs.getString("bairro"),
+                rs.getBoolean("status")
+            );
+            funcionarios.add(funcionario);
         }
-        return funcionarios;
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar funcionários: " + e.getMessage());
     }
 
-    // Buscar funcionários por cargo
-    public List<Funcionario> buscarFuncionariosPorCargo(String cargo) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Funcionario> funcionarios = new ArrayList<>();
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "SELECT * FROM Funcionario WHERE cargo = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, cargo);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-                funcionarios.add(funcionario);
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao buscar funcionários por cargo: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
-        return funcionarios;
-    }
-
-    public List<Funcionario> listarFuncionariosAtivos() {
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        List<Funcionario> funcionarios = new ArrayList<>();
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "SELECT * FROM Funcionario WHERE ativo = TRUE";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-                funcionarios.add(funcionario);
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao listar funcionários: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
-        return funcionarios;
-    }
-
-    public List<Funcionario> listarFuncionariosInativos() {
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        List<Funcionario> funcionarios = new ArrayList<>();
-        try {
-            conn = DBConnect.getConnection();  // Obtém conexão
-            String sql = "SELECT * FROM Funcionario WHERE ativo = FALSE";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario(
-                        rs.getInt("idFuncionario"),
-                        rs.getString("nome"), // Assumindo que 'nome' está na tabela
-                        rs.getString("documento"), // Assumindo que 'documento' está na tabela
-                        rs.getString("telefone"), // Assumindo que 'telefone' está na tabela
-                        rs.getString("email"), // Assumindo que 'email' está na tabela
-                        rs.getString("cargo"),
-                        rs.getDouble("salario"),
-                        rs.getString("usuario"),
-                        rs.getString("senha"),
-                        rs.getBoolean("ativo"),
-                        rs.getString("residencia"),
-                        rs.getString("sexo")
-                );
-                funcionarios.add(funcionario);
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao listar funcionários inativos: " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
-        return funcionarios;
-    }
+    return funcionarios;
+  }
 
 }

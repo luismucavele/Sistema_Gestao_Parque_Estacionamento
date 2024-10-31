@@ -177,6 +177,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         cbxTipopagamento1 = new javax.swing.JComboBox<>();
         jLabel43 = new javax.swing.JLabel();
         valorpagar = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         P5 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
@@ -1209,24 +1210,31 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         Paineis.addTab("tab2", P3);
 
         P4.setBackground(new java.awt.Color(236, 240, 241));
+        P4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_car_30px.png"))); // NOI18N
+        P4.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 25, -1, 41));
 
         jLabel115.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel115.setForeground(new java.awt.Color(0, 0, 0));
         jLabel115.setText("Controle de estacionamento");
+        P4.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 25, -1, -1));
 
         jLabel116.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel116.setForeground(new java.awt.Color(0, 0, 0));
         jLabel116.setText("Administrador:");
+        P4.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 50, -1, -1));
 
         jLabel118.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel118.setForeground(new java.awt.Color(0, 0, 0));
         jLabel118.setText("Pagamento");
+        P4.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 80, -1, -1));
 
         jLabel119.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel119.setForeground(new java.awt.Color(0, 0, 0));
         jLabel119.setText("Placa:");
+        P4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 153, -1, -1));
+        P4.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 340, 29));
 
         pesquisarpagadmin1.setBackground(new java.awt.Color(51, 51, 51));
         pesquisarpagadmin1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
@@ -1238,53 +1246,66 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                 pesquisarpagadmin1ActionPerformed(evt);
             }
         });
+        P4.add(pesquisarpagadmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 140, -1, -1));
 
         bill.setColumns(20);
         bill.setRows(5);
         bill.setText(" ");
         jScrollPane6.setViewportView(bill);
 
+        P4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 100, 410, 493));
+
         jLabel120.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel120.setForeground(new java.awt.Color(0, 0, 0));
         jLabel120.setText("Nome do Propetario:");
+        P4.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 120, -1));
 
         placapagament1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         placapagament1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P4.add(placapagament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 258, 30));
 
         jLabel121.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel121.setForeground(new java.awt.Color(0, 0, 0));
         jLabel121.setText("Tipo e Placa:");
+        P4.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         nomepagament1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         nomepagament1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P4.add(nomepagament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 258, 30));
 
         jLabel122.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel122.setForeground(new java.awt.Color(0, 0, 0));
         jLabel122.setText("Tipo de Cliente:");
+        P4.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         tipoclientepagament1.setBackground(new java.awt.Color(255, 255, 255));
         tipoclientepagament1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         tipoclientepagament1.setForeground(new java.awt.Color(0, 0, 0));
         tipoclientepagament1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diarista", "Mansalista", "semanal" }));
+        P4.add(tipoclientepagament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 260, 30));
 
         jLabel123.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel123.setForeground(new java.awt.Color(0, 0, 0));
         jLabel123.setText("Porte:");
+        P4.add(jLabel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 440, -1, -1));
 
         jLabel125.setBackground(new java.awt.Color(0, 0, 0));
         jLabel125.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel125.setForeground(new java.awt.Color(0, 0, 0));
         jLabel125.setText("Valor:");
+        P4.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 490, -1, -1));
 
         jButton12.setBackground(new java.awt.Color(51, 51, 51));
         jButton12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_stack_of_money_20px.png"))); // NOI18N
         jButton12.setText("Pagar");
+        P4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 474, 100, -1));
 
         jLabel41.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("Fatura");
+        P4.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(865, 80, 50, -1));
 
         jButton13.setBackground(new java.awt.Color(0, 255, 0));
         jButton13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1296,10 +1317,13 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
+        P4.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(831, 612, 110, -1));
 
         jLabel126.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel126.setForeground(new java.awt.Color(0, 0, 0));
         jLabel126.setText("Troco:");
+        P4.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 546, -1, -1));
+        P4.add(troco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 532, 70, 30));
 
         jLabel127.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel127.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1307,172 +1331,25 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                 jLabel127MouseClicked(evt);
             }
         });
+        P4.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(1101, 12, -1, 20));
 
         cbxporte.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         cbxporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro", "Pesado" }));
+        P4.add(cbxporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 426, 260, 30));
 
         cbxTipopagamento1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         cbxTipopagamento1.setForeground(new java.awt.Color(255, 255, 255));
         cbxTipopagamento1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numerario", "Cartão", "Transferencia" }));
+        P4.add(cbxTipopagamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 378, 260, 30));
 
         jLabel43.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("Tipo de Pagamento");
+        P4.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 392, -1, -1));
+        P4.add(valorpagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 474, 86, 30));
 
-        javax.swing.GroupLayout P4Layout = new javax.swing.GroupLayout(P4);
-        P4.setLayout(P4Layout);
-        P4Layout.setHorizontalGroup(
-            P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P4Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addComponent(jLabel119)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(nomepagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addComponent(jLabel121)
-                                .addGap(58, 58, 58)
-                                .addComponent(placapagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(P4Layout.createSequentialGroup()
-                                    .addComponent(jLabel122)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(tipoclientepagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(P4Layout.createSequentialGroup()
-                                        .addComponent(jLabel43)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P4Layout.createSequentialGroup()
-                                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel123)
-                                            .addComponent(jLabel125))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P4Layout.createSequentialGroup()
-                                                    .addComponent(valorpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel126)))))
-                .addGap(35, 35, 35)
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel118))
-                    .addComponent(pesquisarpagadmin1))
-                .addGap(28, 28, 28)
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(P4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel114)
-                .addGap(6, 6, 6)
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel115)
-                    .addComponent(jLabel116))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel127)
-                .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(224, 224, 224))
-        );
-        P4Layout.setVerticalGroup(
-            P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P4Layout.createSequentialGroup()
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel115)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel116))
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel119))
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel120))
-                            .addComponent(nomepagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel121))
-                            .addComponent(placapagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel122))
-                            .addComponent(tipoclientepagament1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbxTipopagamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43))
-                        .addGap(18, 18, 18)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbxporte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel123))
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(valorpagar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(troco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel125)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel126)))
-                        .addGap(91, 91, 91))
-                    .addGroup(P4Layout.createSequentialGroup()
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addComponent(jLabel118)
-                                .addGap(36, 36, 36)
-                                .addComponent(pesquisarpagadmin1))
-                            .addGroup(P4Layout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addGap(1, 1, 1)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(jButton13)
-                        .addContainerGap())))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Plain credit card-cuate.png"))); // NOI18N
+        P4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
 
         Paineis.addTab("tab4", P4);
 
@@ -2621,6 +2498,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
