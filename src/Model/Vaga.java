@@ -76,7 +76,7 @@ public class Vaga {
     }
 
     public void ocuparVaga(Cliente cliente, LocalDateTime horaEntrada) {
-        this.ocupado = true;
+        this.ocupado = false;
         this.cliente = cliente;
         this.horaEntrada = horaEntrada;
     }

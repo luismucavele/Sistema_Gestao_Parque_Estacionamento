@@ -318,7 +318,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         sair.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         sair.setForeground(new java.awt.Color(255, 255, 255));
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_exit_30px.png"))); // NOI18N
-        sair.setText("Sair");
+        sair.setText("Terminar sessão");
         sair.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

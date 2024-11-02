@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         chkShowPassword = new javax.swing.JCheckBox();
         lblmensagem = new javax.swing.JLabel();
+        jLabel137 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -147,7 +148,15 @@ public class Login extends javax.swing.JFrame {
 
         lblmensagem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblmensagem.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 250, 30));
+        jPanel2.add(lblmensagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 240, 30));
+
+        jLabel137.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px.png"))); // NOI18N
+        jLabel137.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel137MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel137, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,6 +215,10 @@ public class Login extends javax.swing.JFrame {
     private void chkShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkShowPasswordActionPerformed
+
+    private void jLabel137MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel137MouseClicked
+        this.setState(MenuPrincipalAdmin.ICONIFIED);
+    }//GEN-LAST:event_jLabel137MouseClicked
     
     
     
@@ -265,7 +278,7 @@ private void iniciarTimerParaLimparMensagem() {
     if (timer != null) {
         timer.stop(); // Para qualquer timer anterior
     }
-    timer = new Timer(5000, new ActionListener() {
+    timer = new Timer(3000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             lblmensagem.setText(""); // Limpa a mensagem de erro
@@ -317,6 +330,7 @@ private void iniciarTimerParaLimparMensagem() {
     private javax.swing.JButton btnEntrar;
     private javax.swing.JCheckBox chkShowPassword;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel137;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

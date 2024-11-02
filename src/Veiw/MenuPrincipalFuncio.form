@@ -239,7 +239,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Veiw/icons/icons8_exit_30px.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="text" type="java.lang.String" value="Terminar sess&#xe3;o"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder/>
