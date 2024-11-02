@@ -1,23 +1,23 @@
+
 package Model;
 
-import java.util.ArrayList;
-
 public class ParqueDeEstacionamento {
-
     private int idParque;
     private String nome;
-    private String localizacao;
+    private String endereco;
     private int capacidadeTotal;
     private int vagasDisponiveis;
-    private ArrayList<Vaga> vagas;
 
-    public ParqueDeEstacionamento(int idParque, String nome, String localizacao, int capacidadeTotal, int vagasDisponiveis) {
+    // Construtor padrão
+    public ParqueDeEstacionamento() {}
+
+    // Construtor com parâmetros
+    public ParqueDeEstacionamento(int idParque, String nome, String endereco, int capacidadeTotal, int vagasDisponiveis) {
         this.idParque = idParque;
         this.nome = nome;
-        this.localizacao = localizacao;
+        this.endereco = endereco;
         this.capacidadeTotal = capacidadeTotal;
         this.vagasDisponiveis = vagasDisponiveis;
-        this.vagas = new ArrayList<>();
     }
 
     // Getters e Setters
@@ -37,12 +37,12 @@ public class ParqueDeEstacionamento {
         this.nome = nome;
     }
 
-    public String getLocalizacao() {
-        return localizacao;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public int getCapacidadeTotal() {
@@ -59,35 +59,5 @@ public class ParqueDeEstacionamento {
 
     public void setVagasDisponiveis(int vagasDisponiveis) {
         this.vagasDisponiveis = vagasDisponiveis;
-    }
-
-    public ArrayList<Vaga> getVagas() {
-        return vagas;
-    }
-
-    public void setVagas(ArrayList<Vaga> vagas) {
-        this.vagas = vagas;
-    }
-
-    // Métodos adicionais
-    public void adicionarVaga(Vaga vaga) {
-        this.vagas.add(vaga);
-        this.vagasDisponiveis--;
-    }
-
-    public void removerVaga(Vaga vaga) {
-        this.vagas.remove(vaga);
-        this.vagasDisponiveis++;
-    }
-
-    @Override
-    public String toString() {
-        return "ParqueDeEstacionamento{"
-                + "idParque=" + idParque
-                + ", nome='" + nome + '\''
-                + ", localizacao='" + localizacao + '\''
-                + ", capacidadeTotal=" + capacidadeTotal
-                + ", vagasDisponiveis=" + vagasDisponiveis
-                + '}';
     }
 }

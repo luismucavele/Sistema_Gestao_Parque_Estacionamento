@@ -3048,15 +3048,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         String cor = txtcor.getText().trim();
         String telefone = txttelefoneparquear.getText().trim();
         String tipoCliente = txtResid.getText();
-       
-       
+
         // Verificar se todos os campos obrigatórios estão preenchidos
         if (nome.isEmpty()) {
             messagemTLparquear.setText("Por favor, preencha o  Campo Nome do Proprietario");
             return false;
         }
 
-      
         if (descricao.isEmpty()) {
             messagemTLparquear.setText("Por favor, preencha o Campo Modelo do Veículo");
             return false;
@@ -3081,13 +3079,13 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             messagemTLparquear.setText("Por favor, selecione o tipo de cliente");
             return false;
         }
-        
-         // Validação de texto para campos que devem ter apenas letras
+
+        // Validação de texto para campos que devem ter apenas letras
         if (!nome.matches("[a-zA-ZÀ-ÿ ]+")) { // Aceita letras com acentos e espaços
             messagentxt.setText("Nome deve conter apenas letras.");
             return false;
         }
-        
+
         if (!descricao.matches("[a-zA-ZÀ-ÿ ]+")) { // Aceita letras com acentos e espaços
             messagentxt.setText("A descricao deve conter apenas letras.");
             return false;
@@ -3357,8 +3355,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         txtNumerBI.setText("");
         txtEmail.setText("");
         txtResidencia.setText("");
-//        txtSalario.setText("");
-//        txtTipoUsuario.setText("");
+        txtSalario.setValue(0);
+        txtTipoUsuario.setSelectedItem(null);
         status.setSelected(false);
         selectedRow = -1;
     }
@@ -3581,9 +3579,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         txtNumerBI.setText(funcionario.getDocumento());
         txtEmail.setText(funcionario.getEmail());
         txtResidencia.setText(funcionario.getResidencia());
-        // Se você não está usando o tipo de usuário e salário, você pode remover ou descomentar
-        // txtTipoUsuario.setText(funcionario.getCargo());
-        // txtSalario.setText(String.valueOf(funcionario.getSalario()));
+        txtTipoUsuario.setSelectedItem(funcionario.getCargo());
+        txtSalario.setValue(funcionario.getSalario());
         status.setSelected(funcionario.isAtivo());
     }
 

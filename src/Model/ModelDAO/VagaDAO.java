@@ -1,47 +1,91 @@
 package Model.ModelDAO;
 
-import Model.EspacoEstacionamento;
 import Model.Vaga;
-import model.DBConnect;  // Usando a classe DBConnect para conexão
+import model.DBConnect;
+
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class VagaDAO {
 
-    // Inserir uma nova vaga
-    
-    public void inserirVaga(String identificador, double valorPorHora, boolean isVip, boolean ocupado, Integer idCliente, Timestamp horaEntrada) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "INSERT INTO Vaga (identificador, valorPorHora, isVip, ocupado, idCliente, horaEntrada, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
+    // Inserir uma nova vaga no banco de dados
+    public void inserirVaga(String identificador, double valorPorHora, boolean isVip, int idParqueRelacionado) throws Exception {
+        String sql = "INSERT INTO vaga (identificador, valor_por_hora, is_vip, ocupado, id_parque_relacionado, ativo) VALUES (?, ?, ?, ?, ?, true)";
+        
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, identificador);
             stmt.setDouble(2, valorPorHora);
             stmt.setBoolean(3, isVip);
-            stmt.setBoolean(4, ocupado);
-            if (idCliente != null) {
-                stmt.setInt(5, idCliente);
-            } else {
-                stmt.setNull(5, Types.INTEGER);
-            }
-            if (horaEntrada != null) {
-                stmt.setTimestamp(6, horaEntrada);
-            } else {
-                stmt.setNull(6, Types.TIMESTAMP);
-            }
-            stmt.setBoolean(7, true);  // Vaga ativa por padrão
+            stmt.setBoolean(4, false);  // Ocupado começa como falso ao criar nova vaga
+            stmt.setInt(5, idParqueRelacionado);
             stmt.executeUpdate();
             System.out.println("Vaga inserida com sucesso.");
         } catch (SQLException e) {
             System.err.println("Erro ao inserir vaga: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
         }
     }
-    public static Vaga getVagaPorIdentificador(String identificador) {
+
+    // Atualizar informações da vaga
+    public void atualizarVaga(int idVaga, double valorPorHora, boolean isVip, boolean ocupado, Integer idCliente, LocalDateTime horaEntrada) {
+        String sql = "UPDATE vaga SET valor_por_hora = ?, is_vip = ?, ocupado = ?, id_cliente = ?, hora_entrada = ? WHERE id_vaga = ? AND ativo = true";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setDouble(1, valorPorHora);
+            stmt.setBoolean(2, isVip);
+            stmt.setBoolean(3, ocupado);
+            
+            if (idCliente != null) {
+                stmt.setInt(4, idCliente);
+            } else {
+                stmt.setNull(4, Types.INTEGER);
+            }
+            
+            if (horaEntrada != null) {
+                stmt.setTimestamp(5, Timestamp.valueOf(horaEntrada));
+            } else {
+                stmt.setNull(5, Types.TIMESTAMP);
+            }
+            stmt.setInt(6, idVaga);
+            stmt.executeUpdate();
+            System.out.println("Vaga atualizada com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar vaga: " + e.getMessage());
+        }
+    }
+
+    // Buscar vaga por ID
+    public Vaga buscarVagaPorId(int idVaga) {
         Vaga vaga = null;
-        String sql = "SELECT * FROM vagas WHERE id = ?";  // Altere conforme o nome da sua tabela
+        String sql = "SELECT * FROM vaga WHERE id_vaga = ? AND ativo = true";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idVaga);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                vaga = new Vaga(
+                    rs.getInt("id_vaga"),
+                    rs.getString("identificador"),
+                    rs.getDouble("valor_por_hora"),
+                    rs.getBoolean("is_vip"),
+                    rs.getBoolean("ocupado"),
+                    rs.getTimestamp("hora_entrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
+                    rs.getInt("id_parque_relacionado")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar vaga por ID: " + e.getMessage());
+        }
+        return vaga;
+    }
+
+    // Buscar vaga por identificador
+    public Vaga buscarVagaPorIdentificador(String identificador) {
+        Vaga vaga = null;
+        String sql = "SELECT * FROM vaga WHERE identificador = ? AND ativo = true";
 
         try (Connection conn = DBConnect.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -50,115 +94,71 @@ public class VagaDAO {
 
             if (rs.next()) {
                 vaga = new Vaga(
-                    rs.getString("id"),
+                    rs.getInt("id_vaga"),
+                    rs.getString("identificador"),
                     rs.getDouble("valor_por_hora"),
                     rs.getBoolean("is_vip"),
                     rs.getBoolean("ocupado"),
-                    null, // Iniciar como null e definir depois
-                    null // Hora de entrada inicialmente nula
+                    rs.getTimestamp("hora_entrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
+                    rs.getInt("id_parque_relacionado")
                 );
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao obter vaga: " + e.getMessage());
+            System.err.println("Erro ao buscar vaga por identificador: " + e.getMessage());
         }
-
         return vaga;
-    }
-
-    // Método para atualizar a vaga no banco de dados
-    public static void atualizarVaga(Vaga vaga) {
-        String sql = "UPDATE vagas SET ocupado = ?, cliente_id = ?, hora_entrada = ? WHERE id = ?";
-
-        try (Connection conn = DBConnect.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setBoolean(1, vaga.isOcupado());
-            stmt.setInt(2, vaga.getCliente() != null ? vaga.getCliente().getIdCliente() : null);
-            stmt.setTimestamp(3, vaga.getHoraEntrada() != null ? Timestamp.valueOf(vaga.getHoraEntrada()) : null);
-            stmt.setString(4, vaga.getIdentificador());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Erro ao atualizar vaga: " + e.getMessage());
-        }
-    }
-
-    // Buscar vaga por identificador
-    public ResultSet buscarVaga(String identificador) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "SELECT * FROM Vaga WHERE identificador = ? AND ativo = true";  // Apenas vagas ativas
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, identificador);
-            rs = stmt.executeQuery();
-        } catch (SQLException e) {
-            System.err.println("Erro ao buscar vaga: " + e.getMessage());
-        }
-        return rs;
-    }
-
-    // Atualizar os dados de uma vaga
-    public void atualizarVaga(String identificador, boolean ocupado, Integer idCliente, Timestamp horaEntrada) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "UPDATE Vaga SET ocupado = ?, idCliente = ?, horaEntrada = ? WHERE identificador = ? AND ativo = true";  // Atualiza apenas vagas ativas
-            stmt = conn.prepareStatement(sql);
-            stmt.setBoolean(1, ocupado);
-            if (idCliente != null) {
-                stmt.setInt(2, idCliente);
-            } else {
-                stmt.setNull(2, Types.INTEGER);
-            }
-            if (horaEntrada != null) {
-                stmt.setTimestamp(3, horaEntrada);
-            } else {
-                stmt.setNull(3, Types.TIMESTAMP);
-            }
-            stmt.setString(4, identificador);
-            stmt.executeUpdate();
-            System.out.println("Vaga atualizada com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao atualizar vaga: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
-    }
-
-    // Delete lógico de uma vaga (desativação)
-    public void deletarVaga(String identificador) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "UPDATE Vaga SET ativo = false WHERE identificador = ?";  // Desativa a vaga
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, identificador);
-            stmt.executeUpdate();
-            System.out.println("Vaga desativada com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao desativar vaga: " + e.getMessage());
-        } finally {
-            DBConnect.closeConnection(conn);  // Fecha a conexão
-        }
     }
 
     // Listar todas as vagas ativas
     public ResultSet listarVagasAtivas() {
-        Connection conn = null;
-        Statement stmt = null;
+        String sql = "SELECT * FROM vaga WHERE ativo = true";
         ResultSet rs = null;
+
         try {
-            conn = DBConnect.getConnection();  // Obtém a conexão
-            String sql = "SELECT * FROM Vaga WHERE ativo = true";  // Apenas vagas ativas
-            stmt = conn.createStatement();
+            Connection conn = DBConnect.getConnection();
+            Statement stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
         } catch (SQLException e) {
             System.err.println("Erro ao listar vagas ativas: " + e.getMessage());
         }
         return rs;
+    }
+
+    // Excluir (lógica) uma vaga - desativar a vaga
+public void deletarVaga(int idVaga) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    try {
+        conn = DBConnect.getConnection();  // Obtém a conexão
+        String sql = "UPDATE vaga SET ativo = false WHERE id_vaga = ?";  // Desativa a vaga
+        stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idVaga);
+        stmt.executeUpdate();
+        System.out.println("Vaga desativada com sucesso.");
+    } catch (SQLException e) {
+        System.err.println("Erro ao desativar vaga: " + e.getMessage());
+    } finally {
+        DBConnect.closeConnection(conn);  // Fecha a conexão
+    }
+}
+
+
+    // Verificar disponibilidade de vaga
+    public boolean verificarDisponibilidade(int idVaga) {
+        boolean disponivel = false;
+        String sql = "SELECT ocupado FROM vaga WHERE id_vaga = ? AND ativo = true";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idVaga);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                disponivel = !rs.getBoolean("ocupado");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao verificar disponibilidade da vaga: " + e.getMessage());
+        }
+        return disponivel;
     }
 }

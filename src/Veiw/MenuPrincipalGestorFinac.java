@@ -4,8 +4,15 @@
  */
 package Veiw;
 
+import java.sql.ResultSet;
+import Model.ModelDAO.ParqueDeEstacionamentoDAO;
+import Model.ModelDAO.VagaDAO;
+import Model.ParqueDeEstacionamento;
 import Veiw.*;
 import Veiw.*;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +25,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
      */
     public MenuPrincipalGestorFinac() {
         initComponents();
+        listarVagas();
+        listarparque();
     }
 
     /**
@@ -173,21 +182,24 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel161 = new javax.swing.JLabel();
         jLabel162 = new javax.swing.JLabel();
         jLabel160 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        txtIdVagas = new javax.swing.JTextField();
         jLabel163 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        txtIndetificadore = new javax.swing.JTextField();
         jLabel165 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkOcupado = new javax.swing.JCheckBox();
         jLabel164 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaVagas = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel172 = new javax.swing.JLabel();
         jLabel173 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
+        txtValor = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
+        TxtMensagemV = new javax.swing.JLabel();
+        txtIdParque = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        chkVip = new javax.swing.JCheckBox();
         P8 = new javax.swing.JPanel();
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
@@ -195,18 +207,21 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel166 = new javax.swing.JLabel();
         jLabel167 = new javax.swing.JLabel();
         jLabel168 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        txtNomeP = new javax.swing.JTextField();
         jLabel169 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        txtEnderecoP = new javax.swing.JTextField();
         jLabel170 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelaPar = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel174 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        txtCapacidadeP = new javax.swing.JTextField();
         jLabel175 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        txtVagasDisponivel = new javax.swing.JTextField();
+        txtIDParque = new javax.swing.JTextField();
+        IDParque = new javax.swing.JLabel();
+        TxtMensagemP = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1365,11 +1380,11 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         jLabel160.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel160.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel160.setText("Identificador:");
+        jLabel160.setText("IdVaga");
 
         jLabel163.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel163.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel163.setText("Tipo de Vaga:");
+        jLabel163.setText("Identificador:");
 
         jLabel165.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/rb_55560.png"))); // NOI18N
 
@@ -1377,33 +1392,33 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel164.setForeground(new java.awt.Color(0, 0, 0));
         jLabel164.setText("Status da Vaga:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaVagas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id da vaga", "Tipo de Vaga", "Valor por hora", "ID Parque", "Status da Vaga"
+                "idVaga", "identificador", "valorPorHora", "isVip", "ocupado", "idCliente", "idParque", "horaEntrada", "ativo"
             }
         ));
-        jScrollPane8.setViewportView(jTable1);
+        jScrollPane8.setViewportView(tabelaVagas);
 
         jButton5.setBackground(new java.awt.Color(255, 153, 51));
         jButton5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -1416,6 +1431,11 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_save_20px_1.png"))); // NOI18N
         jButton7.setText("Salvar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel172.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel172.setForeground(new java.awt.Color(0, 0, 0));
@@ -1430,6 +1450,20 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_unavailable_20px.png"))); // NOI18N
         jButton10.setText("Desabilitar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        TxtMensagemV.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        TxtMensagemV.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtIdParque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", " " }));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("IdVaga");
 
         javax.swing.GroupLayout P7Layout = new javax.swing.GroupLayout(P7);
         P7.setLayout(P7Layout);
@@ -1442,18 +1476,25 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel87)
-                            .addComponent(jLabel91))
-                        .addGap(835, 835, 835)
+                            .addComponent(jLabel91)
+                            .addGroup(P7Layout.createSequentialGroup()
+                                .addComponent(jLabel87)
+                                .addGap(162, 162, 162)
+                                .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(212, 212, 212)
                         .addComponent(jLabel162))
                     .addGroup(P7Layout.createSequentialGroup()
-                        .addGap(464, 464, 464)
-                        .addComponent(jLabel161))
-                    .addGroup(P7Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel160)
-                        .addGap(23, 23, 23)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel160)
+                            .addComponent(jLabel14))
+                        .addGap(56, 56, 56)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P7Layout.createSequentialGroup()
+                                .addComponent(chkVip)
+                                .addGap(355, 355, 355)
+                                .addComponent(jLabel161))
+                            .addComponent(txtIdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(P7Layout.createSequentialGroup()
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1463,30 +1504,32 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel163)
                                 .addGap(21, 21, 21)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P7Layout.createSequentialGroup()
-                                .addComponent(jLabel172)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(P7Layout.createSequentialGroup()
-                                .addComponent(jLabel173)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtIndetificadore, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel164)
                                 .addGap(11, 11, 11)
-                                .addComponent(jCheckBox1)
+                                .addComponent(chkOcupado)
                                 .addGap(81, 81, 81)
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton10))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
+                                .addComponent(jButton10))
+                            .addGroup(P7Layout.createSequentialGroup()
+                                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel172)
+                                    .addComponent(jLabel173))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                    .addComponent(txtIdParque, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(P7Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel165))
+                        .addComponent(jScrollPane8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jLabel165)
+                .addGap(23, 23, 23))
         );
         P7Layout.setVerticalGroup(
             P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1498,57 +1541,65 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel87)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel87)
+                            .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addComponent(jLabel91))
                     .addComponent(jLabel162))
-                .addGap(32, 32, 32)
-                .addComponent(jLabel161)
-                .addGap(36, 36, 36)
+                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P7Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel161)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(chkVip))
+                        .addGap(22, 22, 22)))
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel160))
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P7Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P7Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel163))
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel163))
+                    .addComponent(txtIndetificadore, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P7Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel172))
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P7Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel173))
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel173)
+                            .addComponent(txtIdParque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel164))
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jCheckBox1))
+                                .addComponent(chkOcupado))
                             .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton5)
                                 .addComponent(jButton7)
                                 .addComponent(jButton10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))))
+                        .addGap(54, 54, 54))))
         );
 
         Paineis.addTab("tab8", P7);
@@ -1586,45 +1637,55 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         jLabel170.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Parking-amico.png"))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Endereço", "Capacidade Total", "Vagas Disponiveis"
+                "id_parque", "nome", "endereco", "capacidade_total", " vagas_disponiveis"
             }
         ));
-        jScrollPane9.setViewportView(jTable2);
+        jScrollPane9.setViewportView(tabelaPar);
 
         jButton8.setBackground(new java.awt.Color(255, 153, 51));
         jButton8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_update_20px.png"))); // NOI18N
         jButton8.setText("Atualizar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setBackground(new java.awt.Color(51, 255, 51));
         jButton9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_save_20px_1.png"))); // NOI18N
         jButton9.setText("Salvar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jLabel174.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel174.setForeground(new java.awt.Color(0, 0, 0));
@@ -1634,59 +1695,73 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel175.setForeground(new java.awt.Color(0, 0, 0));
         jLabel175.setText("Vagas Disponiveis:");
 
+        IDParque.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        IDParque.setForeground(new java.awt.Color(0, 0, 0));
+        IDParque.setText("ID Parque:");
+
+        TxtMensagemP.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        TxtMensagemP.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout P8Layout = new javax.swing.GroupLayout(P8);
         P8.setLayout(P8Layout);
         P8Layout.setHorizontalGroup(
             P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P8Layout.createSequentialGroup()
-                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(27, 27, 27)
+                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P8Layout.createSequentialGroup()
-                        .addGap(464, 464, 464)
-                        .addComponent(jLabel166))
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
+                                            .addGap(21, 21, 21)
+                                            .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel168)
+                                                .addComponent(IDParque))
+                                            .addGap(92, 92, 92)
+                                            .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtIDParque, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtNomeP, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(P8Layout.createSequentialGroup()
+                                            .addGap(27, 27, 27)
+                                            .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(P8Layout.createSequentialGroup()
+                                                    .addComponent(jLabel169)
+                                                    .addGap(93, 93, 93)
+                                                    .addComponent(txtEnderecoP, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(P8Layout.createSequentialGroup()
+                                                    .addComponent(jLabel174)
+                                                    .addGap(49, 49, 49)
+                                                    .addComponent(txtCapacidadeP, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(P8Layout.createSequentialGroup()
+                                                    .addComponent(jLabel175)
+                                                    .addGap(43, 43, 43)
+                                                    .addComponent(txtVagasDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(124, 124, 124))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton8)
+                                .addGap(138, 138, 138)))
+                        .addComponent(jLabel170))
                     .addGroup(P8Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
                         .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel92)
                             .addGroup(P8Layout.createSequentialGroup()
-                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
-                                        .addComponent(jButton8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(161, 161, 161))
-                                    .addGroup(P8Layout.createSequentialGroup()
-                                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(P8Layout.createSequentialGroup()
-                                                .addGap(27, 27, 27)
-                                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addGroup(P8Layout.createSequentialGroup()
-                                                        .addComponent(jLabel168)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(P8Layout.createSequentialGroup()
-                                                        .addComponent(jLabel169)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(P8Layout.createSequentialGroup()
-                                                        .addComponent(jLabel174)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(P8Layout.createSequentialGroup()
-                                                        .addComponent(jLabel175)
-                                                        .addGap(43, 43, 43)
-                                                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addComponent(jLabel170)
-                                .addGap(52, 52, 52))
-                            .addGroup(P8Layout.createSequentialGroup()
-                                .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel90)
-                                    .addComponent(jLabel92))
-                                .addGap(835, 835, 835)
-                                .addComponent(jLabel167)))))
+                                .addComponent(jLabel90)
+                                .addGap(56, 56, 56)
+                                .addComponent(TxtMensagemP, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel167)))
                 .addGap(32, 32, 32))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel166)
+                .addGap(371, 371, 371))
         );
         P8Layout.setVerticalGroup(
             P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1698,16 +1773,22 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P8Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jLabel90)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtMensagemP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel90))
                         .addGap(6, 6, 6)
                         .addComponent(jLabel92))
                     .addComponent(jLabel167))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel166)
-                .addGap(36, 36, 36)
+                .addGap(19, 19, 19)
+                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIDParque, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDParque))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel168)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P8Layout.createSequentialGroup()
@@ -1720,19 +1801,19 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel175))
                             .addGroup(P8Layout.createSequentialGroup()
-                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEnderecoP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCapacidadeP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(48, 48, 48)
-                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtVagasDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton8)
                             .addComponent(jButton9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         Paineis.addTab("tab8", P8);
@@ -1758,7 +1839,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-         this.setState(MenuPrincipalGestorFinac.ICONIFIED);
+        this.setState(MenuPrincipalGestorFinac.ICONIFIED);
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
@@ -1770,7 +1851,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-         this.setState(MenuPrincipalGestorFinac.ICONIFIED);
+        this.setState(MenuPrincipalGestorFinac.ICONIFIED);
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel54MouseClicked
@@ -1779,10 +1860,10 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
         this.dispose();
-    
-    // Cria e exibe a tela de login novamente
-    Login login = new Login();
-    login.setVisible(true);
+
+        // Cria e exibe a tela de login novamente
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_sairMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -1810,12 +1891,276 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel85MouseClicked
 
     private void jLabel88MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel88MouseClicked
-         Paineis.setSelectedComponent(P8);
+        Paineis.setSelectedComponent(P8);
     }//GEN-LAST:event_jLabel88MouseClicked
 
     private void jLabel167MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel167MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel167MouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        editarParqueDeEstacionamento();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        salvarOuEditarParque();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        salvarOuEditarVaga();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        desativarVaga();
+    }//GEN-LAST:event_jButton10ActionPerformed
+    
+
+    
+    // METODO NA TELA PRQUEAR
+    private void salvarOuEditarParque() {
+        String idParqueText = txtIDParque.getText();
+        String nome = txtNomeP.getText();
+        String endereco = txtEnderecoP.getText();
+        String capacidade = txtCapacidadeP.getText();
+        String vagasDisponiveis = txtVagasDisponivel.getText();
+
+        // Validações dos campos obrigatórios
+        if (nome.isEmpty() || endereco.isEmpty() || capacidade.isEmpty() || vagasDisponiveis.isEmpty()) {
+            TxtMensagemP.setText("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        try {
+            ParqueDeEstacionamentoDAO parqueDeEstacionamentoDAO = new ParqueDeEstacionamentoDAO();
+
+            if (!idParqueText.isEmpty()) {
+                // Se o ID do parque estiver preenchido, edita o parque existente
+                int idParque = Integer.parseInt(idParqueText);
+                parqueDeEstacionamentoDAO.atualizarParqueDeEstacionamento(idParque, nome, endereco, capacidade, vagasDisponiveis);
+                TxtMensagemP.setForeground(Color.GREEN);
+                TxtMensagemP.setText("Parque atualizado com sucesso.");
+            } else {
+                // Se o ID do parque estiver vazio, insere um novo parque
+                parqueDeEstacionamentoDAO.inserirParqueDeEstacionamento(nome, endereco, capacidade, vagasDisponiveis);
+                TxtMensagemP.setForeground(Color.GREEN);
+                TxtMensagemP.setText("Novo parque registrado com sucesso.");
+            }
+             Limparcampus();
+            listarparque(); // Atualiza a lista de parques na tabela
+            // Limpa os campos após salvar ou editar
+        } catch (Exception ex) {
+            TxtMensagemP.setForeground(Color.RED);
+            TxtMensagemP.setText("Erro ao salvar o parque: " + ex.getMessage());
+        }
+    }
+
+    private void Limparcampus() {
+        txtIDParque.setText("");
+        txtNomeP.setText("");
+        txtEnderecoP.setText("");
+        txtCapacidadeP.setText("");
+        txtVagasDisponivel.setText("");
+    }
+
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        int selectedRow = tabelaPar.getSelectedRow();
+
+        if (selectedRow != -1) {
+            txtIDParque.setText(tabelaPar.getValueAt(selectedRow, 0).toString());
+            txtNomeP.setText(tabelaPar.getValueAt(selectedRow, 1).toString());
+            txtEnderecoP.setText(tabelaPar.getValueAt(selectedRow, 2).toString());
+            txtCapacidadeP.setText(tabelaPar.getValueAt(selectedRow, 3).toString());
+            txtVagasDisponivel.setText(tabelaPar.getValueAt(selectedRow, 4).toString());
+        }
+    }
+
+    private void listarparque() {
+        try {
+            ParqueDeEstacionamentoDAO parqueEstacionamento = new ParqueDeEstacionamentoDAO();
+            List<ParqueDeEstacionamento> parque = parqueEstacionamento.listarParquesAtivos();
+
+            // Limpa as linhas atuais da tabela antes de adicionar novas
+            DefaultTableModel tableModelo = (DefaultTableModel) tabelaPar.getModel();
+            tableModelo.setRowCount(0);
+
+            // Itera pela lista de funcionários e adiciona as linhas no modelo da tabela
+            for (ParqueDeEstacionamento p : parque) {
+
+                tableModelo.addRow(new Object[]{
+                    p.getIdParque(),
+                    p.getNome(),
+                    p.getCapacidadeTotal(),
+                    p.getVagasDisponiveis(),});
+            }
+        } catch (Exception ex) {
+            TxtMensagemP.setText("Erro ao listar o paque: " + ex.getMessage());
+        }
+    }
+
+    private void editarParqueDeEstacionamento() {
+        String nome = txtNomeP.getText();
+        String endereco = txtEnderecoP.getText();
+        String capacidade = txtCapacidadeP.getText();
+        String vagasDisponiveis = txtVagasDisponivel.getText();
+
+        // Validações dos campos obrigatórios
+        if (nome.isEmpty() || endereco.isEmpty() || capacidade.isEmpty() || vagasDisponiveis.isEmpty()) {
+            TxtMensagemP.setText("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        // Validação de texto para campos que devem ter apenas letras
+        if (!nome.matches("[a-zA-ZÀ-ÿ ]+")) {
+            TxtMensagemP.setText("Nome deve conter apenas letras.");
+            return;
+        }
+
+        // Validação para capacidade (3 dígitos)
+        if (!capacidade.matches("\\d{3}")) {
+            TxtMensagemP.setText("Capacidade deve ter 3 dígitos.");
+            return;
+      }
+
+        // Validação para número de BI (12 dígitos seguidos por uma letra maiúscula)
+       // if (!vagasDisponiveis.matches("\\d{12}[A-Z]")) {
+      //      TxtMensagemP.setText("Número de BI deve conter 12 dígitos seguidos de uma letra maiúscula.");
+      //      return;
+        //}
+
+        // Validação de texto para o campo de endereço
+        if (!endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
+            txtEnderecoP.setText("O endereço deve conter apenas letras.");
+            return;
+        }
+
+        try {
+            // Recupera o ID do parque selecionado para edição (deve ser obtido da seleção na tabela)
+            int idParque = Integer.parseInt((String) txtIdParque.getSelectedItem()); // Supondo que você tenha um campo de ID para o parque
+
+            // Cria uma instância de ParqueDeEstacionamentoDAO e chama o método de atualização
+            ParqueDeEstacionamentoDAO parqueDeEstacionamentoDAO = new ParqueDeEstacionamentoDAO();
+            parqueDeEstacionamentoDAO.atualizarParqueDeEstacionamento(idParque, nome, endereco, capacidade, vagasDisponiveis);
+
+            TxtMensagemP.setForeground(Color.GREEN);
+            TxtMensagemP.setText("Parque de estacionamento atualizado com sucesso.");
+            listarparque();
+            Limparcampus();
+        } catch (Exception ex) {
+            TxtMensagemP.setForeground(Color.RED);
+            TxtMensagemP.setText("Erro ao atualizar parque de estacionamento: " + ex.getMessage());
+        }
+    }
+
+    
+    //ASSUNTO GERENCIAMENTO DE VAGA
+    private void salvarOuEditarVaga() {
+        String idVagaText = txtIdVagas.getText();
+        String identificador = txtIndetificadore.getText();
+        String valorPorHoraText = txtValor.getText();
+        String idParqueRelacionadoText = (String) txtIdParque.getSelectedItem();
+
+        // Validações dos campos obrigatórios
+        if (identificador.isEmpty() || valorPorHoraText.isEmpty() || idParqueRelacionadoText.isEmpty()) {
+            TxtMensagemV.setText("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        try {
+            VagaDAO vagaDAO = new VagaDAO();
+            double valorPorHora = Double.parseDouble(valorPorHoraText);
+            int idParqueRelacionado = Integer.parseInt(idParqueRelacionadoText);
+
+            if (!idVagaText.isEmpty()) {
+                // Se o ID da vaga estiver preenchido, edita a vaga existente
+                int idVaga = Integer.parseInt(idVagaText);
+                boolean isVip = chkVip.isSelected(); // Exemplo de checkbox para determinar se é VIP
+                boolean ocupado = chkOcupado.isSelected(); // Exemplo de checkbox para verificar ocupação
+
+                vagaDAO.atualizarVaga(idVaga, valorPorHora, isVip, ocupado, null, null);
+                TxtMensagemV.setForeground(Color.GREEN);
+                TxtMensagemV.setText("Vaga atualizada com sucesso.");
+            } else {
+                // Se o ID da vaga estiver vazio, insere uma nova vaga
+                boolean isVip = chkVip.isSelected();
+                vagaDAO.inserirVaga(identificador, valorPorHora, isVip, idParqueRelacionado);
+                TxtMensagemV.setForeground(Color.GREEN);
+                TxtMensagemV.setText("Nova vaga registrada com sucesso.");
+            }
+
+            listarVagas(); // Atualiza a lista de vagas na tabela
+            limparCamposVaga(); // Limpa os campos após salvar ou editar
+        } catch (NumberFormatException ex) {
+            TxtMensagemV.setForeground(Color.RED);
+            TxtMensagemV.setText("Erro nos dados: verifique os valores numéricos.");
+        } catch (Exception ex) {
+            TxtMensagemV.setForeground(Color.RED);
+            TxtMensagemV.setText("Erro ao salvar a vaga: " + ex.getMessage());
+        }
+    }
+
+    private void listarVagas() {
+        try {
+            VagaDAO vagaDAO = new VagaDAO();
+            ResultSet rs = vagaDAO.listarVagasAtivas();
+
+            // Limpa as linhas atuais da tabela antes de adicionar novas
+            DefaultTableModel tableModelo = (DefaultTableModel) tabelaVagas.getModel();
+            tableModelo.setRowCount(0);
+
+            // Itera pelo ResultSet e adiciona as linhas no modelo da tabela
+            while (rs.next()) {
+                tableModelo.addRow(new Object[]{
+                    rs.getInt("id_vaga"),
+                    rs.getString("identificador"),
+                    rs.getDouble("valor_por_hora"),
+                    rs.getBoolean("is_vip") ? "VIP" : "Normal",
+                    rs.getBoolean("ocupado") ? "Ocupado" : "Disponível",
+                    rs.getInt("id_parque_relacionado")
+                });
+            }
+        } catch (Exception ex) {
+            TxtMensagemV.setForeground(Color.RED);
+            TxtMensagemV.setText("Erro ao listar as vagas: " + ex.getMessage());
+        }
+    }
+
+    private void limparCamposVaga() {
+        txtIdVagas.setText("");
+        txtIndetificadore.setText("");
+        /// txtIndetificadore.setText("");
+        txtValor.setText("");
+        chkVip.setSelected(false);
+        chkOcupado.setSelected(false);
+    }
+
+    private void desativarVaga() {
+        String idVagaText = txtIDParque.getText(); // Supondo que você tenha um campo para selecionar a vaga
+
+        // Validações
+        if (idVagaText.isEmpty()) {
+            TxtMensagemV.setText("Por favor, selecione uma vaga para desativar.");
+            return;
+        }
+
+        try {
+            VagaDAO vagaDAO = new VagaDAO();
+            int idVaga = Integer.parseInt(idVagaText); // Convertendo o ID para inteiro
+
+            // Chama o método para desativar a vaga
+            vagaDAO.deletarVaga(idVaga);
+            TxtMensagemV.setForeground(Color.GREEN);
+            TxtMensagemV.setText("Vaga desativada com sucesso.");
+
+            listarVagas(); // Atualiza a lista de vagas na tabela
+        } catch (NumberFormatException ex) {
+            TxtMensagemV.setForeground(Color.RED);
+            TxtMensagemV.setText("Erro ao desativar a vaga: ID inválido.");
+        } catch (Exception ex) {
+            TxtMensagemV.setForeground(Color.RED);
+            TxtMensagemV.setText("Erro ao desativar a vaga: " + ex.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -1845,35 +2190,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1885,6 +2202,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Descricao;
+    private javax.swing.JLabel IDParque;
     private javax.swing.JPanel P1;
     private javax.swing.JPanel P2;
     private javax.swing.JPanel P4;
@@ -1895,6 +2213,10 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JLabel Pagamento;
     private javax.swing.JTabbedPane Paineis;
     private javax.swing.JLabel Parquear;
+    private javax.swing.JLabel TxtMensagemP;
+    private javax.swing.JLabel TxtMensagemV;
+    private javax.swing.JCheckBox chkOcupado;
+    private javax.swing.JCheckBox chkVip;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -1905,7 +2227,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1925,6 +2246,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel140;
     private javax.swing.JLabel jLabel141;
     private javax.swing.JLabel jLabel142;
@@ -2038,22 +2360,12 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -2062,5 +2374,16 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel sair;
+    private javax.swing.JTable tabelaPar;
+    private javax.swing.JTable tabelaVagas;
+    private javax.swing.JTextField txtCapacidadeP;
+    private javax.swing.JTextField txtEnderecoP;
+    private javax.swing.JTextField txtIDParque;
+    private javax.swing.JComboBox<String> txtIdParque;
+    private javax.swing.JTextField txtIdVagas;
+    private javax.swing.JTextField txtIndetificadore;
+    private javax.swing.JTextField txtNomeP;
+    private javax.swing.JTextField txtVagasDisponivel;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

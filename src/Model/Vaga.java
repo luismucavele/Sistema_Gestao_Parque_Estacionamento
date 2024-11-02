@@ -1,26 +1,46 @@
 package Model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Vaga {
 
-    private String identificador;
-    private double valorPorHora;
-    private boolean isVip;
-    private boolean ocupado;
-    private Cliente cliente;
-    private LocalDateTime horaEntrada;
+    private int idVaga;                     // ID da vaga no banco de dados
+    private String identificador;           // Identificador único para a vaga
+    private double valorPorHora;            // Valor cobrado por hora
+    private boolean isVip;                  // Indicador se a vaga é VIP
+    private boolean ocupado;                // Status de ocupação
+    private LocalDateTime horaEntrada;      // Hora de entrada do veículo na vaga, se ocupada
+    private int idParque;        // Identificador do espaço relacionado
 
-    public Vaga(String identificador, double valorPorHora, boolean isVip, boolean ocupado, Cliente cliente, LocalDateTime horaEntrada) {
+    // Construtor completo
+    public Vaga(int idVaga, String identificador, double valorPorHora, boolean isVip, boolean ocupado, LocalDateTime horaEntrada, int idParque) {
+        this.idVaga = idVaga;
         this.identificador = identificador;
         this.valorPorHora = valorPorHora;
         this.isVip = isVip;
         this.ocupado = ocupado;
-        this.cliente = cliente;
         this.horaEntrada = horaEntrada;
+        this.idParque = idParque;
+    }
+
+    // Construtor básico (sem horaEntrada e idParqueRelacionado)
+    public Vaga(String identificador, double valorPorHora, boolean isVip, boolean ocupado) {
+        this.identificador = identificador;
+        this.valorPorHora = valorPorHora;
+        this.isVip = isVip;
+        this.ocupado = ocupado;
     }
 
     // Getters e Setters
+    public int getIdVaga() {
+        return idVaga;
+    }
+
+    public void setIdVaga(int idVaga) {
+        this.idVaga = idVaga;
+    }
+
     public String getIdentificador() {
         return identificador;
     }
@@ -53,14 +73,6 @@ public class Vaga {
         this.ocupado = ocupado;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
     public LocalDateTime getHoraEntrada() {
         return horaEntrada;
     }
@@ -69,33 +81,70 @@ public class Vaga {
         this.horaEntrada = horaEntrada;
     }
 
-    // Métodos adicionais
-    public double calcularValorEstacionamento(LocalDateTime horaSaida) {
-        long horasEstacionadas = java.time.Duration.between(horaEntrada, horaSaida).toHours();
-        return horasEstacionadas * valorPorHora;
+    public int getIdParqueRelacionado() {
+        return idParque;
     }
 
-    public void ocuparVaga(Cliente cliente, LocalDateTime horaEntrada) {
-        this.ocupado = false;
-        this.cliente = cliente;
+    public void setIdParqueRelacionado(int idParqueRelacionado) {
+        this.idParque = idParqueRelacionado;
+    }
+
+    // Métodos de manipulação de status
+
+    // Ocupa a vaga e define a hora de entrada
+    public void ocuparVaga(LocalDateTime horaEntrada) {
+        this.ocupado = true;
         this.horaEntrada = horaEntrada;
     }
 
+    // Libera a vaga e redefine a hora de entrada para null
     public void liberarVaga() {
         this.ocupado = false;
-        this.cliente = null;
         this.horaEntrada = null;
     }
 
+    // Calcula o tempo de permanência em minutos
+    public long calcularTempoPermanencia() {
+        if (horaEntrada != null && ocupado) {
+            Duration duracao = Duration.between(horaEntrada, LocalDateTime.now());
+            return duracao.toMinutes();
+        }
+        return 0;
+    }
+
+    // Calcula o custo total com base no valorPorHora e tempo de permanência
+    public double calcularCustoTotal() {
+        long minutos = calcularTempoPermanencia();
+        double horas = minutos / 60.0;
+        return horas * valorPorHora;
+    }
+
+    // Verifica se a vaga é VIP
+    public boolean verificarVip() {
+        return this.isVip;
+    }
+
+    // Método toString atualizado para exibir os detalhes da vaga
     @Override
     public String toString() {
-        return "Vaga{"
-                + "identificador='" + identificador + '\''
-                + ", valorPorHora=" + valorPorHora
-                + ", isVip=" + isVip
-                + ", ocupado=" + ocupado
-                + ", cliente=" + cliente
-                + ", horaEntrada=" + horaEntrada
-                + '}';
+        return "Vaga{" +
+                "idVaga=" + idVaga +
+                ", identificador='" + identificador + '\'' +
+                ", valorPorHora=" + valorPorHora +
+                ", isVip=" + isVip +
+                ", ocupado=" + ocupado +
+                ", horaEntrada=" + (horaEntrada != null ? horaEntrada : "N/A") +
+                ", idParqueRelacionado=" + idParque +
+                '}';
+    }
+
+    // Método auxiliar para redefinir a vaga como VIP ou não
+    public void definirVip(boolean vipStatus) {
+        this.isVip = vipStatus;
+    }
+
+    // Método auxiliar para definir o valor por hora
+    public void atualizarValorPorHora(double novoValor) {
+        this.valorPorHora = novoValor;
     }
 }
