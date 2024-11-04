@@ -1639,28 +1639,28 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         tabelaPar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "id_parque", "nome", "endereco", "capacidade_total", " vagas_disponiveis"
+                "id_parque", "nome", "endereco", "capacidade_total", " vagas_disponiveis", "ativo"
             }
         ));
         jScrollPane9.setViewportView(tabelaPar);
@@ -1697,7 +1697,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         IDParque.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         IDParque.setForeground(new java.awt.Color(0, 0, 0));
-        IDParque.setText("ID Parque:");
+        IDParque.setText("id Parque:");
 
         TxtMensagemP.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         TxtMensagemP.setForeground(new java.awt.Color(0, 0, 0));
@@ -1708,9 +1708,29 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P8Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(P8Layout.createSequentialGroup()
+                        .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addComponent(jLabel92)
+                                .addGap(343, 343, 343)
+                                .addComponent(jLabel166))
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addComponent(jLabel90)
+                                .addGap(56, 56, 56)
+                                .addComponent(TxtMensagemP, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel167)
+                        .addGap(32, 32, 32))
                     .addGroup(P8Layout.createSequentialGroup()
                         .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton8)
+                                .addGap(170, 170, 170))
                             .addGroup(P8Layout.createSequentialGroup()
                                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1738,30 +1758,11 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                                     .addComponent(jLabel175)
                                                     .addGap(43, 43, 43)
                                                     .addComponent(txtVagasDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(124, 124, 124))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton8)
-                                .addGap(138, 138, 138)))
-                        .addComponent(jLabel170))
-                    .addGroup(P8Layout.createSequentialGroup()
-                        .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel92)
-                            .addGroup(P8Layout.createSequentialGroup()
-                                .addComponent(jLabel90)
-                                .addGap(56, 56, 56)
-                                .addComponent(TxtMensagemP, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel167)))
-                .addGap(32, 32, 32))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel166)
-                .addGap(371, 371, 371))
+                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(116, 116, 116)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel170)
+                        .addGap(70, 70, 70))))
         );
         P8Layout.setVerticalGroup(
             P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1769,26 +1770,31 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P8Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel167))
+                        .addGap(61, 61, 61)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIDParque, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDParque))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel168)
+                            .addComponent(txtNomeP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(P8Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtMensagemP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel90))
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel92))
-                    .addComponent(jLabel167))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel166)
-                .addGap(19, 19, 19)
-                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIDParque, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IDParque))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel168)
-                    .addComponent(txtNomeP, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel92))
+                            .addGroup(P8Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel166)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P8Layout.createSequentialGroup()
@@ -1812,8 +1818,10 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addComponent(jButton9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P8Layout.createSequentialGroup()
+                        .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         Paineis.addTab("tab8", P8);
@@ -1917,7 +1925,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     
 
     
-    // METODO NA TELA PRQUEAR
+    // METODO NA TELA PRAQUEAR
     private void salvarOuEditarParque() {
         String idParqueText = txtIDParque.getText();
         String nome = txtNomeP.getText();
@@ -1954,6 +1962,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             TxtMensagemP.setText("Erro ao salvar o parque: " + ex.getMessage());
         }
     }
+    
 
     private void Limparcampus() {
         txtIDParque.setText("");
@@ -1990,6 +1999,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                 tableModelo.addRow(new Object[]{
                     p.getIdParque(),
                     p.getNome(),
+                    p.getEndereco(),
                     p.getCapacidadeTotal(),
                     p.getVagasDisponiveis(),});
             }
@@ -2051,7 +2061,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             TxtMensagemP.setText("Erro ao atualizar parque de estacionamento: " + ex.getMessage());
         }
     }
-
+   
     
     //ASSUNTO GERENCIAMENTO DE VAGA
     private void salvarOuEditarVaga() {
@@ -2066,6 +2076,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             return;
         }
 
+        
         try {
             VagaDAO vagaDAO = new VagaDAO();
             double valorPorHora = Double.parseDouble(valorPorHoraText);

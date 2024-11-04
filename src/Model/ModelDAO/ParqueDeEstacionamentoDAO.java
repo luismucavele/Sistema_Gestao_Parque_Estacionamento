@@ -26,7 +26,7 @@ public void atualizarParqueDeEstacionamento(int idParque, String nome, String en
 }
 
 public void inserirParqueDeEstacionamento(String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
-    String sql = "INSERT INTO parque_estacionamento (nome, endereco, capacidade_total, vagas_disponiveis) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO parque_estacionamento (nome, endereco, capacidade_total, vagas_disponiveis,  ativo) VALUES (?, ?, ?, ?, ?)";
 
     try (Connection conn = DBConnect.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -34,6 +34,7 @@ public void inserirParqueDeEstacionamento(String nome, String endereco, String c
         stmt.setString(2, endereco);
         stmt.setInt(3, Integer.parseInt(capacidade));
         stmt.setInt(4, Integer.parseInt(vagasDisponiveis));
+        stmt.setBoolean(5, true);
         stmt.executeUpdate();
     }
 }
