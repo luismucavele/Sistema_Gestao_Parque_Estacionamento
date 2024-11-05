@@ -1,86 +1,45 @@
 package Model;
 
-import java.time.Duration;
+import Model.Cliente;
+import Model.ClienteVeiculo;
+import Model.Veiculo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estacionamento {
-
-    private List<Cliente> clientesEstacionados;
-    private List<Cliente> historicoClientes;
-    private List<EspacoEstacionamento> espacos;
+    private List<ClienteVeiculo> clientesEstacionados;
+    private List<ClienteVeiculo> historicoClientes;
 
     public Estacionamento() {
         this.clientesEstacionados = new ArrayList<>();
         this.historicoClientes = new ArrayList<>();
-        this.espacos = new ArrayList<>();
     }
 
-    public void adicionarEspaco(EspacoEstacionamento espaco) {
-        espacos.add(espaco);
-    }
-
-    public EspacoEstacionamento getEspacoPorIdentificador(String identificador) {
-        for (EspacoEstacionamento espaco : espacos) {
-            if (espaco.getIdentificador().equals(identificador)) {
-                return espaco;
-            }
-        }
-        return null;
-    }
-
-    public String obterEspacoCliente(int clienteId) {
-        for (EspacoEstacionamento espaco : espacos) {
-            if (espaco.getCliente() != null && espaco.getCliente().getIdCliente() == clienteId) {
-                return espaco.getIdentificador();
-            }
-        }
-        return null;
-    }
-
-    public void registrarEntrada(Cliente cliente, String espacoIdentificador) {
-        EspacoEstacionamento espaco = getEspacoPorIdentificador(espacoIdentificador);
-        if (espaco != null && espaco.ocupar(cliente)) {
-            cliente.setEspacoEstacionamento(espaco);
-            cliente.setHoraEntrada(LocalDateTime.now());
-            clientesEstacionados.add(cliente);
-        } else {
-            System.out.println("Espaço não disponível ou não encontrado.");
-        }
+    public void registrarEntrada(Cliente cliente, Veiculo veiculo) {
+        ClienteVeiculo clienteVeiculo = new ClienteVeiculo(cliente, veiculo, LocalDateTime.now());
+        clientesEstacionados.add(clienteVeiculo);
     }
 
     public void registrarSaida(Cliente cliente) {
-        cliente.registrarSaida();
-        EspacoEstacionamento espaco = cliente.getEspacoEstacionamento();
-        if (espaco != null) {
-            espaco.desocupar();
+        ClienteVeiculo clienteVeiculo = buscarClienteEstacionado(cliente);
+        if (clienteVeiculo != null) {
+            clienteVeiculo.setHoraSaida(LocalDateTime.now());  // Define a hora de saída
+            clienteVeiculo.setEstacionado(false);
+            historicoClientes.add(clienteVeiculo);
+            clientesEstacionados.remove(clienteVeiculo);
         }
-        clientesEstacionados.remove(cliente);
-        historicoClientes.add(cliente);
     }
 
-    public double calcularValorTotalCarrosQueSairam() {
-        double valorTotal = 0.0;
-        for (Cliente cliente : historicoClientes) {
-            valorTotal += cliente.calcularValorTotal();
+    public ClienteVeiculo buscarClienteEstacionado(Cliente cliente) {
+        for (ClienteVeiculo clienteVeiculo : clientesEstacionados) {
+            if (clienteVeiculo.getCliente().equals(cliente) && clienteVeiculo.isEstacionado()) {
+                return clienteVeiculo;
+            }
         }
-        return valorTotal;
+        return null;
     }
 
-    public double calcularValorTotalDoEstacionamento() {
-        double valorTotal = calcularValorTotalCarrosQueSairam();
-        for (Cliente cliente : clientesEstacionados) {
-            valorTotal += cliente.calcularValorTotal();
-        }
-        return valorTotal;
-    }
-
-    public List<Cliente> getClientesEstacionados() {
-        return clientesEstacionados;
-    }
-
-    public List<Cliente> getHistoricoClientes() {
-        return historicoClientes;
-    }
+    public List<ClienteVeiculo> getClientesEstacionados() { return clientesEstacionados; }
+    public List<ClienteVeiculo> getHistoricoClientes() { return historicoClientes; }
 }

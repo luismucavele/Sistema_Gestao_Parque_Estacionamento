@@ -222,15 +222,11 @@ public class Login extends javax.swing.JFrame {
     
     
     
-   private void autenticarUsuario() {
+  private void autenticarUsuario() {
     // Obtém os valores dos campos de texto
     String usuario = txtUser.getText().trim();
     String senha = new String(txtPassword.getPassword()).trim();
-    
-    // Cria uma instância do DAO e tenta autenticar o funcionário
-    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
-    
+
     // Valida se os campos não estão vazios
     if (usuario.isEmpty()) {
         lblmensagem.setText("O campo 'Usuário' está vazio.");
@@ -243,22 +239,25 @@ public class Login extends javax.swing.JFrame {
         iniciarTimerParaLimparMensagem();
         return;
     }
-   
- 
-    // Se a autenticação foi bem-sucedida e o funcionário está ativo
+
+    // Cria uma instância do DAO e tenta autenticar o funcionário
+    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+    Funcionario funcionario = funcionarioDAO.autenticarFuncionario(usuario, senha);
+
+    // Se a autenticação for bem-sucedida e o funcionário estiver ativo
     if (funcionario != null && funcionario.isAtivo()) {
-        lblmensagem.setText("Login bem-sucedido!");
+        String nomeFuncionario = funcionario.getNome(); // Obtém o nome do funcionário autenticado
 
         // Verifica o cargo do funcionário e abre o menu correspondente
         switch (funcionario.getCargo().toLowerCase()) {
             case "administrador":
-                new MenuPrincipalAdmin().setVisible(true);
+                new MenuPrincipalAdmin(nomeFuncionario).setVisible(true);
                 break;
             case "gestor financeiro":
-                new MenuPrincipalGestorFinac().setVisible(true);
+              new MenuPrincipalGestorFinac(nomeFuncionario).setVisible(true);
                 break;
             case "recepcionista":
-                new MenuPrincipalFuncio().setVisible(true);
+                new MenuPrincipalFuncio(nomeFuncionario).setVisible(true);
                 break;
             default:
                 lblmensagem.setText("Cargo desconhecido!");
@@ -273,6 +272,7 @@ public class Login extends javax.swing.JFrame {
         iniciarTimerParaLimparMensagem();
     }
 }
+
 
 private void iniciarTimerParaLimparMensagem() {
     if (timer != null) {

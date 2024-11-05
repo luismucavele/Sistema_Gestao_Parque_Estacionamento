@@ -114,7 +114,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jLabel99 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel105 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
+        nomeuseFuncio = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         P3 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
@@ -149,6 +149,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         messagemTLparquear = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        nomeuseFuncio1 = new javax.swing.JLabel();
         P4 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
@@ -178,6 +179,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         valorpagar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        nomeuseFuncio2 = new javax.swing.JLabel();
         P5 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
@@ -189,6 +191,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
+        nomeuseFuncio3 = new javax.swing.JLabel();
         P6 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
@@ -198,6 +201,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel52 = new javax.swing.JLabel();
+        nomeuseFuncio4 = new javax.swing.JLabel();
         P7 = new javax.swing.JPanel();
         jLabel153 = new javax.swing.JLabel();
         jLabel154 = new javax.swing.JLabel();
@@ -244,6 +248,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
+        nomeuseFuncio5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -819,8 +824,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel92.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel92.setText("jLabel92");
+        nomeuseFuncio.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -849,14 +853,16 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
+                            .addGroup(P2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel48)
+                                .addGap(38, 38, 38))
                             .addGroup(P2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel92)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel48)
-                        .addGap(38, 38, 38))))
+                                .addComponent(nomeuseFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         P2Layout.setVerticalGroup(
             P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -867,18 +873,18 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                         .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))
                     .addGroup(P2Layout.createSequentialGroup()
-                        .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P2Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel8))
+                        .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(P2Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel92))
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(45, 45, 45)))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(P2Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nomeuseFuncio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40)))
                 .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1065,7 +1071,9 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                     .addGroup(P3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel32)
-                        .addGap(332, 332, 332)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeuseFuncio1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(227, 227, 227)
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(P3Layout.createSequentialGroup()
@@ -1139,7 +1147,9 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                                 .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(P3Layout.createSequentialGroup()
                                         .addGap(9, 9, 9)
-                                        .addComponent(jLabel32))
+                                        .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nomeuseFuncio1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel32)))
                                     .addGroup(P3Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel2)))))))
@@ -1350,6 +1360,7 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/imagens/Plain credit card-cuate.png"))); // NOI18N
         P4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+        P4.add(nomeuseFuncio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, 20));
 
         Paineis.addTab("tab4", P4);
 
@@ -1465,7 +1476,10 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                                     .addGroup(P5Layout.createSequentialGroup()
                                         .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel63)
-                                            .addComponent(jLabel64))
+                                            .addGroup(P5Layout.createSequentialGroup()
+                                                .addComponent(jLabel64)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nomeuseFuncio3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel51))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P5Layout.createSequentialGroup()
@@ -1484,7 +1498,9 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                             .addGroup(P5Layout.createSequentialGroup()
                                 .addComponent(jLabel63)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel64)))
+                                .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nomeuseFuncio3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(P5Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1548,45 +1564,54 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel70)
-                    .addComponent(jLabel71))
+                    .addGroup(P6Layout.createSequentialGroup()
+                        .addComponent(jLabel71)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeuseFuncio4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel52)
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
-                .addContainerGap(339, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
-                        .addComponent(jLabel73)
-                        .addGap(460, 460, 460))
+                        .addGap(0, 327, Short.MAX_VALUE)
+                        .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
+                                .addComponent(jLabel73)
+                                .addGap(460, 460, 460))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
+                                .addComponent(jLabel74)
+                                .addGap(244, 244, 244))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
-                        .addComponent(jLabel74)
-                        .addGap(244, 244, 244))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4)
-                .addContainerGap())
+                        .addComponent(jScrollPane4)
+                        .addContainerGap())))
         );
         P6Layout.setVerticalGroup(
             P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P6Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(P6Layout.createSequentialGroup()
                                 .addComponent(jLabel70)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel71))
-                            .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(32, 32, 32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nomeuseFuncio4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25))))
+                    .addGroup(P6Layout.createSequentialGroup()
+                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)))
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         Paineis.addTab("tab8", P6);
@@ -1799,7 +1824,10 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel154)
-                                    .addComponent(jLabel155))
+                                    .addGroup(P7Layout.createSequentialGroup()
+                                        .addComponent(jLabel155)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nomeuseFuncio5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(messagemTLparquear1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1889,7 +1917,9 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel154)
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel155)))))
+                                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nomeuseFuncio5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel155))))))
                 .addGap(21, 21, 21)
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel156)
@@ -2087,7 +2117,27 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-   
+   private String nomeFuncionario; // Variável para armazenar o nome do funcionário
+
+    // Construtor que aceita o nome do funcionário
+    public MenuPrincipalFuncio(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+        initComponents(); // Configura a interface da tela
+        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
+    }
+
+    // Método para exibir o nome do funcionário em um JLabel na interface
+    private void exibirNomeFuncionario() {
+        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
+        nomeuseFuncio.setText(nomeFuncionario);
+        nomeuseFuncio1.setText(nomeFuncionario);
+        nomeuseFuncio2.setText(nomeFuncionario);
+        nomeuseFuncio3.setText(nomeFuncionario);
+        nomeuseFuncio4.setText(nomeFuncionario);
+        nomeuseFuncio5.setText(nomeFuncionario);
+       
+    }
+    
 
     //Todos metodos de cliente
     public void estacionarCliente() {
@@ -2535,7 +2585,6 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
@@ -2567,6 +2616,12 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
     private javax.swing.JLabel messagemTLparquear;
     private javax.swing.JLabel messagemTLparquear1;
     private javax.swing.JTextField nomepagament1;
+    private javax.swing.JLabel nomeuseFuncio;
+    private javax.swing.JLabel nomeuseFuncio1;
+    private javax.swing.JLabel nomeuseFuncio2;
+    private javax.swing.JLabel nomeuseFuncio3;
+    private javax.swing.JLabel nomeuseFuncio4;
+    private javax.swing.JLabel nomeuseFuncio5;
     private javax.swing.JButton pesquisarpagadmin1;
     private javax.swing.JTextField placapagament1;
     private javax.swing.JLabel sair;

@@ -66,7 +66,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        nomeusergestor = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -132,7 +132,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel150 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
+        nomeusergestor1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -145,7 +145,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        nomeusergestor2 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel128 = new javax.swing.JLabel();
         jLabel136 = new javax.swing.JLabel();
@@ -174,7 +174,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        nomeusergestor3 = new javax.swing.JLabel();
         P7 = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
@@ -200,6 +200,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         txtIdParque = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         chkVip = new javax.swing.JCheckBox();
+        nomeusergestor4 = new javax.swing.JLabel();
         P8 = new javax.swing.JPanel();
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
@@ -222,6 +223,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         txtIDParque = new javax.swing.JTextField();
         IDParque = new javax.swing.JLabel();
         TxtMensagemP = new javax.swing.JLabel();
+        nomeusergestor5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -477,7 +479,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Gestor Finaceiro:");
-        P2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 49, -1, -1));
+        P2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -500,9 +502,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         });
         P2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1101, 12, -1, -1));
 
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("jLabel22");
-        P2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 50, -1, -1));
+        nomeusergestor.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor.setForeground(new java.awt.Color(0, 0, 0));
+        P2.add(nomeusergestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 80, 20));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
@@ -853,8 +855,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             }
         });
 
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setText("jLabel23");
+        nomeusergestor1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -902,7 +904,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addGroup(P4Layout.createSequentialGroup()
                                 .addComponent(jLabel122)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel23))
+                                .addComponent(nomeusergestor1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel121))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel18)
@@ -937,9 +939,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                     .addGroup(P4Layout.createSequentialGroup()
                         .addComponent(jLabel121)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel122)
-                            .addComponent(jLabel23))))
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel122, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nomeusergestor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(22, 22, 22)
                 .addComponent(jLabel152)
                 .addGap(7, 7, 7)
@@ -991,8 +993,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("ID:");
 
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setText("jLabel25");
+        nomeusergestor2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor2.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1201,9 +1203,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addComponent(jLabel63))
                             .addGroup(P5Layout.createSequentialGroup()
                                 .addComponent(jLabel64)
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel25)))
-                        .addGap(854, 854, 854)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomeusergestor2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(899, 899, 899)
                         .addComponent(jLabel15))
                     .addGroup(P5Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -1222,7 +1224,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P5Layout.setVerticalGroup(
             P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1230,15 +1232,13 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
                     .addGroup(P5Layout.createSequentialGroup()
                         .addComponent(jLabel63)
-                        .addGap(6, 6, 6)
-                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel64)
-                            .addGroup(P5Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel25))))
-                    .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nomeusergestor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(6, 6, 6)
                 .addComponent(jLabel65)
                 .addGap(33, 33, 33)
@@ -1297,8 +1297,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             }
         });
 
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setText("jLabel24");
+        nomeusergestor3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor3.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout P6Layout = new javax.swing.GroupLayout(P6);
         P6.setLayout(P6Layout);
@@ -1314,8 +1314,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addComponent(jLabel70)
                             .addGroup(P6Layout.createSequentialGroup()
                                 .addComponent(jLabel71)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel24)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nomeusergestor3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(833, 833, 833)
                         .addComponent(jLabel16))
                     .addGroup(P6Layout.createSequentialGroup()
@@ -1341,10 +1341,10 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(P6Layout.createSequentialGroup()
                                 .addComponent(jLabel70)
-                                .addGap(6, 6, 6)
-                                .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel71)
-                                    .addComponent(jLabel24))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nomeusergestor3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1365,7 +1365,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         jLabel91.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel91.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel91.setText("Adiminstrador:");
+        jLabel91.setText("Gestor Finaceiro");
 
         jLabel161.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel161.setForeground(new java.awt.Color(0, 0, 0));
@@ -1465,6 +1465,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("IdVaga");
 
+        nomeusergestor4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor4.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout P7Layout = new javax.swing.GroupLayout(P7);
         P7.setLayout(P7Layout);
         P7Layout.setHorizontalGroup(
@@ -1476,7 +1479,10 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel91)
+                            .addGroup(P7Layout.createSequentialGroup()
+                                .addComponent(jLabel91)
+                                .addGap(18, 18, 18)
+                                .addComponent(nomeusergestor4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel87)
                                 .addGap(162, 162, 162)
@@ -1545,7 +1551,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                             .addComponent(jLabel87)
                             .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel91))
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel91)
+                            .addComponent(nomeusergestor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel162))
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P7Layout.createSequentialGroup()
@@ -1614,7 +1622,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         jLabel92.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel92.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel92.setText("Adiminstrador:");
+        jLabel92.setText("Gestor Finaceiro");
 
         jLabel166.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel166.setForeground(new java.awt.Color(0, 0, 0));
@@ -1702,6 +1710,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         TxtMensagemP.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         TxtMensagemP.setForeground(new java.awt.Color(0, 0, 0));
 
+        nomeusergestor5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        nomeusergestor5.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout P8Layout = new javax.swing.GroupLayout(P8);
         P8.setLayout(P8Layout);
         P8Layout.setHorizontalGroup(
@@ -1715,7 +1726,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P8Layout.createSequentialGroup()
                                 .addComponent(jLabel92)
-                                .addGap(343, 343, 343)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomeusergestor5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(233, 233, 233)
                                 .addComponent(jLabel166))
                             .addGroup(P8Layout.createSequentialGroup()
                                 .addComponent(jLabel90)
@@ -1791,7 +1804,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P8Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel92))
+                                .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel92)
+                                    .addComponent(nomeusergestor5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(P8Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel166)))))
@@ -1923,7 +1938,26 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         desativarVaga();
     }//GEN-LAST:event_jButton10ActionPerformed
     
+private String nomeFuncionario; // Variável para armazenar o nome do funcionário
 
+    // Construtor que aceita o nome do funcionário
+    public MenuPrincipalGestorFinac(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+        initComponents(); // Configura a interface da tela
+        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
+    }
+
+    // Método para exibir o nome do funcionário em um JLabel na interface
+    private void exibirNomeFuncionario() {
+        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
+        nomeusergestor.setText(nomeFuncionario);
+        nomeusergestor1.setText(nomeFuncionario);
+        nomeusergestor2.setText(nomeFuncionario);
+        nomeusergestor3.setText(nomeFuncionario);
+        nomeusergestor4.setText(nomeFuncionario);
+        nomeusergestor5.setText(nomeFuncionario);
+       
+    }
     
     // METODO NA TELA PRAQUEAR
     private void salvarOuEditarParque() {
@@ -2297,10 +2331,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -2384,6 +2414,12 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel nomeusergestor;
+    private javax.swing.JLabel nomeusergestor1;
+    private javax.swing.JLabel nomeusergestor2;
+    private javax.swing.JLabel nomeusergestor3;
+    private javax.swing.JLabel nomeusergestor4;
+    private javax.swing.JLabel nomeusergestor5;
     private javax.swing.JLabel sair;
     private javax.swing.JTable tabelaPar;
     private javax.swing.JTable tabelaVagas;

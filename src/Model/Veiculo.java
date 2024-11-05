@@ -1,23 +1,21 @@
 package Model;
 
 public class Veiculo {
-
     private String placa;
     private String modelo;
     private String marca;
-    private int ano;
     private String cor;
-    private String tipoVeiculo;
-    private Cliente proprietario;
+    private String tipoVeiculo; // Exemplo: "Carro", "Moto", etc.
+    private boolean estacionado;
 
-    public Veiculo(String placa, String modelo, String marca, int ano, String cor, String tipoVeiculo, Cliente proprietario) {
+    // Construtor completo
+    public Veiculo(String placa, String modelo, String marca, String cor, String tipoVeiculo) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
-        this.ano = ano;
         this.cor = cor;
         this.tipoVeiculo = tipoVeiculo;
-        this.proprietario = proprietario;
+        this.estacionado = false; // Valor padrão
     }
 
     // Getters e Setters
@@ -45,14 +43,6 @@ public class Veiculo {
         this.marca = marca;
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
     public String getCor() {
         return cor;
     }
@@ -69,33 +59,60 @@ public class Veiculo {
         this.tipoVeiculo = tipoVeiculo;
     }
 
-    public Cliente getProprietario() {
-        return proprietario;
+    public boolean isEstacionado() {
+        return estacionado;
     }
 
-    public void setProprietario(Cliente proprietario) {
-        this.proprietario = proprietario;
+    public void setEstacionado(boolean estacionado) {
+        this.estacionado = estacionado;
     }
 
-    // Métodos adicionais
-    public void atualizarModelo(String novoModelo) {
-        this.modelo = novoModelo;
+    // Método para estacionar o veículo
+    public void estacionar() {
+        this.estacionado = true;
     }
 
-    public void atualizarCor(String novaCor) {
-        this.cor = novaCor;
+    // Método para retirar o veículo do estacionamento
+    public void retirar() {
+        this.estacionado = false;
+    }
+
+    // Método para verificar se o veículo é antigo (exemplo: mais de 20 anos)
+
+
+    // Método para mostrar informações completas do veículo
+    public String exibirInformacoes() {
+        return "Placa: " + placa + "\n" +
+               "Modelo: " + modelo + "\n" +
+               "Marca: " + marca + "\n" +
+               "Cor: " + cor + "\n" +
+               "Tipo: " + tipoVeiculo + "\n" +
+               "Estacionado: " + (estacionado ? "Sim" : "Não");
     }
 
     @Override
     public String toString() {
-        return "Veiculo{"
-                + "placa='" + placa + '\''
-                + ", modelo='" + modelo + '\''
-                + ", marca='" + marca + '\''
-                + ", ano=" + ano
-                + ", cor='" + cor + '\''
-                + ", tipoVeiculo='" + tipoVeiculo + '\''
-                + ", proprietario=" + proprietario
-                + '}';
+        return "Veiculo{" +
+                "placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", cor='" + cor + '\'' +
+                ", tipoVeiculo='" + tipoVeiculo + 
+                ", estacionado=" + estacionado +
+                '}';
+    }
+
+    // Método para comparar veículos pela placa (poderia ser usado em uma lista de veículos)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Veiculo veiculo = (Veiculo) obj;
+        return placa != null && placa.equals(veiculo.placa);
+    }
+
+    @Override
+    public int hashCode() {
+        return placa != null ? placa.hashCode() : 0;
     }
 }

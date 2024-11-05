@@ -32,6 +32,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import Model.ClienteVeiculo;
 import Model.ModelDAO.ClienteVeiculoDAO;
+import Model.Pagamento;
 import Model.Vaga;
 import Model.Veiculo;
 import java.awt.Color;
@@ -138,7 +139,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel99 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel105 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
+        nomeusuarioADMIN = new javax.swing.JLabel();
         jLabel107 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         P3 = new javax.swing.JPanel();
@@ -180,6 +181,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel85 = new javax.swing.JLabel();
+        nomeusuarioADMIN1 = new javax.swing.JLabel();
         P4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -216,6 +218,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         tblistar = new javax.swing.JTable();
         jLabel86 = new javax.swing.JLabel();
+        nomeusuarioADMIN2 = new javax.swing.JLabel();
         P5 = new javax.swing.JPanel();
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
@@ -238,7 +241,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jLabel106 = new javax.swing.JLabel();
-        troco = new javax.swing.JTextField();
+        txtTroco = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
         cbxporte = new javax.swing.JComboBox<>();
         cbxTipopagamento1 = new javax.swing.JComboBox<>();
@@ -246,6 +249,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         valorpagar = new javax.swing.JTextField();
         jLabel166 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
+        txxtValorTotal = new javax.swing.JLabel();
+        nomeusuarioADMIN3 = new javax.swing.JLabel();
         P6 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
@@ -274,7 +279,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jLabel59 = new javax.swing.JLabel();
+        nomeusuarioADMIN4 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
         P7 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
@@ -288,6 +293,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel112 = new javax.swing.JLabel();
         jLabel160 = new javax.swing.JLabel();
+        nomeusuarioADMIN5 = new javax.swing.JLabel();
         P8 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
@@ -298,6 +304,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel113 = new javax.swing.JLabel();
         jLabel161 = new javax.swing.JLabel();
+        nomeusuarioADMIN6 = new javax.swing.JLabel();
         P9 = new javax.swing.JPanel();
         jLabel153 = new javax.swing.JLabel();
         jLabel154 = new javax.swing.JLabel();
@@ -345,6 +352,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         jLabel162 = new javax.swing.JLabel();
+        nomeusuarioADMIN7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -960,8 +968,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel92.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel92.setText("jLabel92");
+        nomeusuarioADMIN.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel107.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1000,8 +1007,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addGroup(P2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel92)
-                                .addGap(36, 971, Short.MAX_VALUE))
+                                .addComponent(nomeusuarioADMIN, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(P2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1028,7 +1035,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel92))))
+                            .addComponent(nomeusuarioADMIN, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(45, 45, 45)
                 .addGroup(P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1218,6 +1225,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        nomeusuarioADMIN1.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout P3Layout = new javax.swing.GroupLayout(P3);
         P3.setLayout(P3Layout);
         P3Layout.setHorizontalGroup(
@@ -1283,7 +1292,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel31)
-                                    .addComponent(jLabel32))
+                                    .addGroup(P3Layout.createSequentialGroup()
+                                        .addComponent(jLabel32)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nomeusuarioADMIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P3Layout.createSequentialGroup()
                                         .addGap(83, 83, 83)
@@ -1318,7 +1330,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addGroup(P3Layout.createSequentialGroup()
                                 .addComponent(jLabel31)
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel32))))
+                                .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel32)
+                                    .addComponent(nomeusuarioADMIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(P3Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(P3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1556,6 +1570,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        nomeusuarioADMIN2.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout P4Layout = new javax.swing.GroupLayout(P4);
         P4.setLayout(P4Layout);
         P4Layout.setHorizontalGroup(
@@ -1566,7 +1582,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel44)
-                    .addComponent(jLabel45))
+                    .addGroup(P4Layout.createSequentialGroup()
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeusuarioADMIN2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(91, 91, 91)
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P4Layout.createSequentialGroup()
@@ -1667,8 +1686,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addComponent(messagentxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel109)
                             .addComponent(jLabel86))
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel45)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel45)
+                            .addComponent(nomeusuarioADMIN2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(P4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P4Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -1850,7 +1871,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         jLabel106.setForeground(new java.awt.Color(0, 0, 0));
         jLabel106.setText("Troco:");
         P5.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 546, -1, -1));
-        P5.add(troco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 532, 70, 30));
+        P5.add(txtTroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 532, 70, 30));
 
         jLabel110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_horizontal_line_30px_3.png"))); // NOI18N
         jLabel110.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1885,6 +1906,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             }
         });
         P5.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 10, 27, -1));
+
+        txxtValorTotal.setText("jLabel163");
+        P5.add(txxtValorTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
+        P5.add(nomeusuarioADMIN3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, 20));
 
         Paineis.addTab("tab4", P5);
 
@@ -2101,8 +2126,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(jTable4);
 
-        jLabel59.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel59.setText("jLabel59");
+        nomeusuarioADMIN4.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Veiw/icons/icons8_close_window_30px.png"))); // NOI18N
         jLabel91.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2123,7 +2147,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(P6Layout.createSequentialGroup()
                         .addComponent(jLabel122)
                         .addGap(2, 2, 2)
-                        .addComponent(jLabel59))
+                        .addComponent(nomeusuarioADMIN4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(P6Layout.createSequentialGroup()
                         .addComponent(jLabel121)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2169,11 +2194,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                     .addComponent(jLabel121)
                                     .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6)
-                                .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(P6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel122)
-                                    .addGroup(P6Layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel59)))))))
+                                    .addComponent(nomeusuarioADMIN4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel152)
                 .addGap(7, 7, 7)
@@ -2297,25 +2320,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
                                 .addComponent(jButton7))
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel62)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(P7Layout.createSequentialGroup()
-                                        .addGap(402, 402, 402)
-                                        .addComponent(jLabel65)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE))
-                                    .addGroup(P7Layout.createSequentialGroup()
-                                        .addComponent(jLabel64)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(P7Layout.createSequentialGroup()
                                         .addComponent(jLabel63)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel112)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(P7Layout.createSequentialGroup()
+                                        .addComponent(jLabel64)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nomeusuarioADMIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel65))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3)))
@@ -2325,6 +2347,15 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P7Layout.createSequentialGroup()
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(P7Layout.createSequentialGroup()
+                        .addContainerGap(55, Short.MAX_VALUE)
+                        .addComponent(jLabel65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P7Layout.createSequentialGroup()
@@ -2337,17 +2368,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                     .addComponent(jLabel112)
                                     .addComponent(jLabel160))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel64)))
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addGroup(P7Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel65)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel64)
+                                    .addComponent(nomeusuarioADMIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -2408,6 +2432,8 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P8Layout.createSequentialGroup()
                         .addComponent(jLabel71)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeusuarioADMIN6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(P8Layout.createSequentialGroup()
                         .addComponent(jLabel70)
@@ -2441,7 +2467,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel113)
                             .addComponent(jLabel161))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel71)))
+                        .addGroup(P8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel71, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nomeusuarioADMIN6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2668,7 +2696,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(P9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel154)
-                                    .addComponent(jLabel155))
+                                    .addGroup(P9Layout.createSequentialGroup()
+                                        .addComponent(jLabel155)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(nomeusuarioADMIN7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(P9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(P9Layout.createSequentialGroup()
@@ -2762,8 +2793,10 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(P9Layout.createSequentialGroup()
                                 .addComponent(jLabel154)
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel155)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(P9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel155)
+                                    .addComponent(nomeusuarioADMIN7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(21, 21, 21)
                 .addGroup(P9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel156)
@@ -3040,6 +3073,30 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel162MouseClicked
 
+    
+    
+     private String nomeFuncionario; // Variável para armazenar o nome do funcionário
+
+    // Construtor que aceita o nome do funcionário
+    public MenuPrincipalAdmin(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+        initComponents(); // Configura a interface da tela
+        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
+    }
+
+    // Método para exibir o nome do funcionário em um JLabel na interface
+    private void exibirNomeFuncionario() {
+        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
+        nomeusuarioADMIN.setText(nomeFuncionario);
+        nomeusuarioADMIN1.setText(nomeFuncionario);
+        nomeusuarioADMIN2.setText(nomeFuncionario);
+        nomeusuarioADMIN3.setText(nomeFuncionario);
+        nomeusuarioADMIN4.setText(nomeFuncionario);
+        nomeusuarioADMIN5.setText(nomeFuncionario);
+        nomeusuarioADMIN6.setText(nomeFuncionario);
+        nomeusuarioADMIN7.setText(nomeFuncionario);
+    }
+    
     //Validacao de campos na tela Parquear
     private boolean validarCampos() {
         String nome = txtnomepropetarioa.getText().trim();
@@ -3107,135 +3164,152 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
     //Todos metodos de cliente
-    public void estacionarCliente() {
-        btnparquearadmin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (validarCampos()) {
-                    ClienteVeiculo clienteVeiculo = criarCliente();  // Cria o cliente a partir dos dados dos campos de texto
+    //metodo para estacionar o veiculo
+    private void estacionarCliente() {
+        if (validarCampos()) {
+            ClienteVeiculo clienteVeiculo = criarCliente();  // Cria o cliente a partir dos dados dos campos de texto
+            String espacoSelecionado = (String) cbxvagas.getSelectedItem();
 
-                    // Obtenha o espaço de estacionamento selecionado
-                    String espacoSelecionado = (String) cbxvagas.getSelectedItem();
-
-                    if (espacoSelecionado != null) {
-                        // Busca o espaço de estacionamento por seu identificador
-                        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
-                        EspacoEstacionamento espaco = null; // Inicializa espaco como null
-                        try {
-                            espaco = espacoDAO.read(espacoSelecionado);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                        if (espaco != null && espaco.ocupar(clienteVeiculo.getCliente())) {
-                            clienteVeiculo.setEstacionado(true);
-                            clienteVeiculo.setHoraEntradaEntrada(LocalDateTime.now());
-
-                            // Salvar o veículo no banco de dados
-                            VeiculoDAO veiculoDAO = new VeiculoDAO();
-                            veiculoDAO.inserirVeiculo(
-                                    clienteVeiculo.getVeiculo().getPlaca(),
-                                    clienteVeiculo.getVeiculo().getModelo(),
-                                    clienteVeiculo.getVeiculo().getMarca(),
-                                    clienteVeiculo.getVeiculo().getAno(), // Passe o ano como um inteiro
-                                    clienteVeiculo.getVeiculo().getCor(),
-                                    clienteVeiculo.getVeiculo().getTipoVeiculo(),
-                                    clienteVeiculo.getCliente().getIdCliente()
-                            );
-
-                            // Salvar o cliente e a vaga no banco de dados
-                            ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                            String horaEntradaFormatada = clienteVeiculo.getHoraEntradaEntrada().format(formatter);
-
-                            clienteVagaDAO.inserirClienteVaga(
-                                    clienteVeiculo.getCliente().getIdCliente(),
-                                    espacoSelecionado,
-                                    horaEntradaFormatada,
-                                    null
-                            );
-
-                            // Atualizar a tabela de clientes estacionados e espaços disponíveis
-                            atualizarTabela();
-                            atualizarEspacosDisponiveis();
-
-                            // Exibir mensagem de sucesso
-                            messagemTLparquear.setForeground(Color.GREEN);
-                            messagemTLparquear.setText("Cliente estacionado com sucesso!");
-
-                            // Limpar campos
-                            Limparcampus();
-                        } else {
-                            messagemTLparquear.setText("O espaço selecionado já está ocupado.");
-                        }
-                    } else {
-                        messagemTLparquear.setText("Todos os espaços estão ocupados.");
-                    }
-                }
+            if (espacoSelecionado != null) {
+                tentarEstacionarCliente(clienteVeiculo, espacoSelecionado);
+            } else {
+                mostrarMensagem("Todos os espaços estão ocupados.");
             }
-        });
+        }
     }
 
-// Método de sair do estacionamento
-    public void sairDoEstacionamento() {
-        Disparquear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
-                if (selectedRow >= 0) {
-                    int clienteId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Obtém o ID do cliente da tabela
-                    Estacionamento estacionamento = new Estacionamento();
-                    String espacoCliente = estacionamento.obterEspacoCliente(clienteId);  // Obtém o espaço do cliente estacionado
+    private void tentarEstacionarCliente(ClienteVeiculo clienteVeiculo, String espacoSelecionado) {
+        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
+        EspacoEstacionamento espaco = null;
 
-                    if (espacoCliente != null) {
-                        // Busca o espaço de estacionamento
-                        EspacoEstacionamento espaco = estacionamento.getEspacoPorIdentificador(espacoCliente);
-                        Cliente cliente = espaco.getCliente();
+        try {
+            espaco = espacoDAO.read(espacoSelecionado);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                        if (cliente != null) {
-                            LocalDateTime saida = LocalDateTime.now();  // Hora atual de saída
-                            Duration duracao = Duration.between(cliente.getHoraEntrada(), saida);
-                            long horas = duracao.toHours();
-                            long minutos = duracao.toMinutes() % 60;
-                            String tempoEstacionado = horas + " horas e " + minutos + " minutos";
-
-                            double totalAPagar = espaco.calcularValorTotal();  // Cálculo do valor total a pagar
-
-                            // Confirmação do pagamento
-                            int confirm = JOptionPane.showConfirmDialog(null, "Tempo estacionado: " + tempoEstacionado + ". Valor a pagar: " + totalAPagar + " MZN. Deseja continuar?", "Pagamento", JOptionPane.YES_NO_OPTION);
-
-                            if (confirm == JOptionPane.YES_OPTION) {
-                                espaco.desocupar();  // Libera o espaço
-                                cliente.registrarSaida();  // Atualiza a hora de saída do cliente
-
-                                // Atualiza a saída no banco de dados
-                                ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-                                clienteVagaDAO.atualizarClienteVaga(
-                                        cliente.getIdCliente(),
-                                        espaco.getIdentificador(),
-                                        cliente.getHoraEntrada(), // Usa LocalDateTime para a hora de entrada
-                                        saida // Usa LocalDateTime para a hora de saída
-                                );
-
-                                // Atualiza a tabela e os espaços disponíveis
-                                atualizarTabela();
-                                atualizarEspacosDisponiveis();
-                                messagemTLparquear.setForeground(Color.GREEN);
-                                messagemTLparquear.setText("Cliente saiu do estacionamento com sucesso!");
-                            }
-                        } else {
-                            messagemTLparquear.setText("O cliente selecionado não está estacionado.");
-                        }
-                    } else {
-                        messagemTLparquear.setText("O cliente selecionado não está estacionado.");
-                    }
-                } else {
-                    messagemTLparquear.setText("Por favor, selecione um cliente para remover do estacionamento.");
-                }
-            }
-        });
+        if (espaco != null && espaco.ocupar(clienteVeiculo)) {  // Passa ClienteVeiculo para ocupar
+            processarEstacionamento(clienteVeiculo, espacoSelecionado);
+        } else {
+            mostrarMensagem("O espaço selecionado já está ocupado.");
+        }
     }
 
+    private void processarEstacionamento(ClienteVeiculo clienteVeiculo, String espacoSelecionado) {
+        clienteVeiculo.setEstacionado(true);
+        clienteVeiculo.setHoraEntrada(LocalDateTime.now());
+
+        // Salvar o veículo no banco de dados
+        salvarVeiculo(clienteVeiculo);
+
+        // Salvar o cliente e a vaga no banco de dados
+        salvarClienteVaga(clienteVeiculo, espacoSelecionado);
+
+        // Atualizar a tabela de clientes estacionados e espaços disponíveis
+        atualizarTabela();
+        atualizarEspacosDisponiveis();
+
+        // Exibir mensagem de sucesso
+        mostrarMensagem("Cliente estacionado com sucesso!");
+
+        // Mostrar os detalhes do estacionamento
+        DetalhesEstacionamentoDialog dialog = new DetalhesEstacionamentoDialog(this, clienteVeiculo);
+        dialog.setVisible(true);
+
+        // Limpar campos
+        LimparcampusC();
+    }
+
+    private void salvarVeiculo(ClienteVeiculo clienteVeiculo) {
+        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        try {
+            veiculoDAO.inserirVeiculo(
+                    clienteVeiculo.getVeiculo(), // Passando o objeto Veiculo diretamente
+                    clienteVeiculo.getCliente().getIdCliente() // Passando o ID do cliente
+            );
+        } catch (SQLException e) {
+            e.printStackTrace(); // Log ou tratamento de exceção
+        }
+    }
+
+    private void salvarClienteVaga(ClienteVeiculo clienteVeiculo, String espacoSelecionado) {
+        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String horaEntradaFormatada = clienteVeiculo.getHoraEntrada().format(formatter);
+
+        clienteVagaDAO.inserirClienteVaga(
+                clienteVeiculo.getCliente().getIdCliente(),
+                espacoSelecionado,
+                horaEntradaFormatada,
+                null
+        );
+    }
+
+    private void mostrarMensagem(String mensagem) {
+        messagemTLparquear.setText(mensagem);
+        messagemTLparquear.setForeground(mensagem.equals("Cliente estacionado com sucesso!") ? Color.GREEN : Color.RED);
+    }
+
+//meto para sair do estacionamento
+    private void sairDoEstacionamento() {
+        int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
+        if (selectedRow >= 0) {
+            int clienteVeiculoId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Supondo que o ID esteja na primeira coluna
+            processarSaida(clienteVeiculoId);
+        } else {
+            mostrarMensagem("Por favor, selecione um cliente para remover do estacionamento.");
+        }
+    }
+
+    private void processarSaida(int clienteVeiculoId) {
+        ClienteVeiculoDAO clienteVeiculoDAO = new ClienteVeiculoDAO();
+        ClienteVeiculo clienteVeiculo = clienteVeiculoDAO.read(clienteVeiculoId); // Obtém a associação ClienteVeiculo
+
+        if (clienteVeiculo != null) {
+            Cliente cliente = clienteVeiculo.getCliente();
+            EspacoEstacionamento espaco = clienteVeiculo.getEspacoEstacionamento(); // Supondo que o espaço está associado
+
+            if (espaco != null) {
+                LocalDateTime saida = LocalDateTime.now(); // Hora atual de saída
+                Duration duracao = Duration.between(cliente.getHoraEntrada(), saida);
+                long horas = duracao.toHours();
+                long minutos = duracao.toMinutes() % 60;
+                String tempoEstacionado = horas + " horas e " + minutos + " minutos";
+
+                // Calcula o valor total baseado na permanência
+                double totalAPagar = espaco.calcularValorTotal();
+
+                // Criar uma instância de Pagamento
+                Pagamento pagamento = new Pagamento(0, cliente, totalAPagar, "Dinheiro", saida, "Pendente");
+
+                // Atualizar painel de pagamento com os dados
+                nomepagament.setText(cliente.getNome());
+                placapagament.setText(clienteVeiculo.getVeiculo().getPlaca());
+                txxtValorTotal.setText(String.format("%.2f", totalAPagar));
+
+                // Calcular o troco (se necessário, pode-se adaptar para receber o valor pago)
+                double valorPago = Double.parseDouble(valorpagar.getText()); // campo para valor pago
+                double troco = valorPago - totalAPagar;
+                txtTroco.setText(String.format("%.2f", troco));
+
+                // Abre a tela de pagamento no painel correspondente
+                Paineis.setSelectedComponent(P5);
+
+                // Atualiza a tabela e os espaços disponíveis
+                atualizarTabela();
+                atualizarEspacosDisponiveis();
+            } else {
+                mostrarMensagem("O cliente selecionado não está estacionado.");
+            }
+        } else {
+            mostrarMensagem("O cliente selecionado não está estacionado.");
+        }
+    }
+
+//private void mostrarMensagems(String mensagem) {
+//    messagemTLparquear.setText(mensagem);
+//    messagemTLparquear.setForeground(mensagem.equals("Cliente saiu do estacionamento com sucesso!") ? Color.GREEN : Color.RED);
+//}
     //Metodo criar cliente
     private ClienteVeiculo criarCliente() {
         // Leitura dos dados do cliente
@@ -3274,7 +3348,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         String tipoVeiculo = (String) cbxPorte.getSelectedItem(); // Obtém o tipo de veículo da combobox
 
         // Cria e retorna o veículo associado ao cliente
-        return new Veiculo(placa, modelo, marca, 0, cor, tipoVeiculo, cliente);
+        return new Veiculo(placa, modelo, marca, cor, tipoVeiculo);
     }
 
 // Método para gerar ID único (exemplo simples)
@@ -3344,7 +3418,17 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     //
+    private void LimparcampusC() {
+        txtnomepropetarioa.setText("");
+        txtdescricaoa.setText("");
+        txtplaca.setText("");
+        txtcor.setText("");
+        txtResid.setText("");
+        txtmarca.setText("");
+        txtvalor.setText("");
+    }
 
     //Todos metodos de Funcionario
     private void Limparcampus() {
@@ -3604,7 +3688,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             bill.setText(bill.getText() + "----------------------------------------------------------------\n");
             bill.setText(bill.getText() + "----------------------------------------------------------------\n");
             bill.setText(bill.getText() + "Valor Total :\t" + valorpagar.getText() + "\n");  // Valor total
-            bill.setText(bill.getText() + "Troco :\t" + troco.getText() + "\n");  // Troco
+            bill.setText(bill.getText() + "Troco :\t" + txtTroco.getText() + "\n");  // Troco
             bill.setText(bill.getText() + "====================================\n");
             bill.setText(bill.getText() + "Obrigado por usar nosso estacionamento!\n");
             bill.setText(bill.getText() + "----------------------------------------------------------------\n");
@@ -3815,7 +3899,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -3852,7 +3935,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
@@ -3893,6 +3975,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel messagemTLparquear1;
     private javax.swing.JLabel messagentxt;
     private javax.swing.JTextField nomepagament;
+    private javax.swing.JLabel nomeusuarioADMIN;
+    private javax.swing.JLabel nomeusuarioADMIN1;
+    private javax.swing.JLabel nomeusuarioADMIN2;
+    private javax.swing.JLabel nomeusuarioADMIN3;
+    private javax.swing.JLabel nomeusuarioADMIN4;
+    private javax.swing.JLabel nomeusuarioADMIN5;
+    private javax.swing.JLabel nomeusuarioADMIN6;
+    private javax.swing.JLabel nomeusuarioADMIN7;
     private javax.swing.JButton pesquisarpagadmin;
     private javax.swing.JTextField placapagament;
     private javax.swing.JLabel sair;
@@ -3901,7 +3991,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tabelaParquear1;
     private javax.swing.JTable tblistar;
     private javax.swing.JComboBox<String> tipoclientepagament;
-    private javax.swing.JTextField troco;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeuser;
@@ -3915,6 +4004,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtSexo;
     private javax.swing.JTextField txtTelefone;
     private javax.swing.JComboBox<String> txtTipoUsuario;
+    private javax.swing.JTextField txtTroco;
     private javax.swing.JTextField txtcor;
     private javax.swing.JTextField txtcor1;
     private javax.swing.JTextField txtdescricaoa;
@@ -3929,6 +4019,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txttelefoneparquear1;
     private javax.swing.JTextField txtvalor;
     private javax.swing.JTextField txtvalor1;
+    private javax.swing.JLabel txxtValorTotal;
     private javax.swing.JTextField valorpagar;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,8 @@
 package Model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class ClienteMensalista extends Cliente {
 
@@ -39,6 +41,21 @@ public class ClienteMensalista extends Cliente {
 
     public void setDataRegistro(LocalDate dataRegistro) {
         this.dataRegistro = dataRegistro;
+    }
+
+    // Método para calcular a multa caso o cliente ultrapasse o prazo de saída
+    public double getMulta() {
+        if (isPrazoUltrapassado(LocalDateTime.now())) {
+            long diasAtraso = ChronoUnit.DAYS.between(prazoSaida, LocalDate.now());
+            double taxaMultaDiaria = 0.1 * taxaMensal; // Exemplo: multa de 10% da taxa mensal por dia de atraso
+            return diasAtraso * taxaMultaDiaria;
+        }
+        return 0.0;
+    }
+
+    // Verifica se o cliente ultrapassou o prazo de saída
+    public boolean isPrazoUltrapassado(LocalDateTime horaSaida) {
+        return horaSaida.toLocalDate().isAfter(prazoSaida);
     }
 
     @Override

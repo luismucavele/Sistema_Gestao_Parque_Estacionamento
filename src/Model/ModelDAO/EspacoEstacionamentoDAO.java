@@ -8,23 +8,27 @@ import model.DBConnect;
 
 public class EspacoEstacionamentoDAO {
 
+    // Método para criar um novo espaço de estacionamento
     public void create(EspacoEstacionamento espaco) throws SQLException {
-        String sql = "INSERT INTO EspacoEstacionamento (identificador, valorPorHora, isVip, ocupado, cliente_idCliente) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO EspacoEstacionamento (identificador, valorPorHora, isVip, ocupado) VALUES (?, ?, ?, ?)";
+        
         try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, espaco.getIdentificador());
             stmt.setDouble(2, espaco.getValorPorHora());
             stmt.setBoolean(3, espaco.isVip());
             stmt.setBoolean(4, espaco.isOcupado());
-            stmt.setInt(5, espaco.getCliente() != null ? espaco.getCliente().getIdCliente() : 0);
             stmt.executeUpdate();
         }
     }
 
+    // Método para ler um espaço de estacionamento pelo identificador
     public EspacoEstacionamento read(String identificador) throws SQLException {
         String sql = "SELECT * FROM EspacoEstacionamento WHERE identificador = ?";
+        
         try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, identificador);
             ResultSet rs = stmt.executeQuery();
+            
             if (rs.next()) {
                 return new EspacoEstacionamento(
                         rs.getString("identificador"),
@@ -33,30 +37,34 @@ public class EspacoEstacionamentoDAO {
                 );
             }
         }
+        
         return null;
     }
 
+    // Método para atualizar um espaço de estacionamento
     public void update(EspacoEstacionamento espaco) throws SQLException {
-        String sql = "UPDATE EspacoEstacionamento SET valorPorHora = ?, isVip = ?, ocupado = ?, cliente_idCliente = ? WHERE identificador = ?";
+        String sql = "UPDATE EspacoEstacionamento SET valorPorHora = ?, isVip = ?, ocupado = ? WHERE identificador = ?";
+        
         try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDouble(1, espaco.getValorPorHora());
             stmt.setBoolean(2, espaco.isVip());
             stmt.setBoolean(3, espaco.isOcupado());
-            stmt.setInt(4, espaco.getCliente() != null ? espaco.getCliente().getIdCliente() : 0);
-            stmt.setString(5, espaco.getIdentificador());
+            stmt.setString(4, espaco.getIdentificador());
             stmt.executeUpdate();
         }
     }
 
+    // Método para excluir um espaço de estacionamento pelo identificador
     public void delete(String identificador) throws SQLException {
         String sql = "DELETE FROM EspacoEstacionamento WHERE identificador = ?";
+        
         try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, identificador);
             stmt.executeUpdate();
         }
     }
 
-    // Método para listar espaços disponíveis
+    // Método para listar espaços de estacionamento disponíveis
     public List<EspacoEstacionamento> listarEspacosDisponiveis() throws SQLException {
         String sql = "SELECT * FROM EspacoEstacionamento WHERE ocupado = false";
         List<EspacoEstacionamento> espacosDisponiveis = new ArrayList<>();
@@ -75,7 +83,7 @@ public class EspacoEstacionamentoDAO {
         return espacosDisponiveis;
     }
 
-    // Método para contar espaços disponíveis
+    // Método para contar o número de espaços de estacionamento disponíveis
     public int contarEspacosDisponiveis() throws SQLException {
         String sql = "SELECT COUNT(*) AS total FROM EspacoEstacionamento WHERE ocupado = false";
         int totalEspacos = 0;
