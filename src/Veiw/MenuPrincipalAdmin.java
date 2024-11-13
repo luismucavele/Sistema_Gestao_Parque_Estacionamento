@@ -7,17 +7,17 @@ package Veiw;
 import java.sql.SQLException;
 
 import Model.Cliente;
+import Model.ClienteMensalista;
 import Model.ClienteVaga;
-import Model.EspacoEstacionamento;
+
 import Model.Estacionamento;
 import Model.Funcionario;
 import Model.ModelDAO.ClienteVagaDAO;
-import Model.ModelDAO.EspacoEstacionamentoDAO;
+
 import Model.ModelDAO.FuncionarioDAO;
 import Model.ModelDAO.VeiculoDAO;
 import java.awt.print.PrinterException;
 import java.util.logging.Level;
-;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.Timestamp;
@@ -31,11 +31,14 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import Model.ClienteVeiculo;
+import Model.ModelDAO.ClienteMensalistaDAO;
 import Model.ModelDAO.ClienteVeiculoDAO;
+import Model.ModelDAO.VagaDAO;
 import Model.Pagamento;
 import Model.Vaga;
 import Model.Veiculo;
 import java.awt.Color;
+import java.time.LocalDate;
 import java.util.logging.Logger;
 import java.time.format.DateTimeFormatter;
 
@@ -60,7 +63,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         this.funcionarios = new ArrayList<>();
         tbFuncionarioModel = (DefaultTableModel) tblistar.getModel();
         listarFuncionarios();
-
+        atualizarEspacosDisponivel();
+        atualizarTabela();
+        preencherComboBoxVagas();
     }
 
     /**
@@ -1130,24 +1135,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         tabelaParquear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         tabelaParquear.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Descricao", "Placa", "Cor", "Telefone", "Tipo de cliente", "Valor", "Data entrada", "Porte"
+                "idCliente", "status", "nome", "documento", "contacto", "email", "residencia", "matricula", "modelo", "marca", "cor", "tipoVeiculo", "idVaga", "identificador", "valorPorHora", "isVip", "ocupado", "horaEntrada", "idParque"
             }
         ));
         jScrollPane1.setViewportView(tabelaParquear);
@@ -1182,8 +1187,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         messagemTLparquear.setForeground(new java.awt.Color(255, 0, 0));
 
         lbEspacoRestante.setText("jLabel60");
-
-        cbxvagas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", "A4", "B1", "B2", "A3", "B3" }));
 
         ComboBoxTipopagamento.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         ComboBoxTipopagamento.setForeground(new java.awt.Color(255, 255, 255));
@@ -2336,8 +2339,9 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                                         .addComponent(jLabel64)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(nomeusuarioADMIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel65))))))
+                                        .addGap(281, 281, 281)
+                                        .addComponent(jLabel65)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3)))
@@ -2348,9 +2352,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
             .addGroup(P7Layout.createSequentialGroup()
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(P7Layout.createSequentialGroup()
-                        .addContainerGap(55, Short.MAX_VALUE)
-                        .addComponent(jLabel65)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6)
@@ -2364,14 +2366,17 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel63)
-                                    .addComponent(jLabel112)
-                                    .addComponent(jLabel160))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel64)
-                                    .addComponent(nomeusuarioADMIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(jLabel65)
+                                    .addGroup(P7Layout.createSequentialGroup()
+                                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel63)
+                                            .addComponent(jLabel112)
+                                            .addComponent(jLabel160))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel64)
+                                            .addComponent(nomeusuarioADMIN5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 64, Short.MAX_VALUE)))
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -2985,7 +2990,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnparquearadminActionPerformed
 
     private void DisparquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisparquearActionPerformed
-        sairDoEstacionamento();
+
     }//GEN-LAST:event_DisparquearActionPerformed
 
     private void jLabel110MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel110MouseClicked
@@ -3073,30 +3078,6 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel162MouseClicked
 
-    
-    
-     private String nomeFuncionario; // Variável para armazenar o nome do funcionário
-
-    // Construtor que aceita o nome do funcionário
-    public MenuPrincipalAdmin(String nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
-        initComponents(); // Configura a interface da tela
-        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
-    }
-
-    // Método para exibir o nome do funcionário em um JLabel na interface
-    private void exibirNomeFuncionario() {
-        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
-        nomeusuarioADMIN.setText(nomeFuncionario);
-        nomeusuarioADMIN1.setText(nomeFuncionario);
-        nomeusuarioADMIN2.setText(nomeFuncionario);
-        nomeusuarioADMIN3.setText(nomeFuncionario);
-        nomeusuarioADMIN4.setText(nomeFuncionario);
-        nomeusuarioADMIN5.setText(nomeFuncionario);
-        nomeusuarioADMIN6.setText(nomeFuncionario);
-        nomeusuarioADMIN7.setText(nomeFuncionario);
-    }
-    
     //Validacao de campos na tela Parquear
     private boolean validarCampos() {
         String nome = txtnomepropetarioa.getText().trim();
@@ -3179,14 +3160,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
     private void tentarEstacionarCliente(ClienteVeiculo clienteVeiculo, String espacoSelecionado) {
-        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
-        EspacoEstacionamento espaco = null;
+        VagaDAO espacoDAO = new VagaDAO();
+        Vaga espaco = null;
 
-        try {
-            espaco = espacoDAO.read(espacoSelecionado);
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // try {
+        espaco = espacoDAO.buscarVagaPorIdentificador(espacoSelecionado);
+        // } catch (SQLException ex) {
+        //    Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        //}
 
         if (espaco != null && espaco.ocupar(clienteVeiculo)) {  // Passa ClienteVeiculo para ocupar
             processarEstacionamento(clienteVeiculo, espacoSelecionado);
@@ -3207,15 +3188,14 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
         // Atualizar a tabela de clientes estacionados e espaços disponíveis
         atualizarTabela();
-        atualizarEspacosDisponiveis();
+        atualizarEspacosDisponivel();
 
         // Exibir mensagem de sucesso
         mostrarMensagem("Cliente estacionado com sucesso!");
 
         // Mostrar os detalhes do estacionamento
-        DetalhesEstacionamentoDialog dialog = new DetalhesEstacionamentoDialog(this, clienteVeiculo);
-        dialog.setVisible(true);
-
+//     DetalhesEstacionamentoDialog dialog = new DetalhesEstacionamentoDialog(this, clienteVeiculo);
+//     dialog.setVisible(true);
         // Limpar campos
         LimparcampusC();
     }
@@ -3251,23 +3231,23 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
 //meto para sair do estacionamento
-    private void sairDoEstacionamento() {
+    private void sairDoEstacionamentoF() throws SQLException {
         int selectedRow = tabelaParquear.getSelectedRow();  // Seleciona a linha da tabela
         if (selectedRow >= 0) {
-            int clienteVeiculoId = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Supondo que o ID esteja na primeira coluna
-            processarSaida(clienteVeiculoId);
+            int IdCliente = (int) tabelaParquear.getValueAt(selectedRow, 0);  // Supondo que o ID esteja na primeira coluna
+            processarSaida(IdCliente);
         } else {
             mostrarMensagem("Por favor, selecione um cliente para remover do estacionamento.");
         }
     }
 
-    private void processarSaida(int clienteVeiculoId) {
+    private void processarSaida(int clienteVeiculoId) throws SQLException {
         ClienteVeiculoDAO clienteVeiculoDAO = new ClienteVeiculoDAO();
         ClienteVeiculo clienteVeiculo = clienteVeiculoDAO.read(clienteVeiculoId); // Obtém a associação ClienteVeiculo
 
         if (clienteVeiculo != null) {
             Cliente cliente = clienteVeiculo.getCliente();
-            EspacoEstacionamento espaco = clienteVeiculo.getEspacoEstacionamento(); // Supondo que o espaço está associado
+            Vaga espaco = clienteVeiculo.getVaga(); // Supondo que o espaço está associado
 
             if (espaco != null) {
                 LocalDateTime saida = LocalDateTime.now(); // Hora atual de saída
@@ -3277,7 +3257,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 String tempoEstacionado = horas + " horas e " + minutos + " minutos";
 
                 // Calcula o valor total baseado na permanência
-                double totalAPagar = espaco.calcularValorTotal();
+                double totalAPagar = espaco.calcularTempoPermanencia();
 
                 // Criar uma instância de Pagamento
                 Pagamento pagamento = new Pagamento(0, cliente, totalAPagar, "Dinheiro", saida, "Pendente");
@@ -3297,7 +3277,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
                 // Atualiza a tabela e os espaços disponíveis
                 atualizarTabela();
-                atualizarEspacosDisponiveis();
+                atualizarEspacosDisponivel();
             } else {
                 mostrarMensagem("O cliente selecionado não está estacionado.");
             }
@@ -3318,12 +3298,26 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         // Leitura dos dados do veículo associado ao cliente
         Veiculo veiculo = criarVeiculoDoFormulario(cliente);
 
+        //    EspacoEstacionamento espaco = buscarEspacoDoFormulario();
         // Obtendo a data e hora atuais
         LocalDateTime dataHora = LocalDateTime.now();
 
         // Criando o ClienteVeiculo a partir do cliente e veículo
-        return new ClienteVeiculo(cliente, veiculo, dataHora);
+        return new ClienteVeiculo(cliente, veiculo, dataHora, null);
     }
+//private EspacoEstacionamento buscarEspacoDoFormulario() {
+//    String identificadorEspaco = obterIdentificadorEspaco(); // Método para obter o ID do campo do formulário
+//
+//    try {
+//        EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
+//        return espacoDAO.read(identificadorEspaco);
+//    } catch (SQLException e) {
+//        e.printStackTrace();
+//      //  mostrarMensagemErro("Erro ao buscar o espaço de estacionamento.");
+//    }
+//
+//    return null; // Retorna null caso não encontre o espaço ou em caso de erro
+//}
 
 // Método auxiliar para criar o cliente
     private Cliente criarClienteDoFormulario() {
@@ -3359,17 +3353,21 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
     //Metodo atualizar tabela 
     private void atualizarTabela() {
-        // Obtém o modelo da tabela como DefaultTableModel
-        DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear.getModel();
-
-        // Limpa todas as linhas existentes do modelo da tabela
-        tableModel.setRowCount(0);
+        
 
         // Recupera os clientes estacionados e suas informações da tabela "ClienteVaga"
         try {
             ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
-            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.listarClientesEstacionados();  // Método que retorna todos os clientes atualmente estacionados
+            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.listarClientesVagasAtivos();  // Método que retorna todos os clientes atualmente estacionados
 
+            System.out.print(clientesEstacionados);
+            
+            // Obtém o modelo da tabela como DefaultTableModel
+        DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear.getModel();
+
+        // Limpa todas as linhas existentes do modelo da tabela
+        tableModel.setRowCount(0);
+            
             // Adiciona os dados à tabela
             for (ClienteVaga clienteVaga : clientesEstacionados) {
                 tableModel.addRow(new Object[]{
@@ -3396,7 +3394,7 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     private int contarEspacosDisponiveis() {
         int count = 0;
         try {
-            EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
+            VagaDAO espacoDAO = new VagaDAO();
             count = espacoDAO.contarEspacosDisponiveis();  // Método que conta diretamente no banco de dados
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao contar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -3405,19 +3403,19 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
     }
 
     //Metodo atualizar sepacos disponiveis
-    private void atualizarEspacosDisponiveis() {
-        cbxvagas.removeAllItems();
-        try {
-            EspacoEstacionamentoDAO espacoDAO = new EspacoEstacionamentoDAO();
-            List<EspacoEstacionamento> espacosDisponiveis = espacoDAO.listarEspacosDisponiveis(); // Método que lista os espaços disponíveis do banco de dados
+  private void atualizarEspacosDisponivel() {
+    cbxvagas.removeAllItems();
+    try {
+        VagaDAO espacoDAO = new VagaDAO();
+        List<Vaga> espacosDisponiveis = espacoDAO.listarEspacosDisponivel();
 
-            for (EspacoEstacionamento espaco : espacosDisponiveis) {
-                cbxvagas.addItem(espaco.getIdentificador()); // Adiciona apenas o identificador dos espaços disponíveis
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        for (Vaga espaco : espacosDisponiveis) {
+            cbxvagas.addItem(espaco.getIdentificador());
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar os espaços disponíveis: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
+}
 
     //
     private void LimparcampusC() {
@@ -3703,6 +3701,208 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
         }
     }
 
+    // Estaciona o cliente mensalista caso os campos sejam válidos e o espaço esteja disponível
+    private void estacionarClienteMensalista() {
+        if (validarCamposMensalista()) {
+            ClienteMensalista clienteMensalista = criarClienteMensalista();
+            String espacoSelecionado = (String) cbxvagas1.getSelectedItem();
+
+            if (espacoSelecionado != null) {
+                tentarEstacionarClienteMensalista(clienteMensalista, espacoSelecionado);
+            } else {
+                mostrarMensagem("Todos os espaços estão ocupados.");
+            }
+        }
+    }
+
+// Tenta ocupar o espaço selecionado para o cliente mensalista
+    private void tentarEstacionarClienteMensalista(ClienteMensalista clienteMensalista, String espacoSelecionado) {
+        VagaDAO espacoDAO = new VagaDAO();
+
+//    try { 
+        Vaga espaco = espacoDAO.read(espacoSelecionado);
+
+        if (espaco != null) {
+            // Cria um objeto ClienteVeiculo a partir do ClienteMensalista
+            ClienteVeiculo clienteVeiculo = new ClienteVeiculo(
+                    clienteMensalista.getCliente(),
+                    clienteMensalista.getVeiculo(),
+                    clienteMensalista.getHoraEntrada(),
+                    clienteMensalista.getVaga()
+            );
+
+            // Passa o ClienteVeiculo para o método ocupar
+            if (espaco.ocupar(clienteVeiculo)) {  // Passa ClienteVeiculo para ocupar
+                processarEstacionamentoMensalista(clienteMensalista, espacoSelecionado);
+            } else {
+                mostrarMensagem("O espaço selecionado já está ocupado.");
+            }
+        }
+    }
+//catch (SQLException ex) {
+//    Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(Level.SEVERE, "Erro ao tentar estacionar cliente mensalista", ex);
+//}
+
+//}
+// Processa o estacionamento do cliente mensalista e atualiza informações
+    private void processarEstacionamentoMensalista(ClienteMensalista clienteMensalista, String espacoSelecionado) {
+        clienteMensalista.setEstacionado(true);
+        clienteMensalista.setHoraEntrada(LocalDateTime.now());
+
+        salvarClienteMensalista(clienteMensalista, espacoSelecionado);
+        atualizarTabelaMensalista();
+        atualizarEspacosDisponivel();
+        mostrarMensagem("Cliente mensalista estacionado com sucesso!");
+        limparCamposMensalista();
+    }
+
+// Salva o cliente mensalista com seu espaço e hora de entrada
+    private void salvarClienteMensalista(ClienteMensalista clienteMensalista, String espacoSelecionado) {
+        ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String horaEntradaFormatada = clienteMensalista.getHoraEntrada().format(formatter);
+
+        clienteVagaDAO.inserirClienteVaga(
+                clienteMensalista.getIdCliente(),
+                espacoSelecionado,
+                horaEntradaFormatada,
+                null
+        );
+    }
+
+// Atualiza a tabela com os clientes mensalistas estacionados atualmente
+    private void atualizarTabelaMensalista() {
+        DefaultTableModel tableModel = (DefaultTableModel) tabelaParquear1.getModel();
+        tableModel.setRowCount(0);
+
+        try {
+            ClienteVagaDAO clienteVagaDAO = new ClienteVagaDAO();
+            List<ClienteVaga> clientesEstacionados = clienteVagaDAO.listarClientesVagasMensalistasAtivos();
+
+            for (ClienteVaga clienteVaga : clientesEstacionados) {
+                tableModel.addRow(new Object[]{
+                    clienteVaga.getCliente().getIdCliente(),
+                    clienteVaga.getCliente().getNome(),
+                    clienteVaga.getCliente().getDocumento(),
+                    clienteVaga.getCliente().getTelefone(),
+                    clienteVaga.getVeiculo().getPlaca(),
+                    clienteVaga.getVeiculo().getCor(),
+                    clienteVaga.getHoraEntrada(),
+                    clienteVaga.getVaga().getValorPorHora()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+// Cria e retorna uma instância de ClienteMensalista com os dados do formulário
+    private ClienteMensalista criarClienteMensalista() {
+        int idCliente = gerarIdClienteUnico();
+        String nome = txtnomepropetarioa2.getText();
+        String documento = txtResid1.getText();
+        String telefone = txttelefoneparquear1.getText();
+        LocalDate prazoSaida = LocalDate.parse(jTextField6.getText()); // Campo de prazo de saída
+        double taxaMensal = Double.parseDouble(txtvalor1.getText());  // Campo de taxa mensal
+        LocalDate dataRegistro = LocalDate.now(); // Data de registro do cliente
+
+        return new ClienteMensalista(idCliente, nome, documento, telefone, null, prazoSaida, taxaMensal, dataRegistro, null);
+    }
+
+// Limpa os campos do formulário de cliente mensalista
+    public void limparCamposMensalista() {
+        txtnomepropetarioa2.setText("");
+        txtdescricaoa2.setText("");
+        txtplaca1.setText("");
+        txtmarca1.setText("");
+        txtcor1.setText("");
+        txttelefoneparquear1.setText("");
+        txtResid1.setText("");
+        cbxPorte1.setSelectedIndex(0);
+        ComboBoxTipopagamento1.setSelectedIndex(0);
+        cbxvagas1.setSelectedIndex(0);
+        txtvalor1.setText("");
+    }
+
+// Valida se os campos obrigatórios foram preenchidos
+    public boolean validarCamposMensalista() {
+        if (txtnomepropetarioa2.getText().isEmpty()
+                || txtplaca1.getText().isEmpty()
+                || txtmarca1.getText().isEmpty()
+                || txtcor1.getText().isEmpty()
+                || txttelefoneparquear1.getText().isEmpty()
+                || txtResid1.getText().isEmpty()
+                || cbxPorte1.getSelectedIndex() == 0
+                || ComboBoxTipopagamento1.getSelectedIndex() == 0
+                || cbxvagas1.getSelectedIndex() == 0
+                || txtvalor1.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios.");
+            return false;
+        }
+        return true;
+    }
+
+// Processa a saída de um cliente mensalista e calcula o valor a ser pago
+    private void processarSaidaM(int idCliente) throws SQLException {
+        ClienteMensalistaDAO clienteMensalistaDAO = new ClienteMensalistaDAO();
+        ClienteMensalista clienteMensalista = clienteMensalistaDAO.read1(idCliente);
+
+        if (clienteMensalista != null) {
+            double multa = clienteMensalista.getMulta();
+
+            // Exibe informações no painel de pagamento
+            nomepagament.setText(clienteMensalista.getNome());
+            placapagament.setText(clienteMensalista.getDocumento());
+            txxtValorTotal.setText(String.format("%.2f", multa));
+
+            try {
+                double valorPago = Double.parseDouble(valorpagar.getText());
+
+                if (valorPago < multa) {
+                    mostrarMensagem("Valor pago insuficiente. Por favor, verifique.");
+                    return;
+                }
+
+                double troco = valorPago - multa;
+                txtTroco.setText(String.format("%.2f", troco));
+
+                // Atualiza o cliente como não estacionado
+                clienteMensalista.setEstacionado(false);
+                clienteMensalistaDAO.atualizarClienteMensalista(clienteMensalista);
+
+                Paineis.setSelectedComponent(P5);  // Exibe o painel de pagamento
+                atualizarTabela();
+                atualizarEspacosDisponivel();
+
+                mostrarMensagem("Saída processada com sucesso!");
+            } catch (NumberFormatException e) {
+                //   mostrarMensagem("Valor pago inválido. Por favor, insira um valor numérico.")
+            }
+        } else {
+            mostrarMensagem("O cliente selecionado não está estacionado.");
+        }
+    }
+
+    // Método para preencher a JComboBox 'cbxVagas' com os identificadores das vagas ativas
+    private void preencherComboBoxVagas() {
+        try {
+            VagaDAO vagaDAO = new VagaDAO();
+            List<String> listaIdentificadoresVagas = vagaDAO.listarIdentificadoresVagasAtivas();
+
+            // Limpa a ComboBox antes de adicionar novos itens
+            cbxvagas.removeAllItems();
+            cbxvagas.addItem("Selecione uma vaga"); // Item inicial opcional
+
+            // Adiciona cada identificador de vaga na ComboBox
+            for (String identificador : listaIdentificadoresVagas) {
+                cbxvagas.addItem(identificador);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar identificadores das vagas: " + e.getMessage());
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -3717,16 +3917,24 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalAdmin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

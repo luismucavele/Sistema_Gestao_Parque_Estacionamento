@@ -3,16 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Veiw;
-
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.ResultSet;
 import Model.ModelDAO.ParqueDeEstacionamentoDAO;
 import Model.ModelDAO.VagaDAO;
 import Model.ParqueDeEstacionamento;
 import Veiw.*;
-import Veiw.*;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import model.DBConnect;
+import java.sql.PreparedStatement;
+
+
+
+
 
 /**
  *
@@ -27,6 +34,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         initComponents();
         listarVagas();
         listarparque();
+         preencherComboBoxParques();
     }
 
     /**
@@ -181,8 +189,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel91 = new javax.swing.JLabel();
         jLabel161 = new javax.swing.JLabel();
         jLabel162 = new javax.swing.JLabel();
-        jLabel160 = new javax.swing.JLabel();
-        txtIdVagas = new javax.swing.JTextField();
         jLabel163 = new javax.swing.JLabel();
         txtIndetificadore = new javax.swing.JTextField();
         jLabel165 = new javax.swing.JLabel();
@@ -201,6 +207,8 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         chkVip = new javax.swing.JCheckBox();
         nomeusergestor4 = new javax.swing.JLabel();
+        txtIdVagas = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
         P8 = new javax.swing.JPanel();
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
@@ -1378,10 +1386,6 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
             }
         });
 
-        jLabel160.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel160.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel160.setText("IdVaga");
-
         jLabel163.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel163.setForeground(new java.awt.Color(0, 0, 0));
         jLabel163.setText("Identificador:");
@@ -1394,28 +1398,28 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         tabelaVagas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "idVaga", "identificador", "valorPorHora", "isVip", "ocupado", "idCliente", "idParque", "horaEntrada", "ativo"
+                "idVaga", "identificador", "valorPorHora", "isVip", "ocupado", "idParque"
             }
         ));
         jScrollPane8.setViewportView(tabelaVagas);
@@ -1457,9 +1461,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
         });
 
         TxtMensagemV.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        TxtMensagemV.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtIdParque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", " " }));
+        TxtMensagemV.setForeground(new java.awt.Color(255, 0, 0));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -1467,6 +1469,9 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
 
         nomeusergestor4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         nomeusergestor4.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("IdVaga");
 
         javax.swing.GroupLayout P7Layout = new javax.swing.GroupLayout(P7);
         P7.setLayout(P7Layout);
@@ -1485,16 +1490,16 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                                 .addComponent(nomeusergestor4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(jLabel87)
-                                .addGap(162, 162, 162)
-                                .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(212, 212, 212)
+                                .addGap(32, 32, 32)
+                                .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(103, 103, 103)
                         .addComponent(jLabel162))
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel160)
-                            .addComponent(jLabel14))
-                        .addGap(56, 56, 56)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel22))
+                        .addGap(55, 55, 55)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P7Layout.createSequentialGroup()
                                 .addComponent(chkVip)
@@ -1547,31 +1552,28 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel87)
-                            .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtMensagemV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel87))
                         .addGap(6, 6, 6)
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel91)
                             .addComponent(nomeusergestor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel162))
-                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(P7Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addComponent(jLabel161)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P7Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(80, 80, 80))
+                    .addGroup(P7Layout.createSequentialGroup()
                         .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(chkVip))
-                        .addGap(22, 22, 22)))
-                .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P7Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel160))
-                    .addComponent(txtIdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                        .addGap(18, 18, 18)
+                        .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(20, 20, 20)))
                 .addGroup(P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P7Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
@@ -1668,7 +1670,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id_parque", "nome", "endereco", "capacidade_total", " vagas_disponiveis", "ativo"
+                "id_parque", "nome", "endereco", "capacidade_total", "vagas_disponiveis", "ativo"
             }
         ));
         jScrollPane9.setViewportView(tabelaPar);
@@ -1937,28 +1939,7 @@ public class MenuPrincipalGestorFinac extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         desativarVaga();
     }//GEN-LAST:event_jButton10ActionPerformed
-    
-private String nomeFuncionario; // Variável para armazenar o nome do funcionário
 
-    // Construtor que aceita o nome do funcionário
-    public MenuPrincipalGestorFinac(String nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
-        initComponents(); // Configura a interface da tela
-        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
-    }
-
-    // Método para exibir o nome do funcionário em um JLabel na interface
-    private void exibirNomeFuncionario() {
-        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
-        nomeusergestor.setText(nomeFuncionario);
-        nomeusergestor1.setText(nomeFuncionario);
-        nomeusergestor2.setText(nomeFuncionario);
-        nomeusergestor3.setText(nomeFuncionario);
-        nomeusergestor4.setText(nomeFuncionario);
-        nomeusergestor5.setText(nomeFuncionario);
-       
-    }
-    
     // METODO NA TELA PRAQUEAR
     private void salvarOuEditarParque() {
         String idParqueText = txtIDParque.getText();
@@ -1988,7 +1969,7 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
                 TxtMensagemP.setForeground(Color.GREEN);
                 TxtMensagemP.setText("Novo parque registrado com sucesso.");
             }
-             Limparcampus();
+            Limparcampus();
             listarparque(); // Atualiza a lista de parques na tabela
             // Limpa os campos após salvar ou editar
         } catch (Exception ex) {
@@ -1996,7 +1977,6 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
             TxtMensagemP.setText("Erro ao salvar o parque: " + ex.getMessage());
         }
     }
-    
 
     private void Limparcampus() {
         txtIDParque.setText("");
@@ -2022,11 +2002,11 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
         try {
             ParqueDeEstacionamentoDAO parqueEstacionamento = new ParqueDeEstacionamentoDAO();
             List<ParqueDeEstacionamento> parque = parqueEstacionamento.listarParquesAtivos();
-
+           
             // Limpa as linhas atuais da tabela antes de adicionar novas
             DefaultTableModel tableModelo = (DefaultTableModel) tabelaPar.getModel();
             tableModelo.setRowCount(0);
-
+            
             // Itera pela lista de funcionários e adiciona as linhas no modelo da tabela
             for (ParqueDeEstacionamento p : parque) {
 
@@ -2064,14 +2044,13 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
         if (!capacidade.matches("\\d{3}")) {
             TxtMensagemP.setText("Capacidade deve ter 3 dígitos.");
             return;
-      }
+        }
 
         // Validação para número de BI (12 dígitos seguidos por uma letra maiúscula)
-       // if (!vagasDisponiveis.matches("\\d{12}[A-Z]")) {
-      //      TxtMensagemP.setText("Número de BI deve conter 12 dígitos seguidos de uma letra maiúscula.");
-      //      return;
+        // if (!vagasDisponiveis.matches("\\d{12}[A-Z]")) {
+        //      TxtMensagemP.setText("Número de BI deve conter 12 dígitos seguidos de uma letra maiúscula.");
+        //      return;
         //}
-
         // Validação de texto para o campo de endereço
         if (!endereco.matches("[a-zA-ZÀ-ÿ ]+")) {
             txtEnderecoP.setText("O endereço deve conter apenas letras.");
@@ -2095,8 +2074,7 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
             TxtMensagemP.setText("Erro ao atualizar parque de estacionamento: " + ex.getMessage());
         }
     }
-   
-    
+
     //ASSUNTO GERENCIAMENTO DE VAGA
     private void salvarOuEditarVaga() {
         String idVagaText = txtIdVagas.getText();
@@ -2110,7 +2088,6 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
             return;
         }
 
-        
         try {
             VagaDAO vagaDAO = new VagaDAO();
             double valorPorHora = Double.parseDouble(valorPorHoraText);
@@ -2156,12 +2133,13 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
             // Itera pelo ResultSet e adiciona as linhas no modelo da tabela
             while (rs.next()) {
                 tableModelo.addRow(new Object[]{
-                    rs.getInt("id_vaga"),
+                    rs.getInt("idVaga"),
                     rs.getString("identificador"),
-                    rs.getDouble("valor_por_hora"),
-                    rs.getBoolean("is_vip") ? "VIP" : "Normal",
+                    rs.getDouble("valorPorHora"),
+                    rs.getBoolean("isVip") ? "VIP" : "Normal",
                     rs.getBoolean("ocupado") ? "Ocupado" : "Disponível",
-                    rs.getInt("id_parque_relacionado")
+                    rs.getInt("idParque")
+
                 });
             }
         } catch (Exception ex) {
@@ -2206,6 +2184,46 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
             TxtMensagemV.setText("Erro ao desativar a vaga: " + ex.getMessage());
         }
     }
+
+    public List<Integer> listarIdsParques() {
+        List<Integer> idsParques = new ArrayList<>();
+        String sql = "SELECT id_Parque FROM parque_estacionamento";
+
+        try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                idsParques.add(rs.getInt("idParque"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao listar IDs dos parques: " + e.getMessage());
+        }
+
+        return idsParques;
+    }
+
+    
+    private void preencherComboBoxParques() {
+    try {
+        ParqueDeEstacionamentoDAO parqueDAO = new ParqueDeEstacionamentoDAO();
+        List<Integer> listaIdsParques = parqueDAO.listarIdsParques();
+
+        // Limpa a ComboBox antes de adicionar novos itens
+        txtIdParque.removeAllItems();
+        txtIdParque.addItem("Selecione um ID"); // Instrução inicial opcional
+
+        // Adiciona cada ID de parque na ComboBox
+        for (Integer idParque : listaIdsParques) {
+            txtIdParque.addItem(String.valueOf(idParque));
+        }
+
+    } catch (Exception e) {
+        TxtMensagemV.setText("Erro ao carregar IDs dos parques: " + e.getMessage());
+    }
+
+
+}
 
     /**
      * @param args the command line arguments
@@ -2310,7 +2328,6 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
     private javax.swing.JLabel jLabel163;
@@ -2331,6 +2348,7 @@ private String nomeFuncionario; // Variável para armazenar o nome do funcionár
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;

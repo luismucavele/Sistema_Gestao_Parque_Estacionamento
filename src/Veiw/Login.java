@@ -251,13 +251,13 @@ public class Login extends javax.swing.JFrame {
         // Verifica o cargo do funcionário e abre o menu correspondente
         switch (funcionario.getCargo().toLowerCase()) {
             case "administrador":
-                new MenuPrincipalAdmin(nomeFuncionario).setVisible(true);
+               new MenuPrincipalAdmin().setVisible(true);
                 break;
             case "gestor financeiro":
-              new MenuPrincipalGestorFinac(nomeFuncionario).setVisible(true);
+              new MenuPrincipalGestorFinac().setVisible(true);
                 break;
             case "recepcionista":
-                new MenuPrincipalFuncio(nomeFuncionario).setVisible(true);
+                new MenuPrincipalFuncio().setVisible(true);
                 break;
             default:
                 lblmensagem.setText("Cargo desconhecido!");

@@ -47,13 +47,13 @@ public class ClienteVagaDAO {
                 );
 
                 Vaga vaga = new Vaga(
-                        rs.getInt("id_vaga"),
+                        rs.getInt("idVaga"),
                         rs.getString("identificador"),
-                        rs.getDouble("valor_por_hora"),
-                        rs.getBoolean("is_vip"),
+                        rs.getDouble("valorPorHora"),
+                        rs.getBoolean("isVip"),
                         rs.getBoolean("ocupado"),
-                        rs.getTimestamp("hora_entrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
-                        rs.getInt("id_parque_relacionado")
+                        rs.getTimestamp("horaEntrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
+                        rs.getInt("idParque")
                 );
 
                 // Instância de ClienteVaga com os objetos criados
@@ -175,26 +175,17 @@ public class ClienteVagaDAO {
             System.err.println("Erro ao desativar ClienteVaga: " + e.getMessage());
         }
     }
-
-    // Método para listar todos os ClienteVaga ativos
-    public List<ClienteVaga> listarClientesVagasAtivos() {
+// Método para listar todos os ClienteVaga ativos
+public List<ClienteVaga> listarClientesVagasAtivos() {
         List<ClienteVaga> clientesVagasAtivos = new ArrayList<>();
-        String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, "
-                + "v.matricula, v.cor, v.modelo, v.ano, v.marca, v.tipoVeiculo, "
-                + "vg.valorPorHora, vg.tipoPagamento, "
-                + "cv.horaEntrada, cv.horaSaida "
-                + "FROM ClienteVaga cv "
-                + "JOIN Cliente c ON c.idCliente = cv.idCliente "
-                + "JOIN Veiculo v ON v.matricula = cv.matricula "
-                + "JOIN Vaga vg ON vg.identificadorVaga = cv.identificadorVaga "
-                + "WHERE cv.ativo = true";
+        String sql = "SELECT * FROM clientevaga";
 
         try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente(
                     rs.getInt("idCliente"),
-                    rs.getBoolean("status"),
+                    rs.getBoolean("ativo"),
                     rs.getString("nome"),
                     rs.getString("documento"),
                     rs.getString("telefone"),
@@ -205,17 +196,16 @@ public class ClienteVagaDAO {
                         rs.getString("modelo"),
                         rs.getString("marca"),
                         rs.getString("cor"),
-                        rs.getString("tipoVeiculo")
-                
+                        rs.getString("tipoVeiculo")      
                 );
                 Vaga vaga = new Vaga(
-                        rs.getInt("id_vaga"),
+                        rs.getInt("idVaga"),
                         rs.getString("identificador"),
-                        rs.getDouble("valor_por_hora"),
-                        rs.getBoolean("is_vip"),
+                        rs.getDouble("valorPorHora"),
+                        rs.getBoolean("isVip"),
                         rs.getBoolean("ocupado"),
-                        rs.getTimestamp("hora_entrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
-                        rs.getInt("id_parque_relacionado")
+                        rs.getTimestamp("horaEntrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
+                        rs.getInt("idParque")
                 );
                 LocalDateTime horaEntrada = rs.getObject("horaEntrada", LocalDateTime.class);
                 LocalDateTime horaSaida = rs.getObject("horaSaida", LocalDateTime.class);
@@ -229,4 +219,58 @@ public class ClienteVagaDAO {
 
         return clientesVagasAtivos;
     }
+    
+public List<ClienteVaga> listarClientesVagasMensalistasAtivos() {
+    List<ClienteVaga> clientesMensalistasAtivos = new ArrayList<>();
+    String sql = "SELECT c.idCliente, c.nome, c.residencia, c.contacto, "
+               + "v.matricula, v.cor, v.modelo, v.marca, v.tipoVeiculo, "
+               + "vg.valorPorHora, vg.tipoPagamento, "
+               + "cv.horaEntrada, cv.horaSaida "
+               + "FROM ClienteVaga cv "
+               + "JOIN Cliente c ON c.idCliente = cv.idCliente "
+               + "JOIN Veiculo v ON v.matricula = cv.matricula "
+               + "JOIN Vaga vg ON vg.identificadorVaga = cv.identificadorVaga "
+               + "WHERE cv.ativo = true AND vg.tipoPagamento = 'Mensalista'";
+
+    try (Connection conn = DBConnect.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Cliente cliente = new Cliente(
+                rs.getInt("idCliente"),
+                rs.getBoolean("status"),
+                rs.getString("nome"),
+                rs.getString("documento"),
+                rs.getString("telefone"),
+                rs.getString("email")
+            );
+            Veiculo veiculo = new Veiculo(
+                rs.getString("placa"),
+                rs.getString("modelo"),
+                rs.getString("marca"),
+                rs.getString("cor"),
+                rs.getString("tipoVeiculo")
+            );
+            Vaga vaga = new Vaga(
+                rs.getInt("id_vaga"),
+                rs.getString("identificador"),
+                rs.getDouble("valor_por_hora"),
+                rs.getBoolean("is_vip"),
+                rs.getBoolean("ocupado"),
+                rs.getTimestamp("hora_entrada") != null ? rs.getTimestamp("hora_entrada").toLocalDateTime() : null,
+                rs.getInt("id_parque_relacionado")
+            );
+            LocalDateTime horaEntrada = rs.getObject("horaEntrada", LocalDateTime.class);
+            LocalDateTime horaSaida = rs.getObject("horaSaida", LocalDateTime.class);
+
+            ClienteVaga clienteVaga = new ClienteVaga(cliente, veiculo, vaga, horaEntrada, horaSaida);
+            clientesMensalistasAtivos.add(clienteVaga);
+        }
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar ClienteVaga mensalistas ativos: " + e.getMessage());
+    }
+
+    return clientesMensalistasAtivos;
+}
 }

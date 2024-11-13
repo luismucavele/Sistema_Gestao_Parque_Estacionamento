@@ -2,12 +2,16 @@ package Model.ModelDAO;
 
 import Model.Cliente;
 import Model.Cliente;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import model.DBConnect;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ClienteDAO {
+ //   private static final Logger LOGGER = Logger.getLogger(ClienteVagaDAO.class.getName());
 
     public void inserirCliente(Cliente cliente) throws SQLException {
         String sql = "INSERT INTO clientes (nome, documento, telefone, status) VALUES (?, ?, ?, ?)";
@@ -78,4 +82,14 @@ public class ClienteDAO {
             stmt.executeUpdate();
         }
     }
+    public void desativarCliente(int idCliente) throws SQLException {
+    String sql = "UPDATE clientes SET ativo = false WHERE idCliente = ?";
+    try (PreparedStatement stmt = DBConnect.prepareStatement(sql)) {
+        stmt.setInt(1, idCliente);
+        stmt.executeUpdate();
+        System.out.println("Cliente desativado com sucesso.");
+    } catch (SQLException e) {
+       // LOGGER.log(Level.SEVERE, "Erro ao desativar cliente: ", e);
+    }
+}
 }

@@ -10,9 +10,17 @@ public class ClienteVeiculo {
     private LocalDateTime horaEntrada;
     private LocalDateTime horaSaida;
     private boolean estacionado;
-    private EspacoEstacionamento espacoEstacionamento;
+    private Vaga vaga;
 
-    public ClienteVeiculo(Cliente cliente, Veiculo veiculo, LocalDateTime horaEntrada, EspacoEstacionamento espacoEstacionamento) {
+    public Vaga getVaga() {
+        return vaga;
+    }
+
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
+    }
+
+    public ClienteVeiculo(Cliente cliente, Veiculo veiculo, LocalDateTime horaEntrada, Vaga espacoEstacionamento) {
     if (cliente == null || veiculo == null) {
         throw new IllegalArgumentException("Cliente e veículo não podem ser nulos");
     }
@@ -22,7 +30,7 @@ public class ClienteVeiculo {
     this.cliente = cliente;
     this.veiculo = veiculo;
     this.horaEntrada = horaEntrada;
-    this.espacoEstacionamento = espacoEstacionamento;  // Associa o espaço de estacionamento
+    this.vaga = vaga;  // Associa o espaço de estacionamento
     this.estacionado = true;
 }
 
@@ -96,11 +104,4 @@ public class ClienteVeiculo {
         return "ClienteVeiculo{" + "cliente=" + cliente + ", veiculo=" + veiculo + '}';
     }
 
-    public EspacoEstacionamento getEspacoEstacionamento() {
-        return espacoEstacionamento;
-    }
-
-    public void setEspacoEstacionamento(EspacoEstacionamento espacoEstacionamento) {
-        this.espacoEstacionamento = espacoEstacionamento;
-    }
 }

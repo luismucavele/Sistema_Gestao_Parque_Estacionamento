@@ -16,10 +16,10 @@ public class Estacionamento {
         this.historicoClientes = new ArrayList<>();
     }
 
-    public void registrarEntrada(Cliente cliente, Veiculo veiculo) {
-        ClienteVeiculo clienteVeiculo = new ClienteVeiculo(cliente, veiculo, LocalDateTime.now());
-        clientesEstacionados.add(clienteVeiculo);
-    }
+   public void registrarEntrada(Cliente cliente, Veiculo veiculo, Vaga espaco) {
+    ClienteVeiculo clienteVeiculo = new ClienteVeiculo(cliente, veiculo, LocalDateTime.now(), espaco);
+    clientesEstacionados.add(clienteVeiculo);
+}
 
     public void registrarSaida(Cliente cliente) {
         ClienteVeiculo clienteVeiculo = buscarClienteEstacionado(cliente);

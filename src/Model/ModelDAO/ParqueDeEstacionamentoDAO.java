@@ -1,4 +1,5 @@
 package Model.ModelDAO;
+
 import Model.ParqueDeEstacionamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,35 +12,33 @@ import model.DBConnect;
 public class ParqueDeEstacionamentoDAO {
 
     // Método para inserir parque de estacionamento no banco de dados
-public void atualizarParqueDeEstacionamento(int idParque, String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
-    String sql = "UPDATE parque_estacionamento SET nome = ?, endereco = ?, capacidade_total = ?, vagas_disponiveis = ? WHERE id_parque = ?";
+    public void atualizarParqueDeEstacionamento(int idParque, String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
+        String sql = "UPDATE parque_estacionamento SET nome = ?, endereco = ?, capacidade_total = ?, vagas_disponiveis = ? WHERE id_parque = ?";
 
-    try (Connection conn = DBConnect.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
-        stmt.setString(1, nome);
-        stmt.setString(2, endereco);
-        stmt.setInt(3, Integer.parseInt(capacidade));
-        stmt.setInt(4, Integer.parseInt(vagasDisponiveis));
-        stmt.setInt(5, idParque);
-        stmt.executeUpdate();
+        try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            stmt.setString(2, endereco);
+            stmt.setInt(3, Integer.parseInt(capacidade));
+            stmt.setInt(4, Integer.parseInt(vagasDisponiveis));
+            stmt.setInt(5, idParque);
+            stmt.executeUpdate();
+        }
     }
-}
 
-public void inserirParqueDeEstacionamento(String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
-    String sql = "INSERT INTO parque_estacionamento (nome, endereco, capacidade_total, vagas_disponiveis,  ativo) VALUES (?, ?, ?, ?, ?)";
+    public void inserirParqueDeEstacionamento(String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
+        String sql = "INSERT INTO parque_estacionamento (nome, endereco, capacidade_total, vagas_disponiveis,  ativo) VALUES (?, ?, ?, ?, ?)";
 
-    try (Connection conn = DBConnect.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
-        stmt.setString(1, nome);
-        stmt.setString(2, endereco);
-        stmt.setInt(3, Integer.parseInt(capacidade));
-        stmt.setInt(4, Integer.parseInt(vagasDisponiveis));
-        stmt.setBoolean(5, true);
-        stmt.executeUpdate();
+        try (Connection conn = DBConnect.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            stmt.setString(2, endereco);
+            stmt.setInt(3, Integer.parseInt(capacidade));
+            stmt.setInt(4, Integer.parseInt(vagasDisponiveis));
+            stmt.setBoolean(5, true);
+            stmt.executeUpdate();
+        }
     }
-}
 
-    // Método para listar todos os parques ativos
+     // Método para listar todos os parques ativos
     public List<ParqueDeEstacionamento> listarParquesAtivos() throws Exception {
         List<ParqueDeEstacionamento> parques = new ArrayList<>();
         String sql = "SELECT * FROM parque_estacionamento WHERE ativo = 1";
@@ -60,7 +59,28 @@ public void inserirParqueDeEstacionamento(String nome, String endereco, String c
         }
         return parques;
     }
-    
+
+    // Método para listar apenas os IDs dos parques ativos
+    public List<Integer> listarIdsParques() throws Exception {
+        List<Integer> idsParques = new ArrayList<>();
+        String sql = "SELECT id_parque FROM parque_estacionamento WHERE ativo = 1";
+
+        try (Connection conn = DBConnect.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                idsParques.add(rs.getInt("id_parque"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro ao listar IDs dos parques: " + e.getMessage());
+        }
+
+        return idsParques;
+    }
+}
+
 //    public void atualizarParqueDeEstacionamento(int idParque, String nome, String endereco, String capacidade, String vagasDisponiveis) throws Exception {
 //    String sql = "UPDATE parque_estacionamento SET nome = ?, endereco = ?, capacidade_total = ?, vagas_disponiveis = ? WHERE id_parque = ?";
 //
@@ -74,4 +94,4 @@ public void inserirParqueDeEstacionamento(String nome, String endereco, String c
 //        stmt.executeUpdate();
 //    }
 //}
-}
+

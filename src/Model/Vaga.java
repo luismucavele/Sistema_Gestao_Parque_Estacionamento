@@ -147,4 +147,8 @@ public class Vaga {
     public void atualizarValorPorHora(double novoValor) {
         this.valorPorHora = novoValor;
     }
+
+    public boolean ocupar(ClienteVeiculo clienteVeiculo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

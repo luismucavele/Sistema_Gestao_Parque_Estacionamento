@@ -12,7 +12,7 @@ public class DBConnect {
         try {
             // Configurar a conexão com o banco de dados
             Class.forName("com.mysql.cj.jdbc.Driver"); // Ou o driver correto para o seu banco
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_de_p_estacionamento", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parque_estacionamento", "root", "");
         } catch (ClassNotFoundException e) {
             System.err.println("Erro ao carregar o driver do banco de dados: " + e.getMessage());
             throw new RuntimeException("Erro ao carregar o driver do banco de dados", e);
@@ -25,7 +25,7 @@ public class DBConnect {
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_de_p_estacionamento", "root", "");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parque_estacionamento", "root", "");
             }
         } catch (SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());

@@ -10,7 +10,7 @@ public class Cliente extends Pessoa {
     private boolean status; // Indica se o cliente está ativo ou inativo
     private List<Veiculo> veiculos; // Lista de veículos associados ao cliente
     private List<Pagamento> pagamentos; // Histórico de pagamentos do cliente
-    private EspacoEstacionamento espacoEstacionamento; // Espaço de estacionamento alocado para o cliente
+    private Vaga vaga; // Espaço de estacionamento alocado para o cliente
     private LocalDateTime horaEntrada;
     private LocalDateTime horaSaida;
 
@@ -48,13 +48,14 @@ public class Cliente extends Pessoa {
         this.horaSaida = LocalDateTime.now();
     }
 
-    public EspacoEstacionamento getEspacoEstacionamento() {
-        return espacoEstacionamento;
+    public Vaga getVaga() {
+        return vaga;
     }
 
-    public void setEspacoEstacionamento(EspacoEstacionamento espacoEstacionamento) {
-        this.espacoEstacionamento = espacoEstacionamento;
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
     }
+
 
     // Métodos de manipulação de veículos e pagamentos
     public void adicionarVeiculo(Veiculo veiculo) {
@@ -75,26 +76,25 @@ public class Cliente extends Pessoa {
 
     // Calcula o valor total com base na duração do estacionamento e no valor por hora do espaço
     public double calcularValorTotal() {
-        if (espacoEstacionamento != null && horaEntrada != null && horaSaida != null) {
+        if (vaga != null && horaEntrada != null && horaSaida != null) {
             Duration duracao = Duration.between(horaEntrada, horaSaida);
             long horas = duracao.toHours();
             if (horas < 1) {
                 horas = 1; // Cobra pelo menos uma hora
             }
-            return horas * espacoEstacionamento.getValorPorHora();
+            return horas * vaga.getValorPorHora();
         }
         return 0.0;
     }
 
-    // Método para verificar se o cliente é um cliente mensalista e calcular multa se aplicável
+    // Calcula o valor com multa, se aplicável para ClienteMensalista
     public double calcularValorComMulta() {
+        double valorTotal = calcularValorTotal();
         if (this instanceof ClienteMensalista) {
             ClienteMensalista clienteMensal = (ClienteMensalista) this;
-            if (clienteMensal.isPrazoUltrapassado(horaSaida)) {
-                return calcularValorTotal() + clienteMensal.getMulta(); // Valor total + multa
-            }
+            valorTotal += clienteMensal.getMulta();
         }
-        return calcularValorTotal();
+        return valorTotal;
     }
 
     // Override do método toString para exibir as informações do cliente
@@ -105,7 +105,7 @@ public class Cliente extends Pessoa {
                ", nome=" + getNome() +
                ", status=" + (status ? "Ativo" : "Inativo") +
                ", veículos=" + veiculos.size() +
-               ", espaçoEstacionamento=" + (espacoEstacionamento != null ? espacoEstacionamento.getIdentificador(): "Não alocado") +
+               ", espaçoEstacionamento=" + (vaga != null ? vaga.getIdentificador() : "Não alocado") +
                '}';
     }
 }

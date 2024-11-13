@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GerenciadorDeEspacos {
 
-    private List<EspacoEstacionamento> espacos;
+    private List<Vaga> espacos;
     private int totalEspacos;
     private int totalVip;
     private int totalReservadoDeficientes;
@@ -18,22 +18,22 @@ public class GerenciadorDeEspacos {
 
         // Criar os espaços de estacionamento normais
         for (int i = 0; i < totalEspacos; i++) {
-            espacos.add(new EspacoEstacionamento("Espaco-" + (i + 1), 10.0, false));
+            vaga.add(new Vaga("Espaco-" + (i + 1), 10.0, false));
         }
 
         // Criar espaços VIP
         for (int i = 0; i < totalVip; i++) {
-            espacos.add(new EspacoEstacionamento("VIP-" + (i + 1), 20.0, true));
+            espacos.add(new Vaga("VIP-" + (i + 1), 20.0, true));
         }
 
         // Criar espaços reservados para deficientes
         for (int i = 0; i < totalReservadoDeficientes; i++) {
-            espacos.add(new EspacoEstacionamento("Deficiente-" + (i + 1), 10.0, false));
+            espacos.add(new Vaga("Deficiente-" + (i + 1), 10.0, false));
         }
     }
 
     public void definirValorPorHora(String identificador, double novoValor) {
-        EspacoEstacionamento espaco = procurarPorIdentificador(identificador);
+        Vaga espaco = procurarPorIdentificador(identificador);
         if (espaco != null) {
             espaco.setValorPorHora(novoValor);
             System.out.println("Valor por hora atualizado para o espaço " + identificador + ": " + novoValor);
@@ -48,7 +48,7 @@ public class GerenciadorDeEspacos {
 
     public int getTotalEspacosLivres() {
         int count = 0;
-        for (EspacoEstacionamento espaco : espacos) {
+        for (Vaga espaco : espacos) {
             if (!espaco.isOcupado()) {
                 count++;
             }
@@ -60,23 +60,23 @@ public class GerenciadorDeEspacos {
         return totalEspacos - getTotalEspacosLivres();
     }
 
-    public List<EspacoEstacionamento> getEspacos() {
+    public List<Vaga> getEspacos() {
         return espacos;
     }
 
-    public void cadastrarEspaco(String identificador, double valorPorHora, boolean isVip) {
-        EspacoEstacionamento novoEspaco = new EspacoEstacionamento(identificador, valorPorHora, isVip);
+    public void cadastrarEspaco(String identificador, double valorPorHora, boolean isVip,boolean ocupado) {
+        Vaga novoEspaco = new Vaga (identificador, valorPorHora, isVip,ocupado);
         espacos.add(novoEspaco);
         totalEspacos++;
     }
 
-    public void removerEspaco(EspacoEstacionamento espaco) {
+    public void removerEspaco(Vaga espaco) {
         espacos.remove(espaco);
         totalEspacos--;
     }
 
-    public EspacoEstacionamento procurarPorIdentificador(String identificador) {
-        for (EspacoEstacionamento espaco : espacos) {
+    public Vaga procurarPorIdentificador(String identificador) {
+        for (Vaga espaco : espacos) {
             if (espaco.getIdentificador().equalsIgnoreCase(identificador)) {
                 return espaco;
             }

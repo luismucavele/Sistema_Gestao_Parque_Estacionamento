@@ -2117,28 +2117,6 @@ public class MenuPrincipalFuncio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-   private String nomeFuncionario; // Variável para armazenar o nome do funcionário
-
-    // Construtor que aceita o nome do funcionário
-    public MenuPrincipalFuncio(String nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
-        initComponents(); // Configura a interface da tela
-        exibirNomeFuncionario(); // Método para exibir o nome do funcionário
-    }
-
-    // Método para exibir o nome do funcionário em um JLabel na interface
-    private void exibirNomeFuncionario() {
-        // Suponha que você tenha um JLabel chamado lblNomeFuncionario
-        nomeuseFuncio.setText(nomeFuncionario);
-        nomeuseFuncio1.setText(nomeFuncionario);
-        nomeuseFuncio2.setText(nomeFuncionario);
-        nomeuseFuncio3.setText(nomeFuncionario);
-        nomeuseFuncio4.setText(nomeFuncionario);
-        nomeuseFuncio5.setText(nomeFuncionario);
-       
-    }
-    
-
     //Todos metodos de cliente
     public void estacionarCliente() {
         btnparquearadmin.addActionListener(new ActionListener() {
